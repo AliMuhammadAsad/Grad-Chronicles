@@ -1,0 +1,153 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage{url}
+\usepackage[shortlabels]{enumitem}
+\newtheorem{theorem}{Theorem}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Discrete Mathematics}{Problem Set 8}{CS/Math 113}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\olsi}[1]{\,\overline{\!{#1}}} % overline short italic
+
+\title{CS/Math 113 - Problem Set 9}
+\author{Dead TAs Society \\ Habib University - Spring 2023}
+\date{Week 13}
+
+\begin{document}
+\maketitle
+\begin{sloppypar}
+\section*{Problems}
+\begin{questions}
+    \question
+    \textbf{Problem 1. [Chapter 5.1, Question 5]}
+    Prove that $1^2 + 3^2 + 5^2 + \cdots + (2n+1)^2 \equiv (n+1)(2n+1)(2n+3)/3$ whenever $n$ is a nonnegative integer using induction.
+    \begin{solution}
+        
+        Let $ S(n) = 1^2 + 3^2 + 5^2 + ... + (2n+1)^2 = \displaystyle\frac{(n+1)(2n+1)(2n+3)}{3}$ 
+
+        \underbar{Base Case:} $ n = 0 $. Then $S(0) = 1^2 = \displaystyle\frac{(1)(1)(3)}{3} = 1 $. Hence true for the base case.
+
+        \underbar{Inductive Hypothesis:} For the inductive step, assume the inductive hypothesis that $S(k) = 1^2 + 3^2 + 5^2 + \cdots + (2k+1)^2 = \displaystyle\frac{(k+1)(2k+1)(2k+3)}{3} $. Assume this is true for $n = k$
+
+        Then for $ n = k + 1 $, we have to show that adding one more term [$ (2(k + 1) + 1)^2 \implies (2k + 3)^2 $] results in $S(k + 1) = \displaystyle\frac{(k+ 2)(2k+3)(2k+5)}{3} $.
+        
+        Then from the inductive hypothesis, \\ $S(k + 1) = 1^2 + 3^2 + 5^2 + \cdots + (2k+1)^2 + (2k + 3)^2 = \displaystyle\frac{(k+1)(2k+1)(2k+3)}{3} + (2k + 3)^2 $ \\ 
+        $ = \displaystyle\frac{(k+1)(2k+1)(2k+3) + 3(2k + 3)^2}{3} $ \\ 
+        $ = \displaystyle\frac{(2k+3)[(k+1)(2k+1) + 3(2k+3)]}{3} \\ = \displaystyle\frac{(2k+3)(2k^2 + 9k + 10)}{3} \\ = \displaystyle\frac{(2k+3)[(k+2)(2k+5)]}{3} = \displaystyle\frac{(k+2)(2k+3)(2k+5)}{3}$
+        \begin{flushright}
+            \qed
+        \end{flushright}
+    \end{solution}
+    \newpage
+    \question
+    \textbf{Problem 2. [Chapter 5.1, Question 21]}
+    Prove that $2^n > n^2$ if $n$ is an integer greater than 4 using induction.
+    \begin{solution}
+
+        \underline{Base Case:}  $ n = 5 $. Then $ 2^5 > 5^2 \implies 32 > 25 $. Hence true for the base case. 
+
+        \underbar{Inductive Hypothesis:} $ n = k $. Then $2^k > k^2$ is true. 
+
+        Then for $ n = k + 1 $, we have to show that $ 2^{k+1} > (k+1)^2 $ is true. Then we can show that $ 2.2^k > k^2 + 2k + 1 $
+
+        We have that $(k+1)^2 = k^2 + 2k + 1 < k^2 + 2k + k$ since $ k > 4 $. Then $ (k + 1)^2 < k^2 + 3k $
+
+        However, $ k^2 + 3k < k^2 + k^2 $ as $ k > 3 $, then $ 3k < k^2 $. Therefore, $ k^2 + 3k < 2k^2 $. Further, $ 2k^2 < 2.2^k $ since $ k^2 < 2^k $ by the inductive hypothesis, and $ 2.2^k = 2^{k + 1} $.
+
+        Therefore, $ (k + 1)^2 < 2^{k + 1} $.
+        \begin{flushright}
+            \qed
+        \end{flushright}
+    \end{solution}
+    
+    \question
+    \textbf{Problem 3. [Chapter 5.1, Question 32]}
+        Prove that 3 divides $n^3+2n$ whenever $n$ is positive integer using induction.
+    \begin{solution}
+        Let $ P(n) = n^3 + 2n $ and that 3 $|$ $ P(n) $ whenever $n$ is a positive integer. [$3|P(n)$ means 3 divides $P(n)$ and does not leave any remainder] 
+
+        \underline{Base Case:} $ n = 0 $. Then $ P(0) = 0 $ and 3 $|$ $ 0 $. Hence true for the base case.
+
+        \underline{Inductive Hypothesis:} $ n = k $. Then $ P(k) = k^3 + 2k $ and 3 $|$ $P(k) $ is true.
+
+        Then for the inductive step, we have to show that for $ n = k + 1 $, and that 3 $|$ $P(k + 1) $.
+
+        $ P(k + 1) = (k + 1)^3 + 2(k + 1) \\ = k^3 + 3k^2 + 3k + 1 + 2k + 2 \\ = k^3 + 3k^2 + 5k + 3 \\ = k^3 + 2k + 3k^2 + 3k + 3 \\ = (k^3 + 2k) + 3(k^2 + k + 1) \\ P(k + 1) = (k^3 + 2k) + 3(k^2 + k + 1) = P(k) + 3(k^2 + k + 1)$ 
+
+        We know from the inductive hypothesis that $P(k)$ is divisible by 3, and $ 3(k^2 + k + 1) $ is definitely divisible by 3. Therefore 3 $|$ $P(k + 1)$.
+        \begin{flushright}
+            \qed
+        \end{flushright}
+    \end{solution}
+    \newpage
+    \question
+    \textbf{Problem 4. [Chapter 5.1, Question 40]}
+        Prove that if $A_1, A_2, \cdots, A_n$ and $B$ are sets, then
+        $(A_1 \cap A_2 \cap \cdots \cap A_n) \cup B  \equiv (A_1 \cup B) \cap (A_2 \cup B) \cap \cdots \cap (A_n \cup B)$ using induction
+    \begin{solution}
+        
+        \underline{Base Case:} $ n = 1 $, then $ A_1 \cup B = A_1 \cup B $ - trivial. And $ n = 2 $, then $ (A_1 \cap A_2) \cup B = (A_1 \cup B) \cap (A_2 \cup B) $ which is the distributive law [nothing to prove - has been already proved].
+
+        \underline{Inductive Hypothesis:} $ n = k $, then $ (A_1 \cap A_2 \cap \cdots \cap A_k) \cup B = (A_1 \cup B) \cap (A_2 \cup B) \cap \cdots \cap (A_k \cup B) $ is true.
+
+        Then for the inductive step we have to show that for $ n = k + 1 $, $ (A_1 \cap A_2 \cap \cdots \cap A_k \cap A_{k + 1}) \cup B = (A_1 \cup B) \cap (A_2 \cup B) \cap \cdots \cap (A_k \cup B) \cap (A_{k + 1} \cup B) $
+
+        Then 
+        \begin{equation*}
+            \begin{split}
+                (A_1 \cap A_2 \cap \cdots \cap A_k \cap A_{k + 1}) \cup B & = ((A_1 \cap A_2 \cap \cdots \cap A_k) \cap A_{k + 1}) \cup B \\ 
+                & = ((A_1 \cap A_2 \cap \cdots \cap A_k) \cup B) \cap (A_{k + 1} \cup B) \\ 
+                & = (A_1 \cup B) \cap (A_2 \cup B) \cap \cdots \cap (A_k \cup B) \cap (A_{k+1} \cup B)
+            \end{split}
+        \end{equation*}
+        
+        The second line follows from the distributive law, and the third line follows from the inductive hypothesis.
+        \begin{flushright}
+            \qed
+        \end{flushright}
+    \end{solution}
+    
+    \question
+    \textbf{Problem 5. [Chapter 5.1, Question 50]}
+        What is wrong with this ``proof''?
+        \begin{proof}
+        \begin{theorem}
+            For every positive integer $n$, $\sum_{i=1}^{n} i = (n+\frac{1}{2})^2 / 2$
+        \end{theorem}
+        \textit{Basis Step: } The formula is true for $n=1$
+        \newline
+        \textit{Inductive Step: } Suppose that $\sum_{i=1}^{n} i = (n+\frac{1}{2})^2 / 2$.
+        Then $\sum_{i=1}^{n+1} i = (\sum_{i=1}^{n} i) + (n+1)  $. By the inductive hypothesis, we have 
+        $\sum_{i=1}^{n+1} i = (n+\frac{1}{2})^2 / 2 + (n+1) = (n^2 + n + \frac{1}{4})/2 + n + 1 = (n^2 + 3n + \frac{9}{4})/2= (n+\frac{3}{2})^2 /2 = [(n+1)+\frac{1}{2}]^2 /2$, 
+        \end{proof}
+    \begin{solution}
+        Consider the base case where $ n = 1 $. In the above proof, when $ n = 1 $, the sum yields 1. However, on calculation, $ \displaystyle\frac{(1 + \frac{1}{2})^2}{2} = \displaystyle\frac{9}{4} \times \displaystyle\frac{1}{2} = \displaystyle\frac{9}{8} \neq 1 $. Hence the base case in the proof was wrong.
+    \end{solution}
+
+\end{questions}
+\end{sloppypar}
+\end{document}
+

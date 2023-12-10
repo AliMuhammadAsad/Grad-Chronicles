@@ -1,0 +1,45 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{titling}
+
+\printanswers
+
+\title{Weekly Challenge 02: Logical Thinking\\CS/MATH 113 Discrete Mathematics}
+\author{Ali Muhammad Asad}  % <== for grading, replace with your team name, e.g. q1-team-420
+\date{Habib University | Spring 2023}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+  
+  \titledquestion{Logical Hikers}
+  A group of $n$ hikers is standing at the base of a mountain. Their guide joins them and hangs a compass from each hiker's neck. At their current position, all the compasses should point North. But some are faulty. A hiker cannot see their own compass but can see everyone else's. For the hike to go smoothly, it is important for every hiker to know the condition of their compass, i.e., if it is faulty or functions correctly. The guide is going around asking each hiker in turn about the condition of their compass. Each hiker reports either ``Working'', ``Faulty'', or ``Can't tell''. The hikers are highly logical and always respond truthfully.
+
+  \begin{parts}
+    \part Given that the guide has announced that \textit{exactly} $k$ compasses are faulty where $0\leq k \leq n$, prove that every hiker can correctly tell the condition of their compass just by looking at the compasses of the other hikers.
+    \part Suppose instead that the guide announces \textit{at least} $k$ faulty compasses where $1\leq k \leq (n-1)$. Prove the following statement about the responses: As soon as a hiker responds, ``Faulty'', no subsequent hiker will respond, ``Can't tell''.
+    \part Suppose instead that the guide announces \textit{at most} $k$ faulty compasses where $1\leq k \leq (n-1)$. Provide a statement about the responses similar to the one given in the previews part. Show that it is correct.
+  \end{parts}
+
+  \begin{solution}
+    % Enter your solution here.
+    
+    (a) If the guide announces that exactly $k$ compasses are faulty where $ 0 \leq k \leq n $, and the hikers are all highly logical and respond truthfully, then each hiker can know whether his compass is faulty or not by looking at the compasses of all the other hikers. If the hiker counts exactly $ k $ faulty compasses, then he knows that his own compass is not faulty, therefore, he can report his compass as ``Working''. \\ 
+    If the hiker counts exactly $ k - 1 $ compasses as faulty, then he can infer that his own compass is also faulty since there are exactly $ k $ faulty compasses, therefore he can report it as ``Faulty''.
+
+    (b) If the guide announces that at least $ k $ compasses are faulty, where $ 1 \leq k \leq (n - 1) $, and a hiker finds a way to infer that his own compass is ``Faulty'', then no subsequent hikers can respond with ``Can't tell''. \\ 
+    This statement holds true in the case that the hiker does not see at least $k$ number of faulty compasses. If a hiker sees at least $k$ number of faulty compasses, then he can't infer about his own compass. However, if a hiker does not see at least $k$ faulty compasses, that is, he sees $ k - 1 $ faulty compasses, then he can infer that his own compass is faulty since there have to be at least $k$ faulty compasses. Hence, he can say ``Faulty'' about his own compass, then all the other hikers can know the condition of their own compass and no subsequent hiker will say ``Can't tell''.
+
+    (c) If the guide announces that at most $k$ compasses are faulty where $ 1 \leq k \leq (n - 1) $, then we can argue that if a hiker does not see at most $k$ faulty compasses, then he can't infer anything about his own compass as it still may be faulty or it may be working. However, if a hiker sees at most $k$ faulty compasses, then he can infer about his own compass that it should be working, so the hiker will respond with ``Working''. Then no subsequent hikers can respond with ``Can't tell''. \\ 
+    Then our statement is: As soon as a hiker responds, ``Working'', no subsequent hikers will responds, ``Can't tell''.
+  \end{solution}
+\end{questions}
+
+\end{document}

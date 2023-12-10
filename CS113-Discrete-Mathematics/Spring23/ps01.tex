@@ -1,0 +1,156 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Discrete Mathematics}{Problem Set 1}{CS/Math 113}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\title{CS/Math 113 - Problem Set 1}
+\author{Habib University - Spring 2023}
+\date{Week 01}
+
+\begin{document}
+\maketitle
+
+\section{Definition}
+\begin{definition}{1}(Integer)
+    An integer is a number with no decimal or fractional part and it includes negative and positive numbers, including zero. [$ n \in \mathbb{Z} $]
+\end{definition}
+
+\begin{definition}{2}(Even Integer)
+    An integer is even if it can be written as $2k$ where $k$ is an integer. [$ n = 2k \; | \;  k \in \mathbb{Z} $]
+\end{definition}
+
+\begin{definition}{3}(Odd Integer)
+    An integer is even if it can be written as $2k+1$ where $k$ is an integer. [$ n = 2k+1 \; | \; k \in \mathbb{Z} $]
+\end{definition}
+
+\begin{definition}{4}(Parity)
+    The parity of an integer is its property of being even or odd. 
+\end{definition}
+
+\begin{definition}{5}(Natural Numbers)
+    Natural numbers are a set of positive numbers from $1$ to $\infty$ [$ n \in \mathbb{N} $]
+\end{definition}
+
+\begin{definition}{6}(Rational Numbers)
+    Rational numbers are any numbers that can be expressed in the form $\frac{a}{b}$ where $a$ and $b$ are integers, and $b \neq  0$ [$ n \in \mathbb{Q} $]
+\end{definition}
+
+\begin{definition}{7}(Divisiblity)
+    A nonzero integer $m$ divides an integer $n$ provided that there is an integer $q$ such that $n=mq$. We say that $m$ is a divisor of $n$
+    and that $m$ is a factor of $n$ and use the notation $ m | n$
+\end{definition}
+
+\section{Problems} 
+    Using the definitions above, solve the following problems.
+    \begin{problem}{1}
+        Prove that the sum of two odd integers is even.
+    \end{problem}
+    \begin{problem}{2}
+        Prove that the product of two even integers is even.
+    \end{problem}
+    \begin{problem}{3}
+        Prove that the product of any two rational numbers is also a rational number.
+    \end{problem}
+    \begin{problem}{4}
+        Prove that the square of any natural number is also a natural number.
+    \end{problem}
+    \begin{problem}{5}
+        Prove that the square of any rational number is also a rational number.
+    \end{problem}
+    \begin{problem}{6}
+        In each case either prove the statement or find a counterexample.
+        \begin{itemize}
+            \item[(a)] The sum of any three consecutive integers (positive or negative) is divisible by $3$.
+            \item[(b)] The product any two even integers is divisible by $4$.
+            \item[(c)] The product of any four consecutive integers (positive or negative) is divisible by $8$.
+            \item[(d)] If $a - b$ has remainder 0 when divided by $m$, then $a$ and $b$ have remainders $0$ when divided by $m$.
+            \item[(e)] If $n$ is an odd integer, then $3n + 3$ is divisible by $6$
+        \end{itemize}
+    \end{problem}
+    \begin{problem}{7}
+        Prove that the product of five consecutive integers is divisible by 120.
+    \end{problem}
+    \begin{problem}{8}
+        Prove that the sum of two postive integers of the same parity (odd/even) is even.
+    \end{problem}
+    \begin{problem}{9}
+        Prove or disprove that if $a+b$ is an odd integer, then both $a+x$ and $b+x$ are odd integers,
+    where $a,b$, and $x$ are integers.
+    \end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        
+        \textbf{Problem 1.} Odd + Odd is even. \\ 
+        Then the sum can be represented as $ 2k + 1 + 2k + 1 = 4k + 2 = 2(2k + 1)$. \\ 
+        Let $ \alpha = 2k + 1 $. Then $ 2(2k + 1) = 2\alpha $ which is of the form $ 2k $ from the definition. Hence is even. \vspace{2mm}
+
+        \textbf{Problem 2.} Even x Even = Even. \\ 
+        $ 2k \times 2k = 4k = 2(2k) $. \\ Let $ \alpha = 2k $. Then $ 2(2k) = 2\alpha $ which is of the form $ 2k $ from the definition. Hence is even. \vspace{2mm}
+
+        \textbf{Problem 3.} Rational x Rational = Rational \\ Let $ x $ and $ y $ be rational numbers. Then $x = \frac{a}{b}$ and $ y = \frac{c}{d} $. \\ Then $x \times y = $
+        $ \frac{a}{b} \times \frac{c}{d} = \frac{ac}{bd} $. \\ Then $ac$ and $bd$ are also some integers, and it follows that the product must be rational from the definition. \vspace{2mm}
+
+        \textbf{Problem 4.} Let $n$ be a natural number. Then the square of $n$ is $n \times n = n^2$ which is just the same multiple of the number. Hence it must exist in $ \mathbb{N}$. \vspace{2mm}
+        
+        \textbf{Problem 5.} Rational squared = Rational. \\ 
+        Let $x$ be a rational number. Then $ x = \frac{a}{b} $. \\ 
+        $ x^2 = \frac{a}{b} \times \frac{a}{b} = \frac{a^2}{b^2}$. \\ 
+        Since $a$ and $b$ are integers, their square must also be an integer.\\ Then, let $ p = a^2 $ and $ q = b^2 $. \\ So $ x^2 = \frac{p}{q} $ which is a rational number from the definition. \vspace{2mm}
+
+        \textbf{Problem 6.} \\ 
+        (a) Let $n_1 = n, n_2 = n + 1, n_3 = n + 2$ be consecutive integers. \\  
+        Then $ n_1 + n_2 + n_3 = n + n + 1 + n + 2 = 3n + 3 = 3(n + 1)$. \\ 
+        Since the sum is a multiple of 3, the sum is divisible by 3. \\ 
+        (b) Let $ x = 2k $ and $ y = 2l $. \\ 
+        Then $ x \times y = 2k \times 2l = 4kl $. \\ Since the product is a multiple of 4, it must be divisible by 4. \\ 
+        (c) In 4 consecutive integers, there have to be 2 even numbers. Let the first number be $n$. Suppose $n$ is even. Then $n = 2k \; | \; k \in \mathbb{Z} $. $ n + 2 = 2k + 2 = 2(k + 1) $ will also be divisible by 2. Since both $n$ and $ n + 2 $ are even and consecutive even integers, one of them must be divisible by 4. Therefore, the product of those two integers will be divisible by 2 and 4 both, so it will be divisible by 8. 
+        If $n$ is odd, then $ n + 1 $ must be even, and $ n + 3 $ must also be even. Then $ n + 1 = 2k $ and $ n + 3 = 2k + 2 $. One of these must be divisible by 4 so the product will be divisible by 2 and 4 both, hence it will be divisible by 8. \\ 
+        (d) Let $ a = 3, b = 1 $, and $ m = 2 $. \\ 
+        Then $ a - b = 2 $ and has remainder 0 when divided by $m$. However, neither $a$ nor $b$ gives a remainder of 0 when divided by $m$. \\ 
+        (e) Let $ n = 2k + 1 $. \\ 
+        Then $ 3n + 3 = 3(2k + 1) + 3 \\ 
+        = 6k + 3 + 3 \\ 
+        = 6k + 6 \\ 
+        = 6(k + 1) $ which is divisible by 6. Hence proved.
+
+        \textbf{Problem 7.} In 5 consecutive integers $ n, n+1, n+2, n+3, n+4 $, exactly one integer will be divisible by 5, there must be at least 2 consecutive even integers out of which one must be divisible by 4 as they are consecutive, and at least one must be divisible by 3. Then at least one number is divisible by 2, one is divisible by 3, one is divisible by 4 and one is divisible by 5. Then the product of all these numbers must also be divisible by $ 2 \times 3 \times 4 \times 5 $. The product comes out to be $ 120 $. Hence the number must be a multiple of 120, thus has to be divisible by 120.
+
+        \textbf{Problem 8.} Let $ x = 2k + 1 $ and $ y = 2l + 1 $. \\ Then $ x + y = 2k + 1 + 2l + 1 = 2(k+l) + 2 = 2(k + l + 1) $. \\ 
+        Let $ t = k + l + 1 $. \\ Then $ x + y = 2t $ which is even.
+
+        Similarly, let $ x = 2k $ and $ y = 2l $. \\ 
+        Then $ x + y = 2k + 2k = 4k = 2(2k)$ which is even.
+
+        \textbf{Problem 9.} If $ a + b $ is odd, then either $a$ is odd, or $b$ is odd. As odd + odd results in an even number, and even + even is even. \\ 
+        If $a$ is odd, then $b$ is even. However, $x$ can either be even or odd. If $x$ is even, then $a + x$ is odd, but $b + x$ is even as $b$ was even. If $x$ is odd, then $a + x$ is even as odd + odd is even, and $b + x$ is odd. \\ 
+        The same argument holds if $b$ is odd and $a$ is even. Hence disproved. \\ 
+        A simple counterexample can be shown. Suppose $a = 3$ and $b = 2$. Then $a + b = 3 + 2 = 5$ which is odd. Let $x = 1$. Then $ a + x = 3 + 1 $ which is even. Hence disproved.
+    \end{solution}
+
+\end{questions}
+
+\end{document}

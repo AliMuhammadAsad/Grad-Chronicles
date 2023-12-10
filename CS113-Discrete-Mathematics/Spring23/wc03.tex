@@ -1,0 +1,56 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{titling}
+
+\newcolumntype{C}{>{$}c<{$}} % math-mode version of "c" column type
+
+\runningheader{CS/MATH 113}{WC03: Logical Primitives}{\theauthor}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+\printanswers
+
+\title{Weekly Challenge 03: Logical Primitives\\CS/MATH 113 Discrete Mathematics}
+\author{$\langle team-name \rangle$}  % <== for grading, replace with your team name, e.g. q1-team-420
+\date{Habib University | Spring 2023}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+  
+  \titledquestion{Core Set}
+  Consider the set of logical connectives: $\neg, \land, \lor, \implies, \iff$. Out of these, some pairs of connectives can be used to compute all the others. Below is an example of using $\neg$ and $\land$ to compute each of the five connectives.
+
+  \begin{center}
+    \begin{tabular}{C||C|l}
+      & \neg, \land & Comment\\
+      \hline\hline
+      \neg p &  & $\neg$ is directly used as a primitive.\\
+      p \lor q & \neg(\neg p \land \neg q) & \\
+      p \land q & & $\land$ is directly used as a primitive.\\
+      p \implies q & \neg p \lor q & using $\neg$ and $\lor$ as defined above.\\
+      p \iff q & (p \implies q) \land (q \implies p) & using $\implies$ as defined above.\\
+    \end{tabular}
+  \end{center}
+  You are encouraged to verify the above using the \href{https://stanford.edu/class/cs103/tools/truth-table-tool/}{Truth Table Generator}.
+
+  Not all pairs of connectives can be used to compute the others, and one particular connective is sufficient to compute all the other four! Some connectives can be used in surprising ways e.g. $\neg p \equiv p \iff F$.
+
+  In your solution below, make a table similar to the one above that shows how each of the five connectives can be implemented using pairs of connectives, or even a single connective.  Show all possible pairs and single connectives that can compute the remaining connectives. You need not include comments.
+
+  \begin{solution}
+    % Enter your solution here.
+  \end{solution}
+\end{questions}
+
+\end{document}

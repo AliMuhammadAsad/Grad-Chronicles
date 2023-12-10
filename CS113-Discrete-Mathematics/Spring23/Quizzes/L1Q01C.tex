@@ -1,0 +1,78 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{graphs,graphs.standard}
+\usepackage{xcolor}
+
+% \usepackage{draftwatermark}
+% \SetWatermarkText{Sample Solution}
+% \SetWatermarkScale{3}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{claim}
+\newtheorem{claim}{Claim}
+
+\title{Quiz 1C: Parity}
+\author{CS/MATH 113 Discrete Mathematics L1}
+\date{Habib University | Spring 2023}
+
+\printanswers
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\noindent
+\begin{tabularx}{\linewidth}{Xr}
+  Total Marks: \numpoints & Date: \today\\
+  Duration: 15 minutes & Time: 1715--1730h
+\end{tabularx}
+\hrule
+\bigskip
+
+\noindent \textbf{Student ID}: \hrulefill \\[5pt]
+\noindent \textbf{Student Name}: \hrulefill \\[5pt]
+
+\section{Problems}
+
+\begin{questions}
+\question[5] Given the following definitions, prove the claim below.
+
+\begin{definition}[Even integer]
+  An integer is \textit{even} if it can be written as $2k$ where $k$ is an integer.
+\end{definition}
+
+\begin{definition}[Odd integer]
+  An integer is \textit{odd} if it can be written as $2k+1$ where $k$ is an integer.
+\end{definition}
+
+\begin{definition}[Parity]
+  The \textit{parity} of an integer is its property of being even or odd.
+\end{definition}
+
+\begin{claim}
+  Given integers, $m, n$, of the same parity, $m\cdot n$ has the same parity.
+\end{claim}
+  
+\begin{solution}
+  There are 2 cases to consider: both $m$ and $n$ are even, and both are odd. We prove below that their product shares their parity in each case. 
+    \begin{proof}
+      \underline{Case 1}: $m$ and $n$ are even.\\
+      Let $m=2p$ and $n=2q$ where $p$ and $q$ are integers.\\
+      Then $mn=4pq = 2 (2pq)$.\\
+      $2pq$ is an integer.\\
+      $\therefore mn$ is even.\\
+      \smallskip
+      \
+      \underline{Case 2}: $m$ and $n$ are odd.\\
+      Let $m=2p+1$ and $n=2q+1$ where $p$ and $q$ are integers.\\
+      Then $mn=4pq+2p+2q+1 = 2 (2pq+p+q) + 1$.\\
+      $2pq+p+q$ is an integer.\\
+      $\therefore mn$ is odd.
+    \end{proof}
+  \end{solution}
+\end{questions}
+\end{document}

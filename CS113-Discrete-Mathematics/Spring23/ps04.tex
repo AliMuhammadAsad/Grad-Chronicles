@@ -1,0 +1,338 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Discrete Mathematics}{Problem Set 4}{CS/Math 113}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\title{CS/Math 113 - Problem Set 4}
+\author{Dead TAs Society \\ Habib University - Spring 2023}
+\date{Week 05}
+
+\begin{document}
+\maketitle
+\begin{sloppypar}
+\section*{Problems}
+    \begin{problem}{1}
+    Explain what you must do to disprove the statement:
+    $x^3+5x + 3$ has a root between $x = 0$ and $x=1$
+    \end{problem}
+    
+    \begin{questions}
+        \question
+        \begin{solution}
+
+            The statement in logical notation is 
+            $$\exists x \text{ such that } (0<x<1 \land x^3+5x+3 = 0)$$
+            Giving a counterexample is not enough. Saying that when $x=0.5$ then $x^3 +5x+3 \neq 0$ is not sufficient. \\
+            To disprove this statement, we need to prove that the \textbf{negation is true} which is
+            $$\neg \exists x \text{ such that } 0<x<1 \land x^3+5x+3 = 0 \equiv \forall x \text{ such that } \neg(0<x<1 \land x^3+5x+3 = 0)$$
+            Or in English
+            \begin{center}
+                For all $x$, it is not the case that both $x$ is between 0 and 1 and $x^3+5x+3=0$
+            \end{center}
+
+            \textbf{Alternatively:}
+
+            \vspace*{2mm}
+            For the equation to have a root between $ x = 0 \text{ and } x = 1 $, the sign must change. The change of sign indicates that there is a root, as it cuts the $x$ axis where $y$ becomes 0, therefore, the sign must change. If the sign does not change between these two values then there is no root between $ x = 0 \text{ and } x = 1 $. %[This is a simple case of a cubic equation, for higher powers, we can check for smaller intervals such as at intervals of 0.1 or 0.05.]
+        \end{solution}
+    \end{questions}
+    \pagebreak
+    \begin{problem}{2}
+    Prove that for any integer $n$ the number $n^2+5n+13$ is odd
+    \end{problem}
+    
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            \begin{parts}
+                \part $n$ is even. \\ 
+                If $n$ is even, then $n$ can be expressed in the form of $ n = 2k \;\;\; \forall k \in \mathbb{Z} $. \\ 
+                Then, $ (2k)^2 + 5(2k) + 13 \implies 4k^2 + 10k + 13 \implies 2(2k^2 + 5k) + 13 $ \\ 
+                It is clear that $ 2(2k^2 + 5k) $ is of the form $2k$, therefore it is an even number and $ 2k^2 + 5k = \alpha$. Then we get $ 2\alpha + 13 $. Since $ 2\alpha $ is even, and 13 is odd, therefore the result must be odd as the sum of even and odd is always odd. [Proved previously]
+            
+                \part $n$ is odd. \\ 
+                $n$ can be written in the form $ n = 2k + 1 \;\;\; \forall k \in \mathbb{Z}$. \\ 
+                Then, $ (2k+1)^2 + 5(2k+1) + 13 \implies 4k^2 + 4k + 1 + 10k + 5 + 13 \implies 4k^2 + 14k + 19 \implies 2(2k^2 + 7k) + 19 \implies 2\alpha + 19 $. Since $2\alpha$ is even, as it is of the form $2k$, and 19 is odd, then the result is odd, since the sum of even and odd is odd [proved previously in the course].
+            \end{parts}
+            Therefore, $ n^2 + 5n + 13 $ is odd $ \forall n \in \mathbb{Z} $.
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{3}
+    State the statement of Contradiction and verify that it is a valid argument.\\
+    \textbf{Hint:} In contradiction we are saying that $A$ implies $B$ is the same as saying that $A$ and $\neg B$ happening together is false.
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            For $ p \implies q $, the Contrapositive is $ \neg q \implies \neg p $.
+            
+            Statement is 
+            \[(A \implies B ) \equiv ((A \land \neg B) \;\; is \;\; \text{false})\]
+            We can show that one side is equivalent to the other
+            \begin{equation*}
+                \neg (A \land \neg B) \equiv (\neg A \lor B) \equiv (A \implies B)
+            \end{equation*}
+            Therefore it is true
+
+        \end{solution}
+    \end{questions}
+    \pagebreak
+    \begin{problem}{4}
+    Show through contraposition the following proposition is true: $x \in \mathbb{Z}$. If $7x + 9$ is even, then $x$ is odd.
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            For $ p \implies q $, the Contrapositive is $ \neg q \implies \neg p $.
+
+            Let $ p $ be `7$x$ + 9  is even'. \\ Let $q$ be `$x$ is odd'.
+
+            Then the contrapositive becomes, $ \neg q\implies \neg p $. If $x$ is even, then $ 7x + 9 $ is odd. 
+
+            If $x$ is even, then $x$ can be represented in the form $x = 2k$ where $ k \in \mathbb{Z} $. 
+            
+            Then $ 7x + 9 = 7(2k) + 9 \implies 2(7k) + 9 \implies 2(\alpha) + 9 $ where $ 2\alpha $ is an even integer. 
+            
+            Since 9 is odd, and the sum of even and odd is odd, therefore, the sum is odd. Hence proved by Contrapositive.
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{5}
+    Prove that ``$(a+b)^2 = a^2 +b^2$'' is \textbf{not} an algebraic identity where $a,b \in \mathbb{R}$
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            $ (a + b)^2 = a^2 + b^2 $ \\ Working on LHS: 
+            $ \implies (a + b)(a + b) $ \\ $ \implies a^2 + ab + ba + b^2 $ \\ $ \implies a^2 + ab + ab + b^2 $ [since $ab$  and $ba$ commute for real numbers] \\ $ \implies a^2 + 2ab + b^2 \neq a^2 + b^2 $
+
+            Hence is \textbf{not} an algebraic identity where $ a, b \in \mathbb{R} $
+
+            \underline{The above is a common mistake.} 
+            
+            How do you know $ a^2 + 2ab + b^2 $ is not the same as $ a^2 + b^2 $? It is no answer to say they look different - after all, $ \sin^2\theta + \cos^2\theta $ is equal to 1 even though they look very different from 1. But it is still an indentity. Moreover, $ a^2 + 2ab + b^2 $ is the same as $ a^2 + b^2 $ for various values, such as $ a = 2 $ and $ b = 0 $. Both give the same result. $ a^2 + b^2 = 2^2 + 0^2 = 4 + 0 = 4 $ and $ (a+b)^2 = (2 + 0)^2 = (2)^2 = 4 $. 
+
+            Therefore they give the same result. 
+
+            \vspace*{5mm}
+            We can show that they are not the same by finding any simple counterexample. A simple counterexample that can be considered is $ a = 2 $ and $ b = 1 $. Then $$ (a + b)^2 = (2 + 1)^2 = 3^2 = 9$$ while $$a^2 + b^2 = 2^2 + 1^2 = 4 + 1 = 5 $$
+            And clearly $ 9 \neq 5 $. Hence the statement is not an identity.
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{6}
+    Prove that for $m$ and $n$ integers, if 2 divides $m$ or 10 divides $n$, then 4 divides $m^{3}n^{2}$
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            For $m$ and $n$, if 2 divides $m$, then $m$ is a factor of 2, and can be represented as $ m = 2k $. If 10 divides $n$, then $n$ is a factor of 10 and can be represented as $ n = 10l $. \\ 
+            Then $m^3 = 2k * 2k * 2k = 2.2.2(k^3) = 8k^3 = 4(2k^3)$. \\ 
+            And $ n^2 = 10l * 10l = 10.10(l^2) = 100l^2 = 4(25l^2) $.
+
+            If either 2 or 10 divides $m$ or $n$ respectively, then $m^3n^2$ must be divisible by 4, both can be expressed as a factor of 4. Hence proved. 
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{7}
+    Give a counterexample to the statement
+    \begin{center}
+        ``If $n$ is an integer and $n^2$ is divisible by 4, then $n$ is divisible by 4''
+    \end{center}
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            The simplest counterexample can be taken as $n = 2$. Then $n^2 = 4$ which is divisible by 4, however, 2 is not. Hence disproved by counterexample.
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{8}
+    Show through contraposition the following proposition is true : If $x^{2} - 6x + 5$ is even, then x is odd.
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            Let $p$ be `$x^2 - 6x + 5$ is even' \\ 
+            Let $q$ be `$x$ is odd'
+
+            Then by the statement $ p \implies q $ \\ 
+            By Contrapositive, $ \neg q \implies \neg p $ \\ 
+            Therefore, if $x$ is even, $ x^2 -6x + 5 $ is odd. \\ 
+            Then $x$ can be represented as $ x = 2k $ where $ k \in \mathbb{Z} $. \\ Then $x^2 - 6x + 5 = (2k)^2 - 6(2k) + 5 \\ 
+            \implies 4k^2 -12k + 5 \\ \implies 2(2k^2 - 6k) + 5 \implies 2\alpha + 5$ where $ \alpha = 2k^2 - 6k $. Then $ 2\alpha $ is also an even number as it is of the form $ 2k $, and since the sum of an even number and an odd number is odd (5 is odd), therefore, the result is odd. 
+            
+            Hence proved by contrapositive.
+        \end{solution}
+    \end{questions}
+    \pagebreak
+    \begin{problem}{9}
+    Show that any composite three-digit number must have a prime factor less than or equal to 31.
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            The largest composite three-digit number is 999.
+            
+            Any composite number can be expressed as the product of two or more primes. For a three-digit composite number, the primes must be at most the square root of the number. Therefore, to show that any composite three-digit number must have a prime factor less than or equal to 31, it suffices to show that there are no primes greater than 31 that divide any of the numbers from 100 to 999.
+
+            Then $ 31^2 = 961 $ which is less than 999. Henceforth it suffices. 
+
+            Then any three digit number that is divisible by a prime greater than 31 would have to be divisible by the next prime number that is 37. $ 37^2 = 1369 $ which is a 4-digit composite number. Hence shown.
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{10}
+    Show that if $a$ is a positive integer and $\sqrt[n]{a}$ is rational, then $\sqrt[n]{a}$ must be an integer.
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+        Let $a \in \mathbb{Z}^+$, suppose $\sqrt[n]{a}$ is rational, we show that then $\sqrt[n]{a}$ must be an interger.
+        \\Let $\sqrt[n]{a} = \frac{p}{q}$, where $p,q \in \mathbb{Z}$ where $q \neq 0$ and $\text{gcd}(p,q) = 1$.
+        $$\sqrt[n]{a} = \frac{p}{q} \Leftrightarrow a = \frac{p^n}{q^n} \Leftrightarrow a q^n = p^n$$
+        Now we have that $q^n | p^n$, but as $\text{gcd}(p,q) = 1$ then $\text{gcd}(p^n,q^n) = 1$.
+        \\So as only common divider of $p^n$ and $q^n$ is 1 and $q^n | p^n$ then $q^n = 1$
+        \\Therefore $ a = \frac{p^n}{q^n} = p^n$, so $\sqrt[n]{a} = p$.
+        \\Which means $\sqrt[n]{a}$ is an integer.
+        \end{solution}
+    \end{questions}
+    \pagebreak
+    \begin{problem}{11}
+    Prove the following claim: There exists irrational numbers $a$ and $b$ such that $a^b$ is rational.
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            It is enough to prove this claim through an example that there exists rational numbers $a$ and $b$ such that $a^b$ is raional. 
+
+            Consider $a = \sqrt{2}$ and $ b = \sqrt{2} $. Then a number $ c = a^b = \sqrt{2}^{\sqrt{2}} $ where $ c \in \mathbb{R} $
+
+            Then either $ c $ is rational, or $c$ is irrational. 
+
+            \textbf{Case 1:} $c$ is rational. \\ 
+            If $ c = \sqrt{2}^{\sqrt{2}} $ is rational, then we already have our irrational numbers $a$ and $b$ such that $ a^b $ is rational.
+            
+            \textbf{Case 2:} $c$ is irrational. \\ 
+            If $c = \sqrt{2}^{\sqrt{2}} $ is irrational, then let $ a = \sqrt{2}^{\sqrt{2}} $ and $ b = \sqrt{2} $. Then $$ c = \biggl( \sqrt{2}^{\sqrt{2}} \biggr)^{\sqrt{2}} = 2$$
+            and 2 is rational.
+
+            Hence proved that there exists irrational numbers $a$ and $b$ such that $ a^b $ is rational.
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{12}
+    Show that $\sqrt{2}$ is irrational. In other words, $\sqrt{2}$ cannot be written in the form $\frac{p}{q}$ where $p,q \in \mathbb{Z}$ and $q \neq 0$
+    \end{problem}
+    
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            Assume $\sqrt{2}$ is rational, then $\sqrt{2} = \frac{p}{q}$, where $p,q \in \mathbb{Z}$ and $q \neq 0$.
+            \\And $\frac{p}{q}$ is the lowest form it can be. 
+            $$\left(\frac{p}{q}\right)^2 = 2$$
+            $$p^2 = 2 q^2$$
+            This implies $p$ is even which means $p = 2k$, for some $k \in \mathbb{Z}$
+            $$4k^2 = 2 q^2$$
+            $$2k^2 = q^2$$
+            This implies $q$ is even.
+            \\But $p$ and $q$ can't both be even as they are in the lowest form possible thus the 2 would be canceled. Hence we have a contradiction.
+            \\Thus $\sqrt{2}$ cannot be written in form $\frac{p}{q}$ where $p,q \in \mathbb{Z}$
+            \\Thus $\sqrt{2}$ is irrational. Hence proved by contradiction.
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{13}
+    Given that $p$ is a prime and $p|a^n$, prove that $p^n|a^n$. 
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            As $p|a^n$ then $a^n = kp$ for some integer $k$.
+            \\\textbf{Case 1:} $p \neq a$
+            \\Then $a$ is not a prime, then $a = p_1\times p_2 \times ... p_m$
+            \\$a^n = p_1^n\times p_2^n \times ... p_m^n = kp$
+            \\As $p|a^n$ and $a^n = p_1^n\times p_2^n \times ... p_m^n$ then there must be some $p_i$ from $1\leq i \leq m$ such that $p|p_i$
+            \\As $p_i$ is prime for all $i \leq i \leq m$, then if $p|p_i$ then $p_i = p$ which means $p|a$
+            \\Then $a = pq$ so $a^n = p^n q^n$ therefore $p^n|a^n$.
+            \\\textbf{Case 2:} $p = a$ 
+            \\If $p = a$  and $p|a^n$ then as $a^n|a^n$ and $a^n=p^n$ then $p^n|a^n$.
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{14}
+    Show that there are infinitely many primes, in other words the set containing all prime numbers is infinite.
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            \textbf{Definition:} A prime number is a Natural number that is only divisible by 1 and itself, and has to be divisible by 2 different numbers.
+            \\\textbf{Fundamental Theorem of Arithmetic:} Every integer $N > 1$ has a prime factorization, meaning either $N$ is itself prime or can be written as a product of prime numbers.
+
+            Let $s=\{p_0,p_1,p_2,...,p_n\}$ be set of all primes. 
+            \\Let $P = p_0 \times p_1 \times p_2 \times ... \times p_n$
+            \\Let $q = P+1$
+            \\\textbf{Case 1:}
+            \\$q$ is prime, which is not in our set $s$
+            \\\textbf{Case 2:} 
+            \\if $q$ is not prime, then there exits a prime factor decomposition of $q$.
+            \\Let $f$ be a prime that divides $q$, then $f$ would be in our set $s$ thus $f$ would divide $P$ too. 
+            \\As $f$ divides $q$ and $P$ then $f$ divides $q-P$, which is $1$
+            \\Then $f$ divides 1.
+            \\As $f\geq2$ $f$ cannot divide 1, thus we have a contradiction.
+
+            Hence, the new prime number $q$ does not exist in our set, but lies outside the set. But we claimed that our set contains all prime numbers. Therefore, there are infinite prime numbers.
+            
+            Hence proved by contradiction.
+        \end{solution}
+    \end{questions}
+
+\end{sloppypar}
+\end{document}
