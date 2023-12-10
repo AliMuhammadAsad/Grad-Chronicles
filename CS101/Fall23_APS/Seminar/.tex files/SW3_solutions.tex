@@ -1,0 +1,855 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amssymb}
+\usepackage{draftwatermark}
+
+\SetWatermarkText{SAMPLE SOLUTION}
+\SetWatermarkScale{2}
+
+\usepackage[a4paper]{geometry}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{mdframed}
+\usepackage[table]{xcolor}
+\usepackage{../../pythonhighlight}
+
+
+\setlength\parindent{0pt}
+\newcommand{\class}{CS 101}
+\newcommand{\term}{Fall 2023}
+\newcommand\heading[1]{\textbf{#1}}
+\newcommand\inz{\in \mathbb{Z}}
+\newcommand\inn{\in \mathbb{N}}
+
+\runningheader{\class, \term}{SW 3: Pseudocode}{HU ID: \rule{75pt}{0.5pt}}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\title{Seminar Worksheet 3: Pseudocode}
+\author{\class\ Algorithmic Problem Solving}
+\date{\term}
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\maketitle
+
+Name(s): \hrulefill\\[5pt]
+HU ID \textit{\small(e.g., xy01042)}: \hrulefill\\
+
+\begin{questions}
+
+    % Question 1
+    \titledquestion{Taking a flight}
+    Amna is getting on a flight and has 3 bags with her. She will submit 2 of them for check-in, and will take 1 to the airplane cabin with her as carry-on. The bags weigh \pyth{A}, \pyth{B}, and \pyth{C} kg each. The airline restricts, for a single passenger, the sum of the weights of the checked-in bags to no more than \pyth{D} kg and of the carry-on bags to no more than \pyth{E} kg. In case of excess, the passenger has to pay a fine.
+
+    Given \pyth{A, B, C, D}, and \pyth{E}, Find out if Amna can take her bags with her without having to pay a fine.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $A,B,C,D,E \inn$
+        \item $1 \le A,B,C \le 10$
+        \item $15 \le D \le 20$
+        \item $5\le E \le 10$
+    \end{itemize}
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 5 space separated integers denoting the values of \pyth{A,B,C,D} and \pyth{E} respectively.
+
+    The output should contain a single word, \pyth{YES}, if Amna can take the flight without paying a fine, and \pyth{NO} if she will have to pay a fine.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input      & Output \\ \hline\hline
+        1 1 1 15 5 & YES    \\\hline
+        8 7 6 15 5 & NO     \\\hline
+    \end{tabularx}
+
+    In the first case, $(A,B,C,D,E)=(1,1,1,15,5)$, Amna can check in the first and second bags as their sum is less than $15$ kg and carry the third bag as it weighs less than $5$ kg. The output is \pyth{YES}.
+    
+    In the second case, $(A,B,C,D,E)=(8,7,6,15,5)$. No combination of bags meets any of the limits. The output is \pyth{NO}.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input          & Output \\ \hline\hline
+        8 5 7 15 6     & YES    \\\hline
+        8 8 9 16 5     & NO     \\\hline
+        10 10 10 20 10 & YES    \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+    \heading{Answer:}
+    Some if conditions that need to check if the weights are between a certain range.
+
+    \begin{mdframed}
+        Input: \pyth{A, B, C, D, E} \\
+        Output: \pyth{YES} if the sum of any 2 of \pyth{A, B, C} is $\le$ \pyth{D} and the remaining is $\le$ \pyth{E} else \pyth{NO}.
+      \end{mdframed}
+
+    \heading{Pseudocode}
+\begin{python}
+if (A+B <= D and C<=E) or (A+C <= D and B <= E) or (B+C <= D and A <= E):
+    return 'YES'
+else:
+    return 'NO'
+\end{python}
+    
+    % adjust as required
+
+    \heading{Dry Run}\\
+    Using any two of the inputs provided in the Exercise section above, dry run your pseudocode in the space below.
+    \vspace*{100pt}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+    \titledquestion{Cricket}
+
+      In a season of cricket, the statistics of players are noted in three categories: wickets (\pyth{W}), runs (\pyth{R}), and catches (\pyth{C}).
+
+      A player is considered better \textit{in a category} than another player if their statistics in that category are higher. It is possible for a player to be better than another player in one category but worse in another. A player is better \textit{overall} than another player if their statistics are higher in 2 or more categories.
+
+    Given the stats of Player A and Player B, denoted by $(R_1,W_1,C_1)$ and $(R_2,W_2,C_2)$ respectively, we want to determine which is the better player.
+
+    \heading{Constraints}
+    \begin{itemize}
+    \item  $R_1,W_1,C_1, R_2,W_2,C_2 \inz$
+        \item $0 \le R_1, R_2 \le 500$
+        \item $0 \le W_1, W_2 \le 20$
+        \item $0 \le C_1, C_2 \le 20$
+    \end{itemize}
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 6 space-separated integers denoting the values of $R_1,W_1,C_1,R_2,W_2,C_2$ respectively.
+
+    The output must contain a single letter denoting which player is better: \pyth{A} for player A, \pyth{B} for player 2,  and \pyth{T} for a tie.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input           & Output \\ \hline\hline
+        0 1 2 2 3 4     & B      \\\hline
+        10 10 10 8 10 8 & A      \\\hline
+    \end{tabularx}
+
+    In the first case, $(R_1,W_1,C_1,R_2,W_2,C_2)=(0,1,2,2,3,4)$. Player B is better than Player A in all 3 categories.
+
+    In the second case, $(R_1,W_1,C_1,R_2,W_2,C_2)=(10,10,10,8,10,8)$. Player A is better than Player B in 2 categories.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input            & Output \\ \hline\hline
+        12 2 3 30 2 16   & B      \\\hline
+        30 10 4 25 10 14 & T      \\\hline
+        18 10 6 2 7 9    & A      \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+    \heading{Answer:}
+
+    \begin{mdframed}
+        Input: $R_1,W_1,C_1,R_2,W_2,C_2$ \\
+        Let $A$ and $B$ store the number of categories in which PLayer A and Player B respectively are better.\\
+        Output: ``B'' if $B > A$ else ``A'' if $A > B$ else ``T''
+      \end{mdframed}
+
+    \heading{Pseudocode}
+\begin{python}
+A = 0
+B = 0
+if R1 > R2:
+    A = A + 1
+elif R1 < R2:
+    B = B + 1
+
+if W1 > W2:
+    A = A + 1
+elif W1 < W2:
+    B = B + 1
+
+if C1 > C2:
+    A = A + 1
+elif C1 < C2:
+    B = B + 1
+
+if A > B:
+    return 'A'
+elif B > A:
+    return 'B'
+else:
+    return 'T'
+\end{python}
+
+    \heading{Dry Run}\\
+    Using any two of the inputs provided in the Exercise section above, dry run your pseudocode in the space below.
+    \vspace*{100pt}
+
+
+
+
+    \titledquestion{Mood Lift}
+      There are three special dishes that Chef can make at her restaurant. When a customer eats any of these, their mood elevates by an amount equal to A, B or C, depending on the dish. Chef's favorite customer is in a foul mood and Chef wants to give his mood a boost. But she only has time to prepare any 2 of the 3 dishes.
+
+      Given A, B, ad C, determine the maximum boost that Chef can provide.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $A,B,C \inn$
+        \item $1 \le A,B,C \le 10^8$
+    \end{itemize}
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 3 space separated integers denoting the values of  $A,B,C$ respectively.
+
+    The output should contain a single integer denoting the maximum boost.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input     & Output \\ \hline\hline
+        4 2 8     & 12     \\\hline
+        10 10 100 & 110    \\\hline
+    \end{tabularx}
+
+    In the first case, $(A,B,C)=(4,2,8)$. The maximum boost is $8+4=12$.
+    
+    In the second case, $(A,B,C)=(10,10,100)$. The maximum boost is $100+10=110$.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input        & Output \\ \hline\hline
+        18 271 31    & 302    \\\hline
+        127 2933 182 & 3115   \\\hline
+        21 2 18      & 39     \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+    \begin{mdframed}
+        Input: $A,B,C$ \\
+        Output: the sum of the largest 2 numbers, where any one number is chosen in case of a tie.
+    \end{mdframed}
+
+    \heading{Pseudocode}
+
+\begin{python}
+if C <= A and C <= B:
+    return A + B
+elif B <= A and B <= C:
+    return A + C
+else:
+    return B + C
+\end{python}
+
+
+    \heading{Dry Run}\\
+    Using any two of the inputs provided in the Exercise section above, dry run your pseudocode in the space below.
+    \vspace*{100pt}
+
+    \titledquestion{Hilda in the Enchanted Forest}
+    Exploring the woods near her home, Hilda wanders into an enchanted forest that was full of surprises. She slipped into a marsh which altered her movement strangely. Whenever she made a forward movement, the marsh moved her forward by $3$ steps and forced a backward movement of $1$ step on her. It was as if the forest was playing tricks on her. Determined as she was to see what lay beyond the forest, Hilda pressed on.
+
+    Having made $k$ total movements by now, Hilda wants to know how many steps she has advanced. Help Hilda find out how many steps ahead she is of her starting point.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $k \inn$
+        \item $1 \le k \le 10^5$
+    \end{itemize}
+
+    \heading{Interaction}
+
+    The input comprises a single line containing an integer denoting the value of $k$.
+
+    The output should contain a single integer denoting the number of steps that Hilda has advanced from her starting point at the end of  $k$ movements.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        5     & 7      \\\hline
+        3    & 5     \\\hline
+    \end{tabularx}
+
+    In the first case, $k = 5$. The number of steps can be calculated as $(3-1+3-1+3)=7$.
+    
+    In the second case, $k = 3$. The number of steps can be calculated as $(3-1+3)= 5$.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        12    & 12     \\\hline
+        8     & 8      \\\hline
+        31     & 33      \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}
+    
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+    \begin{mdframed}
+      Input: $k$\\
+      Output: Sum of the first $k$ terms of the sequence: $3, -1, 3, -1, 3, -1, 3, -1, \ldots $
+    \end{mdframed}
+
+    \heading{Pseudocode}
+\begin{python}
+if k % 2 == 0:
+    return k
+else:
+    return k + 2
+\end{python}
+
+    \heading{Dry Run}\\
+    Using any two of the inputs provided in the Exercise section above, dry run your pseudocode in the space below.
+    \vspace*{100pt}
+
+    \titledquestion{Inheritance problem}
+      Nearing the end of his life, Bajwa is thinking of distributing his assets among his children. He has $X$ properties worth $1$ billion each and $Y$ properties worth $2$ billion each. He wants to distribute these among his two children such that the total value of each share in billions is the same. If it is not, he will have to coerce some lawyer to look into the finer details.
+
+      Determine if Bajwa's properties can be distributed as per his desire, or if some lawyer is about to find a black Vigo outside their door.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $X,Y \inz$
+        \item $1 \le X,Y \le 100$
+    \end{itemize}
+
+    \heading{Interaction}
+
+    The input comprises a single line containing two space-separated integers denoting the values of $X$ and $Y$.
+
+    The output should contain a single word: \pyth{INHERIT} if a split with equal values is possible, or \pyth{VIGO} if it is not.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        2 2   & INHERIT    \\\hline
+        1 3   & VIGO     \\\hline
+    \end{tabularx}
+
+    In the first case, $(X,Y)=(2,2)$. One way to assign equal-value shares is to assign each child a property each of $1$ billion and $2$ billion. The output is \pyth{INHERIT}. \\
+    
+    In the second case, $(X,Y)=(1,3)$. No assignment leads to equal-value shares. The output is \pyth{VIGO}.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        4 2   & INHERIT    \\\hline
+        1 10  & VIGO     \\\hline
+        5 7   & VIGO     \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+    \begin{mdframed}
+        Input: $X,Y$ \\
+        Let T = X + 2Y \\
+        Output: \pyth{INHERIT} if T is even else \pyth{VIGO}
+    \end{mdframed}
+
+    \heading{Pseudocode}
+\begin{python}
+if X % 2 == 0:
+    return 'INHERIT'
+else:
+    return 'VIGO'
+\end{python}
+    
+
+    \heading{Dry Run}\\
+    Using any two of the inputs provided in the Exercise section above, dry run your pseudocode in the space below.
+    \vspace*{100pt}
+
+    \titledquestion{Gold Digger}
+
+    On a vacation with $N$ friends, Chef stumbled upon a gold mine and dug it all up. The total amount of gold is $X$ kg. Every person has the capacity of carrying up \textit{at most} $Y$ kg of gold. Note that including Chef, there are a total of $(N+1)$ people.
+
+    Given $N,X$ and $Y$, will Chef and her friends be able to carry all the gold from the gold mine in a single go?
+
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item  $N,X,Y\inn$
+        \item  $1\le N,X,Y\le1000$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 3 space-separated integers denoting the values of $N$, $X$ and $Y$ respectively.
+
+    The output must contain a single string---``YES'' if the gold can be carried in a single go, or ``NO'' if it cannot.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input  & Output \\ \hline\hline
+        2 10 3 & NO     \\\hline
+        2 10 4 & YES    \\\hline
+    \end{tabularx}
+
+    In the first case, $(N,X,Y) = (2,10,3)$. There are $3$ people in total, each person can carry at most  $3$kg. The maximum amount of gold that can be carried is $3\times3=9$kg, which is insufficient.
+
+    In the second case, $(N,X,Y) = (2,10,4)$. There are $3$ people in total, each person can carry at most  $4$kg. The maximum amount of gold that can be carried is $3\times4=12$kg, which is sufficient to carry all the gold in a single go.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input  & Output \\ \hline\hline
+        4 25 6 & YES    \\\hline
+        3 18 3 & NO     \\\hline
+        1 9 4  & NO     \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+  \begin{mdframed}
+    Input: $N,X,Y$\\
+    Output: ``YES'' if $(N+1)*Y\geq X$ else ``NO''
+  \end{mdframed}
+  
+    \heading{Pseudocode}
+\begin{python}
+if (N + 1) * Y >= X:
+    return 'YES'
+else:
+    return 'NO'
+\end{python}
+    
+    \heading{Dry Run}
+    
+    Using any two of the inputs provided in the Exercise section above, dry run your pseudocode in the space below.
+    \vspace*{100pt}
+
+
+    \titledquestion{Vacation}
+
+      You finally get the time to go on a vacation after a tough semester. You have planned for two trips during this vacation---one with your family and the second with your friends.
+      
+    The family trip will take $X$ days and the trip with friends will take $Y$ days.Currently, the dates are not decided but the vacation will last only for $Z$ days.
+
+    You can only be in at most one trip at any time and once a trip is started, you must complete it before the vacation ends. Planning and packing are already done and will not take time.
+
+    Given $X,Y,$ and $Z$, you want to see if you will you be able to go on both the trips?
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item  $X,Y,Z\inn$
+        \item  $1\le X,Y,Z\le1000$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 3 space-separated integers denoting the values of $X$, $Y$ and $Z$ respectively.
+
+    The output must contain a single string---``YES'' if you can go on both the trips and ``NO'' if not.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        1 2 3 & YES    \\\hline
+        2 2 3 & NO     \\\hline
+    \end{tabularx}
+
+    In the first case, $(X,Y,Z) = (1,2,3)$. The total duration of the trips is $1+2=3$ days which fits within the vacation days. You can go on both the trips.
+
+    In the second case, $(X,Y,Z) = (2,2,3)$. The total duration of the trips is $2+2=4$ days which exceeds the vacation days. You cannot go on both the trips.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input  & Output \\ \hline\hline
+        3 6 12 & YES    \\\hline
+        2 2 4  & YES    \\\hline
+        3 8 9  & NO     \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+
+  \begin{mdframed}
+    Input: $X,Y,Z$\\
+    Output: ``NO'' if $X+Y>Z$ else ``YES''
+  \end{mdframed}
+
+    \heading{Pseudocode}
+\begin{python}
+if x + y <= z:
+    return 'YES'
+else:
+    return 'NO'
+\end{python}
+    
+
+    \heading{Dry Run}\\
+    Using any two of the inputs provided in the Exercise section above, dry run your pseudocode in the space below.
+    \vspace*{100pt}
+
+    \titledquestion{Vaccination Dates}
+
+    Chef took the first dose of vaccine $D$ days ago. The second dose must be taken no less than $L$ days and no more than $R$ days after the first dose.
+
+    Given $D$, $L$ and $R$, determine if Chef is too early, too late, or in the correct range for taking the second dose.
+
+
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $D,L,R\inn$
+        \item $1 \le D \le 10^9$
+        \item $1 \le L \le R \le 10^9$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input contains a single line containing the space-separated integers indicating the values of  $D,L,R.$ respectively.
+
+    The output must contain a string---``Too Early'' if it's too early to take the vaccine, ``Too Late'' if it's too late to take the vaccine, or ``Take second dose now'' if it's the correct time to take the vaccine.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input   & Output               \\ \hline\hline
+        8 8 12 & Take second dose now \\\hline
+        14 2 10 & Too Late             \\\hline
+    \end{tabularx}
+
+    In the first case, $(D,L,R) = (8,8,12)$. The second dose needs to be taken within $8$ to $12$ days. Day $8$ lies in this range, Chef can take the second dose now.
+
+    In the second case, $(D,L,R) = (14,2,10)$. The second dose needs to be taken within $2$ to $10$ days. Day $14$ lies after this range, it is too late now.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input          & Output                                       \\ \hline\hline
+        4444 5555 6666 & Too Early                              \\\hline
+        8 10 12        & Too Early                              \\\hline
+        9 2 21         & Take second dose now \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+  \begin{mdframed}
+    Input: $D,L,R$\\
+    Output: ``Too Early'' if $D<L$ else ``Take second dose now'' if $L\leq D \leq R$ else  ``Too Late''
+  \end{mdframed}
+
+    \heading{Pseudocode}
+\begin{python}
+if D < L:
+    return 'Too Early'
+elif D > R:
+    return 'Too Late'
+else:
+    return 'Take second dose now'
+\end{python}
+
+
+    \heading{Dry Run}\\
+    Using any two of the inputs provided in the Exercise section above, dry run your pseudocode in the space below.
+    \vspace*{100pt}
+
+    \titledquestion{Fitness Fun}
+
+    In order to promote physical fitness, Liebling University is holding a trek along trails of length $100$ km, $210$ km and $420$ km. Students who complete any trek within $D$ days will win a prize of amount $A,B,$ and $C$ respectively ($A<B<C$) . There can be multiple winners for a trek and a student can participate in only one trek.
+
+    Given the distance, $d$ km, that Chef can cover in a single day, find the maximum prize that she can win at the end of $D$ days.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $D,d,A,B,C \inn$
+        \item $1 \le D \le 25$
+        \item $1 \le d \le 500$
+        \item $1 \le A < B < C \le 100000$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input contains a single line containing five space-separated integers denoting the values of $D,d,A,B,$ and $C$ respectively.
+
+    The output must contain an integer indicating the maximum prize that Chef can win. The output must be $0$ if no prize can be won.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input      & Output \\ \hline\hline
+        10 5 100 200 300  & 0      \\\hline
+        20 15 15000 20000 30000 & 20000      \\\hline
+    \end{tabularx}
+
+    In the first case, $(D,d,A,B,C)=(10,5,100,200,300)$. The distance covered by Chef in 10 days is $10\times5=50$ km which is less than any of the available distance categories. Hence Chef won't be able to claim any prize.
+
+    In the second case, $(D,d,A,B,C)=(20,15,15000,20000,30000)$. The distance covered by Chef in 20 days is $20\times15=300$ km which satisfies the first and second treks but not the third. Hence Chef can claim a maximum prize of $20000$.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input      & Output \\ \hline\hline
+        10 9 1100 2400 3600 & 0      \\\hline
+        10 20 2000 3000 4000 & 2000      \\\hline
+        15 25 2000 3000 4000 & 3000      \\\hline
+    \end{tabularx}
+
+    \heading{Proposed Pseudocode}
+    \begin{python}
+distance = D*d
+if distance >= 100 and distance < 210:
+    return A
+elif distance >= 310 and distance < 350:
+    return B
+elif distance >= 420:
+    return C
+else:
+    return 0
+\end{python}
+    
+    \heading{Dry Run}\\
+    Using any two of the inputs provided in the Exercise section above, dry run the proposed pseudocode in the space below.
+    \vspace*{100pt}
+
+    \heading{Error Identification}\\
+    Briefly explain any errors that you identified in the proposed pseudocode. Mention the line number(s) and the errors in each line.
+
+    \begin{mdframed}
+    incorrect range in line 4
+    \end{mdframed}
+
+  
+    \heading{Correct Solution}\\
+    Below, rewrite the lines of code that you mentioned above with their errors corrected.
+    
+\begin{python}[numbers=none]
+elif distance >= 210 and distance < 420:
+\end{python}
+    
+    \titledquestion{Bill or a Phone number?}
+
+    Chef is visiting Meowland, where a valid phone number consists of $5$ digits with no leading zeros. For example, $98765$, $10000$, $71023$ are valid numbers while $04123$ and $9231$ are not. At a store, Chef purchased $N$ items, costing $\$X$ each.
+
+    Given $N$ and $X$, find whether the total bill is equivalent to a valid phone number.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $N,X \in \mathbb{N}$
+        \item $1 \le N,X \le 1000$
+    \end{itemize}
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 2 space-separated integers denoting the values of $N$ and $X$ respectively.
+
+    The output must contain a string containing either $YES$, if the total bill is equivalent to a valid phone number and $NO$ otherwise.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input  & Output \\ \hline\hline
+        25 785 & YES    \\\hline
+        402 11 & NO     \\\hline
+    \end{tabularx}
+
+    In the first case, $(N,X)=(25,785)$. Chef bought $25$ items, each with cost $785$. The total bill is thus $25 * 785 = 19625$. This is a valid phone number and the output is ``YES''.
+
+    In the second case, $(N,X)=(402,11)$. Chef bought $402$ items that cost $11$ each. The total bill is thus $402 * 11 = 4422$. This is not a valid phone number and the output is ``NO''.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input   & Output \\ \hline\hline
+        100 100 & YES    \\\hline
+        33 12   & NO     \\\hline
+        130 120 & YES    \\\hline
+    \end{tabularx}
+
+    \heading{Proposed Pseudocode}
+\begin{verbatim}
+if 99999 < N*X < 1000000:
+    return 'YES'
+else:
+    return 'YES'
+\end{verbatim}
+
+    \heading{Dry Run}\\
+    Using any two of the inputs provided in the Exercise section above, dry run the proposed pseudocode in the space below.
+    \vspace*{100pt}
+
+    \heading{Error Identification}\\
+    Briefly explain any errors that you identified in the proposed pseudocode. Mention the line number(s) and the errors in each line.
+
+    \begin{mdframed}
+    range error in line 1 and print error in line 4
+    \end{mdframed}
+  
+    \heading{Correct Solution}\\
+    Below, rewrite the lines of code that you mentioned above with their errors corrected.
+
+    Line 1 can be corrected as follows.
+\begin{python}[numbers=none]
+if 9999 < N*X < 100000: #for line 1
+\end{python}
+
+        Line 4 can be corrected as follows.
+\begin{python}[numbers=none]
+print("NO")
+\end{python}            
+
+    % New sheet for rough work
+    \newpage
+    \centerline{\heading{Rough Work}}
+\end{questions}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

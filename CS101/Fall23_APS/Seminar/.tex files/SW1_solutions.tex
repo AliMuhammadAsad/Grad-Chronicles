@@ -1,0 +1,779 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amssymb}
+\usepackage{draftwatermark}
+\usepackage[a4paper]{geometry}
+\usepackage{mdframed}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+
+\SetWatermarkText{DRAFT SOLUTION}
+\SetWatermarkScale{2}
+
+
+\setlength\parindent{0pt}
+\newcommand{\class}{CS 101}
+\newcommand{\term}{Fall 2023}
+\newcommand\heading[1]{\textbf{#1}}
+
+\runningheader{\class, \term}{Worksheet: Computation}{HU ID: \rule{75pt}{0.5pt}}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\title{Worksheet: Computation}
+\author{\class\ Algorithmic Problem Solving}
+\date{\term}
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\maketitle
+
+Name(s): \hrulefill\\[5pt]
+HU ID \textit{\small(e.g., xy01042)}: \hrulefill\\
+
+\begin{questions}
+
+    % Question 1
+    \titledquestion{Chef's Test}
+
+    Chef appeared for a placement test.
+
+    The test is worth $X$ points and has exactly 10 questions. Each question is worth the same number of points. Chef got $N$ questions correct.
+
+    Given $X$ and $N$, determine the score that Chef will get.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $X,N \in \mathbb{Z}$
+        \item $ 10 \leq X \leq 200 $
+        \item $ 0 \leq N \leq 10 $
+    \end{itemize}
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 2 space-separated integers denoting the values of $X$ and $N$ respectively.
+
+    The output must contain a single number denoting the corresponding score earned by Chef.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        20 3  & 6      \\\hline
+        15 5  & 7.5    \\\hline
+    \end{tabularx}
+
+    In the first case, $(X,N)=(20,3)$. There are 20 points for 10 questions. Each question is therefore worth 2 points. As Chef got 3 questions correct, the score is $3\times 2 = 6$.
+
+    In the second case, $(X,N)=(15,5)$. There are 15 points for 10 questions. Each question is therefore worth $1.5$ points. As Chef got 5 questions correct, the score is $5\times 1.5 = 7.5$.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input  & Output \\ \hline\hline
+        10 3   & 3      \\\hline
+        100 10 & 100    \\\hline
+        130 4  & 52     \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+    \begin{mdframed}
+      Input: $X,N$\\
+      Output: $\frac{X}{10}*N$\\
+    \end{mdframed}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+    \titledquestion{Working Hours}
+
+    The working hours of Chef's kitchen are from $X$pm to $Y$pm.
+
+    Given $X$ and $Y$ find the number of hours that Chef works.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $X,Y \in \mathbb{N}$
+        \item $1 \le X < Y \le 11$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 2 space-separated integers denoting the values of $X$ and $Y$ respectively.
+
+    The output must contain a single number denoting the working hours of Chef.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        4 6   & 2      \\\hline
+        1 11  & 10     \\\hline
+    \end{tabularx}
+
+    In the first case, $(X,Y)=(4,6)$. The kitchen is open between 4pm and 6pm. Therefore, Chef works 2 hours.
+
+    In the second case, $(X,Y)=(1,11)$. The kitchen is open between 1pm and 11pm. Therefore, Chef works 10 hours.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        1 3   & 2      \\\hline
+        3 7   & 4      \\\hline
+        9 14  & 5      \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+    \begin{mdframed}
+      Input: $X,Y$\\
+      Output: $Y-X$\\
+    \end{mdframed}
+
+    \titledquestion{Mana Points}
+
+    Chef is playing a mobile game. In the game, Chef's character $Chefario$ can perform special attacks.
+    However, one special attack costs $X$ mana points to $Chefario$.
+    \\
+    If Chefario currently has $Y$ mana points.
+
+
+    Given $X$ and $Y$ determine the $maximum$ number of special attacks he can perform.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $1 \le X \le 100$
+        \item $1 \le Y \le 1000$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 2 space-separated integers denoting the values of $X$ and $Y$ respectively.
+
+    The output must contain a single number denoting the maximum number of special attacks Chefario can perform.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        10 30 & 3      \\\hline
+        6 41  & 6      \\\hline
+    \end{tabularx}
+
+    In the first case, $(X,Y)=(10,30)$. Chefario can perform a maximum number of 3 attacks which will cost him 30 mana points.
+
+    In the second case, $(X,Y)=(6,41)$. Cheafrio can perform a maximum number of 6 attacks which will cost him 36 mana points, with 5 mana points left to spare.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        50 2  & 0      \\\hline
+        8 68  & 8      \\\hline
+        9 23  & 2      \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+    \begin{mdframed}
+      Input: $X,Y$\\
+      Output: $\frac{Y}{X}$ rounded down\\
+    \end{mdframed}
+
+    \titledquestion{Ticket Fine}
+
+    On a certain train, The ticket collector, collects a fine of Rs.$X$ if a passenger is travelling without a ticket. It is known that a passenger carries either a single ticket or not ticket.
+    \\
+    $P$ passengers are travelling and they have a total of $Q$ ticekts.
+    \\\\
+    Given $X$, $P$ and $Q$ calculate the total fine collected.
+
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $1 \le X \le 10$
+        \item $0 \le Q \le P \le 10$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 3 space-separated integers denoting the values of $X$, $P$ and $Q$ respectively.
+
+    The output must contain a single number denoting the total money colleceted by the ticket collector.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input  & Output \\ \hline\hline
+        4 1 1  & 0      \\\hline
+        2 10 7 & 6      \\\hline
+    \end{tabularx}
+
+    In the first case, $(X,P,Q)=(4,1,1)$. Total number of people travelling without a ticket are $1-1=0$. The total fine collected is $4.0=0$.
+
+    In the first case, $(X,P,Q)=(2,10,7)$. Total number of passengers travelling without ticket are $10-7=3$. The total fine collected is $3.2=6$.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        8 5 4 & 8      \\\hline
+        9 7 0 & 63     \\\hline
+        4 5 2 & 12     \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+    \begin{mdframed}
+      Input: $X,P,Q$\\
+      Output: $(P-Q)X$
+    \end{mdframed}
+
+
+    \titledquestion{Calculate the new cells}
+
+    Anas has recently started learning SQL.
+    \\
+    He has a table which initially has $R$ rows and $C$ columns. He then adds $E$ extra rows to it.
+    \\\\
+    Given $R$, $C$ and $E$ calculate the total number of cells he has in his table.
+
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $1 \le R \le 100$
+        \item $1 \le C \le 100$
+        \item $1 \le E \le 100$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 3 space-separated integers denoting the values of $R$, $C$ and $E$ respectively.
+
+    The output must contain a single number denoting the total number of cells in the table.
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input  & Output \\ \hline\hline
+        5 2 1  & 12     \\\hline
+        6 10 3 & 90     \\\hline
+    \end{tabularx}
+
+    In the first case, $(R,C,E)=(5,2,1)$. Initially there were $5$ rows and $2$ columns, total number of cells were $5*2 = 10$. Adding one more row makes $6$ rows therefore the new total is $6*2=12$.
+    \\
+    In the second case, $(R,C,E)=(6,10,3)$. Initially there were $6$ rows and $10$ columns, total number of cells were $6*10 = 60$. Adding three more rows makes $9$ rows therefore the new total is $9*10=90$.
+    \\
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input  & Output \\ \hline\hline
+        7 3 2  & 27     \\\hline
+        3 19 8 & 209    \\\hline
+        17 5 6 & 115    \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+    \begin{mdframed}
+      Input: $R,C,E$\\
+      Output: $(R+E)C$
+    \end{mdframed}
+
+    \titledquestion{Tour of Aziz}
+
+    Aziz loves to go on tours with his friends.
+    \\
+    Aziz has $N$ cars that can seat 5 people each and $M$ cars that can seat 7 people each.
+    \\
+
+    Given $N$ and $M$ determine the $maximum$ number of people that can travel together in these cars.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $0 \le N,M \le 100$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 2 space-separated integers denoting the values of $N$ and $M$ - the number of 5-seaters and 7-seaters, respectively.
+
+    The output must contain a single number denoting the maximum number of people that can travel together in these cars.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        4 8   & 76     \\\hline
+        2 13  & 101    \\\hline
+    \end{tabularx}
+
+    In the first case, $(N,M)=(4,8)$. Aziz has $4$ cars that seat $5$ each and $8$ cars that seat $7$ each. So, $(4*5)+(8*7)=76$ people can travel together.
+
+    In the second case, $(N,M)=(2,13)$. Aziz has $2$ cars that seat $5$ each and $13$ cars that seat $7$ each. So, $(2*5)+(13*7)=101$ people can travel together.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        50 2  & 264    \\\hline
+        8 68  & 516    \\\hline
+        9 23  & 206    \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+    \begin{mdframed}
+      Input: $N,M$\\
+      Output: $5N+7M$
+    \end{mdframed}
+
+
+    \titledquestion{Matching Problem}
+
+    There are $G$ girl and $B$ boy students in a school such that $B>G$.
+    \\
+    There is a team game where teams can only be of size $2$, having $exaclty$ $1$ girl student and $1$ boy student.\\
+
+
+    Given $G$ and $B$ determine the $minimum$ number of boy students who would not be able to particiapte
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $1 \le G \le B \le 100$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 2 space-separated integers denoting the values of $G$ and $B$ - the number of girl and boy students at the school respecitvely.
+
+    The output must contain a single number denoting the minimum number of boy students from the school who would not be able to participate.\\
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        1 3   & 2      \\\hline
+        3 10  & 7      \\\hline
+    \end{tabularx}
+
+    In the first case, $(G,B)=(1,3)$. There is only $1$ girl and $3$ boys. Only $1$ team can be formed and, and $minimum$ of $2$ boys will be left behind.
+
+    In the second case, $(G,B)=(3,10)$. There are $3$ girls and $10$ boys. So, maximum of $3$ teams can be formed, and minimum $7$ boys will be left behind.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        2 4   & 2      \\\hline
+        7 10  & 3      \\\hline
+        18 23 & 5      \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+    \begin{mdframed}
+      Input: $G,B$\\
+      Output: $B-G$
+    \end{mdframed}
+
+
+
+    \titledquestion{Waiting Time}
+
+    Ali is eagerly waiting for a piece of information. His secret agent told him that this information would be revealed to him after $K$ weeks.
+
+    $X$ days have already passed and Ali is now restless.
+
+
+    Given $K$ and $X$ determine the number of $remaining$ days Ali hasto wait for, to get the information.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $1 \le K \le 10$
+        \item $1 \le X < 7.K$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 2 space-separated integers denoting the values of $K$ and $X$.
+
+    The output must contain a single number denoting the number of days Ali has to wait for.\\
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        1 5   & 2      \\\hline
+        2 13  & 1      \\\hline
+    \end{tabularx}
+
+    In the first case, $(K,X)=(1,5)$. The information would be revealed after $1$ week out of which $5$ days have already passed, therefore he needs to wait $2$ more days to get the information.
+
+    In the second case, $(K,X)=(2,13)$. The information would be revealed after $2$ weeks out of which $13$ days have already passed, therefore he needs to wait $1$ more day to get the information.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        3 16  & 5      \\\hline
+        5 7   & 28     \\\hline
+        6 12  & 30     \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+    \begin{mdframed}
+      Input: $K,X$\\
+      Output: $7K-X$
+    \end{mdframed}
+
+    \titledquestion{Number of Words}
+
+    Hrash was recenty gifted a book consisting of $N$ pages. Each page contains exacly $M$ words printed on it.
+    As he was bored, he decided to count the total number of words in the book.
+
+
+
+    Given $N$ and $M$ determine the total number of words in Harsh's book
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $1 \le N \le 100$
+        \item $1 \le M \le 100$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 2 space-separated integers denoting the values of $N$ and $M$.
+
+    The output must contain a single number denoting the total number of words in Harsh's book.\\
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        4 2   & 8      \\\hline
+        8 12  & 96     \\\hline
+    \end{tabularx}
+
+    In the first case, $(N,M)=(4,2)$. The book consists of $4$ pages and each page has $2$ words therefore $4.2=8$.
+
+    In the second case, $(N,M)=(8,12)$. The book consists of $8$ pages and each page has $12$ words therefore $8.12=96$.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        7 29  & 203    \\\hline
+        17 9  & 153    \\\hline
+        72 5  & 360    \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+    \begin{mdframed}
+      Input: $N,M$\\
+      Output: $N*M$
+    \end{mdframed}
+
+
+    \titledquestion{Hot Summer}
+
+    Ali has recently purchased a water cooler. He noticed that the water cooler requires $2$ liters of water to cool for $1$ hour.
+
+    Given $N$ - The number of hours, determine how much water would be required to cool for $N$ hours.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $1 \le N \le 1000$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input comprises a single line containing the integer $N$.
+
+    The output must contain a single number denoting the total number of water required.\\
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        8     & 16     \\\hline
+        3     & 6      \\\hline
+    \end{tabularx}
+
+    In the first case, $N=8$. $16$ liters of water is required to cool for $8$ hours as $2.8=16$
+
+    In the second case, $N=3$. $6$ liters of water is required to cool for $3$ hours as $2.3=6$.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        18    & 36     \\\hline
+        29    & 58     \\\hline
+        71    & 142    \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+    \begin{mdframed}
+      Input: $N$\\
+      Output: $2N$
+    \end{mdframed}
+
+
+
+\end{questions}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

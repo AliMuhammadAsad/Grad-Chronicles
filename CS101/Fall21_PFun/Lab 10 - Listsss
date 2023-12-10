@@ -1,0 +1,169 @@
+#Qns 4 - Remove Duplicates from list - new list contains all elements of previous list minus the duplicated values
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+def removeDuplicates(my_list):
+    shi_list = []
+    i = 0
+    for x in my_list:
+        if x in shi_list:
+            pass
+        else:
+            shi_list.append(my_list[i])
+        i += 1
+    return shi_list
+    
+-------------------------------------------------------------------------------------------------------------------
+
+#Qns 5 - Common - returns a list containing all common elements between two lists less duplicated values
+def common(lst1, lst2):
+    commons = []
+    for x in lst1:
+        if x in lst2:
+            commons.append(x)
+        else:
+            pass
+    elements = []
+    for x in commons:
+        if x in elements:
+            pass
+        else:
+            elements.append(x)
+    return elements
+
+-------------------------------------------------------------------------------------------------------------------
+
+#Qns 6 - Breakdown - Takes an integer n and returns all the units, tens, hundreds, thousands, ten thousands
+def bleh(n):
+    lst = []
+    t_tds = n // 10000
+    for x in range(1, t_tds+1):
+        lst.append(10000)
+    td = n % 10000
+    tds = td // 1000
+    for x in range(1,tds+1):
+        lst.append(1000)
+    hundred = td % 1000
+    hundreds = hundred // 100
+    for x in range(1, hundreds + 1):
+        lst.append(100)
+    ten = hundred % 100
+    tens = ten // 10
+    for x in range(1, tens + 1):
+        lst.append(10)
+    units = ten % 10
+    for x in range(1, units+1):
+        lst.append(1)
+    return lst
+
+def breakdown(n):
+    lst = bleh(abs(n))
+    if (n<0):
+        return [i*-1 for i in lst]
+    return lst
+    
+n = int(input())
+print(breakdown(n))
+
+-------------------------------------------------------------------------------------------------------------------
+
+#Qns 8 - Compute my bill - takes a paramter lst which contains more lists of groceries with their quantities and price and returns a list with updated lists with their total
+                           price and a receipt at the end with total number of items and total price for all items
+def compute_my_bill(lst):
+    receipt = []
+    bill = ["Quantity ", "Total Bill"]
+    quantity = 0
+    total_bill = 0
+    for x in lst:
+        total_price = x[1] * x[2]
+        x.append(total_price)
+        receipt.append(x)
+        quantity = quantity + x[2]
+        total_bill = total_bill + total_price
+    bill.insert(1, quantity)
+    bill.insert(3, total_bill)
+    receipt.append(bill)
+    return receipt
+        
+-------------------------------------------------------------------------------------------------------------------
+
+#Qns 9 - Count Char  - counts the frequency of a chracter in a list
+def count_char(st):
+    n_lst = []
+    f_lst = []
+    if type(st) != str:
+        return("Error: bad argument. Function 'count_char' only accepts strings.")
+    else:
+        st = st.lower()
+        for x in st:
+            temp_lst = []
+            temp_lst.append(x)
+            # temp_lst.append(st.count(x))
+            temp_lst.append(sum(char == x for char in st))
+            n_lst.append(temp_lst)
+        for y in n_lst:
+            if y in f_lst:
+                pass
+            else:
+                f_lst.append(y)
+        return f_lst
+
+-------------------------------------------------------------------------------------------------------------------
+
+#Qns 10 - Check types - Checks the type of items in a list and in case of another list, uses recursion to check their types within removing duplicate types and only returning
+                        a single one
+def remove_duplicates(lst):
+    new_lst = []
+    for y in lst:
+        if y in new_lst:
+            pass
+        else:
+            new_lst.append(y)
+    return new_lst
+
+
+def check_types(lst,):
+    t_l = []
+    new_lst = []
+    l1  = []
+    if type(lst) != list:
+        return("Error: Bad argument. Function 'check_types' only accept lists")
+    else:
+        for x in lst:
+            if type(x) == str:
+                t_l.append("str")
+            elif type(x) == int:
+                t_l.append("int")
+            elif type(x) == float:
+                t_l.append("float")
+            elif type(x) == bool:
+                t_l.append("bool")
+            elif type(x) == list:
+                t_l. append("list")
+                l1 = check_types(x)
+                for i in l1:
+                    t_l.append(i)
+
+        return remove_duplicates(t_l)
+        
+-------------------------------------------------------------------------------------------------------------------
+
+#Qns 11 - Pattern, 1, 2 1, 4 2 1, 8 4 2 1, 16 8 4 2 1 is tarha ka pattern in new lines, decreasing by multiples of 2
+n = int(input())
+def pattern(n):
+    for x in range(1, n+1):
+        for y in range(x-1, -1, -1):
+            print(2**y, end = " ")
+        print()
+        
+-------------------------------------------------------------------------------------------------------------------
+
+#Qns 12 - Pattern; 1, 1 2 1, 1 2 4 2 1, 1 2 4 8 4 2 1, 1 2 4 8 16 8 4 2 1, is tarha increasing and decreasing in multiples of 2 in new lines.
+n = int(input())
+def pattern(n):
+    for x in range(1, n+1):
+        for x in range(0, x):
+            print(2**x, end = " ")
+        for x in range(x-1, -1, -1):
+            print(2**x, end = " ")
+        print()
+        
+-------------------------------------------------------------------------------------------------------------------       

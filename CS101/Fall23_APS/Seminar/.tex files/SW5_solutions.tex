@@ -1,0 +1,443 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amssymb}
+\usepackage{draftwatermark}
+\usepackage{mdframed}
+\usepackage[a4paper]{geometry}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyvrb}
+\usepackage{../../pythonhighlight}
+\SetWatermarkText{SAMPLE SOLUTION}
+\SetWatermarkScale{2}
+
+\newcommand\alert[2]{\centerline{\textbf\large{\underline{\color{#1}{#2}}}}}
+\setlength\parindent{0pt}
+\newcommand{\class}{CS 101}
+\newcommand{\term}{Fall 2023}
+\newcommand\heading[1]{\textbf{#1}}
+
+
+
+\runningheader{\class, \term}{Worksheet: Nested Iteration}{HU ID: \rule{75pt}{0.5pt}}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\title{Worksheet: Nested Iteration}
+\author{\class\ Algorithmic Problem Solving}
+\date{\term}
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\maketitle
+
+Name(s): \hrulefill\\[5pt]
+HU ID \textit{\small(e.g., xy01042)}: \hrulefill\\
+
+\begin{questions}
+
+  % Question 1
+  \titledquestion{The Prime Village Challenge}
+
+In the picturesque village of ``PakMath," nestled at the foot of the magnificent Himalayas, there lived a brilliant mathematician named Aleena. Aleena was not only known for her deep love of mathematics but also for her devotion to her village. She ran a quaint printing shop called ``Prime Prints," where she often displayed prime number posters, inspiring young minds in PakMath.
+
+One sunny day, a group of aspiring mathematicians from PakMath: Saba, Hasan, and Ayesha, visited Aleena's shop. Impressed by the prime number posters, Aleena decided to challenge them to create a program that could print all prime numbers within a specified range, from A to B (both inclusive). The reward for their success? Their names would be featured on a grand banner adorned with prime numbers, a token of recognition for their contribution to PakMath's mathematical legacy.
+
+The group of young mathematicians eagerly accepted the challenge, and together, they embarked on a coding adventure that would leave a lasting mark on PakMath.
+
+  If you were one of the young mathematicians in the story given two integers $A$ and $B$, how would you implement a program to print all prime numbers within the range?
+
+  \heading{Constraints}
+  \begin{itemize}
+    \item $A, B \in \mathbb{Z}$
+    \item $ 0 \leq A,B \leq 10^{5} $
+    \item $A \leq B$
+  \end{itemize}
+
+  \heading{Interaction}
+
+  The input comprises a single line containing 2 space-separated integers denoting the values of $A$ and $B$ respectively.
+
+  The output must be a single line, containing all prime numbers in the given range separated by a space.
+
+  \heading{Sample}
+
+  \rowcolors{2}{gray!25}{white}
+  \begin{tabularx}{\textwidth}{|X|X|}
+    \rowcolor{gray!50}
+    \hline
+    Input & Output \\ \hline\hline
+    1 10  & 2 3 5 7\\\hline
+    3 5  & 3 5 \\\hline
+  \end{tabularx}
+
+  In the first case, $(A,B)=(1,10)$. The primes in the range are 2, 3, 5, and 7. Note that 1 is not a prime number.
+
+  In the second case, $(A,B)=(3,5)$. The primes in the range are 3 and 5.
+
+  \heading{Exercise}
+
+  In the space provided, indicate the outputs for the given inputs.
+
+  \rowcolors{2}{gray!25}{white}
+  \begin{tabularx}{\textwidth}{|X|X|}
+    \rowcolor{gray!50}
+    \hline
+    Input  & Output \\ \hline\hline
+    0 20   &  2 3 5 7 11 13 17 19      \\\hline
+    1 2 &  2      \\\hline
+    21 30  & 23 29       \\\hline
+  \end{tabularx}
+
+  \heading{Problem Identification}\\
+  Briefly explain the underlying problem you identified in the above question that led you to your solution.
+  \begin{mdframed}
+    Input: $A, B $\\
+    Output: all prime numbers in range $(A,B)$ inclusive
+  \end{mdframed}
+
+  \heading{Pseudocode}
+  \begin{python}
+    A,B = int(input())
+    is_prime = False
+   
+    if A < 2: # to ensure our range begins with 2
+        A = 2
+    
+    for number in range(A, B+1):
+        is_prime = True
+        for divisor in range(2, int(number**0.5)+1): 
+            if number % divisor == 0: 
+                is_prime = False
+                break
+        if is_prime:
+            return number
+    \end{python}
+
+  \heading{Dry Run}\\
+  Using any two of the inputs provided in the Exercise section above, dry run your pseudocode in the space below.
+
+  \underline{Input:} (A,B) = (1,2) \\
+  \underline{Output:}
+
+  $A < 2$ so $A = 2$
+  
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{}  & \textbf{number} & \textbf{is\_prime} & \textbf{divisor} & \textbf{output} \\
+        \hline
+        1st Iter & 2 & True & 2 & 2 \\
+        \hline
+        % 2nd Iter &  & & \\
+        % \hline
+        % 3rd Iter & & & \\
+        % \hline
+        % 4th Iter & & & \\
+        \hline
+    \end{tabular}
+
+    Loop breaks and only 2 is printed on screen which is the expected output. \\
+
+    \underline{Input:} (A,B) = (21,30) \\
+  \underline{Output:}
+
+  $A > 2$ so $A = 21$
+  
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{}  & \textbf{number} & \textbf{is\_prime} & \textbf{divisor} & \textbf{output} \\
+        \hline
+        1st Iter & 21 & True,False and loop breaks & 2,3 & \\
+        \hline
+        2nd Iter & 22 & False and loop breaks & 2 &  \\
+        \hline
+        3rd Iter & 23& True,True,True,True & 2,3,4,5 & 23 \\
+        \hline
+        4th Iter & 24 & False and loop breaks & 2 & 23\\
+        \hline
+        5th Iter & 25 & True,True,True,False and loop breaks  & 2,3,4,5 & 23\\
+        \hline
+        6th Iter & 26 & False and loop breaks  & 2 & 23\\
+        \hline
+        7th Iter & 27 & True, False and loop breaks  & 2,3 & 23\\
+        \hline
+        8th Iter & 29& True,True,True,True & 2,3,4,5 & 23 29\\
+        \hline
+    \end{tabular}
+
+which is the expected output! 
+
+% \alert{Green}{This means the applied logic is correct}
+\textcolor{green}{This means the applied logic is correct}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+  % Question 2
+  \titledquestion{The Discovery of Dr. Khan}
+
+  In the heart of Lahore, at the prestigious Lahore Institute of Science and Technology (LIST), there was a brilliant yet unconventional scientist named Dr. Ahmed Khan. Dr. Khan was renowned for his pioneering research in the field of molecular cryptography. One fateful day, while exploring the institute's archives, he stumbled upon a vial containing a three-letter string, ``XYZ," which had remained a mystery for decades.
+
+Driven by his insatiable scientific curiosity, Dr. Khan believed that deciphering this enigmatic code could unlock a groundbreaking scientific formula. He saw it as a challenge worthy of his intellect and a chance to make a significant contribution to Pakistani science.
+
+To unravel the secrets hidden within ``XYZ," Dr. Khan embarked on a daring experiment. His goal was to find all possible permutations of these three letters, hoping that one of these permutations might reveal the long-lost formula.
+
+  Suppose you are in Dr. Khan's position. Write a program to find all possible permutations of a given three-letter string $S$.
+
+  \emph{Note: You must use iteration to accomplish this.}
+
+  \heading{Constraints}
+  \begin{itemize}
+    \item $len(S) = 3$
+    \item All three letters of the string are unique.
+  \end{itemize}
+
+  \heading{Interaction}
+
+  The input comprises a single 3-letter string $S$.
+
+  The output must be a single line containing all permutations of the three letters separated by a space.
+
+  \heading{Sample}
+
+  \rowcolors{2}{gray!25}{white}
+  \begin{tabularx}{\textwidth}{|X|X|}
+    \rowcolor{gray!50}
+    \hline
+    Input & Output \\ \hline\hline
+    ``ABC''  & ABC ACB BAC BCA CAB CBA \\\hline
+    ``XYA''  & XYA XAY YXA YAX AXY AYX \\\hline
+  \end{tabularx}
+
+  In the first case, $S$ = ``ABC''. The 6 possible permutations are ABC, ACB, BAC, BCA, CAB, and CBA.
+
+  In the second case, $S$ = ``XYA''. The 6 possible permutations are XYA, XAY, YXA, YAX, AXY, and AYX .
+
+  \heading{Exercise}
+
+  In the space provided, indicate the outputs for the given inputs.
+
+  \rowcolors{2}{gray!25}{white}
+  \begin{tabularx}{\textwidth}{|X|X|}
+    \rowcolor{gray!50}
+    \hline
+    Input  & Output \\ \hline\hline
+    ``NOM''   &  NOM NMO ONM OMN MNO MON       \\\hline
+    ``APS'' &   APS ASP PAS PSA SAP SPA     \\\hline
+    ``HUM''  &  HUM UHM MUH MHU UMH HMU      \\\hline
+  \end{tabularx}
+
+  \heading{Problem Identification}\\
+  Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+  \begin{mdframed}
+    Input: $S$ \\
+    Output: all unique permutations of the three letter string
+  \end{mdframed}
+
+  \heading{Pseudocode}
+  \begin{python}
+word = input()
+
+for a in word:
+    for b in word:
+        if b != a:
+            for c in word:
+                if c != a and c != b:
+                    permutation = a + b + c
+                    return permutation
+
+  \end{python}
+  \heading{Dry Run}\\
+  Using any two of the inputs provided in the Exercise section above, dry run your pseudocode in the space below. \\ \\
+  word = ``NOM" \\ \\
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{} & \textbf{a} & \textbf{b} & \textbf{b!=a} & \textbf{c} & \textbf{c!=a} & \textbf{c!=b} & \textbf{permutations} & \textbf{output} \\
+        \hline
+        1st & N & N & False & & & & \\
+        \hline
+        2nd & N & O & True & N & False & True \\
+        \hline
+        3rd & N & O & True & O & True & False & \\
+        \hline
+        4th & N & O & True & M & True & True & NOM & NOM \\
+        \hline
+        5th & N & M & True & N & False & True &  \\
+        \hline
+        6th & N & M & True & O & True & True & NMO & NOM NMO  \\
+        \hline
+        7th & N & M & True & O & True & False &  &  \\
+        \hline
+        8th & O & N & True & N & True & False &  \\
+        \hline
+        9th & O & N & True & O & False & True &   \\
+        \hline
+        10th & O & N & True & M & True & True & ONM & NOM NMO ONM \\
+        \hline
+        11th & O & O & False & & & & \\
+        \hline
+        12th & O & M & True & N & True & True & OMN & NOM NMO ONM OMN\\
+        \hline
+        13th & O & M & True & O & False & True & \\
+        \hline
+        14th & O & M & True & M & True & False & \\
+        \hline
+        15th & M & N & True & N & True & False & \\
+        \hline
+        16th & M & N & True & O & True & True & MNO & NOM NMO ONM OMN MNO \\
+        \hline
+        17th & M & N& True& M& False & True & \\
+        \hline
+        18th & M& O& True &N & True & True &MON& NOM NMO ONM OMN MNO MON\\
+        \hline
+        19th & M & O & True & O & True& False & \\
+        \hline
+        20th & M & O & True & M & False & True & \\
+        \hline
+        21st & M&M &False & & & & \\
+        \hline
+    \end{tabular}
+ which is the expected output!
+
+ \textcolor{green}{This means the applied logic is correct}
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+  % Question 3
+  \titledquestion{The Symmetrical Spectacle in Karachi}
+
+  In the vibrant city of Karachi, known for its rich cultural diversity and annual festivities, there was an extraordinary event called the ``Symmetrical Carnival." This event celebrated the beauty of symmetry in all its forms. The highlight of the carnival was the ``Palindromic Parade," where participants showcased their love for symmetrical patterns.
+
+This year, the carnival organizers issued a special challenge to the residents: create a program that generates N rows of palindromic numbers. Inspired by the theme of symmetry, the challenge required these rows to read the same forwards and backward, echoing the spirit of the parade.
+
+Among the talented participants was a young computer enthusiast named Zainab. Zainab eagerly accepted the challenge, determined to craft a program that would capture the essence of symmetry and bring it to life on the parade route.
+
+With dedication and creativity, Zainab developed a Python program that utilized nested iterations. Her program meticulously constructed each row by adding numbers from $1$ to $N$ in ascending and descending order, resulting in beautiful palindromic sequences. As the program ran, it replicated the symmetry of the carnival's theme, earning Zainab the admiration and applause of the entire city.
+
+You want to figure out Zainab's program for yourself. Given an integer $N$, write a program that replicates the output of Zainab's program.
+
+  \heading{Constraints}
+  \begin{itemize}
+    \item $N \in \mathbb{Z}$
+    \item $0 \leq N \leq 10^{5}$
+  \end{itemize}
+
+  \heading{Interaction}
+
+  The input comprises a single line containing a single integer denoting the value of $N$.
+
+  The output must consist $N$ lines, each containing a palindromic number.
+
+  \heading{Sample}
+
+  \rowcolors{2}{gray!25}{white}
+  \begin{tabularx}{\textwidth}{|X|X|}
+    \rowcolor{gray!50}
+    \hline
+    Input & Output \\ \hline\hline
+    3  & 1 \\
+    & 121 \\
+    & 12321 \\\hline
+    2  & 1 \\
+    & 121\\\hline
+  \end{tabularx}
+
+  In the first case, $N$ = 3. The output consists of 3 palindromic numbers printed on 3 separate lines.
+
+  In the second case, $N$ = 2. The output consists of 2 palindromic numbers printed on 2 separate lines.
+
+  \heading{Exercise}
+
+  In the space provided, indicate the outputs for the given inputs.
+
+  \rowcolors{2}{gray!25}{white}
+  \begin{tabularx}{\textwidth}{|X|X|}
+    \rowcolor{gray!50}
+    \hline
+    Input  & Output \\ \hline\hline
+    4   &    1\\
+    & 121 \\
+    & 12321 \\
+    & 1234321
+            \\\hline
+    5 & 1       \\
+    &   121     \\
+    &   12321     \\
+    &   1234321     \\
+    &    123454321    \\\hline
+  \end{tabularx}
+
+  \heading{Problem Identification}\\
+  Briefly explain the underlying problem you identified in the above question that led you to your solution.
+    \begin{mdframed}
+        Input: $N$ \\
+        Output: $N$ rows each row containing numbers from $1$ to $R$ back to $1$ with $R$ corresponding to current row number 
+    \end{mdframed}  
+  \heading{Pseudocode} \\
+  Input: $N$
+  \begin{python}
+    for i in range(1, N+1):
+    # Print numbers in ascending order
+        for j in range(1, i+1):
+            print(j, end="")
+
+        # Print numbers in descending order
+        for j in range(i - 1, 0, -1):
+            print(j, end="")
+
+        print()  # Move to the next line for the next row
+  \end{python}
+  \heading{Dry Run}\\
+  Using any two of the inputs provided in the Exercise section above, dry run your pseudocode in the space below.
+
+  $N = 4$
+
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \textbf{} & \textbf{i} & \textbf{j} & \textbf{output} & \textbf{} \\
+    \hline
+    i in range(1,5) & 1 & 1 & 1 & no descending numbers \\
+    \hline
+     & 2 & 1,2  & 12  \\
+    \hline
+    descending & 2 & 1 & 121 \\
+    \hline
+     & 3  & 1,2,3  & 123 \\
+    \hline
+     descending& 3 & 2,1 & 12321 & next line \\
+     \hline
+     & 4 & 1,2,3,4 & 1234  \\
+     \hline
+     descending& 4  & 3,2,1 & 1234321  \\
+    \hline
+\end{tabular}
+
+final output: \\
+1\\
+121\\
+12321\\
+1234321\\ which is the expected output!
+
+\textcolor{green}{This means the applied logic is correct}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+  
+  % New sheet for rough work
+  \newpage
+  \centerline{\heading{Rough Work}}
+\end{questions}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
