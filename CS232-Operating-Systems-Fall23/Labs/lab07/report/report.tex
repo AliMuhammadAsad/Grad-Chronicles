@@ -1,0 +1,166 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[breaklinks]{hyperref}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{mdframed}
+\usepackage{lipsum}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{titlesec}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{tabularx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% C Code Listing Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{mGreen}{rgb}{0.25,0.63,0.15}
+\definecolor{mGray}{rgb}{0.5,0.5,0.5}
+\definecolor{mPurple}{rgb}{0.58,0,0.82}
+\definecolor{codeBlue}{rgb}{0.01, 0.2, 0.92}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0.13,0.29,0.53}
+\definecolor{backgroundColour}{rgb}{0.95,0.95,0.95}
+
+\lstset{
+    backgroundcolor=\color{backgroundColour},   
+    commentstyle=\color{deepGreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{mGray},
+    stringstyle=\color{red},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    language=C,
+    frame=single
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+\hypersetup{
+    colorlinks = true,
+    linkcolor = black,
+    urlcolor = blue,
+}
+\urlstyle{same}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{CS232 - Operating Systems}
+\fancyhead[C]{Assignment 01 - Report}
+\fancyhead[R]{}
+\fancyfoot{}
+\fancyfoot[C]{\thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{{\huge \textbf{Habib University \\ Operating Systems - CS232 }}
+
+\vspace*{5mm}
+{\LARGE \textbf{Lab 07: Static and Dynamic Libraries}}
+
+% {\Large \textbf{Project Report / Project Title}} \\ 
+{\Large \textbf{Instructor:} Munzir Zafar}}
+\author{Ali Muhammad Asad - aa07190}
+\date{}
+
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+\maketitle
+
+\noindent \textbf{Exercise:} Convert the codes for the linked list in Lab04 into functions and expose them in the form of a dynaically linked-library.
+
+The Lab 04 code has been modified for the purpose of this lab. ``node.h'' and ``node.c'' files have been created that create a node header seperately that can be included within the stack, linked list, and main files. The ``node.h'' file contains the following code:
+\begin{lstlisting}[caption={Node Header}, label={lst:node_header}]
+#ifndef NODE_H
+#define NODE_H
+
+struct node{
+    int val;
+    struct node* next;
+};
+
+#endif // !NODE_H
+\end{lstlisting} 
+
+The ``node.c'' just simply includes the header, and nothing else. This, along with the headers for the stack and linked list, are included in the main file. 
+
+The stack, dynamic list and main files have been submitted along with this PDF.
+
+A ``Makefile'' has been created for the purpose of compiling, creating the library, and linking the main file to the library. The library is created dynamically. The ``Makefile'' is as follows:
+
+\begin{lstlisting}[caption={Makefile}, label={lst:makefile}]
+build:
+	gcc -Wall -fPIC -c node.c
+	gcc -Wall -fPIC -c my_stack.c
+	gcc -Wall -fPIC -c dynamic_list.c
+	gcc -shared -o mylib.so my_stack.o dynamic_list.o node.o
+	cp mylib.so /usr/lib
+	ldconfig
+	gcc -Wall -c main.c
+	gcc -Wall -o a.out main.o mylib.so
+	ldd a.out
+
+run:
+	./a.out
+
+clean:
+	rm -f *.o *.so a.out
+\end{lstlisting}
+
+\begin{enumerate}
+    \item \textbf{Build:} To build the library and link it to the main program, write the following command in the terminal \texttt{``sudo make build''}, here sudo is important as the library is being copied to the \texttt{/usr/lib} directory, and configured by \texttt{ldconfig} which both require \texttt{sudo} access. 
+    \item \textbf{Run:} To run the program, write the following command in the terminal \texttt{``make run''}.
+    \item \textbf{Clean:} To clean or remove the created files and library, write the following command in the terminal \texttt{``make clean''}.
+\end{enumerate}
+
+\end{document}
