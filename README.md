@@ -6,7 +6,7 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 
 ```
 Grad Chronicles
-├── CS101 - Algorithmic Problem Solving (Programming Fundamentals)
+├── [CS101 - Algorithmic Problem Solving (Programming Fundamentals)](CS101)
 │   ├── Fall 2021 Iteration
 │   ├── Fall 2023 Iteration (TA)
 │       ├── Lab Worksheets + Hackerrank Labs
@@ -14,23 +14,23 @@ Grad Chronicles
 │       ├── Practice Worksheets + Hackerrank Labs
 │       └── Seminar Worksheets
 │   
-├── CS102 - Data Structures and Algorithms (Spring 2022 and Fall 2022 [TA])
+├── [CS102 - Data Structures and Algorithms (Spring 2022 and Fall 2022 [TA])](CS102-DSA)
 │   ├── Homeworks
 │   ├── Labs
 │   ├── Quizzes
 │   └── README.md
 │
-├── CS113 - Discrete Mathematics
+├── [CS113 - Discrete Mathematics](CS113-Discrete-Mathematics)
 │   ├── Spring 2022 Iteration
 │   ├── Spring 2023 Iteration (TA)
 |   └── README.md
 |
-├── CS130 - Digital Logic and Design
+├── [CS130 - Digital Logic and Design](CS130-Digital-Logic-Design)
 |   ├── Homeworks
 |   ├── Labs
 |   └── Mid
 │
-├── CS201 - Data Structures II
+├── [CS201 - Data Structures II](CS201-Data-Structures-II)
 │   ├── Homework 0
 │   ├── Homework 1
 │   ├── Homework 2
@@ -41,16 +41,16 @@ Grad Chronicles
 │   ├── Weekly Quizzes
 │   └── README.md
 |
-├── CS113 - Discrete Mathematics
+├── [CS224 - Object Oriented Programming and Design Methodologies](CS224-Object-Oriented-Programming)
 │   ├── Fall 2021 Iteration (Credit goes to [Meesum Ali Qazalbash](https://github.com/qazalbash/))
 │   ├── Fall 2022 Iteration
 │   ├── Fall 2023 Iteration (TA)
 │   ├── Notes
 |   └── README.md
 |
-├── CS330 - Computer Architecture
+├── [CS330 - Computer Architecture](CS330-Computer-Architecture)
 |
-├── CS335 - Database Management Systems
+├── [CS335 - Database Management Systems](CS335-Database-Management-Systems)
 |   ├── Homeworks
 |   ├── Labs
 |   └── README.md
