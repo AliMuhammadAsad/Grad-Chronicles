@@ -1,0 +1,15 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Thu Nov 10 18:20:53 2022
+| Host         : I7559-AM running 64-bit major release  (build 9200)
+| Command      : report_bus_skew -warn_on_violation -file TopLevelModule_vga_bus_skew_routed.rpt -pb TopLevelModule_vga_bus_skew_routed.pb -rpx TopLevelModule_vga_bus_skew_routed.rpx
+| Design       : TopLevelModule_vga
+| Device       : 7a35t-cpg236
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bus Skew Report
+
+No bus skew constraints
+

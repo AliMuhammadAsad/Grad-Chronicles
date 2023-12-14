@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Nov 10 18:18:51 2022
+# Process ID: 17664
+# Current directory: E:/Assignments_Work/Habib/Sem_3/DLD/Labs/Lab6_8/Lab6_8.runs/synth_1
+# Command line: vivado.exe -log TopLevelModule_vga.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source TopLevelModule_vga.tcl
+# Log file: E:/Assignments_Work/Habib/Sem_3/DLD/Labs/Lab6_8/Lab6_8.runs/synth_1/TopLevelModule_vga.vds
+# Journal file: E:/Assignments_Work/Habib/Sem_3/DLD/Labs/Lab6_8/Lab6_8.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source TopLevelModule_vga.tcl -notrace
