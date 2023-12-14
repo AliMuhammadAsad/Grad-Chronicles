@@ -58,6 +58,15 @@ Grad Chronicles
 │   ├── Notes
 |   └── README.md
 |
+├── CS232 - Operating Systems
+│   ├── Finals
+│   ├── Labs
+│   ├── Lectures
+│   ├── Ostep Codes
+│   ├── Quizzes
+│   ├── Course Book
+|   └── README.md
+|
 ├── CS330 - Computer Architecture
 |
 ├── CS335 - Database Management Systems
