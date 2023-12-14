@@ -41,6 +41,13 @@ Grad Chronicles
 │   ├── Weekly Quizzes
 │   └── README.md
 |
+├── CS113 - Discrete Mathematics
+│   ├── Fall 2021 Iteration (Credit goes to [Meesum Ali Qazalbash](https://github.com/qazalbash/))
+│   ├── Fall 2022 Iteration
+│   ├── Fall 2023 Iteration (TA)
+│   ├── Notes
+|   └── README.md
+|
 ├── CS330 - Computer Architecture
 |
 ├── CS335 - Database Management Systems
