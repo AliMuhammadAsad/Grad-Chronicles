@@ -1,0 +1,20 @@
+1) Interrupt for Slow I/O Device, Polling for Fast I/O Device, Hybrid for I/O device with unknown speed
+
+2) Prevent the CPU from doing any other task during a data transfer
+
+3) Sectors in the neighboring track are ordered in a manner that helps with sequential read across
+neighboring tracks
+
+4) 0.5 MB/s
+
+5) It is not handled immediately (i.e. queued until the next sweep), regardless of whether it will take longer or shorter than servicing the next request in the on-going sweep
+
+6) The value of the file descriptor depends on the order in which this file was opened by the current process (i.e. file descriptor can inform us if this was the first or the second file that was opened by this process) 
+
+7) Current offset of fd1: 300, Current offset of fd2: 200
+
+8) The file descriptor variables are local to each process but they point to the same entries in the open file table
+
+9) Forcing all dirty data to disk for the file descriptor on which fsync() is called
+
+10) Unlinking of foo only. So foo1, foo2 still point to an underlying file, but foo3 no longer works

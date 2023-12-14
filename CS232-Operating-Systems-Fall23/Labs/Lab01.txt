@@ -1,0 +1,96 @@
+Q1) What's a shell?
+Ans) The text etc within a terminal is known as shell. It defines how the terminal will function and behave( looks after running or executing a command(s)). The most common is bash - Bourne again shell, that will be used.
+
+Q2) Which shell are you in?
+Ans) Running the command ``echo $SHELL'', gives the following output: ``/bin/bash''. This shows that I am in a bash shell.
+
+Q3) What's a Home Directory?
+Ans) A Home directory, is commonly given to a user on a UNIX or Linux Variant Operating System. It is a directory for a particular user of the system and contains the individual files and stores data including but not limited to personal data, files, scripts, user information etc.
+
+Q4) What's your Home Directory?
+Ans) Firsly, we will use the the ``cd..'' command to go back as much as we can so that we move back directories if there is any directory we are currently in. This ensures we are in the Home directory. Then using the command ``pwd'' which stands for "print working directory" we can get our home directory. 
+Running the command ``pwd'' gives me the output ``/home/user''. Therefore, that is my home directory.
+
+Q5) What's a Working Directory?
+Ans) Working Directory is that directory that we are currently inside and working in. 
+
+Q6) Which directory are you in?
+Ans) I am currently in the home directory as indicated by the previous answer.
+
+Q7) What's your username?
+Ans) The ``pwd'' command also shows the username which is currently ''user''. However, we can also get the username using the ``whoami'' command which also gives the output ''user''.
+
+Q8) What's a PATH?
+Ans) The 'PATH' is the unique location of a file, folder etc in the file system of an OS. For Linux, a PATH is an environment variable which shows the subsequent directories a file is located in. Through this, a shell can follow the directories. In essence, a path is a means to get to a particular file or directory in the system.
+
+Q9) What's an Absolute PATH?
+Ans) An Absolute Path specifies a location to a file or directory in relation to the root directory. They can easily be identified with a forward slash '/'. 
+
+Q10) What's a Relative PATH?
+Ans) Relative paths specify a location which would be a file or directory, in relation to the directory in which the user is currently working on / the current working directory of the user.
+
+Q11) What's inside the directory ``/usr/bin''?
+Ans) This directory contains the location of several files related to the functionalities of the user known as user binaries. These files are needed for booting, and other operating system tasks. From the home directory, we can get to this directory using the command: ``cd /usr/bin''. The files inside this directory can be listed using ``ls''.
+
+Q12) What's the largest file inside the directory ``/usr/bin''?
+Ans) We can use the command ``ls -l -S'' which lists the files in a long format, sorted by file size in the descending order. Then the file at the top will be the largest file by size. 
+We can modify this command to ``ls -l -S | head -n 2'' to display the top most file, which will be the largest file. The result is ''-rwxr-xr-x 1 root root    306428176 Mar 21 00:46 materialized''
+
+Q13) What's the most recently created file inside the directory ``/usr/bin''?
+Ans) The command ``ls -lt'' displays the files in descending order (in long format) by time. Therefore we can get the most recently created file using this command. It can be modified to ``ls -lt | head -n 2'' to get the top most file which is "lrwxrwxrwx 1 root root           38 Jun 28 13:22 npm -> ../lib/node_modules/npm/bin/npm-cli.js".
+
+Q14) Go to your home directory and list all the directories in it.
+Ans) ``ls'' lists all the directories in a directory. Using ``ls'' we get, "2023-08-21-file-1.temr". 
+
+Q15) List all hidden files and directories in your home directory.
+Using ``ls -a'' we can get all hidden files and directories as well. Which are ".2023-08-21-file-1.term-0.term  .bash_history  .bash_profile  .bashrc  .jupyter-blobs-v0.db  .lesshst  .smc  .snapshots  .ssh  2023-08-21-file-1.term".
+
+Q16) What does the command ``file'' do?
+Ans) The command ``file'' is used to determine a file type. It works by running various tests to determine the file type and its data. The description can be further viewed by the command ``man file''.
+
+Q17) What options does ``ls'' command have?
+Ans) ``man ls'' gives us a detailed description of the ``ls'' command. It has options to not ignore entries starting with ., include all hidden files, print the author of each file, print block size, sort by and show time, color, list directories themselves, and much more.
+
+Q18) Search for the option "-h" option of "ls". What does it do? Use it.
+Ans) Using ``man ls -h'', we can find that the -h option displays the file in human readable format. Running the command ``ls -h'' outputs the file "2023-08-21-file-1.term".
+
+Q19) Make directories dir1, dir2, and dir3 in your home directory using one command only.
+Ans) The command ``mkdir'' makes directories. We can put different directories inside curly braces seperated by a comma to make multiple directories. Such as ``mkdir {dir1,dir2,dir3}''.
+
+Q20) Make the directory dir9/subdir8/subsubdir7 using one command only, even if dir9/subdir8/subsubdir7 doesn't exist.
+Ans) ``mkdir -p dir9/subdir8/subsubdir7''. We need the option -p since the parent directory doesn't exist, therefore, it first creates the parent directory, then proceeds to create the subsequent directories.
+
+Q21) While staying in your home directory, create an empty file dummy.txt in dir9/subdir8/subsubdir7.
+Ans) We can use "touch" command specifying the path where we want to create a file, then specify the file type to .txt.
+``touch dir9/subdir8/subsubdir7/dummy.txt''.
+
+Q22) While staying in your home directory, copy the following files from /usr/bin to dir9/subdir8/subsubdir7: zip, zipgrep, zipinfo.
+Ans) We can use the ``cp'' command with the directory we want to copy from to the directory we want to copy to.
+``cp /usr/bin/zip dir9/subdir8/subsubdir7''
+``cp /usr/bin/zipgrep dir9/subdir8/subsubdir7''
+``cp /usr/bin/zipinfo dir9/subdir8/subsubdir7''
+
+Q23) Move the file zipgrep from dir9/subdir8/subsubdir7 to dir9/subdir8.
+Ans) ``mv dir9/subdir8/subsubdir7 dir9/subdir8''
+
+Q24) Rename it to myzipgrep.
+Ans) ``mv dir9/subdir8/zipgrep dir9/subdir8/myzipgrep''
+
+Q25) Move all files from dir9/subdir8/subsubdir7 to dir9/subdir8.
+Ans) ``mv ~/dir9/subdir8/subsubdir7/* ~/dir9/subdir8/''
+
+Q26) Delete the dir9/subdir8 directory.
+Ans) ``rm -r dir9/subdir8''
+
+Q27) List all files in /usr/bin that start with the letter z.
+Ans) ``ls z*''
+
+Q28) List all the files in /etc whose second letter is c.
+Ans) ``ls ?c*''
+
+Q29) Copy all of them to /dir9/subdir8
+Ans) First we have to make subdir8 again using ``mkdir -p dir9/subdir8''.
+Then we can use the command ``cp /usr/bin/?c* ~/dir9/subdir8'' to copy all those files to this directory.
+
+Q30) Among them, delete all those that contain a digit in their name.
+Ans) ``rm -r dir9/subdir8/*[0-9]*''
