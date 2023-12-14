@@ -41,7 +41,7 @@ Grad Chronicles
 │   ├── Weekly Quizzes
 │   └── README.md
 |
-|
+├── CS330 - Computer Architecture
 |
 |
 |
