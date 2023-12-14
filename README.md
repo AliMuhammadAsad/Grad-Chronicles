@@ -43,7 +43,10 @@ Grad Chronicles
 |
 ├── CS330 - Computer Architecture
 |
-|
+├── CS335 - Database Management Systems
+|   ├── Homeworks
+|   ├── Labs
+|   └── README.md
 |
 |
 |
