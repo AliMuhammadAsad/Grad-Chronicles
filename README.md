@@ -41,6 +41,16 @@ Grad Chronicles
 │   ├── Weekly Quizzes
 │   └── README.md
 |
+├── CS212 - Nature of Computation
+│   ├── Assignments
+│   ├── Finals
+│   ├── Midterms
+│   ├── Quizzes
+│   ├── Book Solutions
+│   ├── Weekly Challenges
+│   ├── Course Book
+│   └── README.md
+|
 ├── CS224 - Object Oriented Programming and Design Methodologies
 │   ├── Fall 2021 Iteration (Credit goes to [Meesum Ali Qazalbash](https://github.com/qazalbash/))
 │   ├── Fall 2022 Iteration
