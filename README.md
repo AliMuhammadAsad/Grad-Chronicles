@@ -6,9 +6,17 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 
 ```
 Grad Chronicles
+|
+├── CE/MATH 362/322 - Statistics and Inferencing
+│   ├── Activities
+│   ├── Exams
+│   ├── Homeworks
+│   ├── Lectures
+│   └── Student Engagement Level (from Fall 2022)
+|
 ├── CS101 - Algorithmic Problem Solving (Programming Fundamentals)
 │   ├── Fall 2021 Iteration
-│   ├── Fall 2023 Iteration (TA)
+│   └── Fall 2023 Iteration (TA)
 │       ├── Lab Worksheets + Hackerrank Labs
 │       ├── Midterms
 │       ├── Practice Worksheets + Hackerrank Labs
@@ -69,12 +77,10 @@ Grad Chronicles
 |
 ├── CS330 - Computer Architecture
 |
-├── CS335 - Database Management Systems
-|   ├── Homeworks
-|   ├── Labs
-|   └── README.md
-|
-|
-|
+└── CS335 - Database Management Systems
+    ├── Homeworks
+    ├── Labs
+    └── README.md
+
 ```
 
