@@ -1,0 +1,398 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{listings}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Computer Architecture}{Homework 1}{CE/CS - 321/330}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+% \boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+\title{Computer Architecture}
+\author{Ali Muhammad Asad \\ aa07190} 
+\date{Homework 1}
+\begin{document}
+\maketitle
+\begin{sloppypar}
+
+\begin{questions}
+    \question \textbf{Question 1} \boxed{\text{15 marks}} 
+
+    Consider three different processors P1, P2, and P3 executing the same insstruction set. P1 has a 3 GHz clock rate and a CPI of 1.5. P2 has a 2.5 GHz clock rate and a CPI of 1.0. P3 has a 4.0 GHz
+    clock rate and has a CPI of 2.2. 
+    \begin{parts}
+        \part
+        Which processor has the highest performance expressed in instructions per second? (5 marks)
+        \part If the processors each execute a program in 10 seconds, find the number of cycles and the number of instructions. (5 marks)
+        \part We are trying to reduce the execution time by 30\%, but this leads to an increase of 20\% in the CPI. What clock rate should we have to get this time reduction? (5 marks)
+    \end{parts} 
+    \begin{solution}
+        
+        \begin{parts}
+            \part IPS(instructions per second) = $\displaystyle\frac{\text{Instructions}}{\text{Seconds}} = \displaystyle\frac{\text{Instructions}}{\text{Clock Cycles}} \times \frac{\text{Clock Cycles}}{\text{Seconds}}$ 
+
+            CPI(cycles per instruction) = $ \displaystyle\frac{\text{Clock Cycles}}{\text{Instruction}} $ and Clock Rate = $ \displaystyle\frac{\text{Clock Cycles}}{\text{Seconds}} $
+
+            $ \therefore  $ IPS = $ \displaystyle\frac{\text{1}}{\text{CPI}} \times $ Clock Rate $ = \displaystyle\frac{\text{Clock Rate}}{\text{CPI}} $ 
+
+            \vspace{2mm}
+            P1 $ \implies $ Clock Rate $ = 3\times10^9 $, CPI = 1.5 \\ 
+            P2 $ \implies $ Clock Rate $ = 2.5\times10^9 $, CPI = 1.0 \\ 
+            P3 $ \implies $ Clock Rate $ = 4.0\times10^9 $, CPI = 2.2
+
+            \vspace{2mm}
+            $\text{IPS}_{\text{P1}} = \displaystyle\frac{3\times10^9}{1.5} = 2\times10^9$ \\ 
+            $ \text{IPS}_{\text{P2}} = \displaystyle\frac{2.5\times10^9}{1.0} = 2.5\times10^9 $ \\ 
+            $ \text{IPS}_{P3} = \displaystyle\frac{4.0\times10^9}{2.2} = 1.82\times10^9 $
+            
+            \vspace{2mm}
+            The more the instructions per second, the faster the CPU. Therefore \underline{\textbf{P2}} has the best performance in terms of instructions per second: \underline{\textbf{$2.5\times10^9$}} IPS.
+            \pagebreak
+            \part CPU Time = 10 seconds \\ 
+            CPU Time = $ \frac{\text{Clock Cycles}}{\text{Clock Rate}} = \frac{\text{Instruction Count $\times$ CPI}}{\text{Clock Rate}}$ 
+
+            $ \therefore $ Clock Cycles = CPU Time $\times$ Clock Rate
+            
+            $\therefore$ Instruction Count = $ \frac{\text{CPU Time}}{\text{CPI}} $
+
+            \vspace{2mm}
+            P1 $\implies$ Clock Cycles = 10 $\times$ 3.0$\times10^9$ = $ 3.0 \times 10^{10} $ cycles \\ 
+            \hspace*{13mm} Instruction Count = $\frac{3.0 \times 10^{10}}{1.5} = 2\times10^{10}$ instructions 
+            
+            P2 $\implies$ Clock Cycles = $ 10 \times 2.5\times10^9 =2.5\times10^{10} $ cycles \\ 
+            \hspace*{13mm} Instruction Count = $ \frac{2.5\time10^{10}}{1.0} = 2.5\times10^{10} $ instructions 
+
+            P3 $\implies$ Clock Cycles = $ 10 \times 4.0\times10^9 = 4.0\times10^{10} $ cycles \\ 
+            \hspace*{13mm} Instruction Count = $ \frac{4.0\times10^{10}}{2.2} = 1.82\times10^{10} $ instructions
+
+            \part Reduce execution time by 30\% and increase in CPI of 20\%. \\ Execution time = CPU Time = 10 seconds \\ 
+            $\therefore$ CPU Time = CPU Times $ \times 0.7 = 10 \times 0.7 = 7 $ seconds \\ 
+            $ \therefore $ CPI = CPI $ \times 1.2 $  
+            
+            \vspace{2mm}
+            CPU Time = $ \displaystyle\frac{\text{Instruction Count $\times$ CPI}}{\text{Clock Rate}} \\ 
+            \therefore $ Clock Rate = $ \displaystyle\frac{\text{Instruction Count $\times$ CPI}}{\text{CPU Time}} $
+
+            \vspace{2mm}
+            P1 $\implies \text{Clock Rate}_{\text{ P1}} = \displaystyle\frac{2\times10^{10} \times 1.5 \times 1.2}{7} = 5.14\times10^9 $ Hz 
+
+            P2 $\implies$ Clock Rate$_{\text{ P2}} = \displaystyle\frac{2.5\times10^{10} \times 1.0 \times 1.2}{7} = 4.29\times10^9$ Hz 
+
+            P3 $ \implies $ Clock Rate$_{\text{ P3}} = \displaystyle\frac{1.82\times10^{10} \times 2.2 \times 1.2}{7} = 6.86\times10^{9} $ Hz
+  
+        \end{parts} 
+    \end{solution}
+\pagebreak
+    \question \textbf{Question 2} \boxed{\text{15 marks}} 
+    
+    Cosider two different implementations of the same instruction set architecture. The instructions can be divided into four classes according to their CPI (classes A, B, C, and D). P1 with a clock rate of 2.5 GHz and CPIs of 1, 2, 3, and 3, and P2 with a clock rate of 3 GHz and CPIs of 2, 2, 2, and 2.
+    \begin{parts}
+        \part Given a program with a dynamic instruction set count of 1.0E6 instructions divided into classes as follows: 10\% class A, 20\% class B, 50\% class C, and 20\% class D, which is faster, P1 or P2? (5 marks)
+        \part What is the global CPI for each implementation? (5 marks)
+        \part Find the clock cycles required in both cases. (5 marks)
+    \end{parts}
+
+    \begin{solution}
+        
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                \textbf{Processor} & \textbf{Class A} & \textbf{Class B} & \textbf{Class C} & \textbf{Class D} \\ \hline
+                P1 & 1 & 2 & 3 & 3 \\ \hline
+                P2 & 2 & 2 & 2 & 2 \\ 
+                \hline
+            \end{tabular}
+        \end{center}
+
+        P1 $ \implies $ Clock Rate = $ 2.5\times10^9 $ Hz \\ 
+        P2 $ \implies $ Clock Rate = $ 3.0\times10^9 $ Hz
+        
+        \begin{parts}
+            \part Instruction Count = $ 1.0\times10^6 $ instructions. 
+
+            Average CPI = $ \displaystyle\sum (\text{Instruction Count $\times$ CPI}) $ / Total Instruction Count \\ 
+            The summation of instruction count will be the same as the total instruction count \\ 
+            $ \therefore $ Average CPI = $  \displaystyle\sum (\text{CPI}) $
+
+            \vspace{2mm}
+            P1 $ \implies $ CPU Time = $ \frac{1.0\times10^6 \times (1(0.1) + 2(0.2) + 3(0.5) + 3(0.2))}{2.5\times10^9} = 1.04\times10^{-3} = 1.04 $ ms
+
+            P2 $ \implies $ CPU Time = $ \frac{1.06\times10^6 \times (2(0.1) + 2(0.2) + 2(0.5) + 2(0.2))}{3.0\times10^9} = 6.67\times10^{-4} = 0.667 $ ms 
+
+            \vspace{2mm} The more the Execution Time, the slower the processor. P2 has a lesser Execution Time, therefore \textbf{\underline{P2}} is faster.
+
+            \part Global CPI = $ \displaystyle\sum(\text{CPI}) $ [as above] 
+
+            \vspace{2mm} 
+            P1 $ \implies $ Global CPI = $ 1(0.1) + 2(0.2) + 3(0.5) + 3(0.2) = 2.6 $ \\ 
+            P2 $ \implies $ Global CPI = $ 2(0.1) + 2(0.2) + 2(0.5) + 2(0.2) = 2 $
+
+            \part Clock Cycles = Instruction Count $ \times $ Average CPI [average CPI = Global CPI] 
+
+            \vspace{2mm}
+            P1 $ \implies $ Clock Cycles = $ 1.0\times10^6 \times 2.6 = 2.6\times10^6 = 2.6 $ MHz \\ 
+            P2 $ \implies $ Clock Cycles = $ 1.0\times10^6 \times 2.0 = 2.0\times10^6 = 2.0 $ MHz
+        \end{parts}
+    \end{solution}
+    \pagebreak
+    \question \textbf{Question 3} \boxed{\text{15 marks}}
+
+    Compilers can have a profound impact on the performance of an application. Assume that for a program, compiler A results in a dynamic instruction count of 1.0E9 and has an execution time of 1.1 s, while compiler B results in a dynamic instruction count of 1.2E9 and an execution time of 1.5 s.
+    \begin{parts}
+        \part Find the average CPI for each program given that the processor has a clock cycle time of 1ns. (5 marks)
+        \part Assume the compiled programs run on two different processors. If the execution times on the two processors are the same, how much faster is the clock of the processor running compiler A's code versus the clock of the processor running compiler B's code? (5 marks)
+        \part A new compiler is developed that uses only 6.0E8 instructions and has an average CPI of 1.1. What is the speedup of using this new compiler versus using compiler A or B on the original processor? (5 marks)
+    \end{parts}
+
+    \begin{solution}
+        
+        A $ \implies $ Instruction count = $ 1.0\times10^9 $ instructions, Execution Time = CPU Time = 1.1 s \\
+        B $ \implies $ Instruction count = $ 1.2\times10^9 $, Execution Time = CPU Time = 1.5 s
+
+        \begin{parts}
+            \part Clock Cycle Time = 1ns = $ 1\times10^{-9} $s
+
+            CPU Time = Instruction Count $\times$ CPI $\times$ Clock Cycle Time 
+
+            $ \therefore $ CPI = $ \displaystyle\frac{\text{CPU Time}}{\text{Instruction Count $\times$ Clock Cycle Time}} $
+
+            \vspace{2mm}
+            A $\implies$ CPI $ = \displaystyle\frac{1.1}{1.0\times10^9 \times 1\times10^{-9}} = 1.1 $ 
+
+            B $ \implies $ CPI $ = \displaystyle\frac{1.5}{1.2\times10^9 \times 1\times10^{-9}} = 1.25 $
+
+            \part CPU Time = $ \displaystyle\frac{\text{Instruction Count $ \times $ CPI}}{\text{Clock Rate}} $ 
+
+            $ \therefore $ Clock Rate = $ \displaystyle\frac{\text{Instruction Count $ \times $ CPI}}{\text{CPU Time}} $
+
+            $ \implies \displaystyle\frac{\text{Clock Rate}_{\text{A}}}{\text{Clock Rate}_{\text{B}}} = \displaystyle\frac{(\text{Instruction Count $\times$ CPI})_{\text{A}}}{(\text{Instruction Count $\times$ CPI})_{\text{B}}}$ \\
+            \[\text{CPU Time is same therfore is cancelled out and Clock Rate is made the subject}\]
+
+            $ \therefore \displaystyle\frac{\text{Clock Rate}_{\text{A}}}{\text{Clock Rate}_{\text{B}}} = \displaystyle\frac{(1.0\times10^9 \times 1.1)}{1.2\times10^9 \times 1.25} = 0.733$ 
+            
+            Clock if A is 0.733 times faster than Clock of B, or Clock of B is 1.37 times faster than Clock of A.
+
+            \part New Compiler C $ \implies $ Instruction Count = $ 6.0\times10^8 $ instructions, Average CPI = 1.1
+
+            $ \displaystyle\frac{\text{(CPU Time)}_{\text{C}}}{\text{(CPU Time)}_{\text{A}}} = \displaystyle\frac{\text{(Instruction Count $\times$ CPI)}_{\text{A}}}{\text{(Instruction Count $\times$ CPI)}_{\text{C}}} = \displaystyle\frac{1.0\times10^9 \times 1.1}{6.0\times10^8 \times 1.1} = 1.67 $ \\ 
+            $ \therefore $ There will be a speedup of 1.67 times when using Compiler C versus Compiler A. 
+
+            \vspace{2mm}
+            $ \displaystyle\frac{\text{(CPU Time)}_{\text{C}}}{\text{(CPU Time)}_{\text{B}}} = \displaystyle\frac{\text{(Instruction Count $\times$ CPI)}_{\text{B}}}{\text{(Instruction Count $\times$ CPI)}_{\text{C}}} = \displaystyle\frac{1.2\times10^9 \times 1.25}{6.0\times10^8 \times 1.1} = 2.27$ \\ 
+            $ \therefore $ There will be a speedup of 2.27 times when using Compiler C versus Compiler B.
+        \end{parts}
+    \end{solution}
+    \pagebreak
+    \question \textbf{Question 4} \boxed{\text{15 marks}}
+
+    Assume for arithmetic, load/store, and branch instructions, a processor has CPIs of 1, 12, and 5, respectively. Also assume that on a single processor a program requires the execution of 2.56E9 arithmetic instructions, 1.28E9 load/store instructions, and 256 million branch instructions. Assume that each processor has a 2 GHz clock frequency.
+    
+    Assume that, as the program is parallelized to run over multiple cores, the number of arithmetic and load/store instructions per processor is divided by 0.7 × p (where p is the number of processors) but the number of branch instructions per processor remains the same.
+
+    \begin{parts}
+        \part Find the total execution time for this program on 1, 2, 4, and 8 processors, and show the relative speedup of the 2, 4, and 8 processors result relative to the single processor result. (5 marks)
+        \part If the CPI of the arithmetic instructions was doubled, what would the impact be on the execution time of the program on 1, 2, 4, or 8 processors? (5 marks)
+        \part To what should the CPI of load/store instructions be reduced in order for a single processor to match the performance of four processors using the original CPI values? (5 marks)
+    \end{parts}
+
+    \begin{solution}
+        
+        CPIs: $ \implies $Arithmetic = 1 \\ \hspace*{9mm} $ \implies $Load/Store = 12 \\ \hspace*{9mm} $ \implies $Branch Instructions = 5 
+
+        Instructions: $ \implies $ Arithmetic = $ 2.56\times10^9 $ \\ \hspace*{19.5mm} $ \implies $ Load/Store = $ 1.28\times10^9 $ \\ \hspace*{19.5mm} $ \implies $ Branch Instructions = $ 256\times10^6 $
+
+        Clock Frequency = 2 GHz = Clock Rate %$ \implies $ Clock Rate = $ \frac{1}{2.0\times10^9} $
+
+        \begin{parts}
+            \part CPU Time = $ \displaystyle\frac{\displaystyle\sum(\text{Instruction Count}_i \times \text{CPI}_i)}{\text{Clock Rate}} $
+
+            Clock Cycles = $\displaystyle\sum(\text{Instruction Count}_i \times \text{CPI}_i) \\ 
+            \implies \text{Clock Cycles } = 1(2.56\times10^9) + 12(1.28\times10^9) + 5(256\times10^6) = 1.92\times10^{10}$
+            
+            $\therefore$ CPU Time = $ \frac{1.92\times10^{10}}{2\times10^9} = 9.6 $s \\ 
+            Then execution time of \textbf{\underline{1 processor}} is \textbf{\underline{9.6 seconds}}.
+
+            \vspace{2mm}
+            For $ p > 2 $ where $p$ represents the number of processors, arithmetic and load/store instructions are divided by $ 0.7 \times p $. 
+
+            $ \implies $ Clock Cycles$_p$ = $ \frac{2.56\times10^9}{0.7p} + \frac{12(1.28\times10^9)}{0.7p} + 5(256\times10^6) = \frac{2.56\times10^{10}}{p} + 1.28\times10^9 $
+
+            $ \therefore $ CPU Time$_p$ = $ \displaystyle\frac{\frac{2.56\times10^{10}}{p} + 1.28\times10^9}{2\times10^9} $
+
+            Then we can plug in the values of $p$ for different execution times:
+
+            \textbf{p = 2:} CPU Time$_2$ = 7.04 \\ \hspace*{11.75mm} Speedup = $ \frac{9.6}{7.04} = 1.36 $ 
+            
+            \textbf{p = 4:} CPU Time$_4$ = 3.84 \\ \hspace*{11.75mm} Speedup = $ \frac{9.6}{3.84} = 2.5  $
+            
+            \textbf{p = 8:} CPU Time$_8$ = 2.24  \\ \hspace*{11.75mm} Speedup = $ \frac{9.6}{2.24} = 4.29 $
+
+            \part Arithmetic Instruction CPI is doubled. \\ 
+            $ \implies $ Clock Cycles =$ 2(2.56\times10^9) + 12(1.28\times10^9) + 5(256\times10^6) = 2.176\times10^10$ \\ 
+            $\implies$ CPU Time = $ \frac{2.176\times10^10}{2\times10^9} = 10.88 $s \\ 
+            Then if our CPI for arithmetic instructions was doubled, our execution time for 1 processor increasde by $ \frac{10.88}{9.6} = 1.13 $.\\ So for \textbf{\underline{1 processor}}, time increased by a factor of 1.13.
+
+            Then for $ p > 2 $: \\ 
+            Clock Cycles$_p$ = $ \frac{2(2.56\times10^9)}{0.7p} + \frac{12(1.28\times10^9)}{0.7p} + 5(256\times10^6) = \frac{2.93\times10^{10}}{p} + 1.28\times10^9 $
+
+            $\therefore$ CPU Time$_p$ = $ \displaystyle\frac{\frac{2.93\times10^{10}}{p} + 1.28\times10^9}{2\times10^9} $
+
+            Then we can plug in the values of $p$ for different execution times:
+
+            \textbf{p = 2:} CPU Time$_2$ = 7.965 \\ \hspace*{11.75mm} Increase Factor = $ \frac{7.965}{7.04} = 1.13 $ 
+            
+            \textbf{p = 4:} CPU Time$_4$ = 4.3025 \\ \hspace*{11.75mm} Increase Factor = $ \frac{4.3025}{3.84} = 1.12  $
+            
+            \textbf{p = 8:} CPU Time$_8$ = 2.47125  \\ \hspace*{11.75mm} Increase Factor = $ \frac{2.47125}{2.24} = 1.10 $
+
+            \part CPU Time for 4 processors = 3.84s \\ 
+            Then execution time for a single processor should be equal to 3.84s. 
+
+            CPU Time = $ \displaystyle\frac{\displaystyle\sum(\text{Instruction Count}_i \times \text{CPI}_i )}{\text{Clock Rate}} $ \\ 
+            $ \implies 3.84 = \displaystyle\frac{2.56\times10^9 + \text{CPI}_{\text{load/store}}(1.28\times10^9) + 5(256\times10^6)}{2\times10^9} $ \\ 
+            $ \implies $ CPI$_{\text{load/store}} = 3$
+
+            The CPI for Load/Store for a single processor should be reduced to 3 to match the performance of 4 processors with the original CPI values.
+
+        \end{parts}
+    \end{solution}
+    \pagebreak
+    \question \textbf{Question 5} \boxed{\text{20 marks}}
+    \begin{parts}
+        \part Assume that A is an array of 100 doublewords and that the compiler has associated the variables g, h, and j with the registers x19, x20, and x21 respectively. Let's also assume that the starting address, or base address, of the array A is in x22.
+
+        Compile these C statements into RISC-V assembly language:
+
+        g = h + A[8]; \\ A[10] = g - j;
+
+        (10 marks)
+
+        \part For the following C statement, write the corresponding RISC-V assembly code. Assume that the C variables f, g, and h have already been placed in registers x5, x6, and x7, respectively. Use a minimal number of RISC-V assembly instructions.
+        
+        f = g + (h - 5)
+
+        (10 marks)
+
+    \end{parts}
+
+    \begin{solution}
+        
+        \begin{parts}
+            \part The above C language in RISC-V can be written as: 
+
+            \vspace{3mm}
+            \textbf{ld x10, 64(x22)} \; \#\textit{Value at A[8] is loaded in a temporary register x10, and 64 is the \hspace*{28mm}} \# \textit{offset as each double word is of 8 bytes, so 8 x 8 = 64} \\ 
+            \textbf{add x19, x20, x10} \; \#\textit{g = h + A[8]} \\ 
+            \textbf{sub x11, x19, x21} \; \#\textit{g - j is stored in a register x11} \\ 
+            \textbf{sd x11, 80(x22)} \; \#\textit{value of g - j is stored in A[10] (8 $\times$ 10 = 80)}
+
+            \part The above C statement in RISC-V can be written as: 
+
+            \vspace{3mm}
+            \textbf{addi x8, x7, -5} \; \#\textit{h - 5 is stored in a temporary register x8} \\ 
+            \textbf{add x5, x6, x8} \; \#\textit{f = g + (h - 5)}
+        \end{parts}
+    \end{solution}
+    \pagebreak
+    \question \textbf{Question 6} \boxed{\text{20 marks}}
+    
+    For the following RISC-V assembly code, assume that the variables f, g, h, i, and j are assigned to registers x5, x6, x7, x28, and x29, respectively. Assume that the base address of the arrays A and B are in registers x10 and x11, respectively.
+
+    \begin{tikzpicture}
+        \draw [line width = 0.3mm, dash pattern = on 1mm off 0.5mm] (0,0) -- (5, 0);
+    \end{tikzpicture}
+
+    \hspace{10mm} addi x30, x10, 8
+
+    \hspace{10mm} addi x31, x10, 0  
+    
+    \hspace{10mm} sd x31, 0(x30)
+
+    \hspace{10mm} ld x30, 0(x30)
+
+    \hspace{10mm} add x5, x30, x31
+    
+    \begin{tikzpicture}
+        \draw [line width = 0.3mm, dash pattern = on 1mm off 0.5mm] (0,0) -- (5, 0);
+    \end{tikzpicture}
+    
+    Answer the following questions:
+    \begin{parts}
+        \part Write the equivalent C code for RISC-V assembly code. (5 marks)
+        \part Translate the above assembly language instructions into RISC-V machine language instructions. (15 marks)
+    \end{parts}
+
+    \begin{solution}  
+        \begin{parts}
+            \part f = x5, g = x6, h = x7, i = x28, j = x29 \\ 
+            A = x10, B = x11 [base addresses of the two arrays] \\ 
+            \textit{sd in the code shows us that the arrays are of doublewords}
+    
+            Line 1 $\implies$ x30 = \&A[1] \\ 
+            Line 2 $\implies$ x31 = \&A[0] \\ 
+            Line 3 $\implies$ \&A[1] = \&A[0] \\ 
+            Line 4 $\implies$ x30 = \&A[0] \\ 
+            Line 5 $\implies$ f = \&A[0] + \&A[0] \hspace*{5mm} [f is a variable]
+    
+            Then from the above code, we can conclude that we are adding A[0] and A[0] into a variable. Then the equivalent C code can be written as: 
+            
+            long long a* = \&A[0]; \\ 
+            long long b* = \&A[1]; \\ 
+            b* = a*; \\ 
+            f = b* + a*;
+
+            \part Machine Code:
+ 
+            Line 1 $\implies$ 0x00850f13 $\implies$ 00000000100001010000111100010011 \\ 
+            Line 2 $\implies$ 0x00050f93 $\implies$ 00000000000001010000111110010011 \\ 
+            Line 3 $\implies$ 0x01ff0023 $\implies$ 00000001111111110011000000100011 \\ 
+            Line 4 $\implies$ 0x000f0f03 $\implies$ 00000000000011110011111100000011 \\ 
+            Line 5 $\implies$ 0x01ff02b3 $\implies$ 00000001111111110000001010110011
+            \pagebreak
+
+            The above machine code in binary can be divided into few segments as follows(from right to left in machine code in binary): 
+            \begin{itemize}
+                \item opcode(7-bits): Basic operation of the instruction
+                \item rd(5-bits): The register destination operand
+                \item funct3(3-bits): An additional opcode field
+                \item rs1(5-bits): First register source operand 
+                \item rs2(5-bits): Second register source operand 
+                \item funct7(7-bits): An additional opcode field 
+            \end{itemize}
+
+            Then the above machine code can be represneted as:
+        \end{parts}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            \textbf{Line No.} & \textbf{Instruction} & \textbf{format} & \textbf{funct7} & \textbf{rs2} & \textbf{rs1} & \textbf{funct3} & \textbf{rd} & \textbf{opcode} \\ 
+            \hline 
+            Line 1 & addi (add immediate) & I & 0000000 & 01000 & 01010 & 000 & 11110 & 0010011 \\ 
+            \hline
+            Line 2 & addi (add immediate) & I & 0000000 & 00000 & 01010 & 000 & 11111 & 0010011 \\ 
+            \hline
+            Line 3 & sd (store doubleword) & S & 0000000 & 11111 & 11110 & 011 & 00000 & 0100011 \\ 
+            \hline
+            Line 4 & ld (load doubleword) & I & 0000000 & 00000 & 11110 & 011 & 11110 & 0000011 \\ 
+            \hline
+            Line 5 & add (add) & R & 0000000 & 11111 & 11110 & 000 & 00101 & 0110011 \\ 
+            \hline
+        \end{tabular}
+    \end{solution}
+\end{questions}
+\end{sloppypar}
+\end{document}
