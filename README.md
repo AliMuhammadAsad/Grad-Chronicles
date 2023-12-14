@@ -6,6 +6,11 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 
 ```
 Grad Chronicles
+├── EE/CE 354/361 - Introduction to Probability and Statistics
+│   ├── Exams
+│   ├── Homeworks
+│   ├── Programming Assignments
+│   └── Quizzes
 |
 ├── CE/MATH 362/322 - Statistics and Inferencing
 │   ├── Activities
