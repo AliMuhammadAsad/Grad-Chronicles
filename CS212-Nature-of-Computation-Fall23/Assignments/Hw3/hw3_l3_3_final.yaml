@@ -1,0 +1,109 @@
+name: hw3_refining
+source code: |-
+  input: '0011#0101' #try: 0#1, #, 0001#00, 0#1111, 000#11a, 0011#0101
+  blank: ' '
+  start state: scanner
+  table:
+    scanner:
+      [0,1,'#']: R #Skip till the end of the input string
+      ' ': {write: '#', L: backing} #Write a seperator for output and input
+    backing: #backup until you reach the beginning of the string
+      [0,1,'#'] : L 
+      ' ': {R: read}
+    read: #Reading the input a_i
+      0: {write: ' ', R: have0}
+      1: {write: ' ', R: have1}
+      '#': {write: ' ', R: blank_parser}
+    
+    have0: #have 0 on a_i
+      [0, 1]: {R: have0}
+      '#': {R: moveR_Z}
+    
+    moveR_Z: #move right on 0 at a_i
+      [0, 1]: {write: ' ', R: oper}
+      ' ': {R: moveR_Z}
+      
+    oper: #operate on 0
+      [0, 1]: {R: oper}
+      '#': {R: ZnX}
+    
+    ZnX: #0 and its respective operation
+      ' ': {write: 1, L: back_blank_Z}
+      [0, 1]: {R: ZnX}
+    
+    back_blank_Z: #back until u reach a blank -> just processed b_i
+      [0, 1, '#']: {L: back_blank_Z}
+      ' ': {L: back_hash_Z}
+    
+    back_hash_Z: #back until u reach a hash -> separator
+      ' ': {L: back_hash_Z}
+      '#': {L: back_blank_again_Z}
+    
+    back_blank_again_Z: #back again until u reach a blank -> just processed bit of a
+      [0, 1]: {L: back_blank_again_Z}
+      ' ': {R: read}
+    
+    have1: #if we have a 1 on a_i
+      [0, 1]: {R: have1}
+      '#': {R: moveR_O}
+    
+    moveR_O: #move right on 1 at a_i
+      0: {write: ' ', R: oper0_O}
+      1: {write: ' ', R: oper1_O}
+      ' ': {R: moveR_O}
+    
+    oper0_O: #operate on 1
+      [0, 1]: {R: oper0_O}
+      '#': {R: OnZ}
+    
+    oper1_O: #operate pm 1
+      [0, 1]: {R: oper1_O}
+      '#': {R: OnO}
+    
+    OnZ: # 1 and 0
+      ' ': {write: 0, L: back_blank_O}
+      [0, 1]: {R: OnZ}
+      
+    OnO: # 1 and 1
+      ' ': {write: 1, L: back_blank_O}
+      [0, 1]: {R: OnO}
+    
+    back_blank_O: #back until we reach a blank -> just processed b_i
+      [0, 1, '#']: {L: back_blank_O}
+      ' ': {L: back_hash_O}
+    
+    back_hash_O: #back until we reach a hash -> separator
+      ' ': {L: back_hash_O}
+      '#': {L: back_blank_again_O}
+    
+    back_blank_again_O: #back again until u reach a blank -> just processed bit of a
+      [0, 1]: {L: back_blank_again_O}
+      ' ': {R: read}
+      
+    blank_parser: #parsing blanks when input has finished
+      ' ': {R: blank_parser}
+      '#': {write: ' ', R: accept}
+      
+    accept: #accept state
+positions:
+  scanner: {x: 40.59, y: 272.59}
+  backing: {x: 178.89, y: 273.67}
+  read: {x: 403.88, y: 274.97}
+  have0: {x: 125.34, y: 172.96}
+  moveR_Z: {x: 217.63, y: 73.35}
+  oper: {x: 300.99, y: 142.82}
+  ZnX: {x: 400.01, y: 58.94}
+  back_blank_Z: {x: 468.93, y: 153.84}
+  back_hash_Z: {x: 558.6, y: 53.81}
+  back_blank_again_Z: {x: 634.65, y: 149.13}
+  have1: {x: 100.5, y: 373.66}
+  moveR_O: {x: 219.75, y: 414.1}
+  oper0_O: {x: 324.9, y: 474.01}
+  oper1_O: {x: 335.16, y: 384.07}
+  OnZ: {x: 440.36, y: 475.51}
+  OnO: {x: 442.25, y: 386.16}
+  back_blank_O: {x: 547.59, y: 434.4}
+  back_hash_O: {x: 653.35, y: 433.57}
+  back_blank_again_O: {x: 644.16, y: 365.43}
+  blank_parser: {x: 590.64, y: 271.54}
+  accept: {x: 739.25, y: 270.13}

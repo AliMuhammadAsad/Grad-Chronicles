@@ -1,0 +1,64 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage[a4paper]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+% \theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+
+% \theoremstyle{claim}
+\newtheorem{claim}{Claim}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+\printanswers
+
+\title{Weekly Challenge 14: Decidability}
+\author{CS 212 Nature of Computation\\Habib University\\Ali Muhammad Asad - aa07190}
+\date{Fall 2023}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\titledquestion{Deciding Primes}
+
+  Show that a language, $A$, is decidable iff $A \le_m PRIMES$, where $PRIMES$ is the set of all prime numbers.
+  \begin{solution} \vspace*{-2mm}
+    % A language $A$ is decidable if there exists a Turing Machine $M$ which halts on all inputs for any string $w$. 
+    % A language $A$ is mapping reducible to a language $B$ if there exists a computable function $f$ such that for every string $w$, $w \in A$ iff $f(w) \in B$.
+    \begin{enumerate}
+      \item \textbf{If $A$ is decidable, then $A$ is mapping reducible to $PRIMES$} 
+      
+      Assume $A$ is decidable, then there exists a Turing Machine $M$ that decides $A$. We can construct a computable function $f$ such that for any string $w$, $ w \in A $ iff $f(w) \in PRIMES$. We define $f$ as follows: For each input $w$, compute $ M(w) $. If $ M(w) $ accepts, let $ f(w) $ be a fixed prime number. If $ M(w) $ rejects, let $ f(w) $ be a fixed composite number. Then this function $f$ is computable as $M$ is a decider, and thus halts on all inputs.
+      
+      Thus, $ w \in A \implies f(w) $ is prime, and $ w \in A \implies f(w) $ is composite. Therefore, $A$ is mapping reducible to $PRIMES$.
+
+      \item \textbf{If $A$ is mapping reducible to $PRIMES$, then $A$ is decidable}
+      
+      Assume $A$ is mapping reducible to $PRIMES$. Then there exists a computable function $f$ such that for any string $w$, $ w \in A \text{ iff } f(w) \in PRIMES $.
+
+      Since $PRIMES$ is decidable since there exists algorithms that can decide primes, we can construct a Turing Machine $PM$ that decides $A$ as follows: \vspace*{-2mm}
+      \begin{enumerate}[label=(\roman*)]
+        \item On input $w$, compute $f(w)$. \vspace*{-1mm}
+        \item Run the algorithm that decides $PRIMES$ on $f(w)$. \vspace*{-1mm}
+        \item If the algorithm accepts, accept. If the algorithm rejects, reject
+      \end{enumerate}
+      So the computability of $f$ ensures that $PM$ can always compute $f(w)$ and the decidability of $PRIMES$ ensures that $PM$ always halts. Thus, $PM$ is a decider for $A$. Therefore, $A$ is decidable.
+    \end{enumerate}
+
+    Hence, we can conclude that $A$ is decidable iff $A$ is mapping reducible to $PRIMES$. \vspace*{-4mm}
+    \begin{flushright}
+      $ \blacksquare $
+    \end{flushright}
+  \end{solution}
+\end{questions}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

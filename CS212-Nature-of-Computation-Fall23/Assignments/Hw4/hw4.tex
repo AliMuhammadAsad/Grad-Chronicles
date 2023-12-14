@@ -1,0 +1,177 @@
+\documentclass[addpoints,a4paper]{exam}
+\usepackage{amsmath, amssymb}
+\usepackage[a4paper]{geometry}
+\usepackage{hyperref}
+\usepackage{mdframed}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{CS 212}{HW 4: Time Complexity}{Fall 2023}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\renewcommand{\solutiontitle}{}
+
+\title{Homework 4: Time Complexity}
+\author{CS 212 Nature of Computation\\Habib University\\Ali Muhammad Asad - aa07190}
+\date{Fall 2023}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+
+  \question[25]
+  \begin{parts}
+    \part[15] Show that the language, $ALL_{DFA} =\{ A \mid A \text{ is a DFA and } L(A)= \Sigma^*\}$, is in P.
+    \part[15] Argue why the following is a valid or invalid approach to show that $ALL_{NFA}\in$ P.
+    \begin{mdframed}
+      On input $N$ (where $N$ is an NFA),
+      \begin{enumerate}
+        \item Convert $N$ to a DFA, $D$, using the conversion algorithm studied in the course.
+        \item If the polynomial time decider for $ALL_{DFA}$ accepts $D$, \textit{accept}; else \textit{reject}.
+      \end{enumerate}
+    \end{mdframed}
+  \end{parts}
+  \begin{solution}
+    % \textit{Proof:}
+    \begin{parts}
+      \part $ ALL_{DFA} = \{ A \mid A \text{ is a DFA and } L(A)= \Sigma^*\} $ describes the language of all DFAs that accept every possible string made from their alphabet $ \Sigma $.
+
+      We construct a new language, $ E_{DFA} = \{ A \mid A \text{ is a DFA and }  L(A) = \phi  \} $. Let $E$ be the Turing Machine that determines $ E_{DFA} $. By \texttt{Theorem 4.4} of the book, we know that this language is decidable. Similarly, from \texttt{Theorem 4.4}, we can also conclude that $ E_{DFA} \in P$ since its corresponding Turing Machine traverses over each state once, and a DFA has $n$ states, therefore, $ E_{DFA} $ is in P. \\
+      Now we can construct a Turing Machine $T$ that decides $ALL_{DFA}$ as follows:
+
+      $T = $ ``On input $ \langle A \rangle$, where $A$ is a DFA: \vspace*{-2mm}
+      \begin{enumerate}
+        \item Construct a DFA $M'$ that recognizes $ \overline{L(A)} $, by flipping the accept and reject states of $A$. \vspace*{-1mm}
+        \item Run the Turing Machine $E$ on input $ \langle M' \rangle $, where $E$ determines $ E_{DFA} $. \vspace*{-1mm}
+        \item If $E$ accepts, \textbf{accept}
+        \item Else \textbf{reject}.''
+      \end{enumerate}
+
+      Through the above construction, we have effectively created a Turing Machine $T$ that decides $ALL_{DFA}$ by using the Turing Machine $E$ that decides $E_{DFA}$. The first step can be done in linear time relative to the number of states in $A$, running in $ O(n) $ time. The second step runs in polynomial time since $E$ decides $E_{DFA}$ in polynomial time. The third step is a constant time operation. Thus, $T$ runs in polynomial time, and $ALL_{DFA} \in P$. The $ E_{DFA} $ holds significance as leverages the fact that the emptiness problem for DFAs is in P, and thus its complement. \vspace*{-4mm}
+      \begin{flushright}
+        $ \blacksquare $
+      \end{flushright}
+
+      \part The given approach is not a valid approach to show that $ALL_{NFA} \in P$. This is because DFAs can be exponentially larger than their NFA counterparts, so converting an NFA to a DFA will not necessarily give a polynomial time algorithm. If the NFA has $n$ states, and the corresponding DFA has $m$ states, then $ m \leq 2^n $ depending on the number of unreachable states in the DFA, which is exponential. Therefore, converting an NFA to a DFA is not a polynomial time operation, and the given approach is not valid.
+
+      % This is because the conversion algorithm studied in the course converts an NFA to a DFA in exponential time. Thus, the first step of the algorithm takes exponential time, and the algorithm is not polynomial time. Hence, the algorithm cannot be used to show that $ALL_{NFA} \in P$. 
+
+    \end{parts}
+  \end{solution}
+
+
+  \question[20] Show that the class NP is closed under concatenation.
+  \begin{solution}
+    % Consider two languages $L_1$ and $L_2$ that belong to NP. \\ Let $ L = L_1 \circ L_2 = \{ xy \mid x \in L_1 \text{ and } y \in L_2 \}$.
+    % Since $ L_1 $ and $L_2$ exist in NP, there exist non-deterministic polynomial-time Turing Machines $T_1$ and $T_2$ that decide $L_1$ and $L_2$ in non-deterministic time $ O(n^k) $ and $ O(n^l) $ respectively Then we can construct a non-deterministic polynomial-time decider $T$ for $L$ as follows:
+
+    % $T = $ ``On input $w$: \vspace*{-3mm}
+    % \begin{enumerate}
+    %   \item Non-deterministically split $w$ into two substrings $ w_1 $ and $ w_2 $ such that $ w = w_1 w_2 $. The non-deterministic nature of $T$ allows it to guess the correct split of $w$. \vspace*{-2mm}
+    %   \item Run $T_1$ on $w_1$. If $T_1$ rejects, then \textbf{reject}. \vspace*{-2mm}
+    %   \item Run $T_2$ on $w_2$. If $T_2$ rejects, then \textbf{reject}. \vspace*{-2mm}
+    %   \item Else \textbf{accept}.''
+    % \end{enumerate}
+    % Since $T_1$ and $T_2$ decide $L_1$ and $L_2$ respectively, then they will always halt. Also, clearly, the longest branch in any computation tree on an input $w$ of length $n$ is still $ O(n^{\text{max}\{k, l \}}) $ because step 1 takes only $ O(n) $ steps on e.g a two tape Turing Machine, which implies that $T$ also runs in non-deterministic polynomial-time and is a polynomial-time non-deterministic decider for $ L $ where $ L = L_1 \circ L_2 $.
+
+    Consider two languages $L_1, L_2 \in$ NP and let $N_1$ and $N_2$ be their respective non-deterministic polynomial-time deciders. \\ Let $ L = L_1 \circ L_2 $ be the language generated by the concatenation of $L_1$ and $L_2$. Then we can construct a non-deterministic polynomial-time decider $N$ for $L$ as follows:
+
+    $ N = $ ``On input $w = w_1 w_2 w_3 ... w_n$: \vspace*{-2mm}
+    \begin{enumerate}
+      \item for $i$ in 0 to $n$: \vspace*{-2mm} \begin{enumerate}
+        \item Simulate $N_1$ on $ w_1w_2w_3...w_i $. \vspace*{-1mm}
+        \item If $N_1$ accepts, \vspace*{-1mm} \begin{enumerate}
+          \item simulate $N_2$ on $ w_{i + 1}w_{i + 2}...w_n $ \vspace*{-1mm}
+          \item If $N_2$ accepts, \textbf{accept}. \vspace*{-1mm}
+        \end{enumerate}
+      \end{enumerate}
+      \item \textbf{reject}.''
+    \end{enumerate}
+
+    By the above construction, $N$ utlizes $N_1$ and $N_2$, which were non-deterministic polynomial time deciders for $L_1$ and $L_2$ respectively, thus $N$ is non-deterministic polynomial-time decider itself. The steps in the loop take, altogether, polynomial time; $ O(n^k) $, in the worst case. In the worst case, the loop itself runs $n + 1$ times, which implies the worst running time of the algorithm is $ O(n^{k + 1}) $. Therefore, $N$ halts in all cases, and since it utilizes non-deterministic polynomial-time deciders, it is a non-deterministic polynomial-time decider for $L$.
+
+    Hence proved that NP is closed under concatenation. \vspace*{-3mm}
+    \begin{flushright}
+      $ \blacksquare $
+    \end{flushright}
+  \end{solution}
+
+  \question[25] Define a \textit{coding} $\kappa$ to be a mapping,  $\kappa:\Sigma^*\rightarrow \Sigma^*$ (not necessarily one-to-one). For some string $x = x_1x_2\cdots x_n\in\Sigma^*$, we define $\kappa(x) = \kappa(x_1)\kappa(x_2)\cdots\kappa(x_n)$ and for a language $L\subseteq \Sigma^*$, we define $\kappa(L) = \{\kappa(x): x\in L \}$. Show that the class NP is closed under \textit{codings}.
+  \begin{solution}
+    We need to show that for an arbitrary language $L$, if $ L \in NP $, and if $ \kappa $ is a coding defined on the alphabet of $L$, then $ \kappa(L) \in NP $. Since $L \in NP$, there exists a non-deterministic Turing Machine $M$ that verifies $L$ in polynomial time. Then we can construct a deterministic polynomial time verifier, $V$ for $ \kappa (L) $ as follows:
+
+    $ V = $ ``On Input $ \langle w, \langle x, c \rangle \rangle $ \vspace*{-2mm}
+    \begin{enumerate}
+      \item Compute $ \kappa(x) $ from $x$. If $ \kappa(x) \neq w $, reject. Else go to step 2. \vspace*{-1mm}
+      \item Simulate $M$ on $x$ with certificate $c$, $ \langle x, c \rangle $. If $M$ accepts, \textbf{accept}; else \textbf{reject}. ''
+    \end{enumerate}
+
+    The above shows that for any string $ w \in \kappa(L) $, we have $ \langle x, c \rangle $ as certificate of $w$, where $c$ is the certificate for $x$ in $L$. Thus, if $ w = \kappa(x) $, then we make the string $ \langle x, c \rangle $ as certificate of $w$ if $c$ is the certificate for $x$. Further, the verifier $V$ for $ \kappa(L) $ can verify a string $w$ in polynomial time by leveraging the verifier $M$ for $L$. It uses the fact that if $ w \in \kappa(L) $, then there must be some string $ x \in L $ such that $ \kappa(x) = w $, and $x$ can be verified by $M$ in polynomial time with the appropriate certificate $c$.
+
+    Hence, $ \kappa(L) \in NP $, and NP is closed under codings. \vspace*{-4mm}
+    \begin{flushright}
+      $ \blacksquare $
+    \end{flushright}
+  \end{solution}
+
+
+  \question[25] Show that 2SAT $\in$  P, where 2SAT $ = \{ \phi \mid \phi \text{ is a satisfiable 2cnf-formula}\}$. You must give a high level description of the algorithm, and show that it runs in polynomial time. \\ \textit{Hint}: A disjunctive clause $(x_1 \vee x_2) \text{ is logically equivalent to } \neg x_1 \implies x_2 \text{ or to } \neg x_2 \implies x_1$.
+  \begin{solution}
+    A \texttt{cnf-formula} comprises of several clauses, each of which is connected with $ \land $s. A \texttt{2cnf-formula} has several clauses each of which has at most two literals. \texttt{2cnf-formula} is satisfiable if there exists an assignment of truth values to the variables such that the formula evaluates to true.
+
+    Consider any arbitrary \texttt{2cnf-formula} $ \phi $ with $n$ variables and $m$ clauses. Then 2SAT can be shown to be decidable in polynomial-time by the construction of a graph $ G $, and using path searching within the graph.
+
+    Let $ G = (V, E) $ be such a graph, such that: \vspace*{-2mm} \begin{align*}
+      V & = \{ x \mid x \text{ is a literal in } \phi \}                        \\
+      E & = \{ (x_1, x_2) \mid x_1 \implies x_2 \text{ is a clause in } \phi \}
+    \end{align*} \vspace*{-7mm}
+
+    Our graph will have $ 2n $ vertices, where each vertex represents a true or not true literal for each variable in $\phi$. Hence, for $n$ literals, we have $2n$ vertices, intuitively. Then for each clause $ (x_1, x_2) \in \phi$, create a directed edge from $ \neg x_1 \text{ to } x_2$ and from $ \neg x_2 \text{ to } x_1 $. This is because the clause $ (x_1 \vee x_2) $ is logically equivalent to $ \neg x_1 \implies x_2 $ and $ \neg x_2 \implies x_1 $, and signifies that if $x_1$ is not true, $x_2$ must be true for the clause to be satisfied, and vice versa. Then by this construction of edges, we ensure that there exists a directed edge $ (x_1, x_2) \in G$ iff there exists a clause $ (\neg x_1 \vee x_2) \in \phi $.
+
+    Then by our construction, we can also ensure and \textbf{claim} that a \texttt{2cnf-formula} is satisfiable iff there exists a variable $x$ such that: \vspace*{-3mm} \begin{itemize}
+      \item there is a path from $x$ to $ \neg x $ in $G$, and \vspace*{-2mm} 
+      \item there is a path from $ \neg x$ to $x$ in $G$.
+    \end{itemize}
+
+    We can quickly go about proving this claim through a simple contradiction. Suppose there are path(s) from $ x $ to $ \neg x $ and $ \neg x $ to $x$ for some variable $x$ in $G$, but there also exists a satisfying assignment for $ \phi $. Let $ p(x_1, x_2, ... , x_n) $ be this assignment. Now there can be two cases for this satisfying assignment as follows:
+    \begin{itemize}
+      \item[] \textbf{Case 1:} Let $ p(x_1, x_2, ..., x_n) $ be such that $ x = $ TRUE
+      
+      Then let the path $ x \text{ to } \neg x $ be such; $ x \to \alpha_1 \to \alpha_2 \to ... \to \alpha_n \to \neg x $. Now if $x$ is TRUE, then $\alpha_1$ must also be TRUE because there is a directed edge from $x$ to $\alpha_1$, which represents the clause $ \neg x \vee \alpha_1 $. If $ \neg x $ were FALSE (which it is, since $x$ is TRUE), $ \alpha_1 $ must be true to satisfy the clause. Applying this same reasoning recursively along the path, we get that $ \alpha_2 $ must also be true because of the clause $ \neg \alpha_1 \vee \alpha_2 $, and each subsequent $ \alpha_i $ must be TRUE because of the clause $ \neg \alpha_{i - 1} \vee \alpha_i $. This implies that $ \neg x $ must be TRUE to satisfy the clause $ \neg \alpha_n \vee \neg x $, which is a contradiction since $x$ was assigned TRUE. Thus, if there is a path from $x$ to $\neg x$, the assumption that $\phi$ is satisfiable with $x$ being TRUE is false.
+
+      \item[] \textbf{Case 2:} Let $ p(x_1, x_2, ..., x_n) $ be such that $ x = $ FALSE
+
+      Then let the path $ \neg x \text{ to } x $ be such; $ \neg x \to \alpha_1 \to \alpha_2 \to ... \to \alpha_n \to x $. 
+      % Now if $x$ is FALSE, then $ \neg x $ is true. Then $ \alpha_1 $ must be true because of the clause $ \neg (\neg x) \vee \alpha_1 $. Applying this same reasoning recursively along the path, we get that $ \alpha_2 $ must also be true because of the clause $ \neg \alpha_1 \vee \alpha_2 $, and each subsequent $ \alpha_i $ must be TRUE because of the clause $ \neg \alpha_{i - 1} \vee \alpha_i $. This implies that $ x $ must be TRUE to satisfy the clause $ \neg \alpha_n \vee x $, which is a contradiction since $x$ was assigned FALSE. Thus, if there is a path from $ \neg x $ to $x$, the assumption that $\phi$ is satisfiable with $x$ being FALSE is false.
+      We follow the same reasoning as in Case 1, but with the negation of $x$ being TRUE, and ultimately arrive at $x$ being TRUE, which is a contradiction. Thus, if there is a path from $ \neg x $ to $x$, the assumption that $\phi$ is satisfiable with $x$ being FALSE is false.
+    \end{itemize}
+
+    Through this, we can conclude that by checking for the existence of a path from $x$ to $ \neg x $ or $ \neg x $ to $x$ in $G$, we can determine whether a \texttt{2cnf-formula} $\phi$ is satisfiable or not. The existance of such a path can be determined by trivial graph-traversal algorithms such as DFS or BFS, both of which take polynomial time of $ O(V + E) $ time where $V$ is the number of vertices and $E$ is the number of edges in $G$. Since $G$ has $2n$ vertices and $m$ edges, the algorithm runs in $ O(n + m) $ time, which is polynomial time. Thus, 2SAT is decidable in polynomial time, and 2SAT $\in$ P.
+
+    A high level description following from the above construction and proof can be given as follows: \vspace*{-2mm}
+    \begin{enumerate}
+      \item Construct the graph $G$ as described above, that is, for each clause $ (x_1, x_2) \in \phi$, create a directed edge from $ \neg x_1 \text{ to } x_2$ and from $ \neg x_2 \text{ to } x_1 $. \vspace*{-1mm}
+      \item For each variable $x_i$, check if there is a path from $x_i$ to $ \neg x_i $. If such a path exists, reject. \vspace*{-1mm}
+      \item For each variable $x_i$, check if there is a path from $ \neg x_i $ to $x_i$. If such a path exists, reject. \vspace*{-1mm}
+      \item If all variables have been visited, accept.
+    \end{enumerate}
+
+    The above algorithm runs in polynomial time. The creation of the graph can be done in poly-time since we create two vertices for each variable in the \texttt{2cnf-formula}, and create edges for each clause in the formula. The graph traversal in steps 2 and 3 can be done in poly-time as well; perforing a DFA or BFS for each vertex to find paths takes $O(V + E)$ time per search. Since we are doing this for $2n$ vertices, the total time taken is $O(2n(2n + E))$, which is polynomial time. Thus, the algorithm runs in polynomial time, and 2SAT $\in$ P. 
+
+  \end{solution}
+
+\end{questions}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

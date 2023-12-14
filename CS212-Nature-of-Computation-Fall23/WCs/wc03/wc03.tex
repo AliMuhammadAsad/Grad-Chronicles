@@ -1,0 +1,81 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage[a4paper]{geometry}
+\usepackage{hyperref}
+\usepackage{mdframed}
+
+\title{Weekly Challenge 03: Closure of Regular Languages}
+\author{CS 212 Nature of Computation\\Habib University \\ Ali Muhammad Asad (aa07190)}
+\date{Fall 2023}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\printanswers
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+  
+\titledquestion{Operation F}
+
+Let us define a unary operation, $F$, on languages as follows.
+
+\begin{mdframed}
+  $F(L) = \{ f(w) \mid w\in L\}$ where, given
+  \begin{itemize}
+  \item $w=w_1w_2w_3\ldots w_n$, and
+  \item each $w_i\in\Sigma$,
+  \end{itemize}
+  $f(w) = w_nw_{n-1}w_{n-2}\ldots w_1$.
+\end{mdframed}
+
+Prove or disprove that the class of regular languages is closed under $F$.
+
+% Uncomment below to enter your solution.
+\begin{solution}
+The above definition of the unary operator $F$ states that for any language $L$, the operation $F$ reverses each string in $L$, that is, it reverses the order of the characters in any arbitrary string $w$. 
+% So if $w = w_1 w_2 ... w_n$, then $f(w) = w_n w_{n - 1} ... w_1$. 
+So $F(L)$ consists of all the strings obtained by reversing the strings in a language $L$.  
+
+For any regular langauge $L$, let $M = (Q, \sum, \delta, q_o, F)$ be the DFA that recognizes $L$.
+
+Now for the language $F(L)$, we can build an NFA $M'$ as follows: \vspace*{-3mm}
+\begin{enumerate}
+  \item has the same set of states as $M$, \vspace*{-2mm}
+  \item has the same alphabet as $M$, \vspace*{-2mm}
+  \item reverses all the transitions in $M$, \vspace*{-2mm}
+  \item make the start state of $M$ the final state of $M'$, and \vspace*{-2mm}
+  \item add a new start state $ q_o' $ that has an $\varepsilon$ transition to each start state of $M$, turning the final states of $M$ into normal states of $M'$
+\end{enumerate}
+
+Formally, $ M' = (Q', \sum_\varepsilon, \delta', q_o', q_o) $ where: \vspace*{-3mm}
+\begin{enumerate}
+  \item $ Q' = Q \cup \{ q_o' \} $ as $ q_o' \notin Q $, \vspace*{-2mm}
+  \item has the final state the same as the starting state of $M$, \vspace*{-2mm}
+  \item $\delta'$ is defined as: \vspace*{-3mm} \begin{enumerate}
+    \item[i] $ \delta'(q_o', \varepsilon) = q_f $ where $ q_f \in F $ \vspace*{-1.5mm}
+    \item[ii] $ \delta'(q, a) = p \in M' $ for each transition $ \delta(p, a) = q \in M $ and $ p, q \in Q, a \in \sum $ 
+  \end{enumerate}
+\end{enumerate}
+
+From (3.i), we can transition from the starting state $q_o'$ to any of the final states $ q_f \in F$, via $\varepsilon$ transition thus starting in reverse order. From (3.ii), we can transition from any state $q$ to any state $p$ in $M'$ if there exists a transition from $p$ to $q$ in $M$.
+
+Hence $ \delta' $ is $\delta$ with the direction of all arcs reversed. So for any path that exists in $M$ from $q_o$ to $q_f$, there exists a path in $M'$ from $q_f$ to $q_o$ and vice versa. 
+
+With this construction of $M'$ we have created an NFA that will process a string $w$ in a language $L$ in reverse order. So if $w \in L$, then $f(w) \in F(L)$ and vice versa.
+
+Thus, $M'$ recognizes $F(L)$ for any arbitrary language $L$ where $M$ recognizes $L$, therefore, we have shown that $F(L)$ is a regular language, and consequenty, the class of regular languages is closed under the unary operator $F$. \vspace*{-5mm}\begin{flushright}
+  $\square$
+\end{flushright}
+
+\end{solution}  
+\end{questions}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
