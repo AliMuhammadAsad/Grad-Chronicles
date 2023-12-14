@@ -1,59 +1,0 @@
-Script started on 2023-08-28 12:10:48+05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="143" LINES="33"]
-[?2004h]0;alimuhammad@alimuhammad-Inspiron-7559: ~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[01;32malimuhammad@alimuhammad-Inspiron-7559[00m:[01;34m~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[00m$ a[Knano aa07190.txt
-[?2004l[?2004h[?1049h[22;0;0t[1;33r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[31;66H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 6.2                                                      aa07190.txt                                                                [1;142H(B[m[32d(B[0;7m^G(B[m Help[32;16H(B[0;7m^O(B[m Write Out   (B[0;7m^W(B[m Where Is    (B[0;7m^K(B[m Cut[32;61H(B[0;7m^T(B[m Execute     (B[0;7m^C(B[m Location    (B[0;7mM-U(B[m Undo[106G(B[0;7mM-A(B[m Set Mark   (B[0;7mM-](B[m To Bracket[33d(B[0;7m^X(B[m Exit[33;16H(B[0;7m^R(B[m Read File   (B[0;7m^\(B[m Replace     (B[0;7m^U(B[m Paste[61G(B[0;7m^J(B[m Justify     (B[0;7m^/(B[m Go To Line  (B[0;7mM-E(B[m Redo[106G(B[0;7mM-6(B[m Copy[121G(B[0;7m^Q(B[m Where Was[2d[?12l[?25h[?25l[1;81H(B[0;7m*[142G(B[m[?12l[?25h[2dC[?25l[?12l[?25hO[?25l[?12l[?25hl[?25l[?12l[?25hu[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[K[?25lColumn1[38;5;208m [39m(B[mColumn2[38;5;208m [39m(B[mColumn3[3dvalue1[38;5;208m  [39m(B[mvalueA[38;5;208m  [39m(B[m1[4dvalue2[38;5;208m  [39m(B[mvalueB[38;5;208m  [39m(B[m2[5dvalue3[38;5;208m  [39m(B[mvalueC[38;5;208m  [39m(B[m3[6dvalue4[38;5;208m  [39m(B[mvalueD[38;5;208m  [39m(B[m4[7dvalue5[38;5;208m  [39m(B[mvalueE[38;5;208m  [39m(B[m5[8dvalue6[38;5;208m  [39m(B[mvalueF[38;5;208m  [39m(B[m6[9dvalue7[38;5;208m  [39m(B[mvalueG[38;5;208m  [39m(B[m7[10dvalue8[38;5;208m  [39m(B[mvalueH[38;5;208m  [39m(B[m8[11dvalue9[38;5;208m  [39m(B[mvalueI[38;5;208m  [39m(B[m9[12dvalue0[38;5;208m  [39m(B[mvalueJ[38;5;208m  [39m(B[m10[31d[K[12;19H[?12l[?25h[?25l[31d(B[0;7mSave modified buffer?                                                                                                                          [32;1H Y(B[m Yes[K[33d(B[0;7m N(B[m No  [33;16H (B[0;7m^C(B[m Cancel[K[31;23H[?12l[?25h[?25l[32d(B[0;7m^G(B[m Help[32;36H(B[0;7mM-D(B[m DOS Format[32;71H(B[0;7mM-A(B[m Append[32;106H(B[0;7mM-B(B[m Backup File[33d(B[0;7m^C(B[m Cancel[17G         [33;36H(B[0;7mM-M(B[m Mac Format[33;71H(B[0;7mM-P(B[m Prepend[33;106H(B[0;7m^T(B[m Browse[31d(B[0;7mFile Name to Write: aa07190.txt(B[m[?12l[?25h[?25l[31;64H[1K (B[0;7m[ Writing... ](B[m[K[1;81H(B[0;7m [142G(B[m[31;63H(B[0;7m[ Wrote 11 lines ](B[m[J[33d[?12l[?25h[33;1H[?1049l[23;0;0t[?1l>[?2004l[?2004h]0;alimuhammad@alimuhammad-Inspiron-7559: ~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[01;32malimuhammad@alimuhammad-Inspiron-7559[00m:[01;34m~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[00m$ chmod o+rw aa0790[K[K190.txt
-[?2004l[?2004h]0;alimuhammad@alimuhammad-Inspiron-7559: ~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[01;32malimuhammad@alimuhammad-Inspiron-7559[00m:[01;34m~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[00m$ head -n 3 aa07190.txt
-[?2004lColumn1	Column2	Column3
-value1	valueA	1
-value2	valueB	2
-[?2004h]0;alimuhammad@alimuhammad-Inspiron-7559: ~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[01;32malimuhammad@alimuhammad-Inspiron-7559[00m:[01;34m~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[00m$ tail -n 4 aa07190.txt
-[?2004lvalue7	valueG	7
-value8	valueH	8
-value9	valueI	9
-value0	valueJ	10
-[?2004h]0;alimuhammad@alimuhammad-Inspiron-7559: ~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[01;32malimuhammad@alimuhammad-Inspiron-7559[00m:[01;34m~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[00m$ sed -n '6p' aa07190.txt
-[?2004lvalue5	valueE	5
-[?2004h]0;alimuhammad@alimuhammad-Inspiron-7559: ~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[01;32malimuhammad@alimuhammad-Inspiron-7559[00m:[01;34m~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[00m$ cut -f 3 aa07190.txt
-[?2004lColumn3
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-[?2004h]0;alimuhammad@alimuhammad-Inspiron-7559: ~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[01;32malimuhammad@alimuhammad-Inspiron-7559[00m:[01;34m~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[00m$ cut -f 1 aa07190.txt | sort
-[?2004lColumn1
-value0
-value1
-value2
-value3
-value4
-value5
-value6
-value7
-value8
-value9
-[?2004h]0;alimuhammad@alimuhammad-Inspiron-7559: ~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[01;32malimuhammad@alimuhammad-Inspiron-7559[00m:[01;34m~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[00m$ cut -f 3 aa07190.txt | sort -n |  tail -n 1
-[?2004l10
-[?2004h]0;alimuhammad@alimuhammad-Inspiron-7559: ~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[01;32malimuhammad@alimuhammad-Inspiron-7559[00m:[01;34m~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[00m$ wc -w < aa07190.txt > a[Kcount.txt
-[?2004l[?2004h]0;alimuhammad@alimuhammad-Inspiron-7559: ~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[01;32malimuhammad@alimuhammad-Inspiron-7559[00m:[01;34m~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[00m$ wc -c < aa07190.txt >> count.txt [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kt
-[?2004l[?2004h]0;alimuhammad@alimuhammad-Inspiron-7559: ~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[01;32malimuhammad@alimuhammad-Inspiron-7559[00m:[01;34m~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[00m$ cut -f 2 aa07190.txt | tac > rev erse.txt
-[?2004l[?2004h]0;alimuhammad@alimuhammad-Inspiron-7559: ~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[01;32malimuhammad@alimuhammad-Inspiron-7559[00m:[01;34m~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[00m$ cut -c 1 aa07190.txt | uc[K[Kcut -c 1
-[?2004lC
-v
-v
-v
-v
-v
-v
-v
-v
-v
-v
-[?2004h]0;alimuhammad@alimuhammad-Inspiron-7559: ~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[01;32malimuhammad@alimuhammad-Inspiron-7559[00m:[01;34m~/Desktop/Habib/Sem5/OS/CS232-Operating-Systems-Fall23/Labs/lab2/script[00m$ exit
-[?2004lexit
-
-Script done on 2023-08-28 12:13:24+05:00 [COMMAND_EXIT_CODE="0"]
