@@ -4,7 +4,7 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 
 ## Directory Structure
 
-<!-- ``` -->
+```
 Grad Chronicles
 ├── EE/CE 354/361 - Introduction to Probability and Statistics 
 │   ├── Exams
@@ -87,5 +87,5 @@ Grad Chronicles
     ├── Labs
     └── README.md
 
-<!-- ``` -->
+```
 
