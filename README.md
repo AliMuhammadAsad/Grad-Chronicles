@@ -88,20 +88,20 @@ Grad Chronicles
     └── README.md
 
 ``` -->
-##### **EE/CE 354/361 - Introduction to Probability and Statistics**
+#### **EE/CE 354/361 - Introduction to Probability and Statistics**
 - **Exams**
 - **Homeworks**
 - **Programming Assignments**
 - **Quizzes**
 
-##### **CE/MATH 362/322 - Statistics and Inferencing (Iftikhara Pro Max)**
+#### **CE/MATH 362/322 - Statistics and Inferencing (Iftikhara Pro Max)**
 - **Activities**
 - **Exams**
 - **Homeworks**
 - **Lectures**
 - **Student Engagement Level (from Fall 2022)**
 
-##### **CS101 - Algorithmic Problem Solving (Programming Fundamentals)**
+#### **CS101 - Algorithmic Problem Solving (Programming Fundamentals)**
 - **Fall 2021 Iteration**
 - **Fall 2023 Iteration (TA)**
     - **Lab Worksheets + Hackerrank Labs**
