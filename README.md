@@ -88,6 +88,7 @@ Grad Chronicles
     └── README.md
 
 ``` -->
+<h6>
 
 #### **EE/CE 354/361 - Introduction to Probability and Statistics**
    - **Exams**
@@ -171,3 +172,5 @@ Grad Chronicles
    - **Homeworks**
    - **Labs**
    - **README.md**
+
+</h6>
