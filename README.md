@@ -88,89 +88,85 @@ Grad Chronicles
     └── README.md
 
 ``` -->
-<h6>
 
-#### **EE/CE 354/361 - Introduction to Probability and Statistics**
-   - **Exams**
-   - **Homeworks**
-   - **Programming Assignments**
-   - **Quizzes**
+#### <sub><sup><b>EE/CE 354/361 - Introduction to Probability and Statistics</b></sup></sub>
+   - <sub><sup><b>Exams</b></sup></sub>
+   - <sub><sup><b>Homeworks</b></sup></sub>
+   - <sub><sup><b>Programming Assignments</b></sup></sub>
+   - <sub><sup><b>Quizzes</b></sup></sub>
 
-#### **CE/MATH 362/322 - Statistics and Inferencing (Iftikhara Pro Max)**
-   - **Activities**
-   - **Exams**
-   - **Homeworks**
-   - **Lectures**
-   - **Student Engagement Level (from Fall 2022)**
+#### <sub><sup><b>CE/MATH 362/322 - Statistics and Inferencing (Iftikhara Pro Max)</b></sup></sub>
+   - <sub><sup><b>Activities</b></sup></sub>
+   - <sub><sup><b>Exams</b></sup></sub>
+   - <sub><sup><b>Homeworks</b></sup></sub>
+   - <sub><sup><b>Lectures</b></sup></sub>
+   - <sub><sup><b>Student Engagement Level (from Fall 2022)</b></sup></sub>
 
-#### **CS101 - Algorithmic Problem Solving (Programming Fundamentals)**
-   - **Fall 2021 Iteration**
-   - **Fall 2023 Iteration (TA)**
-     - **Lab Worksheets + Hackerrank Labs**
-     - **Midterms**
-     - **Practice Worksheets + Hackerrank Labs**
-     - **Seminar Worksheets**
+#### <sub><sup><b>CS101 - Algorithmic Problem Solving (Programming Fundamentals)</b></sup></sub>
+   - <sub><sup><b>Fall 2021 Iteration</b></sup></sub>
+   - <sub><sup><b>Fall 2023 Iteration (TA)</b></sup></sub>
+     - <sub><sup><b>Lab Worksheets + Hackerrank Labs</b></sup></sub>
+     - <sub><sup><b>Midterms</b></sup></sub>
+     - <sub><sup><b>Practice Worksheets + Hackerrank Labs</b></sup></sub>
+     - <sub><sup><b>Seminar Worksheets</b></sup></sub>
 
-#### **CS102 - Data Structures and Algorithms (Spring 2022 and Fall 2022 [TA])**
-   - **Homeworks**
-   - **Labs**
-   - **Quizzes**
-   - **README.md**
+#### <sub><sup><b>CS102 - Data Structures and Algorithms (Spring 2022 and Fall 2022 [TA])</b></sup></sub>
+   - <sub><sup><b>Homeworks</b></sup></sub>
+   - <sub><sup><b>Labs</b></sup></sub>
+   - <sub><sup><b>Quizzes</b></sup></sub>
+   - <sub><sup><b>README.md</b></sup></sub>
 
-#### **CS113 - Discrete Mathematics (Ducks on Meth)**
-   - **Spring 2022 Iteration**
-   - **Spring 2023 Iteration (TA)**
-   - **README.md**
+#### <sub><sup><b>CS113 - Discrete Mathematics (Ducks on Meth)</b></sup></sub>
+   - <sub><sup><b>Spring 2022 Iteration</b></sup></sub>
+   - <sub><sup><b>Spring 2023 Iteration (TA)</b></sup></sub>
+   - <sub><sup><b>README.md</b></sup></sub>
 
-#### **CS130 - Digital Logic and Design**
-   - **Homeworks**
-   - **Labs**
-   - **Mid**
+#### <sub><sup><b>CS130 - Digital Logic and Design</b></sup></sub>
+   - <sub><sup><b>Homeworks</b></sup></sub>
+   - <sub><sup><b>Labs</b></sup></sub>
+   - <sub><sup><b>Mid</b></sup></sub>
 
-#### **CS201 - Data Structures II**
-   - **Homeworks (0-4)**
-   - **Lectures**
-   - **Quizzes**
-   - **Weekly Quizzes**
-   - **README.md**
+#### <sub><sup><b>CS201 - Data Structures II</b></sup></sub>
+   - <sub><sup><b>Homeworks (0-4)</b></sup></sub>
+   - <sub><sup><b>Lectures</b></sup></sub>
+   - <sub><sup><b>Quizzes</b></sup></sub>
+   - <sub><sup><b>Weekly Quizzes</b></sup></sub>
+   - <sub><sup><b>README.md</b></sup></sub>
 
-#### **CS212 - Nature of Computation (Cats Compute - on Catnip)**
-   - **Assignments**
-   - **Finals**
-   - **Midterms**
-   - **Quizzes**
-   - **Book Solutions**
-   - **Weekly Challenges**
-   - **Course Book**
-   - **README.md**
+#### <sub><sup><b>CS212 - Nature of Computation (Cats Compute - on Catnip)</b></sup></sub>
+   - <sub><sup><b>Assignments</b></sup></sub>
+   - <sub><sup><b>Finals</b></sup></sub>
+   - <sub><sup><b>Midterms</b></sup></sub>
+   - <sub><sup><b>Quizzes</b></sup></sub>
+   - <sub><sup><b>Book Solutions</b></sup></sub>
+   - <sub><sup><b>Weekly Challenges</b></sup></sub>
+   - <sub><sup><b>Course Book</b></sup></sub>
+   - <sub><sup><b>README.md</b></sup></sub>
 
-#### **CS224 - Object Oriented Programming and Design Methodologies (OOPS)**
-   - **Fall 2021 Iteration (Credit to Meesum Ali Qazalbash)**
-   - **Fall 2022 Iteration**
-   - **Fall 2023 Iteration (TA)**
-   - **Notes**
-   - **README.md**
+#### <sub><sup><b>CS224 - Object Oriented Programming and Design Methodologies (OOPS)</b></sup></sub>
+   - <sub><sup><b>Fall 2021 Iteration (Credit to Meesum Ali Qazalbash)</b></sup></sub>
+   - <sub><sup><b>Fall 2022 Iteration</b></sup></sub>
+   - <sub><sup><b>Fall 2023 Iteration (TA)</b></sup></sub>
+   - <sub><sup><b>Notes</b></sup></sub>
+   - <sub><sup><b>README.md</b></sup></sub>
 
-#### **CS232 - Operating Systems (U either turn out like me, or retain your sanity)**
-   - **Finals**
-   - **Labs**
-   - **Lectures**
-   - **Ostep Codes**
-   - **Quizzes**
-   - **Course Book**
-   - **README.md**
+#### <sub><sup><b>CS232 - Operating Systems (U either turn out like me, or retain your sanity)</b></sup></sub>
+   - <sub><sup><b>Finals</b></sup></sub>
+   - <sub><sup><b>Labs</b></sup></sub>
+   - <sub><sup><b>Lectures</b></sup></sub>
+   - <sub><sup><b>Ostep Codes</b></sup></sub>
+   - <sub><sup><b>Quizzes</b></sup></sub>
+   - <sub><sup><b>Course Book</b></sup></sub>
+   - <sub><sup><b>README.md</b></sup></sub>
 
-#### **CS330 - Computer Architecture**
-   - **Homeworks**
-   - **Lab Codes**
-   - **Lab Test Benches**
-   - **Pipelined Processor**
-   - **Single Cycle Processor** 
+#### <sub><sup><b>CS330 - Computer Architecture</b></sup></sub>
+   - <sub><sup><b>Homeworks</b></sup></sub>
+   - <sub><sup><b>Lab Codes</b></sup></sub>
+   - <sub><sup><b>Lab Test Benches</b></sup></sub>
+   - <sub><sup><b>Pipelined Processor</b></sup></sub>
+   - <sub><sup><b>Single Cycle Processor</b></sup></sub>
 
-
-#### **CS335 - Database Management Systems (Query Much?)**
-   - **Homeworks**
-   - **Labs**
-   - **README.md**
-
-</h6>
+#### <sub><sup><b>CS335 - Database Management Systems (Query Much?)</b></sup></sub>
+   - <sub><sup><b>Homeworks</b></sup></sub>
+   - <sub><sup><b>Labs</b></sup></sub>
+   - <sub><sup><b>README.md</b></sup></sub>
