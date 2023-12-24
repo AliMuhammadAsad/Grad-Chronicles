@@ -162,11 +162,11 @@ Grad Chronicles
 
 └── CS335 - Database Management Systems (Query Much?)
 
-    ├── Homeworks
+|   ├── Homeworks
 
-    ├── Labs
+|   ├── Labs
 
-    └── README.md
+|   └── README.md
 
 <!-- ``` -->
 
