@@ -88,7 +88,7 @@ Grad Chronicles
     └── README.md
 
 ``` -->
-#### **EE/CE 354/361 - Introduction to Probability and Statistics**
+#### [EE/CE 354/361 - Introduction to Probability and Statistics](CE-EE-361-354-Probability-and-Statistics)
 - **Exams**
 - **Homeworks**
 - **Programming Assignments**
