@@ -94,7 +94,7 @@ Grad Chronicles
 - **Programming Assignments**
 - **Quizzes**
 
-#### [CE/MATH 362/322 - Statistics and Inferencing (Iftikhara Pro Max)](CE-Math-362-322-Stats-and-Inferencing)
+#### [CE/MATH 362/322 - Statistics and Inferencing](CE-Math-362-322-Stats-and-Inferencing) (Iftikhara Pro Max)
 - **Activities**
 - **Exams**
 - **Homeworks**
@@ -109,13 +109,13 @@ Grad Chronicles
     - **Practice Worksheets + Hackerrank Labs**
     - **Seminar Worksheets**
 
-#### [CS102 - Data Structures and Algorithms (Spring 2022 and Fall 2022 [TA])](CS102-DSA)
+#### [CS102 - Data Structures and Algorithms](CS102-DSA) (Spring 2022 and Fall 2022 [TA])
 - **Homeworks**
 - **Labs**
 - **Quizzes**
 - **README.md**
 
-#### [CS113 - Discrete Mathematics (Ducks on Meth)](CS113-Discrete-Mathematics)
+#### [CS113 - Discrete Mathematics](CS113-Discrete-Mathematics) (Ducks on Meth)
 - **Spring 2022 Iteration**
 - **Spring 2023 Iteration (TA)**
 - **README.md**
@@ -132,7 +132,7 @@ Grad Chronicles
 - **Weekly Quizzes**
 - **README.md**
 
-#### [CS212 - Nature of Computation (Cats Compute - on Catnip)](CS212-Nature-of-Computation-Fall23)
+#### [CS212 - Nature of Computation](CS212-Nature-of-Computation-Fall23) (Cats Compute - on Catnip)
 - **Assignments**
 - **Finals**
 - **Midterms**
@@ -142,14 +142,14 @@ Grad Chronicles
 - **Course Book**
 - **README.md**
 
-#### [CS224 - Object Oriented Programming and Design Methodologies (OOPS)](CS224-Object-Oriented-Programming)
+#### [CS224 - Object Oriented Programming and Design Methodologies](CS224-Object-Oriented-Programming) (OOPS)
 - **Fall 2021 Iteration (Credit to [Meesum Ali Qazalbash](https://github.com/qazalbash/))**
 - **Fall 2022 Iteration**
 - **Fall 2023 Iteration (TA)**
 - **Notes**
 - **README.md**
 
-#### [CS232 - Operating Systems (U either turn out like me, or retain your sanity)](CS232-Operating-Systems-Fall23)
+#### [CS232 - Operating Systems](CS232-Operating-Systems-Fall23) (U either turn out like me, or retain your sanity)
 - **Finals**
 - **Labs**
 - **Lectures**
@@ -166,7 +166,7 @@ Grad Chronicles
 - **Single Cycle Processor** 
 
 
-#### [CS335 - Database Management Systems (Query Much?)](CS335-Database-Management-Systems)
+#### [CS335 - Database Management Systems](CS335-Database-Management-Systems) (Query Much?)
 - **Homeworks**
 - **Labs**
 - **README.md**
