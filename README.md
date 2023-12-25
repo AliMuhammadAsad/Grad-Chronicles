@@ -87,6 +87,16 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Labs**
 - **README.md**
 
+#### [EE/CE-468 Mobile Robotics](EE-CE-468-Mobile-Robotics) (I dare you xD) <img alt="Matlab" src="Assets/matlab.png" width="32px" /> <img alt="Simulink" src="Assets/simulink.png" width="32px" /> <img alt="Gazebo" src="Assets/gazebo.png" width="32px" />
+- **[Final Project - Smart Walking Cane for the Visually Impaired](https://github.com/AliMuhammadAsad/Mobile-Robotics-Project)**
+- **Assignments** 
+    - **Assignment1**
+    - **Assignment2**
+    - **Assignment3**
+    - **Assignment4**
+- **Quizzes**
+
+
 
 <!-- 
 ```
