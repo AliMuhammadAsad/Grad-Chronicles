@@ -76,6 +76,7 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 
 #### [CS330 - Computer Architecture](CS330-Computer-Architecture) ![Verilog](https://img.shields.io/badge/-Verilog-orange?style=flat&logo=verilog&logoColor=white) ![VHDL](https://img.shields.io/badge/-VHDL-green?style=flat&logo=VHDL&logoColor=white) ![RISC-V](https://img.shields.io/badge/-RISC-purple?style=flat&logo=RISC&logoColor=white)
 - **Homeworks**
+- **Quizzes**
 - **Lab Codes**
 - **Lab Test Benches**
 - **Pipelined Processor**
@@ -88,6 +89,7 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **README.md**
 
 #### [EE/CE-468 Mobile Robotics](EE-CE-468-Mobile-Robotics) (I dare you xD) <img alt="Matlab" src="Assets/matlab.png" width="32px" /> <img alt="Simulink" src="Assets/simulink.png" width="32px" /> <img alt="Gazebo" src="Assets/gazebo.png" width="32px" />
+
 - **[Final Project - Smart Walking Cane for the Visually Impaired](https://github.com/AliMuhammadAsad/Mobile-Robotics-Project)**
 - **Assignments** 
     - **Assignment1**
