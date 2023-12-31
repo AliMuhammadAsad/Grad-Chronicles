@@ -98,6 +98,14 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
     - **Assignment4**
 - **Quizzes**
 
+#### [MATH-205 Linear Algebra](MATH-205-Linear-Algebra) (Wahiyat Tareen Course)
+- **Homeworks and Assignments**
+- **Lectures**
+- **Mids and Finals**
+- **Quizzes** (Fall22 and Spring23)
+    - **Sir Aeyaz** 
+    - **Miss Sajal**
+
 
 
 <!-- 
