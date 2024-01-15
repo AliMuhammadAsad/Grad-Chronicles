@@ -143,42 +143,6 @@
         Thus, as $n$ approaches infinity, the ratio $ p(n) / n^k $ approaches infinity which implies that $ p(n) $ grows strictly faster than $ cn^k $ for any constant $c$, proving that $ p(n) = \omega(n^k) $.
       \end{proof}
     \end{parts}
-    % \begin{parts}
-    %   \part If $ k \geq d $, then $ p(n) = O(n^k) $.
-    %   $ k \geq d $, then $ n^k \geq n^d $
-
-    %   \begin{tabular}{r l}
-    %     $ p(n) $ & $ = \sum_{i = 0}^d a_i n^i $ \\
-    %     & $ = a_0 + a_1n + a_2n^2 ... a_dn^d $ \\
-    %     & $ \leq |a_0|n^k + |a_1|n^k + ... + |a_d|n^k = k_0n^k$ \\
-    %     $ p(n) $ & $ \leq k_0 n^k $
-    %   \end{tabular}
-
-    %   When $ k \geq d $, $ \forall_{n \geq 1} : p(n) \leq k_0 n^k, \;\; k_0 = \sum_{i = 0}^d |a_i| $
-
-    %   Therefore, $ p(n) = O(n^k) $.
-
-    %   % $k\ge d$ implies that $n^k\ge n^d$ for all $n\ge1$, so
-    %   % \[
-    %   %     0 \le p(n) \le c_2n^d \le c_2n^k
-    %   % \]
-    %   % for all $n\ge\max{n_0,1}$.
-    %   % Hence, $p(n)=O(n^k)$.
-
-    %   \part If $ k \leq d $, then $ p(n) = \Omega(n^k) $. $ k \leq d $, then $ n^k \leq n^d $
-
-    %   \begin{tabular}{r l}
-    %     $ p(n) $ & $ = \sum_{i = 0}^d a_i n^i $ \\
-    %     & $ = a_0 + a_1n + a_2n^2 ... a_dn^d $ \\
-    %     & $ \geq |a_0|n^k + |a_1|n^k + ... + |a_d|n^k = k_0n^k$ \\
-    %     $ p(n) $ & $ \geq k_0 n^k $
-    %   \end{tabular}
-
-    %   When $ k \leq d $, $ \forall_{n \geq 1} : p(n) \geq k_0 n^k, \;\; k_0 = \sum_{i = 0}^d |a_i| $
-
-    %   Therefore, $ p(n) = \Omega(n^k) $.
-
-    % \end{parts}
   \end{solution}
 
   \question
@@ -187,13 +151,13 @@
   \begin{table}[H]
     \centering
     \begin{tabular}{c | c c | c | c | c | c | c |}
-                  & $A$           & $B$            & $O$ & $o$ & $\Omega$ & $\omega$ & $ \Theta $ \\ \hline
-      \textbf{a.} & $ \lg^k n $   & $ n^\epsilon $ &     &     &          &          &            \\ \hline
-      \textbf{b.} & $ n^k $       & $ c^n $        &     &     &          &          &            \\ \hline
-      \textbf{c.} & $ \sqrt{n} $  & $ n^{\sin n} $ &     &     &          &          &            \\ \hline
-      \textbf{d.} & $ 2^n $       & $ 2^{n/2} $    &     &     &          &          &            \\ \hline
-      \textbf{e.} & $ n^{\lg c} $ & $ c^{\lg n} $  &     &     &          &          &            \\ \hline
-      \textbf{f.} & $ \lg(n!) $   & $ \lg(n^n) $   &     &     &          &          &            \\ \hline
+      & $A$ & $B$ & $O$ & $o$ & $\Omega$ & $\omega$ & $ \Theta $ \\ \hline
+      \textbf{a.} & $ \lg^k n $ & $ n^\epsilon $ & yes & yes & no & no & no \\ \hline
+      \textbf{b.} & $ n^k $ & $ c^n $ & yes & yes & no & no & no \\ \hline
+      \textbf{c.} & $ \sqrt{n} $ & $ n^{\sin n} $ & no & no & no & no & no \\ \hline
+      \textbf{d.} & $ 2^n $ & $ 2^{n/2} $ & no & no & yes & yes & no \\ \hline
+      \textbf{e.} & $ n^{\lg c} $ & $ c^{\lg n} $ & yes & no & yes & no & yes \\ \hline
+      \textbf{f.} & $ \lg(n!) $ & $ \lg(n^n) $ & yes & no & yes & no & yes \\ \hline
     \end{tabular}
   \end{table}
 
