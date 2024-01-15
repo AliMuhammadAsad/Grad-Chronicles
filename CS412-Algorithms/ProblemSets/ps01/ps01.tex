@@ -1,0 +1,207 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Exam %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[addpoints]{exam}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath, amssymb, amsthm, amsfonts, geometry, venndiagram}
+\usepackage{graphicx, xcolor, color, wrapfig, parskip, float, tabularx}
+\usepackage[breaklinks]{hyperref}
+\usepackage{colortbl}
+\usepackage{listings, mdframed, subfig, matlab-prettifier, hyperref}
+\usepackage{lipsum, bookmark, booktabs, empheq, titlesec, verbatim, subfig, pdfpages, comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{codebackground}{rgb}{0.95,0.95,0.95}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0.13,0.29,0.53}
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+\definecolor{softgray}{rgb}{0.95, 0.95, 0.95}
+
+% \lstset{
+%     style=matlab-editor,
+%     numbers=left, % Add line numbers
+%     backgroundcolor=\color{softgray}, % Set background color to soft gray
+%     numberstyle=\tiny\color{black}, % Optional: make line numbers small and gray
+%     stepnumber=1, % Number every line
+%     numbersep=2pt, % How far the line-numbers are from the code
+% }
+\lstset{
+    language=Matlab,
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codebackground},
+    commentstyle=\color{deepGreen},
+    keywordstyle=\color{blue}, 
+    stringstyle=\color{red},  
+    numbers=left,
+    numberstyle=\tiny\color{codegray},
+    rulecolor=\color{black},
+    frame=single,
+    showstringspaces=false,
+    breaklines=true,
+    tabsize=4,
+    captionpos=b,
+    xleftmargin=10pt
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Header and Footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Algorithms: Design and Analysis}{Problem Set 01}{CS 412}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+% \boxedpoints
+\printanswers
+\qformat{}  %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \title{{\textbf{Algorithms: Design and Analysis - CS 412}} 
+% {\textbf{Problem Set 01: Asymptotic Analysis}}
+% }
+
+% % \author{}
+% \date{}
+\title{Algorithms: Design and Analysis - CS 412 }
+\author{Problem Set 01: Asymptotic Analysis}
+\date{}
+
+% \pgfplotsset{compat=1.18}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+  \question
+  \textbf{1. } Let $$ p(n) = \sum_{i = 0}^d a_i n^i $$
+  where $ a_d > 0 $, be a degree-$d$ polynomial in $ n $ and let $k$ be a constant. Use the definition of the asymptotic notations to prove the following properties:
+
+  \begin{parts}
+    \part If $ k \geq d $, then $ p(n) = O(n^k) $.
+    \part If $ k \leq d $, then $ p(n) = \Omega(n^k) $.
+    \part If $ k = d $, then $ p(n) = \Theta(n^k) $.
+    \part If $ k > d $, then $ p(n) = o(n^k) $.
+    \part If $ k < d $, then $ p(n) = \omega(n^k) $.
+  \end{parts}
+
+  \begin{solution}
+    \begin{parts}
+      \part If $ k \geq d $, then $ p(n) = O(n^k) $.
+
+      Definition of Big-Oh: $ f(n) = O(g(n)) $ if there exists positive constants $c$ and $n_0$ such that $ 0 \leq f(n) \leq c.g(n) \;\; \forall n \geq n_0 $
+      \begin{proof}
+        Choose $ c = \sum_{i = 0}^d |a_i| $ and $ n_0 = 1 $. Then $ \forall n \geq n_0 $: 
+        $$ p(n) = \sum_{i = 0}^d a_i n^i \leq \sum_{i = 0}^d |a_i| n^d \leq \biggl( \sum_{i = 0}^d |a_i| \biggr) n^k = cn^k $$
+        Since $ k \geq d, n^i \leq n^d \leq n^k \;\; \forall i \leq d $, thus $ p(n) = O(n^k) $
+      \end{proof}
+
+      \part If $ k \leq d $, then $ p(n) = \Omega(n^k) $.
+
+      Definition of Big-Omega: $ f(n) = \Omega(g(n)) $ if there exists positive constants $c$ and $n_0$ such that $ 0 \leq c.g(n) \leq f(n) \;\; \forall n \geq n_0 $
+      \begin{proof}
+        Choose $ c = a_d $ and $ n_0 = 1 $. Then $ \forall n \geq n_0 $: 
+        $$ p(n) = \sum_{i = 0}^d a_i n^i \geq a^dn^d \geq a_dn^k = cn^k $$
+        Since $ a_d > 0 $ and $ k \leq d, n^d \geq n^k \;\; \forall n $, thus $ cn^k $ is a lower bound for $ p(n) $, and $ p(n) = \Omega(n^k) $.
+      \end{proof}
+
+      \part If $ k = d $, then $ p(n) = \Theta(n^k) $.
+
+      Definition of Big-Theta: $ f(n) = \Theta(g(n)) $ if there exists positive constants $c_1, c_2$ and $n_0$ such that $ 0 \leq c_1.g(n) \leq f(n) \leq c_2.g(n) \;\; \forall n \geq n_0 $. Or in other words, $ f(n) = \Theta (g(n)) $ if $ f(n) = O(g(n)) $ and $ f(n) = \Omega(g(n)) $.
+      \begin{proof}
+        From parts (a) and (b), we have shown that if $ k \geq d $, then $ p(n) = O(n^k) $ and if $ k \leq d $, then $ p(n) = \Omega(n^k) $. When $ k = d $, both conditions are satisfied, which means $ p(n) $ is both upper and lower bounded by $ n^k $, hence is both $ O(n^k) $ and $ \Omega(n^k) $, and therefore $ p(n) = \Theta(n^k) $.
+      \end{proof}
+    \end{parts}
+    % \begin{parts}
+    %   \part If $ k \geq d $, then $ p(n) = O(n^k) $.
+    %   $ k \geq d $, then $ n^k \geq n^d $
+
+    %   \begin{tabular}{r l}
+    %     $ p(n) $ & $ = \sum_{i = 0}^d a_i n^i $ \\
+    %     & $ = a_0 + a_1n + a_2n^2 ... a_dn^d $ \\
+    %     & $ \leq |a_0|n^k + |a_1|n^k + ... + |a_d|n^k = k_0n^k$ \\
+    %     $ p(n) $ & $ \leq k_0 n^k $
+    %   \end{tabular}
+
+    %   When $ k \geq d $, $ \forall_{n \geq 1} : p(n) \leq k_0 n^k, \;\; k_0 = \sum_{i = 0}^d |a_i| $
+
+    %   Therefore, $ p(n) = O(n^k) $.
+
+    %   % $k\ge d$ implies that $n^k\ge n^d$ for all $n\ge1$, so
+    %   % \[
+    %   %     0 \le p(n) \le c_2n^d \le c_2n^k
+    %   % \]
+    %   % for all $n\ge\max{n_0,1}$.
+    %   % Hence, $p(n)=O(n^k)$.
+
+    %   \part If $ k \leq d $, then $ p(n) = \Omega(n^k) $. $ k \leq d $, then $ n^k \leq n^d $
+
+    %   \begin{tabular}{r l}
+    %     $ p(n) $ & $ = \sum_{i = 0}^d a_i n^i $ \\
+    %     & $ = a_0 + a_1n + a_2n^2 ... a_dn^d $ \\
+    %     & $ \geq |a_0|n^k + |a_1|n^k + ... + |a_d|n^k = k_0n^k$ \\
+    %     $ p(n) $ & $ \geq k_0 n^k $
+    %   \end{tabular}
+
+    %   When $ k \leq d $, $ \forall_{n \geq 1} : p(n) \geq k_0 n^k, \;\; k_0 = \sum_{i = 0}^d |a_i| $
+
+    %   Therefore, $ p(n) = \Omega(n^k) $.
+
+    % \end{parts}
+  \end{solution}
+
+  \question
+  \textbf{2. } Indicate for each pair of expressions $(A, B)$ in the table below, whether A is $ O, o, \Omega, \omega,  $ or $ \Theta $ of B. Assume that $ k \geq 1 $, $ \epsilon > 0 $, and $ c > 1 $ are constants. Write your answer in the form of the table with ``yes'' or ``no'' written in each box.
+
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{c | c c | c | c | c | c | c |}
+                  & $A$           & $B$            & $O$ & $o$ & $\Omega$ & $\omega$ & $ \Theta $ \\ \hline
+      \textbf{a.} & $ \lg^k n $   & $ n^\epsilon $ &     &     &          &          &            \\ \hline
+      \textbf{b.} & $ n^k $       & $ c^n $        &     &     &          &          &            \\ \hline
+      \textbf{c.} & $ \sqrt{n} $  & $ n^{\sin n} $ &     &     &          &          &            \\ \hline
+      \textbf{d.} & $ 2^n $       & $ 2^{n/2} $    &     &     &          &          &            \\ \hline
+      \textbf{e.} & $ n^{\lg c} $ & $ c^{\lg n} $  &     &     &          &          &            \\ \hline
+      \textbf{f.} & $ \lg(n!) $   & $ \lg(n^n) $   &     &     &          &          &            \\ \hline
+    \end{tabular}
+  \end{table}
+
+  \question
+  \textbf{3. } Let $ f(n) $ and $ g(n) $ be asymptotically positive functions. Prove or disprove each of the following conjectures.
+
+  \begin{parts}
+    \part $ f(n) = O(g(n)) $ implies $ g(n) = O(f(n)) $.
+    \part $ f(n) + g(n) = \Theta(\min\{f(n), g(n)\}) $.
+    \part $ f(n) = O(g(n)) $ implies $ \lg f(n) = O(\lg g(n)) $, where $ \lg g(n) \geq 1 $ and $ f(n) \geq 1 $ for all sufficiently large $ n $.
+    \part $ f(n) = O(g(n)) $ implies $ 2^{f(n)} = O(2^{g(n)}) $
+    \part $ f(n) = O((f(n))^2) $.
+    \part $ f(n) = O(g(n)) $ implies $ g(n) = \Omega(f(n)) $.
+    \part $ f(n) = \Theta(f(\frac{n}{2})) $
+    \part $ f(n) + o(f(n))\Theta(f(n)) $
+  \end{parts}
+
+  \question
+  \textbf{4. } Let $ f(n) $ and $g(n)$ be asymptotically positive functions. Prove the following identities.
+
+  \begin{parts}
+    \part $ \Theta (\Theta (f(n))) = \Theta (f(n)) $
+    \part $ \Theta (f(n)) + O(f(n)) = \Theta (f(n)) $
+    \part $ \Theta (f(n)) + \Theta(g(n)) = \Theta (f(n) + g(n)) $
+    \part $ \Theta (f(n)). \Theta(g(n)) = \Theta(f(n).g(n)) $
+  \end{parts}
+
+\end{questions}
+
+\end{document}
