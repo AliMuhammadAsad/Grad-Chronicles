@@ -112,6 +112,7 @@
         Since $ a_d > 0 $ and $ k \leq d, n^d \geq n^k \;\; \forall n $, thus $ cn^k $ is a lower bound for $ p(n) $, and $ p(n) = \Omega(n^k) $.
       \end{proof}
 
+      \pagebreak
       \part If $ k = d $, then $ p(n) = \Theta(n^k) $.
 
       Definition of Big-Theta: $ f(n) = \Theta(g(n)) $ if there exists positive constants $c_1, c_2$ and $n_0$ such that $ 0 \leq c_1.g(n) \leq f(n) \leq c_2.g(n) \;\; \forall n \geq n_0 $. Or in other words, $ f(n) = \Theta (g(n)) $ if $ f(n) = O(g(n)) $ and $ f(n) = \Omega(g(n)) $.
@@ -195,6 +196,7 @@
 
       False. Consider $ f(n) = 2n = O(n) $, and $ g(n) = n = O(n) $. It holds that $f(n)=O(g(n))$, but $ 2^{2n} \neq O(2^n) $. If it were, there would exist $ n_0 $ and $c$ such that $ n \geq n_0 $ implies $ 2^n.2^n = 2^{2n} \leq c2^n $, so $ 2^n \leq c $ for $ n \geq n_0 $ which is clearly impossible since $c$ is a constant. 
 
+      \pagebreak
       \part $ f(n) = O((f(n))^2) $.
 
       False. If $f(n)=1/n$, then $f^2(n)=1/n^2$. Since there doesn't exist any positive constant $c$ such that $1/n\le c/n^2$ for arbitrarily large $n$, then $f(n)\ne O(f^2(n))$.
@@ -220,15 +222,80 @@
     \end{parts}
   \end{solution}
 
+  \pagebreak
   \question
   \textbf{4. } Let $ f(n) $ and $g(n)$ be asymptotically positive functions. Prove the following identities.
 
-  \begin{parts}
-    \part $ \Theta (\Theta (f(n))) = \Theta (f(n)) $
-    \part $ \Theta (f(n)) + O(f(n)) = \Theta (f(n)) $
-    \part $ \Theta (f(n)) + \Theta(g(n)) = \Theta (f(n) + g(n)) $
-    \part $ \Theta (f(n)). \Theta(g(n)) = \Theta(f(n).g(n)) $
-  \end{parts}
+  % \begin{parts}
+  %   \part $ \Theta (\Theta (f(n))) = \Theta (f(n)) $
+  %   \part $ \Theta (f(n)) + O(f(n)) = \Theta (f(n)) $
+  %   \part $ \Theta (f(n)) + \Theta(g(n)) = \Theta (f(n) + g(n)) $
+  %   \part $ \Theta (f(n)). \Theta(g(n)) = \Theta(f(n).g(n)) $
+  % \end{parts}
+
+  \begin{solution}
+    \begin{parts}
+      \part $ \Theta (\Theta (f(n))) = \Theta (f(n)) $
+
+      Let $p(n)=\Theta(f(n))$, and let $c_1$, $c_2$, and $n_p$ be positive constants such that
+      \[ 0 \le c_1f(n) \le p(n) \le c_2f(n) \]
+      for all $n\ge n_p$. Also, let $q(n)=\Theta(p(n))$ and let $d_1$, $d_2$, and $n_q$ be positive constants such that
+      \[ 0 \le d_1p(n) \le q(n) \le d_2q(n) \]
+      for all $n\ge n_q$. Then, for all $n\ge\max\{n_p,n_q\}$,
+      \begin{align*}
+          0 &\le c_1d_1f(n) \\
+          &\le d_1p(n) \\
+          &\le q(n) \\
+          &\le d_2p(n) \\
+          &\le c_2d_2f(n),
+      \end{align*}
+      which implies that $q(n)=\Theta(f(n))$.
+
+      \part $ \Theta (f(n)) + O(f(n)) = \Theta (f(n)) $
+
+      Let $p(n)=\Theta(f(n))$ and $q(n)=O(f(n))$. Then there exist positive constants $c_1$, $c_2$, $d$, $n_p$, and $n_q$ such that
+      \[ 0 \le c_1f(n) \le p(n) \le c_2f(n) \]
+      for all $n\ge n_p$, and
+      \[ 0 \le q(n) \le df(n) \]
+      for all $n\ge n_q$. Then, for all $n\ge\max{n_p,n_q}$,
+      \begin{align*}
+          0 &\le c_1f(n) \\
+          &\le p(n) \\
+          &\le p(n)+q(n) \\
+          &\le c_2f(n)+df(n) \\
+          &= (c_2+d)f(n),
+      \end{align*}
+      which implies that $p(n)+q(n)=\Theta(f(n))$.
+
+      \part $ \Theta (f(n)) + \Theta(g(n)) = \Theta (f(n) + g(n)) $
+
+      Let $p(n)=\Theta(f(n))$ and $q(n)=\Theta(g(n))$. Then there exist positive constants $c_1$, $c_2$, $d_1$, $d_2$, $n_p$, and $n_q$ such that
+      \[ 0 \le c_1f(n) \le p(n) \le c_2f(n) \]
+      for all $n\ge n_p$, and
+      \[ 0 \le d_1g(n) \le q(n) \le d_2g(n) \]
+      for all $n\ge n_q$. Then, for all $n\ge\max{n_p,n_q}$,
+      \begin{align*}
+          0 &\le \min\{c_1,d_1\}(f(n)+g(n)) \\
+          &\le c_1f(n)+d_1g(n) \\
+          &\le p(n)+q(n) \\
+          &\le c_2f(n)+d_2g(n) \\
+          &\le \max{c_2,d_2}(f(n)+g(n)),
+      \end{align*}
+      which implies that $p(n)+q(n)=\Theta(f(n)+g(n))$.
+
+      \part $ \Theta (f(n)). \Theta(g(n)) = \Theta(f(n).g(n)) $
+
+      For the same functions and constants as in the previous part, it is true that for all $n\ge\max\{n_p,n_q\}$,
+      \begin{align*}
+          0 &\le \min\{c_1,d_1\}^2(f(n)\cdot g(n)) \\
+          &\le c_1f(n)\cdot d_1g(n) \\
+          &\le p(n)\cdot q(n) \\
+          &\le c_2f(n)\cdot d_2g(n) \\
+          &\le \max{c_2,d_2}^2(f(n)\cdot g(n)),
+      \end{align*}
+      which implies that $p(n)\cdot q(n)=\Theta(f(n)\cdot g(n))$.
+    \end{parts}
+  \end{solution}
 
 \end{questions}
 
