@@ -90,6 +90,7 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 
 #### [CS412 - Algorithms: Design and Analysis](CS412-Algorithms) <img alt="Python" src="Assets/python.png" width="32px" /> <img alt="VSCode" src="Assets/vscode.png" width="32px" />
 - **Problem Sets**
+- **Quizzes**
 - **Weekly Challenges**
 
 #### [EE/CE-468 Mobile Robotics](EE-CE-468-Mobile-Robotics) (I dare you xD) <img alt="Matlab" src="Assets/matlab.png" width="32px" /> <img alt="Simulink" src="Assets/simulink.png" width="32px" /> <img alt="Gazebo" src="Assets/gazebo.png" width="32px" />
