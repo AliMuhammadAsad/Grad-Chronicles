@@ -1,0 +1,171 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Exam %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[addpoints]{exam}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath, amssymb, amsthm, amsfonts, geometry, venndiagram, tikz}
+\usepackage{graphicx, xcolor, color, wrapfig, parskip, float, tabularx}
+\usepackage[breaklinks]{hyperref}
+\usepackage{colortbl, caption}
+\usepackage{listings, mdframed, subfig, matlab-prettifier, hyperref}
+\usepackage{lipsum, bookmark, booktabs, empheq, titlesec, verbatim, subfig, pdfpages, comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{codebackground}{rgb}{0.95,0.95,0.95}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0.13,0.29,0.53}
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+\definecolor{softgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour}, commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+%"mystyle" code listing set
+\lstset{style=mystyle}
+
+\usetikzlibrary{arrows,shapes,positioning,shadows,trees}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Header and Footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Algorithms: Design and Analysis}{Weekly Challenge 04}{CS 412}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+% \boxedpoints
+\printanswers
+\qformat{}  %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Algorithms: Design and Analysis - CS 412 \vspace*{-4mm}}
+\author{Weekly Challenge 04}
+\date{\vspace*{-4mm} Ali Muhammad Asad - aa07190}
+
+% \pgfplotsset{compat=1.18}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+% {\small \begin{center} \gradetable[h] \end{center}}
+
+\begin{questions}
+  \question[1]
+  \textbf{1.}\; (1 point)
+  Applying the standard mathematical method to define an algorithm for matrix multiplication gives an $O(n^3)$ solution. Given two $n \times n$ matrices, a brute force solution requires $n^3$ arithmetic operations. Just like fast integer multiplication, a solution exists to reduce the time complexity of matrix multiplication. For example, Strassen's algorithm completes matrix multiplication in $O(n^2.81)$. Start by identifying a fast matrix multiplication algorithm with complexity better than $O(n^3)$. Use the algorithm to compute the matrix product: \\
+  \[
+    \begin{pmatrix}
+      1 & 3 \\
+      6 & 5
+    \end{pmatrix}
+    \begin{pmatrix}
+      a & b \\
+      c & d
+    \end{pmatrix}
+  \]
+  Clearly list all the steps of the solution.
+
+  Next, compare the dimension of matrix where your algorithm outperforms the brute force algorithm.
+  % Add your solution here
+  \begin{solution}
+    We will use the \textbf{Strassen's Algorithm} for fast matrix multiplication. The brute force method requires 8 multiplications and 4 additions. The result for two arbitrary $ 2 \times 2 $ matrices, $A$ and $B$ is:
+    $$ \begin{pmatrix}
+        a & b \\ c & d
+      \end{pmatrix} \begin{pmatrix}
+        e & f \\ g & h
+      \end{pmatrix} = \begin{pmatrix}
+        ae + bg & af + bh \\ ce + dg & cf + dh
+      \end{pmatrix}$$
+    where the first matrix is $A$, and the second matrix is $B$, and the result is $AB$.
+
+    Strassen's Algorithm is a divide and conquer algorithm, where it divides the matrix into submatrices of equal size and then makes computations on those matrices to find the resultant matrix. For two arbitrary $ 2 \times 2 $ matrices it works as follows:
+    \begin{enumerate}
+      \item Compute seven products as such: \begin{itemize}
+              \item $ p_1 = a(f - h) $
+              \item $ p_2 = (a + b)h $
+              \item $ p_3 = (c + d)e $
+              \item $ p_4 = d(g - e) $
+              \item $ p_5 = (a + d)(e - h) $
+              \item $ p_6 = (b - d)(g + h) $
+              \item $ p_7 = (a - c)(e + f) $
+            \end{itemize}
+      \item We compute the results as: \begin{itemize}
+              \item $ AB_{11} = p_5 + p_4 - p_2 + p_6 = ae + ah + de + dh + dg - de - ah - bh + bg + bh - dg - dh = ae + bg $
+              \item $ AB_{12} = p_1 + p_2 = af - ah + ah + bh = af + bh $
+              \item $ AB_{21} = p_3 + p_4 = ce + de + dg - de = ce + dg $
+              \item $ AB_{22} = p_1 + p_5 - p_3 - p_7 = af - ah + ae + ah + de + dh - ce - de - ae - af + ce + cf = cf + dh $
+            \end{itemize}
+    \end{enumerate}
+    The above simplification by expansion has only been done to verify that the method produces the same results as the brute force approach. With values, there will only be 7 multiplication operations and 8 addition operations. Since multiplication is a costly operation, while addition is not, so for large values of $n$, Strassen's Algorithm performs better than the brute force approach.
+
+    The above example using Strassen's Algorithm can be done as follows:
+    \begin{enumerate}
+      \item Compute the seven products: \begin{itemize}
+              \item $ p_1 = 1(b - d) = b - d $
+              \item $ p_2 = (1 + 3)d = 4d $
+              \item $ p_3 = (6 + 5)a = 11a $
+              \item $ p_4 = 5(c - a) = 5c - 5a $
+              \item $ p_5 = (1 + 5)(a + d) = 6a + 6d $
+              \item $ p_6 = (3 - 5)(c + d) = -2c -2d $
+              \item $ p_7 = (1 - 6)(a + b) = -5a -5b $
+            \end{itemize}
+            Then we can compute the results as: \begin{itemize}
+              \item $ AB_{11} = p_5 + p_4 - p_2 + p_6 = 6a + 6d + 5c - 5a -4d -2c -2d = a + 3c $
+              \item $ AB_{12} = p_1 + p_2 = b - d + 4d = b + 3d $
+              \item $ AB_{21} = p_3 + p_4 = 11a + 5c - 5a = 6a + 5c $
+              \item $ AB_{22} = p_1 + p_5 - p_3 - p_7 = b - d + 6a + 6d - 11a + 5a + 5b = 6b + 5d $
+            \end{itemize}
+    \end{enumerate}
+    Our final result is: \[
+      \begin{pmatrix}
+        1 & 3 \\
+        6 & 5
+      \end{pmatrix}
+      \begin{pmatrix}
+        a & b \\
+        c & d
+      \end{pmatrix} = \begin{pmatrix}
+        a + 3c  & b + 3d  \\
+        6a + 5c & 6b + 5d
+      \end{pmatrix}
+    \]
+
+    $ n = 100 $ should be a reasonable estimate for the dimensions beyond which Strassen's Algorithm outperforms the Brute Force Approach.
+  \end{solution}
+
+\end{questions}
+
+\end{document}
