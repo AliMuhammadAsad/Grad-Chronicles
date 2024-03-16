@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+rm -rf *.aux *.fls *.toc *.out *.log *.fdb_latexmk *.synctex.gz *.swp
+
