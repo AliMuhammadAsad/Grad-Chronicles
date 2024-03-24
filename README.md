@@ -93,6 +93,11 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Quizzes**
 - **Weekly Challenges**
 
+#### [CS451 - Computational Intelligence](CS451-Computational-Intelligence) <img alt="Python" src="Assets/python.png" width="32px" /> <img alt="VSCode" src="Assets/vscode.png" width="32px">
+- **Lectures**
+- **Presentations**
+- **Quizzes**
+
 #### [EE/CE-468 Mobile Robotics](EE-CE-468-Mobile-Robotics) (I dare you xD) <img alt="Matlab" src="Assets/matlab.png" width="32px" /> <img alt="Simulink" src="Assets/simulink.png" width="32px" /> <img alt="Gazebo" src="Assets/gazebo.png" width="32px" />
 
 - **[Final Project - Smart Walking Cane for the Visually Impaired](https://github.com/AliMuhammadAsad/Mobile-Robotics-Project)**
