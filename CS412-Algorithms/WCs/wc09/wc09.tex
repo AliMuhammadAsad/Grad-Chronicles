@@ -1,0 +1,199 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Exam %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[addpoints]{exam}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath, amssymb, amsthm, amsfonts, geometry, venndiagram, tikz}
+\usepackage{graphicx, xcolor, color, wrapfig, parskip, float, tabularx}
+\usepackage[breaklinks]{hyperref}
+\usepackage{colortbl, caption}
+\usepackage{listings, mdframed, subfig, matlab-prettifier, hyperref, pythonhighlight}
+\usepackage{lipsum, bookmark, booktabs, empheq, titlesec, verbatim, subfig, pdfpages, comment, subfloat, forest}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{codebackground}{rgb}{0.95,0.95,0.95}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0.13,0.29,0.53}
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+\definecolor{softgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour}, commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+%"mystyle" code listing set
+\lstset{style=mystyle}
+
+\usetikzlibrary{arrows,shapes,positioning,shadows,trees, backgrounds}
+
+\tikzstyle{arrow} = [->,>=stealth]
+\tikzstyle{node} = [auto,font=\footnotesize,draw,circle]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Header and Footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Algorithms: Design and Analysis}{Weekly Challenge 09}{CS 412}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+% \boxedpoints
+\printanswers
+\qformat{}  %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Algorithms: Design and Analysis - CS 412 \vspace*{-4mm}}
+\author{Weekly Challenge 09: Dynamic Programming}
+\date{\vspace*{-4mm} Ali Muhammad Asad - aa07190}
+
+% \pgfplotsset{compat=1.18}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+    \question[1]
+    In compilers, the lexical analyzer scans the input source code character by character. When it encounters whitespace characters, it discards them without creating tokens. Whitespace characters do not contribute to the code's meaning and are often used for formatting and readability purposes only. After removing whitespace, the lexical analyzer continues to tokenize the remaining non-whitespace characters in the source code, identifying keywords, identifiers, literals, operators, and other language constructs.
+    
+    The lexical analyzer generates the sequence of tokens (without spaces) as an output. Consider the following pair of correct and incorrect programming language statements represented as a sequence of tokens, and devise a dynamic programming algorithm to identify the minimum number of edits required to transform an incorrect sequence to the correct sequence.
+    
+    \textbf{Incorrect sequence}: \lstinline{<int><int><;>}\\
+    \textbf{Correct sequence}: \lstinline{<int><var><.>}
+    
+    \begin{enumerate}
+        \item Identify whether the problem has an optimal substructure property.
+        \item Identify the smallest subproblem.
+        \item Formulate a dynamic programming algorithm to solve the problem.
+        \item Generate a dynamic programming table for the given problem.
+    \end{enumerate}
+    \begin{solution}
+      We are given two sequences; an incorrect sequence and a correct sequence, and we need to find the minimum number of edits required to transform the incorrect sequence to the correct sequence, including insertion, deletion, and substitutions. Thus, this problem can be easily reduced to the minimum edit distance problem that deals with finding the smallest number of edits; insertion, deletion, substitutions, required to transform one string into the other (which is exactly our problem). This problem already has an optimal substructure, and can be solved using dynamic programming. In this case, the strings are the incorrect and correct sequences of tokens.
+
+      For the sake of this weekly challenge, we will show its recursion tree and that it has an optimal substructure. 
+      
+      \pagebreak
+      Consider two strings $I$ and $C$ representing the incorrect and correct sequences, respectively. Let $m$ and $n$ be the lengths of the incorrect and correct sequences, respectively. Then we can solve this problem by processing all characters one by one starting from either left or right sides of both the strings. For every pair of characters they either match or they don't match. If the last characters of both the strings match, then no operation is needed. So we recursively calculate the answer for the rest of the string. When last characters don't match, we can try and perform all three operations to match the last character, and then from there, recursively calculate the result for the remaining part of the string. Upon completion of these operations, the \pyth{min} of these values will be our final answer. We can do this easily with recursion: 
+      \begin{itemize}
+        \item Match: when the last characters of the strings match, make a recursive call \pyth{MED(m-1,n-1)} to calculate the answer to the remaining parts of the string \vspace*{-2mm}
+        \item When they don't match, make 3 recursive calls: \begin{enumerate} \vspace*{-2mm}
+          \item \textit{insert} \texttt{I[n-1]} at last of \texttt{C}: \pyth{MED(m, n-1)} \vspace*{-2mm}
+          \item \textit{replace} \texttt{C[m-1]} with \texttt{I[n-1]}: \pyth{MED(m-1,n-1)} \vspace*{-2mm}
+          \item \textit{delete} \texttt{C[m-1]}: \pyth{MED(m-1,n)}
+        \end{enumerate}
+      \end{itemize} 
+      
+      We can then make the recursion tree for our problem, \pyth{MED(m, n)} as follows:
+
+        \begin{forest} for tree={anchor=center}
+          [
+            \textcolor{deepGreen}{MED(m, n)}
+            [
+              insert [\textcolor{deepGreen}{(m,n-1)}, edge={->, >=latex}
+                [insert [\textcolor{deepGreen}{(m,n-2)}, edge={->, >=latex}[, edge={->, >=latex, dotted}][, edge={->, >=latex, dotted}][, edge={->, >=latex, dotted}]]]
+                [sub [\text{(m-1,n-2)}, fill=red!20, draw, rounded corners, edge={->, >=latex} [, edge={->, >=latex, dotted}][, edge={->, >=latex, dotted}][, edge={->, >=latex, dotted}]]]
+                [delete[\textcolor{deepGreen}{(m-1,n-1)}, fill=green!20, draw, rounded corners, edge={->, >=latex}
+                [insert [\text{(m-1,n-2)}, fill=red!20, draw, rounded corners, edge={->, >=latex}[, edge={->, >=latex, dotted}][, edge={->, >=latex, dotted}][, edge={->, >=latex, dotted}]]]
+                [sub [\textcolor{deepGreen}{(m-2,n-2)}, edge={->, >=latex} [, edge={->, >=latex, dotted}][, edge={->, >=latex, dotted}][, edge={->, >=latex, dotted}]]]
+                [delete [\text{(m-2,n-1)}, fill=yellow!20, draw, rounded corners, edge={->, >=latex}[, edge={->, >=latex, dotted}][, edge={->, >=latex, dotted}][, edge={->, >=latex, dotted}]]]
+                ]]
+                ]
+            ]
+            [
+              sub [\textcolor{deepGreen}{(m-1,n-1)}, fill=green!20, draw, rounded corners, edge={->, >=latex}
+              [, edge={->, >=latex, dotted}][, edge={->, >=latex, dotted}][, edge={->, >=latex, dotted}]
+              ]
+            ]
+            [
+              delete [\textcolor{deepGreen}{(m-1,n)}, edge={->, >=latex}
+              [insert [\textcolor{deepGreen}{\text{(m-1,n-1)}}, fill=green!20, draw, rounded corners, edge={->, >=latex}]]
+              [sub [\text{(m-2,n-1)}, fill=yellow!20, draw, rounded corners, edge={->, >=latex}]]
+              [delete [\textcolor{deepGreen}{(m-2,n)}, edge={->, >=latex}]]
+              ]
+            ]
+          ]
+        \end{forest}
+
+        \begin{enumerate}
+          \item By analyzing the above recursion tree, we can easily identify that it has an optimal substructure, since the minimum edits to transform a sequence \pyth{I[1..i]} to \pyth{C[1..i]} can be computed using the solutions of its subproblems, i.e., \pyth{I[1..i-1] to C[1..j], I[1..i] to C[1..j - 1], I[1..i-1] to C[1..j-1]}. Further, nodes with the same frame highlight show that there exists overlapping subproblems that are occurring on both sides of the tree, which again shows that there is an optimal substructure, and by solving the subproblems, we can easily solve the bigger problem.
+          \item The smallest subproblem is when either string is empty, i.e., $m = 0$, or $n = 0$ in which case the number of edits will be the length of the non-empty sequence as it requires that many characters to convert an empty string to a non-empty string.
+          \item We can use a bottom-up approach to solve this efficiently as follows:
+          \begin{lstlisting}
+MED(inc, cor)
+  m <- inc.length
+  n <- cor.length
+  dp = [[0 for _ in range(n + 1)] for _ in range(m + 1)]
+
+  for i <- 0 to m + 1
+    for j <- 0 to n + 1
+      if i is equal to 0:
+        dp[i, j] = j
+      else if j is equal to 0:
+        dp[i, j] = i
+      else if inc[i - 1] is equal to cor[j - 1]:
+        dp[i, j] = dp[i - 1, j - 1]
+      else:
+        dp[i, j] = 1 + min(dp[i, j - 1], dp[i - 1, j], dp[i - 1, j - 1])
+
+  return dp[m, n]
+\end{lstlisting}
+          \item We have a table of \pyth{m x n}, and where \pyth{dp[i, j]} represents the minimum number of edits required to transform \pyth{I[1..i] to C[1..j]}. If \pyth{I[i - 1] = C[j - 1]}, then they match, so no additional edits required. If \pyth{i} or \pyth{j} is 0, then the edits are just the length of the other string. Else, we take the minimum of the three operations, \textit{insert}, \textit{delete}, and \textit{replace} and add 1 to it to denote the addition in the edit distance. The final answer will be stored in \pyth{dp[m][n]}.
+          
+          For the given example, the table looks like this:
+          \begin{center}
+            \begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c |}
+              \hline & \textbf{\#} & $<$ & \textbf{i} & \textbf{n} & \textbf{t} & $>$ & $<$ & \textbf{v} & \textbf{a} & \textbf{r} & $>$ & $<$ & \textbf{.} & $>$  \\ \hline 
+            \# & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 \\ \hline
+            $<$ & 1 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+            \textbf{i} & 2 & 1 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\ \hline
+            \textbf{n} & 3 & 2 & 1 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+            \textbf{t} & 4 & 3 & 2 & 1 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\ \hline
+            $>$ & 5 & 4 & 3 & 2 & 1 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ \hline
+            $<$ & 6 & 5 & 4 & 3 & 2 & 1 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ \hline
+            \textbf{i} & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ \hline
+            \textbf{n} & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 2 & 2 & 3 & 4 & 5 & 6 & 7 \\ \hline
+            \textbf{t} & 9 & 8 & 7 & 6 & 5 & 4 & 3 & 3 & 3 & 3 & 4 & 5 & 6 & 7 \\ \hline
+            $>$ & 10 & 9 & 8 & 7 & 6 & 5 & 4 & 4 & 4 & 4 & 3 & 4 & 5 & 6 \\ \hline
+            $<$ & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 5 & 5 & 5 & 4 & 3 & 4 & 5 \\ \hline
+            \textbf{;} & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 6 & 6 & 6 & 5 & 4 & 4 & 5 \\ \hline
+            $>$ & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 7 & 7 & 7 & 6 & 5 & 5 & \textcolor{red}{4} \\ \hline
+          \end{tabular}
+        \end{center}
+        The `\#' denotes an empty string.
+      \end{enumerate}
+
+    \end{solution}
+\end{questions}
+\end{document}
