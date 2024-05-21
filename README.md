@@ -88,15 +88,33 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Labs**
 - **README.md**
 
+#### [CS/CE 353/374 - Software Engineering](CS353-CE374-Software-Engineering)
+- **[Final Project - PAWSTrack](https://github.com/AliMuhammadAsad/pawstrack/)**
+- **Slides**
+- **Final Exams and Midterms etc**
+
 #### [CS412 - Algorithms: Design and Analysis](CS412-Algorithms) <img alt="Python" src="Assets/python.png" width="32px" /> <img alt="VSCode" src="Assets/vscode.png" width="32px" />
+- **Books**
+- **Codes**
+- **Homeworks**
+- **Lectures**
+- **Midterm**
 - **Problem Sets**
 - **Quizzes**
+- **Spring 22 and 23**
 - **Weekly Challenges**
+- **Notes**
 
 #### [CS451 - Computational Intelligence](CS451-Computational-Intelligence) <img alt="Python" src="Assets/python.png" width="32px" /> <img alt="VSCode" src="Assets/vscode.png" width="32px"> <img alt="Gene" src="Assets/gene.png" width="32px" /> <img alt="Ant" src="Assets/ant.png" width="34px" /> <img alt="NN" src="Assets/nn.png" width="34px" /> <img alt="NN" src="Assets/brain_nn.png" width="38px" /> 
+- **[Assignment 01 - Evolutionary Algoritm on TSP and JSSP](https://github.com/AliMuhammadAsad/Evolutionary-Algorithms)**
+- **[Assignment 02 - Graph Coloring using Ant Colony Optimisation](https://github.com/AliMuhammadAsad/GC-ACO)**
+- **[Assignment 02 - Particle System Visualization](https://github.com/AliMuhammadAsad/Particle-System-Visualization)**
+- **[Assignment 03 - Self Organizing Maps](https://github.com/AliMuhammadAsad/Self-Organizing-Map)**
+- **[Assignment 03 - Frozen Lake Navigation using Reinforcement Learning](https://github.com/AliMuhammadAsad/FrozenLake-Navigation-Using-RL)**
 - **Lectures**
 - **Presentations**
 - **Quizzes**
+- **Book and Notes**
 
 #### [EE/CE-468 Mobile Robotics](EE-CE-468-Mobile-Robotics) (I dare you xD) <img alt="Matlab" src="Assets/matlab.png" width="32px" /> <img alt="Simulink" src="Assets/simulink.png" width="32px" /> <img alt="Gazebo" src="Assets/gazebo.png" width="32px" />
 
