@@ -88,6 +88,13 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Labs**
 - **README.md**
 
+#### [CS343 - Graph Data Science](CS343-Graph-Data-Science) <img alt='neo4j' src="Assets/neo4j.png" width="32px">
+- **Activities**
+- **Homeworks**
+- **Lectures**
+- **Midterm**
+- **Quizzes**
+
 #### [CS/CE 353/374 - Software Engineering](CS353-CE374-Software-Engineering)
 - **[Final Project - PAWSTrack](https://github.com/AliMuhammadAsad/pawstrack/)**
 - **Slides**
