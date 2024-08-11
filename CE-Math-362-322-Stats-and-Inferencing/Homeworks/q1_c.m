@@ -1,0 +1,14 @@
+sam1 = [90 89 83 90 88 84 93 84 84 84 87 88 91 92 74 95 90 87 87 82 95 80 90 91];
+sam2 = [92 80 83 81 94 81 92 81 88 87 87 98 82 86 85 89 79 83 87 94 92 92 83 90];
+n1 = length(sam1); n2 =length(sam2);
+x1bar = mean(sam1); x2bar = mean(sam2);
+s1 = var(sam1); s2 = var(sam2);
+a = 0.01;
+z = norminv(1 - a/2);
+df = n1 + n2 - 2;
+t = tinv(1 - a/2, df);
+nume = (s1*(n1-1))+(s2*(n2-1));
+sigma = sqrt(nume/df);
+x1_x2 = x1bar-x2bar;
+t_est = x1_x2/(sigma*sqrt((1/n1)+(1/n2)));
+m1_m2 = x1_x2 + [-1 1]*t*(sigma*sqrt((1/n1)+(1/n2)));
