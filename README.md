@@ -74,6 +74,19 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Course Book**
 - **README.md**
 
+#### [CS313 - Computational Complexity Theory](CS313-Computational-Complexity-Theory) <img alt="NN" src="Assets/brain_nn.png" width="38px" />
+- **Assignments**
+- **Exams**
+- **Lectures**
+- **Quizzes**
+
+#### [CS316 - Introduction to Deep Learning](CS316-CE365-Deep-Learning) <img alt="NN" src="Assets/nn.png" width="34px" /> <img alt="NN" src="Assets/brain_nn.png" width="38px" /> <img alt="Python" src="Assets/python.png" width="32px" />
+- **Activities**
+- **Exams**
+- **Labs**
+- **Quizzes**
+- **Slides**
+
 #### [CS330 - Computer Architecture](CS330-Computer-Architecture) ![Verilog](https://img.shields.io/badge/-Verilog-orange?style=flat&logo=verilog&logoColor=white) ![VHDL](https://img.shields.io/badge/-VHDL-green?style=flat&logo=VHDL&logoColor=white) ![RISC-V](https://img.shields.io/badge/-RISC-purple?style=flat&logo=RISC&logoColor=white)
 - **Homeworks**
 - **Quizzes**
