@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network1" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="Node1">
+			<state id="T" />
+			<state id="F" />
+			<probabilities>0.95 0.05000000000000004</probabilities>
+		</cpt>
+		<cpt id="Node6">
+			<state id="T" />
+			<state id="F" />
+			<probabilities>0.9 0.09999999999999998</probabilities>
+		</cpt>
+		<cpt id="Node7">
+			<state id="T" />
+			<state id="F" />
+			<parents>Node6</parents>
+			<probabilities>1 0 0.6 0.4</probabilities>
+		</cpt>
+		<cpt id="JackStabbed">
+			<state id="T" />
+			<state id="F" />
+			<probabilities>0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Node4">
+			<state id="T" />
+			<state id="F" />
+			<parents>JackStabbed Node6</parents>
+			<probabilities>1 0 1 0 0.1 0.9 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Node3">
+			<state id="T" />
+			<state id="F" />
+			<parents>Node7 Node4</parents>
+			<probabilities>0.99 0.01000000000000001 0.8 0.2 0.99 0.01000000000000001 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Node11">
+			<state id="T" />
+			<state id="F" />
+			<parents>Node1 JackStabbed Node4</parents>
+			<probabilities>1 0 1 0 0 1 0 1 0 1 0 1 0.1 0.9 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Node8">
+			<state id="T" />
+			<state id="F" />
+			<parents>Node11</parents>
+			<probabilities>1 0 0.001 0.999</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.1.1104.0 ACADEMIC" name="Network1" faultnameformat="nodestate">
+			<node id="Node1">
+				<name>B_StainfromOffender</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>154 69 294 107</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Node3">
+				<name>W_JohnWitnessed</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>559 300 689 333</position>
+				<barchart active="true" />
+			</node>
+			<node id="Node4">
+				<name>F_JacknearLuluHouse</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>435 177 619 211</position>
+				<barchart active="true" />
+			</node>
+			<node id="Node6">
+				<name>J_JackLovedLulu</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>533 72 675 110</position>
+				<barchart active="true" />
+			</node>
+			<node id="Node7">
+				<name>D_JohnJealousofJack</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>687 182 826 211</position>
+				<barchart active="true" />
+			</node>
+			<node id="Node8">
+				<name>E_DNAmatcheswithJack</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>219 298 381 333</position>
+				<barchart active="true" />
+			</node>
+			<node id="JackStabbed">
+				<name>A_JackStabbed</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>336 72 462 105</position>
+				<barchart active="true" />
+			</node>
+			<node id="Node11">
+				<name>C_StainfromJack</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>223 175 378 210</position>
+				<barchart active="true" />
+			</node>
+		</genie>
+	</extensions>
+</smile>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network8" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="Node1">
+			<state id="T" />
+			<state id="F" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Node2">
+			<state id="T" />
+			<state id="F" />
+			<probabilities>0.02 0.98</probabilities>
+		</cpt>
+		<cpt id="Node3">
+			<state id="T" />
+			<state id="F" />
+			<parents>Node1 Node2</parents>
+			<probabilities>0.95 0.05000000000000004 0.9399999999999999 0.06000000000000005 0.29 0.71 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Node4">
+			<state id="T" />
+			<state id="F" />
+			<parents>Node3</parents>
+			<probabilities>0.9 0.09999999999999998 0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="Node5">
+			<state id="T" />
+			<state id="F" />
+			<parents>Node3</parents>
+			<probabilities>0.7 0.3 0.01 0.99</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.1.1104.0 ACADEMIC" name="Network8" faultnameformat="nodestate">
+			<node id="Node1">
+				<name>Burglary</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>248 85 296 115</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Node2">
+				<name>Earthquake</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>496 88 544 118</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Node3">
+				<name>Alarm</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>371 193 419 223</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Node4">
+				<name>JohnCalls</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>247 298 295 328</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Node5">
+				<name>MaryCalls</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>500 298 548 328</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+		</genie>
+	</extensions>
+</smile>
