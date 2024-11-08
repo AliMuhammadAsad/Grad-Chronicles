@@ -136,6 +136,13 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Quizzes**
 - **Book and Notes**
 
+#### [CS452 - Probabilistic Graph Models](CS452-Probabilistic-Graphical-Models)
+- **Assignments**
+- **Exams**
+- **Genie Files**
+- **Quizzes**
+- **Slides**
+
 #### [EE/CE-468 Mobile Robotics](EE-CE-468-Mobile-Robotics) (I dare you xD) <img alt="Matlab" src="Assets/matlab.png" width="32px" /> <img alt="Simulink" src="Assets/simulink.png" width="32px" /> <img alt="Gazebo" src="Assets/gazebo.png" width="32px" />
 
 - **[Final Project - Smart Walking Cane for the Visually Impaired](https://github.com/AliMuhammadAsad/Mobile-Robotics-Project)**
