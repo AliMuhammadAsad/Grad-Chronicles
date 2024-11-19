@@ -1,0 +1,70 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{pythonhighlight}
+
+\printanswers
+
+\title{Weekly Challenge 09: Max Flow and Dynamic Programming}
+\author{@username}  % replace with your GitHub user names
+\date{CS 412 Algorithms: Design and Analysis\\[5pt]Spring 2022}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+  
+\titledquestion{Maximum Flow}
+  We are going to write a class \pyth{MaxFlow} in a file \texttt{maxflow.py}. Objects of the class will take in a flow network and compute its maximum flow. The code will be tested automatically on GitHub by \pyth{pytest} using the file, \texttt{test\_maxflow.py}, in your repository.
+
+  \textbf{TASKS}:
+  \begin{parts}
+  \part The \pyth{__init__} method of \pyth{MaxFlow} takes as argument a \pyth{file} object which points to a file containing a flow network, $G$, in the following format.
+    \begin{itemize}
+    \item The first line contains the number of edges, $e$.
+    \item Each of the next $e$ lines contains an edge in the format $u\ v\ c$ where $(u,v)$ is an edge in $G$ with capacity $c$.
+    \item The source vertex is always named, $s$, and the sink vertex is always named, $t$.
+    \item All capacities are integral and positive.
+    \end{itemize}
+  \part The \pyth{get_value} method returns the value of the maximum flow on $G$.
+  \part The \pyth{get_flow} method returns the maximum flow on $G$ as a \pyth{dict} object. A key in the returned \pyth{dict} object is an edge, $(u,v)$ in the maximum flow and the value is the amount of flow along $(u,v)$. Only edges with non-zero flow are included.
+  \part Implement your class in the file, \texttt{maxflow.py}, and push it to your repository.
+  \part Ensure that all tests pass by running \pyth{pytest} locally. Tests on GitHub may still fail. If so, make sure to debug accordingly.
+  \part Do not include any external packages except \pyth{networkx} for the possible use of \href{https://networkx.org/documentation/stable/reference/classes/digraph.html}{\pyth{networkx.DiGraph}} to store and operate on the flow network.
+  \part You may modify the error messages in \texttt{test\_maxflow.py} to convey more information if you wish, but you may not alter any other functionality in it.
+  \end{parts}
+
+  \newpage
+\titledquestion{Dynamic Programming}
+  We are going to implement the rod cutting algorithm from CLRS 15.1 in a file \texttt{cutrod.py}. We will implement the versions of the solution: top-down recursive, top-down memoized, and bottom-up. The code will be tested automatically on GitHub by \pyth{pytest} using the file, \texttt{test\_cutrod.py}, in your repository. 
+  
+  \textbf{TASKS}:
+  \begin{parts}
+  \part Write the top-down recursive version in a function, \pyth{cut_rod}.
+  \part Write the top-down memoized version in a function, \pyth{cut_rod_memoized}.
+  \part Write the bottom-up version in a function, \pyth{cut_rod_bottom_up}.
+  \part All functions take two arguments, \texttt{p} and \texttt{n}, where \texttt{p} is the price array and \texttt{n} is the length of the rod. \texttt{p[i]} is the price of a rod of length \texttt{i}. All prices are positive and increase with length.
+  \part Write all functions in the file, \texttt{cutrod.py}, and push it to your repository.
+  \part Ensure that all tests pass by running \pyth{pytest} locally. Tests on GitHub may still fail. If so, make sure to debug accordingly.
+  \part Do not include any external packages.
+  \part You may modify the error messages in \texttt{test\_cutrod.py} to convey more information if you wish, but you may not alter any other functionality in it.
+  \part Plot the running time of the three versions against \texttt{n} and include them below along with any relevant observations.
+  \part Plot the running time of the three versions against \texttt{n}.
+  \part Share your plot(s) in a comment on the \textit{Week 09 Challenge} post in the course group on Yammer.
+  \end{parts}
+  
+  \begin{solution}
+    % Enter your solution here.
+  \end{solution}
+\end{questions}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

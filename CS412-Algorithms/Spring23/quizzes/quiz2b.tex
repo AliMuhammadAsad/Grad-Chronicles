@@ -1,0 +1,140 @@
+\documentclass[addpoints,a4paper]{exam}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{forest}
+\usepackage{pythonhighlight}
+
+\runningheader{CS 412 Algorithms}{Quiz 2B}{ID: \rule{.2\textwidth}{.5pt}}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+
+% solution
+% \usepackage{draftwatermark}
+% \SetWatermarkText{Sample Solution}
+% \SetWatermarkScale{3}
+\printanswers
+
+\begin{document}
+\begin{flushleft}
+  { \large \textsf{\textbf{CS 412: Algorithms: Design and Analysis, L4, Quiz 2B, Spring 2023.}}}\vspace{.5em}
+  
+  \numquestions\ problems for \numpoints\ points on \numpages\ printed sides. Duration: 30 minutes. \today.
+\end{flushleft}
+
+Instructions:
+\begin{enumerate}
+\item Enter your name and ID below and at the top of every side.
+\item Solve the problems by hand in clear and legible handwriting in the provided space.
+\item You may use the last side for rough work.
+\item Provide precise and concise solutions.
+\end{enumerate}
+
+\noindent Student Name: \hrulefill \\[5pt]
+\noindent Student ID: \hrulefill \\
+\rule{\textwidth}{1pt}
+  
+\begin{questions}
+  \question
+  After many sleepless nights fueled by generous support from Rahim bhai, Professor Habib has developed a novel divide-and-conquer algorithm for matrix multiplication. The algorithm operates recursively on two sub-problems of half the size and performs a quadratic time operation to combine the sub-solutions.
+  \begin{parts}
+    \part[2] Express the time complexity of the algorithm as a recurrence relation.
+    \begin{solution}
+        \[
+          T(n) = 2T(\frac{n}{2}) + \Theta(n^2)
+        \]
+    \end{solution}
+    \part[4] Show that Professor Habib can alter the number of sub-problems in her algorithm while maintaining the same asymptotic time complexity.
+      \begin{solution}
+        We use the master theorem. Given $T(n) = aT(\frac{n}{b}) + \Theta(n^d)$, we know that
+        \[
+          T(n) =
+          \begin{cases}
+            \Theta(n^d) & d > \log_b a\\
+            \Theta(n^d\log n) & d = \log_b a\\
+            \Theta(n^{\log_b a}) & d < \log_b a\\
+          \end{cases}.
+        \]
+        In our case, $a = b = d = 2$, and $\log_b a = \log_2 2 = 1$. Therefore Case 1 from above applies and $T(n) = \Theta(n^2)$.
+
+        This case will continue to apply and the solution will be unchanged if $a$ is changed to 1 or to 3. This is because $2 > \log_2 1$ and $2 > \log_2 3$.
+
+        Thus, changing the number of sub-problems to 1 or 3 will maintain the asymptotic complexity.
+      \vspace{.25\textheight}
+    \end{solution}
+    \part[4] A student suggests a combine operation that runs in linear time. Argue about the other modifications that are required to maintain the same asymptotic time complexity.
+      \begin{solution}
+        The student's suggestion converts $d$ to 1.  Keeping $a=b=2$ as before leads to Case 2 which will not be equal to $\Theta(n^2)$. We need to alter $a$ and/or $b$ so that Case 1 or Case 3 applies. For example, Case 3 can apply if $\log_ba$ is made equal to 2, e.g. by setting $a=4,b=2$.
+
+        That is, the algorithm can now solve 4 sub-problems of half the size.
+      \vspace{.3\textheight}
+    \end{solution}
+  \end{parts}
+
+  \question We are going to compute the sum of two $n\times n$ matrices where $n$ is a power of 2.
+  \begin{parts}
+    \part[4] Provide a divide-and-conquer algorithm for the desired task using the decomposition from Strassen's matrix multiplication algorithm.
+      \begin{solution}
+        Let the matrices be $A$ and $B$. Then we can divide each matrix into 4 sub-matrices, each of dimension $\frac{n}{2}\times\frac{n}{2}$.
+        \[
+          \text{Given } A =
+          \begin{bmatrix}
+            A_1 & A_2 \\
+            A_3 & A_4 \\
+          \end{bmatrix}
+          \text{ and }
+          B =
+          \begin{bmatrix}
+            B_1 & B_2 \\
+            B_3 & B_4 \\
+          \end{bmatrix},
+          \text{ their sum is } C = A + B = 
+          \begin{bmatrix}
+            A_1+B_1 & A_2+B_2 \\
+            A_3+B_3 & A_4+B_4 \\
+          \end{bmatrix}.
+        \]
+\begin{python}
+def add(A, B, C, n):
+  if n == 1:
+    C[1][1] = A[1][1] + B[1][1]
+    return
+  divide A,B,C into submatrices A1, A2, A3, A4,
+    B1, B2, B3, B4, C1, C2, C3, C4
+  add(A1, B1, C1, n//2)
+  add(A2, B2, C2, n//2)
+  add(A3, B3, C3, n//2)
+  add(A4, B4, C4, n//2)
+\end{python}
+      \vspace{.2\textheight}
+    \end{solution}
+    \part[4] Argue about the time complexity of this algorithm.
+    \begin{solution}
+        4 sub-problems of size $\frac{n}{2}$ are solved recursively. The remaining work takes constant time. The run time is therefore given as
+        \[
+          T(n) = 4T(\frac{n}{2}) + \Theta(n^0), \text{ i.e., } (a,b,d) = (4,2,0) \text{ and } \log_ba = 2.
+        \]
+        This corresponds to Case 3 of the Master theorem stated above and the run time is $\Theta(n^2)$.
+      \vspace{.35\textheight}
+    \end{solution}
+    \part[2] Compare the time complexity of your algorithm with that of the straightforward algorithm (not using divide-and-conquer) for this problem. Argue about any differences or similarities. If they are different, why so? If your algorithm is more or just as expensive, what would be required to make it cheaper?
+      \begin{solution}
+        A and B contain $n^2$ elements. The straightforward algorithm iterates over the corresponding elements in each matrix to compute the sum. i.e., it operates in $\Theta(n^2)$ time.
+
+        This is the same as our algorithm above. This is because our algorithm performs the same operations, just in a divide-and-conquer manner. That does not yield any benefit. to achieve any benefit, our algorithm will have to incorporate some insights that reduce the quantity of some of the involved operations.
+      \vspace{.25\textheight}
+    \end{solution}
+  \end{parts}
+\end{questions}
+
+\newpage
+\centerline{\large Rough Work}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

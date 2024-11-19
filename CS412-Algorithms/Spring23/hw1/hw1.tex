@@ -1,0 +1,154 @@
+\documentclass[addpoints]{exam}
+
+\usepackage[table]{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{pythonhighlight}
+\usepackage{titling}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{CS 412 Algorithms, Spring 2023}{Homework 1}{\theauthor}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+
+\newcommand\cg{\cellcolor{lightgray}}
+
+\title{Homework 1\\ CS 412 Algorithms: Design and Analysis}
+\author{team-name}  % replace with your team name without the brackets, e.g. q1-team-420
+\date{Habib University | Spring 2023}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+  \question
+  Horner's method computes a polynomial of degree $n$ as follows.
+  \[
+    \sum_{i=0}^n a_ix^i = a_0 + x(a_1 + x(a_2 + x(a_3 + \ldots x(a_{n-1}+xa_n)\ldots)) )
+  \]
+  An algorithm to compute a polynomial using this method is given below.
+\begin{python}
+Horner(A, n, x):
+  # A contains the coefficients
+  p = 0
+  for i = n downto 0:
+    p = A[i] + x * p
+  return p
+\end{python}
+  \begin{parts}
+    \part[5] Is the algorithm correct? Provide a counterexample if it is not, or prove using a loop invariant if it is.
+    \part[5] Derive the time complexity of this algorithm?
+  \end{parts}
+
+  \begin{solution}
+    \begin{parts}
+      \part 
+      \part 
+    \end{parts}
+  \end{solution}
+
+  \question Derive the closed form solution of each of the following recurrence relations.
+  \begin{parts}
+    \part[5] $T(m,n) = T(\frac{m}{2}, \frac{n}{2}) + \Theta(m+n), T(1, n) = T(m, 1) = c$.
+    \part[5] $T(m,n) = T(m, \frac{n}{2}) + \Theta(m), T(1, n) = \Theta(n), T(m, 1) = \Theta(m)$.
+  \end{parts}
+
+  \begin{solution}
+    \begin{parts}
+      \part 
+      \part 
+    \end{parts}
+  \end{solution}
+  
+  \question[5] What is the set, $O(f(n)) \cap \Omega(f(n))$? Justify your answer.
+  
+  \begin{solution}
+  \end{solution}
+  
+  \question[5] We are given the series, $f(n) = \sum_{i=0}^nar^i$, where $|r|>0$. Show that
+  \[
+    f(n) =
+    \begin{cases}
+      \Theta(r^n) & r > 1\\
+      \Theta(n) & r = 1\\
+      \Theta(1) & r < 1\\
+    \end{cases}
+  \]
+  
+  \begin{solution}
+  \end{solution}
+
+  \question[5] To highlight the CS strength at Habib University, NSOs are planning a particular formation on the stairs from the library to the music room. One new student stands on the top stair and places their hands on the shoulders of up to two new students on the next stair. Each of them, in turn, places their hands on the shoulders of up to two students on the next stair, and so on, all the way to the last stair. There is at least one person on every stair.
+
+  Numbering the top stair as $0$ and the bottom one as $n$, express the total number of new students standing on all the stairs using recurrence relations. Solve the recurrences, and state what they mean for the number of students.
+  
+  \begin{solution}
+  \end{solution}
+  
+  \question Given a list of $n$ student IDs representing all the check-ins in a day at all the card machines at Habib, we want to extract the unique IDs. in each of the following situations. 
+  \begin{parts}
+    \part[5] Provide a divide-and-conquer algorithm for the purpose that does not use sorting and has a time complexity of $O(n^3)$.
+    \part[5] Provide a divide-and-conquer algorithm for the purpose that may use sorting and has a time complexity of $O(n\lg n)$.
+  \end{parts}
+  For each algorithm, justify its running time and argue that it is correct.
+  
+  \begin{solution}
+    \begin{parts}
+      \part
+      \part
+    \end{parts}
+  \end{solution}
+  
+  \question[5] The \textit{Towers of Habib} game is played on $n$ pegs with an abundant supply of disks. Players take turns placing disks on the pegs. Any number of disks may be placed on any peg provided that the resulting number of disks on the peg is more than the number of disks on the left peg, if any, and less than those on the right peg, if any. Once all the pegs are occupied, the \textit{Aadaab} state occurs if peg number $i$ has $i$ disks on it. At this point, everyone says, ``Aadaab'', to each other.
+
+  Provide an $O(\lg n)$ divide-and-conquer algorithm to detect if the game is currently in the \textit{Aadaab} state. Argue that it is correct and has the required time complexity.
+
+  \begin{solution}
+  \end{solution}
+
+  \question[5] In the run-up to \href{https://en.dailypakistan.com.pk/13-Jan-2019/this-pakistani-varsity-will-celebrate-feb-14-as-sister-s-day}{Sisters Day}, CSOs are analyzing the daily number of PDA cases on campus since the start of classes at Habib University in August 2014. Given the data of $n$ days, a \textit{successful} day is one in which the number is not greater than the day just prior, if it exists, or the day just after, if it exists.
+
+  For example, the successful days are highlighted in each of the 3 sample data sets below.
+  
+  \begin{tabular}{*{3}{c}}
+    \begin{tabular}{*{7}{|c}|}
+        \hline
+      \cg 3 & 5 & 7 & \cg 2 & 9 & \cg 0 & 1\\
+        \hline
+    \end{tabular}
+    &
+    \begin{tabular}{*{9}{|c}|}
+        \hline
+      \cg 8 & 9 & 10 & 11 & 12 & 7 & 6 & 5 & \cg4\\
+        \hline
+    \end{tabular}
+    &
+      \begin{tabular}{*{6}{|c}|}
+        \hline
+        10 & 9 & 8 & \cg 7 & \cg 7 & \cg 7\\
+        \hline
+
+      \end{tabular}
+  \end{tabular}
+  
+  Provide an $O(\lg n)$ divide-and-conquer algorithm to identify a successful day. Argue that it is correct and has the required time complexity.
+
+  \begin{solution}
+  \end{solution}
+
+  \question Below, list any and all sources, \href{https://hulms.instructure.com/courses/2616/discussion_topics/29240}{including AI tools}, that you have consulted for any of the problems above. We are interested in learning about unsuccessful attempts just as much as successful ones.
+
+  \begin{solution}
+  \end{solution}
+  
+\end{questions}
+
+\end{document}

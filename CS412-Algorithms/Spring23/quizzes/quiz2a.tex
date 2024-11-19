@@ -1,0 +1,142 @@
+\documentclass[addpoints,a4paper]{exam}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{forest}
+\usepackage{pythonhighlight}
+
+\runningheader{CS 412 Algorithms}{Quiz 2A}{ID: \rule{.2\textwidth}{.5pt}}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+% solution
+\usepackage{draftwatermark}
+\SetWatermarkText{Sample Solution}
+\SetWatermarkLightness{.9}
+\SetWatermarkScale{3}
+\printanswers
+
+\begin{document}
+\begin{flushleft}
+  { \large \textsf{\textbf{CS 412: Algorithms: Design and Analysis, L1, Quiz 2A, Spring 2023.}}}\vspace{.5em}
+  
+  \numquestions\ problems for \numpoints\ points on \numpages\ printed sides. Duration: 30 minutes. \today.
+\end{flushleft}
+
+Instructions:
+\begin{enumerate}
+  % \item Please observe the allowed time for this quiz as indicated on Canvas.
+\item Enter your name and ID below and at the top of every side.
+\item Solve the problems by hand in clear and legible handwriting in the provided space.
+\item You may use the last side for rough work.
+\item Provide precise and concise solutions.
+\end{enumerate}
+
+\noindent Student Name: \hrulefill \\[5pt]
+\noindent Student ID: \hrulefill \\
+\rule{\textwidth}{1pt}
+
+\begin{questions}
+  \question Consider the recurrence
+    \begin{equation}
+      \label{eq:rec1}
+      T(n) = 4T(n-1) + 4T(n-2) + 4n, T(0) = 0, T(1) = 4.
+    \end{equation}
+
+  \begin{parts}
+    \part[5] Design an algorithm whose time complexity is given by Equation \ref{eq:rec1}.
+    \begin{solution}
+\begin{python}
+def f(n):
+  # assume that the following takes 0 steps.
+  if n == 0:
+    return -1
+  # assume that the following takes 4 steps.
+  if n == 1:
+    return 1+2+3+4
+  # the general case follows.
+  answer = f(n-1) + f(n-1) + f(n-1) + f(n-1) +
+           f(n-2) + f(n-2) + f(n-2) + f(n-2)
+  for i in 1 to 4*n:
+    answer += i
+  return answer
+\end{python}
+      \vspace{.4\textheight}
+    \end{solution}
+    \part[5] Justify that the time complexity of your algorithm is given by Equation \ref{eq:rec1}. Clearly state any relevant assumptions.
+      \begin{solution}
+        Assumptions for the base cases are mentioned in the comments in the algorithm. In the general case, the algorithm recurses 4 times with a problem size of $(n-1)$ and another 4 times with a problem size of $(n-2)$. Finally it iterates $4n$ times, performing a constant time operation in each iteration.
+
+        Thus, the algorithm's time complexity is given by
+        \[
+          T(n) = 4T(n-1) + 4T(n-2) + 4n, T(0) = 0, T(1) = 4
+        \]
+        which is the same as Equation \ref{eq:rec1}.
+      \vspace{.25\textheight}
+    \end{solution}
+  \end{parts}
+
+\question Following is a linear non-homogeneous recurrence relation with constant coefficients. 
+  \begin{equation}
+    \label{eq:rec2}
+    T(n) = 4T(n-1) - 4T(n-2) + 4n, T(0) = 0, T(1) = 4.
+  \end{equation}
+  Its solutions have the form
+  \[
+    T(n) = T(n)^{(p)} + T(n)^{(h)},
+  \]
+  where $T(n)^{(p)}$ is the \textit{particular solution} and $T(n)^{(h)}$ is the solution of the corresponding linear homogeneous recurrence relation. We are given that $T(n)^{(p)} = 4n+16$.
+  \begin{parts}
+    \part[5] Find a solution for $T(n)$.
+      \begin{solution}
+        The characteristic equation is $r^2 = 4r - 4$ which solves to $r=2,2$.
+
+        Then, $T(n)^{(h)} = \alpha_12^n + \alpha_2n2^n$, and $T(n) = 4n + 16 + \alpha_12^n + \alpha_2n2^n$.
+
+        Using the base cases,
+        \begin{align*}
+          T(0) & = 16 + \alpha_1 = 0 & \implies\alpha_1 = -16 & \\
+          T(1) & = 4+16 -16\cdot2 + \alpha_2\cdot2 = 4 & \implies\alpha_2 = 8 & \\
+        \end{align*}
+        Therefore,
+        \begin{align}
+          T(n) & = 4n + 16 - 16\cdot2^n + 8n2^n \nonumber \\
+               & = 4n + 16 - 2\cdot2^{n+3} + n2^{n+3} \nonumber\\
+               & = 4(n + 4) + 2^{n+3}(n - 2). \label{eq:sol}
+        \end{align}
+    \end{solution}
+    \newpage
+    \part[5] Prove that your solution is correct.
+      \begin{solution}
+        We want to verify that\\
+        Equation \ref{eq:sol}: $T(n) = 4(n + 4) + 2^{n+3}(n - 2)$.\\
+        is a solution to\\
+        Equation \ref{eq:rec2}: $T(n) = 4T(n-1) - 4T(n-2) + 4n$.
+
+        We will do so by substituting Equation \ref{eq:sol} in Equation \ref{eq:rec2} and seeing if both sides are equal.
+        \begin{proof}
+          We substitute Equation \ref{eq:sol} in Equation \ref{eq:rec2}.
+        \begin{align*}
+          T(n) & = 4T(n-1) - 4T(n-2) + 4n\\
+          4(n + 4) + 2^{n+3}(n - 2) & = 4\left(4(n+3) + 2^{n+2}(n-3)\right) - 4\left(4(n+2) + 2^{n+1}(n-4)\right) + 4n\\
+          & = 4\left(4n + 12 + 2^{n+1}(2n-6) - 4n - 8 - 2^{n+1}(n-4) + n\right) \\
+          & = 4\left(4 + 2^{n+1}(2n-6) - 2^{n+1}(n-4) + n\right) \\
+          & = 4\left(n + 4 + 2^{n+1}(n-2)\right) \\
+          & = 4(n + 4) + 2^{n+3}(n-2)
+        \end{align*}
+      \end{proof}
+      \vspace{.6\textheight}
+    \end{solution}
+  \end{parts}
+\end{questions}
+
+\newpage
+\centerline{\large Rough Work}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

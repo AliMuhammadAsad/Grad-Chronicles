@@ -1,0 +1,108 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{titling}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{CS 412 Algorithms, Spring 2022}{Homework 1}{\theauthor}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+
+\title{Homework 1\\ CS 412 Algorithms: Design and Analysis}
+\author{$<$\textit{team-name}$>$}  % replace with your team name without the brackets, e.g. upper-bound
+\date{Habib University -- Spring 2022}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question[5]
+  For the following pairs of functions, $f$ and $g$, justify whether $f = O(g)$, $f = \Omega(g)$, or both.
+  \begin{parts}
+  \part[2] $f(n) = 10n^2,\; g(n) = 3n^3 + n^2$
+  \part[5] $f(n) = n\log n,\; g(n) = n\sqrt{n}$
+  \part[5] $f(n) = 2^n,\; g(n) = n!$
+  \part[5] $f(n) = n\log n,\; g(n) = (\log n)^n$
+  \end{parts}
+
+  \begin{solution}
+    \begin{parts}
+    \part 
+    \part 
+    \part 
+    \part 
+    \end{parts}
+  \end{solution}
+
+\question For each of the divide-and-conquer algorithms described below, give its run time, $T(n)$, as a recurrence relation and then state and justify a tight bound for it.
+  \begin{parts}
+  \part[5] The solution can be obtained by solving 7 subproblems of size $\frac{n}{7}$ each and then combining the solutions of the subproblems in $(3n + 20)$ steps,
+  \part[5]  The solution can be obtained by solving 16 subproblems of size $\frac{n}{4}$ each and then combining the solutions of the subproblems in 100 steps,
+  \part[5]  The solution can be obtained by solving 2 subproblems of size $\frac{n}{2}$ each and then combining the solutions of the subproblems in $(5n^2 + 2n + 3)$ steps.
+  \end{parts}
+
+  \begin{solution}
+    \begin{parts}
+    \part 
+    \part 
+    \part 
+    \end{parts}
+  \end{solution}
+  
+\question Consider the 1D \textit{peak finding} algorithm as described on pages 2 and 3 \href{https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec01.pdf}{here}.
+  \begin{parts}
+  \part[5] Use a recursion tree to state an appropriate asymptotic bound for the recurrence.
+  \part[5] Use the substitution method to verify your bound above.
+  \end{parts}
+
+  \begin{solution}
+    \begin{parts}
+    \part 
+    \part 
+    \end{parts}
+  \end{solution}
+
+    
+\question[10] Given an array $A$ of $n$ integers, design a $\Theta(n)$ algorithm to compute its \textit{prefix sum}, which is defined as the equally-sized array, $B$, such that
+  \[
+    B[i] = \sum\limits_{j=1}^i A[i], \quad 1 \leq i \leq n.
+  \]
+  State and justify the time complexity of your algorithm.
+
+  \begin{solution}
+  \end{solution}
+
+\question[10] We define a \textit{local minimum} in a graph as a vertex, $v$, whose label, $x_v$, is less than the label, $x_u$, for all vertices, $u$, that are adjacent to $v$. It follows that the local minimum in a graph need not be unique.
+
+  Design an algorithm to find a local minimum (any one) in a complete binary tree containing $n$ nodes. Each node has a distinct numeric label and the tree can be traversed in the usual manner, i.e. you have direct access to the root, and at any node, you can access its left or right child, if present.
+
+  Your algorithm must run in $O(\log n)$ time. Indicate your algorithm below and justify its running time.
+
+  \begin{solution}
+    
+  \end{solution}
+
+
+\question[10] Given an array, $A$, of $n$ numbers (not necessarily distinct), design an efficient divide-and-conquer algorithm to find its \textit{longest increasing contiguous subarray}. For example, if $A = [4, 0, 9, 1, 5, 7, 2, 8]$, then the desired result is $[1, 5, 7]$. State and justify the time complexity of your algorithm.
+
+  \begin{solution}
+    
+  \end{solution}
+  
+\end{questions}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

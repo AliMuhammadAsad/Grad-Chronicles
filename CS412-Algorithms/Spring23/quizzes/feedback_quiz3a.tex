@@ -1,0 +1,96 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+
+\pagestyle{empty}
+
+\title{Feedback on Quiz 3A}
+\author{CS 412: Algorithms: Design and Analysis}
+\date{Spring 2023}
+
+\newcommand\mc{\multicolumn}
+\newcommand\mcs[1]{\multicolumn{1}{c}{#1}}
+\newcommand\mcb[1]{\multicolumn{1}{c|}{#1}}
+
+\renewcommand{\solutiontitle}{\noindent\textbf{Feedback:}\enspace}
+\printanswers
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+Specific feedback on each part follows.
+
+\begin{questions}
+  \question
+  \begin{parts}
+    \part[3] Characterize the structure of an optimal solution.
+    \begin{solution}
+      Most submitted solutions did not correctly solve the problems. However, wherever the submitted solution was close, could have been correct with some minor tweaking, or missed out on minor details only, most of the marks have been granted. Common errors are
+      \begin{itemize}
+      \item failing to describe the optimal solution
+      \item failing to demonstrate optimal substructure
+      \item failing to demonstrate overlapping subproblems
+      \item failing to provide any recurrence
+      \item failing to provide a base case for the recurrence
+      \item using notation without introducing it
+      \item the used notation does not make sense
+      \item providing an algorithm here instead of a characterization
+      \item writing a bunch of notation without any explanation
+      \item taking the max of a single quantity
+      \item taking the max of sequences when the intention is to take the max of their sums
+      \item provided solution does not use dynamic programming
+      \end{itemize}
+    \end{solution}
+    
+    \part[2] Recursively define the value of an optimal solution.
+    \begin{solution}
+      Common errors are
+      \begin{itemize}
+      \item failing to describe the \textit{value} of the optimal solution: the \textit{length} of the longest common contiguous subsequence.
+      \item using notation without introducing it
+      \item failing to provide a recurrence
+      \item failing to provide a base case
+      \item taking the max of a single quantity
+      \item the provided recurrence does not match the structure defined in the previous part
+      \end{itemize}
+    \end{solution}
+    
+    \part[3] Show how the value of an optimal solution can be computed in a bottom-up manner.
+    \begin{solution}
+      Many submissions provided pseudocode here, which is fine. Some issues encountered were
+      \begin{itemize}
+      \item a problem subgraph is given without any accompanying explanation.
+      \item a base case is used here which is not specified in the previous part
+      \item a \textit{very} rough sketch of an algorithm is provided
+      \item the computation does not match the recurrence given in the previous part
+      \item the computation is not bottom-up
+      \item the computation may involve infinite recursion
+      \end{itemize}
+    \end{solution}
+
+    \part[2] Argue about the time and space complexities of your approach.
+  \begin{solution}
+    This was the least problematic part. Most people argued correctly here for their code from the previous part. Some issues encountered were
+    \begin{itemize}
+    \item no argument is provided for the claimed complexities
+    \item some arguments are made but no expression for the complexities are presented
+    \item incorrect claims are made about the computation from the previous part
+    \item one of the complexities is not argued about
+    \item the computation in the previous part is recursive, but the cost induced by the recursion is not incorporated
+    \item arguments of the type, ``since we are running two loops (or a nested loop), the time complexity is quadratic''. This is problematic and indicates that the student does not understand asymptotic notation. Not every loop runs in linear time. However, I have let this go and not deducted marks for it.
+    \end{itemize}
+    
+  \end{solution}
+\end{parts}    
+  
+\end{questions}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

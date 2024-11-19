@@ -1,0 +1,113 @@
+\documentclass[addpoints,a4paper]{exam}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{forest}
+\usepackage{pythonhighlight}
+
+% solution
+\usepackage{draftwatermark}
+\SetWatermarkText{Sample Solution}
+\SetWatermarkScale{3}
+\printanswers
+
+\begin{document}
+\begin{flushleft}
+  { \large \textsf{\textbf{CS 412: Algorithms: Design and Analysis,  Quiz 4 -- L1, Spring 2023.}}}\vspace{.5em}
+  
+  Thursday, 26 January, 2023. Total Marks: \numpoints, Duration: 30 minutes.
+\end{flushleft}
+
+{\bf Instructions:}
+
+\begin{enumerate}
+  % \item Please observe the allowed time for this quiz as indicated on Canvas.
+\item Solve the problems by hand on blank A4 paper in clear and legible handwriting.
+\item Be precise and concise in your solutions.
+  \item For each question, justify your answer. Simply stating the answer will not be sufficient.
+\item Work in pencil will be considered rough work and ignored for grading purposes.
+\end{enumerate}
+\centerline{\rule{.7\textwidth}{1pt}}
+
+\begin{questions}
+
+  \question The \textit{searching problem} can be defined as follows.
+
+  \begin{tabular}{ll}
+    \textbf{Input}: & A sequence, \texttt{A}, of $n$ keys $\langle k_1, k_2, k_3, \ldots, k_n \rangle$ in arbitrary order \\
+            & A key, \texttt{k}\\
+    \textbf{Output}: & \texttt{True} if $k_i = k$ for some $i$ where $1\leq i \leq n$, otherwise \texttt{False}
+  \end{tabular}
+  \smallskip
+  
+  \begin{parts}
+    \part[2] Design and provide pseudocode for an efficient \textit{divide-and-conquer} algorithm to solve the searching problem. Number the lines of your pseudocode.
+    \begin{solution}
+\begin{python}
+def search(A, k):
+  # base case: nothing to find in an empty sequence.
+  if len(A) == 0:
+    return False
+  # base case: single element
+  if len(A) == 1:
+    return k == A[0]
+  # find split point
+  n = len(A)
+  mid = n // 2
+  # if k is not found in left half, then search in the right half.
+  if search(A[:mid], k):
+    return True
+  return search(A[mid:], k):
+\end{python}
+    \end{solution}
+    \part[2] Identify the lines corresponding to each of the steps: \textit{divide}, \textit{conquer}, and \textit{combine}.
+    \begin{solution}
+      Divide: Line 10.\\
+      Conquer: Lines 12 to 14.\\
+      Combine: none.\\
+    \end{solution}
+    \part[2] Derive a recurrence relation to express the time complexity of your algorithm. If the algorithm has different cases, argue about the best and worst cases and provide a recurrence relation for each case.
+    \begin{solution}
+      Barring the base case, the best case is when the key is found in the left half. The corresponding recurrence is
+      \[
+        T(n) = T\left(\frac{n}{2}\right) + c_1, T(0) = c_2, T(1) = c_3.
+      \]
+      In the worst case, both halves need to be searched. The corresponding recurrence is
+      \[
+        T(n) = 2T\left(\frac{n}{2}\right) + c_1, T(0) = c_2, T(1) = c_3.
+      \]
+    \end{solution}
+    \part[2] Use the recurrence tree method to find a closed form solution of the recurrence relation above. If there are multiple recurrence relations above, choose any one.
+    \begin{solution}
+        We analyze the best case below, i.e.
+        \[
+          T(n) = T\left(\frac{n}{2}\right) + c_1, T(0) = c_2, T(1) = c_3.
+        \]
+      \begin{minipage}{.8\textwidth}
+      For simplicity, we assume that $n$ is a power of 2. $T(n)$ is then the sum of the work done at every level in the tree on the right. As argued in the lecture for mergesort, the number of levels in this tree is $1+\lg n$. Therefore, $T(n) = c_1\lg n + c_3 = \Theta(\lg n)$.
+    \end{minipage}
+      \begin{minipage}{.1\textwidth}
+    \hspace{100pt}\begin{forest}
+        [$c_1$ [$c_1$ [$c_1$ [$\vdots$ [$c_1$ [$c_3$]]]]]]
+      \end{forest}
+    \end{minipage}
+  \end{solution}
+  \end{parts}
+
+  \question[2] Given $f(n) = e^n$ and $g(n) = n!$, argue whether $f(n)$ is each of $O(g(n)), \Omega(g(n)), \Theta(g(n)), o(g(n)),$ and $\omega(g(n))$.
+  \begin{solution}
+    Let us consider the $\log$ of both functions.
+    \[
+      \log f(n) = n\log e = \Theta(n),\quad \therefore f(n) = c^{\Theta(n)},
+    \]
+    and as seen in the lecture using Stirling's approximation
+    \[
+      \log g(n) = \Theta(n\log n),\quad \therefore g(n) = c^{\Theta(n\log n)}.
+    \]
+    The exponent in $g(n)$ dominates the exponent in $f(n)$. Therefore the only given relations that apply are $f(n) = O(g(n))$ and $f(n) = o(g(n))$.
+   
+  \end{solution}
+\end{questions}
+\centerline{\rule{.3\textwidth}{1pt}viel Gl\"uck\rule{.3\textwidth}{1pt}}
+
+\end{document}

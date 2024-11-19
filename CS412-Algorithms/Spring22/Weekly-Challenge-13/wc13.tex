@@ -1,0 +1,56 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\printanswers
+
+\title{Weekly Challenge 13: Minimum Spanning Trees (MST)\\CS 412 Algorithms: Design and Analysis}
+\author{@username}  % replace with your GitHub user names
+\date{Habib University\\Spring 2022}
+
+% \qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+  
+\question[2]
+We studied Prim's and Kruskal's algorithms for finding a minimum spanning tree (MST) in an undirected, weighted, connected graph. Both algorithms have the same asymptotic bounds. However, in practice, their performance depends upon the underlying data structures--a priority queue in Prim's and a disjoint set data structure in Kruskal's algorithm--and how we implement them. 
+
+In this challenge, we will compare the performance of the two algorithms using datasets of different sizes. These are\footnote{taken from \href{https://algs4.cs.princeton.edu/43mst/}{4.3 Minimum Spanning Trees, Princeton University}}:
+\begin{itemize}
+\item \href{https://algs4.cs.princeton.edu/43mst/tinyEWG.txt}{tinyEWG.txt}: contains 8 vertices and 16 edges
+\item \href{https://algs4.cs.princeton.edu/43mst/mediumEWG.txt}{mediumEWG.txt}: contains 250 vertices and 1,273 edges
+\item \href{https://algs4.cs.princeton.edu/43mst/1000EWG.txt}{1000EWG.txt}: contains 1,000 vertices and 8,433 edges
+\item \href{https://algs4.cs.princeton.edu/43mst/10000EWG.txt}{10000EWG.txt}: contains 10,000 vertices and 61,731 edges
+\item \href{https://algs4.cs.princeton.edu/43mst/largeEWG.txt}{largeEWG.txt}: contains one million vertices and 7,586,063 edges
+\end{itemize}
+
+  \textbf{TASKS}:
+  \begin{parts}
+  \part Write a function to read the graphs from the data files linked above. You may use \href{https://networkx.org}{\texttt{networkx}}, \href{https://igraph.org/python/}{\texttt{igraph}}, any other suitable library, or an implementation of your own to store and access the graph.
+    \part Implement a priority queue for use in Prim's algorithm. You may write your own or use an existing implementation, e.g. \href{https://docs.python.org/3/library/queue.html}{\texttt{queue.PriorityQueue}}.
+    \part Implement a \textit{union find} or \textit{union by rank} data structure for disjoint sets. You may write your own or use an existing implementation, e.g. \href{https://python-algorithms.readthedocs.io/en/stable/python_algorithms.basic.html#module-python_algorithms.basic.union_find}{\texttt{python\_algorithms.basic.union\_find}}.
+    \part Implement Prim's algorithm using an appropriate data structure from above. Do not use any library implementation of  the algorithm.
+    \part Implement Kruskal's algorithm using an appropriate data structure from above. Do not use any library implementation of the algorithm.
+    \part Time the execution of your implementation of Prim's algorithm on each of the graphs linked above.
+    \part Time the execution of your implementation of Kruskal's algorithm on each of the graphs linked above.
+    \part Compare the timings in a plot and include the plot below.
+    \part Also share below any notable observations that you may have.
+    \part Share your plot in a comment on the \textit{Weekly Challenge 13} post in the course group on Yammer.
+  \end{parts}
+ 
+  \begin{solution}
+    % Enter your solution here.
+  \end{solution}
+\end{questions}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
