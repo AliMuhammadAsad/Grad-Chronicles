@@ -1,0 +1,66 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage[a4paper]{geometry}
+\usepackage{hyperref}
+
+% \theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+
+% \theoremstyle{claim}
+\newtheorem{claim}{Claim}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+\printanswers
+
+\title{Weekly Challenge 13: Decidability}
+\author{CS 212 Nature of Computation\\Habib University}
+\date{Fall 2023}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+  \titledquestion{Bit flip}
+
+  Given $\Sigma=\{0,1\}$, consider the function, $f$, defined over a character, $a$, and extended to a string, $u=u_1u_2u_3\ldots u_n$, as follows.
+  \begin{align*}
+    f(a) & =
+    \begin{cases}
+      0 & a = 1 \\
+      1 & a = 0 \\
+    \end{cases}                             \\
+    f(u) & = f(u_1)f(u_2)f(u_3)\ldots f(u_n)
+  \end{align*}
+
+  Assuming the results in Chapter 4, prove or disprove that the following language is decidable.
+  \[
+    S = \{\langle M\rangle \mid M\text{ is a DFA},  u\in L(M) \implies f(u)\in L(M)\}.
+  \]
+
+  \begin{solution}
+    The language $S$ is decidable as we can construct a Turing Machine, $ M_S $, that decides $S$ as follows:
+
+    On input $ \langle M \rangle $ \vspace*{-2mm}
+    \begin{enumerate}
+      \item Construct a DFA $M'$ using $M$. Let $M = (Q, \Sigma, \delta, q_o, F)$. \\ Then $ M' = (Q, \Sigma, \delta', q_o, F) $ where we make a transition function by flipping the alphabets in the transition: $ \delta(q, a) = p \implies \delta'(q, f(a)) = p $. \vspace*{-2mm}
+      \item Run $ \langle M, M' \rangle $ on $ EQ_\text{DFA} $ \vspace*{-2mm}
+      \item If $ EQ_\text{DFA} $ accepts, then accept. If it rejects, then reject.
+    \end{enumerate}
+    If $M$ is a DFA which satisfies the condition described in $S$, then flipping the transition function will not change the language it accepts. Therefore, $M'$ will accept the string that $M$ accepts. So, if their languages are the same, then we know $ M \in S $ else it rejects. 
+    \vspace*{-8mm}
+    \begin{flushright}
+      $ \blacksquare $
+    \end{flushright}
+
+  \end{solution}
+
+\end{questions}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

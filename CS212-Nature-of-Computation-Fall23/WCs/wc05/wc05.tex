@@ -1,0 +1,92 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage[a4paper]{geometry}
+\usepackage{hyperref}
+\usepackage{mdframed}
+
+\title{Weekly Challenge 05: Regularity}
+\author{CS 212 Nature of Computation\\Habib University\\Ali Muhammad Asad (aa07190)}
+\date{Fall 2023}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+% \theoremstyle{claim}
+\newtheorem{claim}{Claim}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+
+%%%%%%%% Uncomment to include your solution.
+\printanswers
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\titledquestion{Regular?}
+
+Prove or disprove the following claim.
+\begin{claim}
+The language, $L = \{ w^iw^j \mid w\in\{0,1\}^*, 0 < i \le j \}$, is regular.
+\end{claim}
+
+\begin{solution}
+	The language $L = \{ w^iw^j \mid w\in\{0,1\}^*, 0 < i \le j \} $ consists of all possible concatenations of `0's and `1's repeated $ i $ times, and then $ j $ times where $ 0 < i \leq j $.
+
+	\vspace*{1mm}
+	Assume that $L$ is regular, then the pumping lemma should hold. 
+	Consider a string $ s = 0^p10^p1 $ where $ w = 0^p1, i = 1, j = 1 $. Since $s \in L$, and $ |s| \geq p $, the pumping pemma guarantees that $s$ can be split into three pieces, $s = xyz$ such that:
+	\vspace*{-3mm}\begin{enumerate}
+		\item for each $ i \geq 0, \; xy^iz \in L $, \vspace*{-2mm}
+		\item $ |y| > 0 $ \vspace*{-2mm}
+		\item $ |xy| \le p $
+	\end{enumerate}
+	Condition 3 of the pumping lemma guarantees that $y$ can only consist of 0s;\vspace*{-3mm}
+	\begin{itemize}
+		\item[-] $y$ cannot be a 1, as that would imply $ x = 0^p $, then $ |xy| > p $, furthermore, then the first part of the string would have more 1s than the second part, which is a contradiction. \vspace*{-2mm}
+		\item[-] By the same argument as above, $ y $ cannot be a combination of a 1 followed by some 0s either as that would imply $ x = 0^p $, then $ |xy| > p $ 
+	\end{itemize}
+	Then $ xy = 0^p $ and $ y = 0^m $, and $ x = 0^{p - m} $
+	Pumping $y$ into the string, \vspace*{-2mm} 
+	$$ xyyz = 0^p0^m10^p1$$ \vspace*{-6.5mm} $$xy^2z = 0^{p + m}10^p1$$
+	This shows that the first part of the string will contain more number of 0s than the later half since $ p + m > p $, and since the later half still has only $p$ 0s, then $ xy^2z \notin L $, hence we arrive at a contradiction as the pumping lemma does not hold. 
+
+	Hence proved that $L$ is not regular.
+	\begin{flushright}
+		$ \blacksquare $
+	\end{flushright}
+
+
+	
+\end{solution}
+  
+\end{questions}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+
+% The language $L = \{ w^iw^j \mid w\in\{0,1\}^*, 0 < i \le j \} $ consists of all possible concatenations of `0's and `1's repeated $ i $ times, and then $ j $ times where $ 0 < i \leq j $.
+
+% 	\vspace*{2mm}
+% 	Assume that $L$ is regular, then the pumping lemma should hold. 
+% 	Consider a string $ s = (01)^p (01)^{p} $. By the pumping lemma, we can break $ s $ into three components, such that $ s = xyz $, satisfying the following:
+% 	\vspace*{-3mm}\begin{enumerate}
+% 		\item for each $ i \geq 0, \; xy^iz \in L $, \vspace*{-2mm}
+% 		\item $ |y| > 0 $ \vspace*{-2mm}
+% 		\item $ |xy| \le p $
+% 	\end{enumerate}
+% 	Then let $x$ consist of the first p characters of $s$: $x = (01)^p$. \\
+% 	By condition 3, $ |xy| \le p $, then $y$ has to be contained within the first p characters, so $ y = (01)^k $ for some $ 0 < k \le p $ and $ xy = (01)^p $. \\ 
+% 	Then $ z $ consist of the remaining characters of $s$: $ z = (01)^{p - k}(01)^{p} $
+	
+% 	For $ i = 2 $, $$ xy^2z = xyyz = (01)^p(01)^k(01)^{p} $$ \vspace*{-5mm} 
+% 	$$ xyyz = (01)^{p + k}(01)^{p} $$.
+% 	From above, it is clear that the first part of $s$ will contain more number of (01)s than the later half since $ p + k > p $, and since the later half still has only 2p (01)s, then $ xy^2z \notin L $, hence we arrive at a contradiction as the pumping lemma does not hold. Therefore, the given language is not regular.

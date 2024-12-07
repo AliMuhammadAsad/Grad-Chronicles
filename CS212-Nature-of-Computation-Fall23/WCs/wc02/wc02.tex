@@ -1,0 +1,116 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\title{Weekly Challenge 02: Deterministic Finite Automata (DFA)}
+\author{CS 212 Nature of Computation\\Habib University \\ Ali Muhammad Asad (aa07190)}
+\date{Fall 2023}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\printanswers
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+  
+\titledquestion{The Complement Language}
+
+Consider the following finite automata and their languages.
+\begin{itemize}
+\item $M_1=(Q, \{0,1\}, \delta, q_o, F)$ and its language, $L_1=L(M_1)$, and
+\item $M_2=(Q, \{0,1\}, \delta, q_o, Q-F)$ and its language, $L_2=L(M_2)$.
+\end{itemize}
+
+Prove or disprove the following claim,
+
+\centerline{\fbox{
+    $L_1 = L_2'$
+  }
+}
+where $L'$ is the set-complement of $L$.
+
+\begin{solution}
+
+% We have the following finite automata and their languages: \\
+% - $ M_1 = (Q, \{0, 1\}, \delta, q_o, F) $ and its language $ L1 = L(M_1) $, and \\
+% - $ M_2 = (Q, \{0, 1\}, \delta, q_o, Q - F) $ and its language $ L2 = L(M_2) $
+
+% $F \subseteq Q$ and is the set of states accepted by $M_1$, then by the definition of set complements, $ F = (Q - F)' $, and $F' = Q - F$.
+
+% Considering the languages $L_1$ and $L_2$, $L_1$ is the language that leads $M_1$ to an accepting state, but not $M_2$. Similarly, $L_2$ is the language that leads $M_2$ to an accepting state but not $M_1$.
+
+% Then for any arbitrary string $ w \in \{0, 1\}^* $: \\
+% - If $ w \in L_1 $, then $ w $ is accepted by $M_1$. However, since $L_1$ contains the strings not \hspace*{1.45mm} accepted by $M_2$, we can conclude that $ w \notin L_2 $ which implies $ w \in L_2' $. \\ \hspace*{1.45mm} Thus $ w \in L_1 \implies w \in L_2' $. So $ L_1 \subseteq L_2' $. \\ 
+% - If $w$ is not accepted by $M_2$, then $ w \notin L_2 \implies w \in L_2' $. However, $ w \in L_2' \implies w \in L_1$ \hspace*{1.45mm} by set complements since $ M_1 $ consists of the set of states that are not in $M_2$. \\ \hspace*{1.45mm} Therefore, $ L_2' \subseteq L_1 $.
+
+% Since $ L_1 \subseteq L_2' $ and $ L_2' \subseteq L_1 $, therefore, $ L_1 = L_2' $.
+
+% \begin{flushright}
+%   $\blacksquare$
+% \end{flushright}
+
+We have the following finite automata and their languages: \\
+- $ M_1 = (Q, \{0, 1\}, \delta, q_o, F) $ and its language $ L1 = L(M_1) $, and \\
+- $ M_2 = (Q, \{0, 1\}, \delta, q_o, Q - F) $ and its language $ L2 = L(M_2) $
+
+For both the given finite automata $M_1$ and $M_2$, they have the same set of states $Q$, alphabet $\{ 0, 1\}$, transition function $\delta$, and starting state $q_o$. However, they have different set of final states, that is $F$ and $Q - F$ respectively.
+
+% $ F \subseteq Q $ and is the set of states accepted by $M_1$, then by the definition of set complements, $ F = (Q - F)' $, and $F' = Q - F$.
+
+% Considering the languages $L_1$ and $L_2$, $L_1$ is the language that leads $M_1$ to an accepting state, but not $M_2$. Similarly, $L_2$ is the language that leads $M_2$ to an accepting state but not $M_1$. Now consider the language $L_2$ that would contain all the strings that would lead $M_2$ to a rejecting state. The accept states for $L_2'$ would then be $ Q - (Q - F) $ which is equal to $F$. Then let $L_2' = L(M)$ where $M$ is the finite automata that has the language $L_2'$. Then $M = (Q, \{0, 1\}, \delta, q_o, F)$ which is exactly the same as $M_1$. Therefore, $M = M_1$ which implies $L_1 = L_2'$. 
+
+Considering the languages $L_1$ and $L_2$, $L_1$ is the language that leads $M_1$ to an accepting state, but not $M_2$ since $ F \subseteq Q $, so $F$ and $Q - F$ would be disjoint sets, and by the definition of set complement, $ F = (Q - F)' $ or $ F' = Q - F $. Similarly, $L_2$ is the language that leads $M_2$ to an accepting state but not $M_1$.
+
+Then for any arbitrary string $ w \in \{0, 1\}^* $: \\
+- If $ w $ is accepted by $M_1$, then $ w \in L_1 $. However, since $L_1$ contains the strings not \hspace*{1.45mm} accepted by $M_2$, we can conclude that $ w \notin L_2 $ which implies $ w \in L_2' $. \\ \hspace*{1.45mm} Thus $ w \in L_1 \implies w \in L_2' $. So $ L_1 \subseteq L_2' $. \\
+- If $w$ is not accepted by $M_2$, then $ w \notin L_2 \implies w \in L_2' $. However, $ w \in L_2' $ implies that \hspace*{1.45mm} the string $w$ leads $M_2$ to a rejecting state $ Q - (Q - F) $ which is equal to $F$. From this \hspace*{1.45mm} we can conclude that the string $w$ would then lead to a state in $F$ which is an accept \hspace*{1.45mm} state for $M_1$. Therefore, $L_2' \subseteq L_1$.
+
+Thus, for any arbitrary string $w$, we've shown that it either belongs to $L_1$ and $L_2'$, or it does not. In either case, $ w \in L_1 \iff w \in L_2'$. Therefore, $L_1 = L_2'$.
+\begin{flushright}
+  $\blacksquare$
+\end{flushright}
+
+
+\end{solution}
+\end{questions}
+\end{document}
+
+
+% Considering the above, \\ 
+%   - $ M_1 $ recognizes the language $ L_1 $ where $ L_1 = L(M_1) $ and $M_1 = (Q, \{0, 1\}, \delta, q_o, F)$, and \\ 
+%   - $ M_2 $ recognizes the language $ L_2 $ where $ L_2 = L(M_2) $ and $M_2 = (Q, \{0, 1\}, \delta, q_o, Q-F)$
+
+%   Then we know that both $M_1$ and $M_2$ have the same set of all states that is $Q$, they have the same alphabet that is $\{0, 1\}$, the same transition function $\delta$, the same starting state $q_o$, however, they have different set of final states, that is $F$ and $Q-F$ respectively. 
+
+%   Since $Q$ is the set of all states both in $M_1$ and $M_2$, and $F$ is the set of states accepted by $M_1$, then $Q-F$ is the set of all thsoe states not accepted by $M_1$, which are the accept states of $M_2$. Then by the definition of set complement, $ F = (Q - F)' $ or $ F' = Q - F $ since $ F \cup F' = Q $. 
+
+%   By definition, $L_1$ is the language contains all strings accepted by $M_1$, and $ L_2 $ is the language that contains all strings accepted by $ M_2 $. Since $L_2$ comprises of all the strings that lead $M_1$ to a rejecting state
+  
+% -------------------------------------------------------------------- %
+
+% We have the following finite automata: \\ 
+% - $ M_1 = (Q, \{0, 1\}, \delta, q_o, F) $ and its language $ L1 = L(M_1) $, and \\
+% - $ M_2 = (Q, \{0, 1\}, \delta, q_o, Q - F) $ and its language $ L2 = L(M_2) $
+
+% Since $F$ is the set of states accepted by $M_1$ then $ Q - F $ is the set of states not accepted by $M_1$, and $ F \subseteq Q $. Then by the definition of set complement, $ F' = Q - F $ or $ F = (Q - F)' $.
+
+% Considering the languages $L_1$ and $L_2$, we know that $L_1$ contains all the strings that lead $ M_1 $ to an accepting state, and $L_2$ contains all the strings that lead $ M_2 $ to an accepting state, but lead $ M_1 $ to a rejecting state since the set $ Q - F $ contains all states not accepted by $M_1$. Also, the language $L_1$ then leads $M_2$ to a rejecting state. 
+
+% Now consider an arbitrary string $ w \in \{0, 1\}^* $ (the set of all possible strings over the alphabet \{0, 1\}).
+
+% If $w$ is accepted by $M_1$, then $ w \in L_1 $. However, since $L_1$ contains all the strings not accepted by $M_2$, we can conclude that $ w \notin L2 $, therefore, $ w \in L_2' $. Thus $ w \in L_1 \implies w \in L_2' $. So, $ L_1 \subseteq L_2' $.
+
+% If $ w $ is not accepted by $ M_2 $, then $ w \notin L_2 \implies w \in L_2'$. However, $ w \in L_2' \implies w \in L_1 $ by set complements since $M_1$ consists of the set of states that are not in $M_2$, therefore, $ L_2' \subseteq L_1 $.
+
+% Since $ L_1 \subseteq L_2' $ and $ L_2' \subseteq L_1 $, therefore, $ L_1 = L_2' $.
+
+% \begin{flushright}
+%   $\blacksquare$
+% \end{flushright}

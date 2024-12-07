@@ -1,0 +1,71 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage[a4paper]{geometry}
+\usepackage{hyperref}
+\usepackage{mdframed}
+
+\title{Weekly Challenge 10: Turing Machine}
+\author{CS 212 Nature of Computation\\Habib University}
+\date{Fall 2023}
+
+% \theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+
+% \theoremstyle{claim}
+\newtheorem{claim}{Claim}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\printanswers
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\titledquestion{Stay Put}
+
+A \textit{stay-put} Turing machine is similar to an ordinary Turing machine, but the transition function has the form
+\[
+  \delta: Q\times \Gamma \to Q\times \Gamma \times \{\text{L, R, S} \}.
+\]
+At each point, the machine can move its head left or right, or let it stay in the same position.
+
+Prove or disprove the following claim,
+
+\begin{claim}
+  The stay-put Turing machine is equivalent to the usual version.
+\end{claim}
+
+\begin{solution}
+
+Consider two Turing Machines; $M_1$ and $M_2$ where $M_1$ is an ordinary Turing Machine and $M_2$ is a stay-put Turing Machine.
+
+Let $M_1 = \{ Q, \Sigma, \Gamma, \delta_1, q_o, q_\text{accept}, q_\text{reject} \}$ where $ \delta_1: Q \times \Gamma \rightarrow Q \times \Gamma \times \{\text{L, R}\}$
+
+Let $M_2 = \{ Q, \Sigma, \Gamma, \delta_2, q_o, q_\text{accept}, q_\text{reject} \}$ where $ \delta_2: Q \times \Gamma \rightarrow Q \times \Gamma \times \{\text{L, R, S}\}$
+
+We can show that $M_1$ and $M_2$ are equivalent by showing that $M_1$ can simulate $M_2$ and vice versa, that is, $ L(M_1) = L(M_2) $. \vspace*{-1mm}
+\begin{enumerate}
+  \item $M_2$ can simulate $M_1$; $ L(M_1) \subseteq L(M_2) $ \\
+    This is trivial as all languages that are accepted by $M_2$ which don't involve the head staying in its position at any given state will also be accepted by $M_1$. More formally, for any arbitrary language accepted by $M_1$, we can construct $M_2$ as follows: for every transition in $M_1$ of the form $ (q, a) \rightarrow (p, b, L) $ or $ (q, a) \rightarrow (p, b, R) $, we add the exact same transition in $M_2$. Therefore, $M_2$ can simulate $M_1$ and $ L(M_1) \subseteq L(M_2) $.
+  \item $M_1$ can simulate $M_2$; $ L(M_2) \subseteq L(M_1) $ \\
+    We can construct $M_1$ to simulate $M_2$ such that transitions of the form $ (q, a) \rightarrow (p, b, L) $ or $ (q, a) \rightarrow (p, b, R) $ are added the same to $M_1$. But for all transitions of the form $ (q, a) \rightarrow (p, a, S) $, we add two transitions in $M_1$: $ (q, a) \rightarrow (p, b, R) $ and $ (p, b) \rightarrow (q, a, L) $ which essentially means we move one transition right, and then immediately one transition left which simulates being in place. Therefore $M_1$ can simulate $M_2$ and $ L(M_2) \subseteq L(M_1) $.
+\end{enumerate}
+
+Since $ L(M_1) \subseteq L(M_2) $ and $ L(M_2) \subseteq L(M_1) $, we can conclude that $ L(M_1) = L(M_2) $ and therefore $M_1$ and $M_2$ are equivalent. \vspace*{-2mm}
+\begin{flushright}
+  $\blacksquare$
+\end{flushright}
+
+\end{solution}
+
+\end{questions}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
