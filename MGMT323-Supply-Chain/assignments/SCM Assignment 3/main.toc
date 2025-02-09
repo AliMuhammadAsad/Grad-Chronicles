@@ -1,0 +1,35 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {2}Case Study: Toyota’s Implementation of Autonomous Vehicles in Industry 4.0 to Address Supply Chain Inefficiencies}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Autonomous Vehicles: Key to Supply Chain Efficiency}{3}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Efficient Material Handling}{4}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Real-time Data Integration}{4}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}Autonomous Route Optimization}{4}{subsubsection.2.1.3}%
+\contentsline {subsubsection}{\numberline {2.1.4}Motion and Storage Requirements}{4}{subsubsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.2}Muda Elimination through Autonomous Vehicles}{4}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Overproduction and Waiting}{4}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Transportation and Motion Waste}{4}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Inventory Waste}{4}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}Jidoka: Ensuring Autonomous Vehicle Safety and Quality}{5}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Automated Safety Features}{5}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Quality Control in Logistics}{5}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Kaizen: Continuous Improvement of Autonomous Vehicle Operations}{5}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Iterative Optimization}{5}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Employee Involvement in Innovation}{5}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}Scalability and Expansion}{5}{subsubsection.2.4.3}%
+\contentsline {section}{\numberline {3}Benefits}{5}{section.3}%
+\contentsline {section}{\numberline {4}Critique}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Supplier Relationships}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Quality-Centric Approach}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Lean Manufacturing and JIT Production}{6}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Globalization and Technological Integration}{6}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Vulnerability to Disruptions}{6}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Limited Flexibility in Crisis Scenarios}{7}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Environmental Concerns and Sustainability}{7}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}Impact on the Automotive Industry}{7}{subsection.4.8}%
+\contentsline {subsection}{\numberline {4.9}Post-Pandemic Adjustments}{7}{subsection.4.9}%
+\contentsline {section}{\numberline {5}Applications of Autonomous Vehicles and AI to Other Business Functions}{7}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Manufacturing and Assembly Line Optimization}{7}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Warehouse Management and Inventory Control}{8}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Quality Control and Predictive Maintenance}{8}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Supply Chain and Supplier Relations}{8}{subsection.5.4}%
