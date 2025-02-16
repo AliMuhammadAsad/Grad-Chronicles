@@ -1,0 +1,107 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[breaklinks]{hyperref}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{mdframed}
+\usepackage{lipsum}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{titlesec}
+\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{pythonhighlight}
+\usepackage{pagerange}
+\usepackage{titling}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+\hypersetup{
+    colorlinks = true,
+    linkcolor = black,
+    urlcolor = blue,
+}
+\urlstyle{same}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{}
+\fancyhead[C]{}
+\fancyhead[R]{}
+\fancyfoot{}
+\fancyfoot[C]{\thepage \;of \pageref{LastPage}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Generative AI \\ Assignment 00 - Lecture 1}
+\author{Ali Muhammad Asad - aa07190}
+\date{}
+
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+    \item Why Humans? 
+    
+    \textbf{Answer:} AI can't perform specific subject / domain tasks. AI might be good at general stuff, but with regards to a specific domain, humans perform better especially where creativity is involved. A human is also better at emotional intelligence, and consoling someone which AI can't do yet. Moreover, AI is not great at executive tasks, or recalling tasks, which is evident by a recent assessment on the dementia test which can be found \href{https://futurism.com/the-byte/chatbots-cognitive-decline-dementia}{here}.
+
+    \item What is generative AI and what are transformers, attention, and LLMs?
+    
+    \textbf{Answer:} Generative AI is a type of artificial intelligence which produces content like text, images, etc, based on the data it has been trained on. Transformers are a model / architecture used by language models / AI that handle long-range data dependencies, thus making some tasks such as translation more effective. Attention mechanisms are used in transformers to help the model focus on specific parts of the input, thus providing attention to some parts of the input based on the context which improves accuracy. LLMs are AI models that utilise transformers and attention mechanisms to generate content based on the data they have been trained on.
+
+    \item What are hyperscalars? Bias? Fairness? Trust and what does it entail when working with automated tasks?
+    
+    \textbf{Answer:} - Hyperscalars are companies / data centers that provide computing services such as AWS, Google Cloud etc. \\
+    - Bias refers to skewed which may come from the data itself, or by incorporating bias into the model itself which may lead to varying results. Bias can be a good thing, but it can also be a bad thing. \\ 
+    - Fairness refers to the model being fair to all the data it is trained on, and not being biased towards a specific group of data. \\
+    - Trust refers to the model being reliable and trustworthy, and not being biased or unfair. When working with automated tasks, it is important to ensure that the model is fair, unbiased, and trustworthy for responsible usage
+
+    \item How can you hold a machine / llm accountable?
+    
+    \textbf{Answer:} I don't think we can hold a machine or an llm accountable as of yet. The model / machine / llm is only as good as the data it has been trained on, adn if the data is biased, the model will be biased as well. Until we reach a point where AI can think for itself, I don't think we can hold the model accountable as the model is just some numbers and weights that have been trianed on some data.
+\end{enumerate}
+
+
+\end{document}

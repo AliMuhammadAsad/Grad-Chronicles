@@ -1,0 +1,107 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{bm}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage{url}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plotting Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepgfplotslibrary{colorbrewer}
+\pgfplotsset{width=8cm,compat=1.9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Investigating Harmful AI News}
+\author{Ali Muhammad Asad \\ aa07190}
+\date{} %Leave uncommented if u want automatic date which is done through maketitle, else u can uncomment this and type anything else u want over here - not necessary to enter a date over here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+    \maketitle
+
+\subsection*{1. Headline and Source}
+
+\noindent \textbf{Headline:} Getty Images is suing the creators of AI art tool Stable Diffusion for scraping its content
+\noindent \textbf{Link:} \href{https://www.theverge.com/2023/1/17/23558516/ai-art-copyright-stable-diffusion-getty-images-lawsuit}{Verge Article by James Vincent (January 27, 2023)}
+
+\subsection*{2. Summary of Incident}
+\begin{itemize}
+    \item \textbf{What Happened?}
+    
+    Stability AI, the creator of Stable Diffusion (a popular AI image generation tool), was sued by Getty Images (a supplier of stock images, editorial photography, video and music for business and consumers). The AI company was allegedly used millions of Getty's copyrighted images to train their model without permission. The case highlighted crucial issues about AI training data rights and creative industry impact (something which artists of all kinds have been concerned about for a long time).
+
+    \item \textbf{Harm:}
+    
+    Getty images suffered a major loss due to direct copyright violations as Stable AI unauthorizedly used millions of their professional photographs without any compensation to the original creators, which is a major ethical violation, and a financial loss. This also causes a potential market value destruction for photographers and artists who create such content. In additino, this hurts the economy as well due to the devaluation of professinoal photography, and the disruption of stock photo business models. Thus, it causes reduced income for professional content creators and photographers who have invested time and effort. Moreover, it also causes a loss of trust in AI companies and uncertainty in AI training practices, raising questions about fair use in AI deveelopment, threatening traditional creative industry's sustainability. 
+\end{itemize}
+
+\subsection*{3. Analysis of Causes}
+
+\begin{enumerate}
+    \item \textbf{Data Collection Practices:} This highlights the indiscriminate usage of web scraping without permission of the original owners, lack of any filtering mechanism for copyrighted content, and a sever lack of attribution system in the model. 
+    \item \textbf{Model Design:} This also highlights the lack of built-in watermark detection, inability to track source images, and no mechanism to respect copyright status. 
+    \item \textbf{Business Decisions:} The business definitely preferred rapid development over proper licensing and data collection practices, which is a major ethical violation, and highlights the lack of proper legal and ethical guidelines in AI development. This most likely occured due to assumption that fair use would cover the training data containing copyrighted images, which is a major oversight, and also shows the lack of legal expertise in the AI company.
+    \item \textbf{Ethical Oversight:} As mentioned above, the company failed to consider the ethical implications of using copyrighted images without permission, and failed to consider the impact on the creative industry, and the potential market value destruction for photographers and artists. This raises a major concern regarding ethical considerations for data collection practices, and inadequate stakeholder engagement in AI development.
+\end{enumerate}
+
+\subsection*{4. Preventive Measures}
+
+\begin{enumerate}
+    \item \textbf{Ethical Data Collection Framework:} AI companies should develop a comprehensive ethical data collection framework that ensures proper licensing, attribution, and filtering mechanisms for copyrighted content. This should also include a robust watermark detection system, and a mechanism to track source images.
+    \item \textbf{Legal Compliance:} AI companies should ensure legal compliance with fair use guidelines, and should engage legal experts to ensure that their data collection practices are in line with legal requirements.
+    \item \textbf{Stakeholder Engagement:} AI companies should engage with stakeholders in the creative industry to understand the impact of their data collection practices, and should take steps to mitigate any negative consequences on the creative industry.
+    \item \textbf{Ongoing Monitoring:} AI companies should implement ongoing monitoring and auditing of their data collection practices to ensure compliance with ethical and legal guidelines, and should take corrective action if any violations are detected.
+    \item \textbf{Policy Changes:} For AI companies can develop clear data collection guidelines, create ethical review boards, implement fair compensation models, adn develop stakeholder consultation processes. Industries can create legal frameworks to protect content creators, and ensure fair use of their content.
+\end{enumerate}
+
+\subsection*{5. Conclusion}
+
+The case of Getty Images suing Stability AI highlights the importance of ethical data collection practices in AI development, and the need for legal compliance and stakeholder engagement. AI companies should develop comprehensive ethical data collection frameworks, engage with legal experts and stakeholders, and implement ongoing monitoring and auditing of their data collection practices to ensure compliance with ethical and legal guidelines. This case also raises important questions about fair use in AI development, and the impact of AI on the creative industry. It is essential for AI companies to consider the ethical implications of their data collection practices, and take steps to mitigate any negative consequences on the creative industry.
+
+\end{document}
