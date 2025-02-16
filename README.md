@@ -128,6 +128,11 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Weekly Challenges**
 - **Notes**
 
+#### [CS435 - Generative AI: Security, Ethics, and Governance](CS435-Generative-AI)
+- **Assignments**
+- **Some Codes**
+- **Slides**
+
 #### [CS451 - Computational Intelligence](CS451-Computational-Intelligence) <img alt="Python" src="Assets/python.png" width="32px" /> <img alt="VSCode" src="Assets/vscode.png" width="32px"> <img alt="Gene" src="Assets/gene.png" width="32px" /> <img alt="Ant" src="Assets/ant.png" width="34px" /> <img alt="NN" src="Assets/nn.png" width="34px" /> <img alt="NN" src="Assets/brain_nn.png" width="38px" /> 
 - **[Assignment 01 - Evolutionary Algoritm on TSP and JSSP](https://github.com/AliMuhammadAsad/Evolutionary-Algorithms)**
 - **[Assignment 02 - Graph Coloring using Ant Colony Optimisation](https://github.com/AliMuhammadAsad/GC-ACO)**
