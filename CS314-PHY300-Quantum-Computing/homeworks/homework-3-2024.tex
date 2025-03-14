@@ -1,0 +1,209 @@
+\documentclass{article}
+
+\usepackage{url}
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{3d}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{braket}
+\usepackage{enumerate}
+\usepackage{paralist}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{Habib University}
+\chead{\hmwkClass, \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+	\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+	\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+	\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+	\stepcounter{#1}
+	\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+	\ifnum#1>0
+	\setcounter{homeworkProblemCounter}{#1}
+	\fi
+	\section{Problem \arabic{homeworkProblemCounter}}
+	\setcounter{partCounter}{1}
+	\enterProblemHeader{homeworkProblemCounter}
+}{
+	\exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ \#3}
+\newcommand{\hmwkDueDate}{December 07, 2024, 11.59pm}
+\newcommand{\hmwkClass}{CS 314/PHYS 300: Quantum Computing}
+\newcommand{\hmwkClassInstructor}{Dr. Faisal Alvi}
+\newcommand{\hmwkAuthorName}{\textbf{Student 1 Name, ID} \and \textbf{Student 2 Name, ID}}
+
+%
+% Title Page
+%
+
+\title{
+	\vspace{2in}
+	\textmd{\textbf{\hmwkClass:\\ \hmwkTitle}}\\
+	\normalsize\vspace{0.1in}\small{\hmwkClassInstructor}\\
+	\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+	\vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+	
+\maketitle
+	
+\pagebreak
+	
+\begin{homeworkProblem}
+(15 points) [\textbf{Grover's Algorithm - States}] In the version of Grover's Algorithm that we studied in the class (where our initial state was $\ket{\psi}$ as a uniform superposition of all states) we used:
+\begin{itemize}
+	\item an oracle `$O$' to invert the sign of the required state.
+	\item a Grover Diffusion Operator `$G$' denoted by $2\ket{\psi}\bra{\psi} - I$ to amplify the amplitude of the inverted state. 
+\end{itemize}
+
+\begin{enumerate}[(a)]
+\item (10 points) Show that the Grover's Diffusion Operator `$G$'  
+\begin{center}
+$2\ket{\psi}\bra{\psi} - I$ 
+\end{center}
+is equivalent to 
+\begin{center}
+$H^{\otimes n} (2\ket{0}\bra{0} - I) H^{\otimes n}$.
+\end{center}
+\item  (5 points) Construct (draw) a partial circuit for the Grover's Algorithm that uses this construction (i.e. $H^{\otimes n} (2\ket{0}\bra{0} - I) H^{\otimes n}$) used for the Grover Diffusion Operator.	
+\end{enumerate}
+\end{homeworkProblem}
+	
+\begin{homeworkProblem} (10 points) [\textbf{Grover's Algorithm - Sample Run - Adapted from Cambridge University Course on Quantum Computation] \textit{https://www.cl.cam.ac.uk/teaching/exams/pastpapers/y2023p8q11.pdf}}] 
+
+\vspace{5pt}	
+
+Let there be a database containing 32 elements, indexed by the binary numbers 00000 to 11111. A single element 00110 is marked.
+\begin{enumerate}[(a)]
+\item (3 points) If Grover’s search algorithm is applied to find the marked element, what should the initial state be set to, and what is the state after a single Grover iterate has been applied? 
+\item (4 points) To find the marked element with maximum probability requires \textit{N} iterates in total. What is the value of \textit{N}, and what is the probability of correctly finding the marked element? Show the complete working at how did you arrive at the value of probability.
+\item (3 points) If the algorithm is instead run with 3\textit{N} iterates in total, what is the probability of correctly finding the marked element? Comment on your answer.
+\end{enumerate}
+	
+\end{homeworkProblem}
+
+\begin{homeworkProblem} (10 points) \textbf{[Eigenvalues and Eigenvectors]}  Find the Eigenvalues and Eigenvectors of:
+\begin{enumerate} [(a)]
+		\item (4 points) The `$X$' (or the not) quantum operator given by
+		$\begin{bmatrix}
+			0 & 1 \\
+			1 & 0 
+		\end{bmatrix}.$
+		\item (6 points) The `$H$' (or the Hadamard) Operator given by: $\begin{bmatrix}
+			1/\sqrt{2} & 1/\sqrt{2} \\
+			1/\sqrt{2} & -1/\sqrt{2} 
+		\end{bmatrix}.$
+\end{enumerate}
+The Eigenvalues of a square matrix $A$ can be calculated by solving for the eigenvalues `$\lambda$' in the equation 	`$det(A - \lambda I) = 0$', and then solving for the eigenvector $v$ using the equation `$(\lambda I - A)v = 0$'. Since we are working with qubits, ensure that the norm of your eigenvectors equals to 1. Show all your work.
+\end{homeworkProblem}
+
+\begin{homeworkProblem} (15 points) \textbf{[Inverse Quantum Fourier Transform Using Pauli Matrices and $H$]}
+\begin{enumerate}[(a)]
+\item (10 points) Using the circuit for \textit{inverse} quantum fourier transform, construct (draw) the circuit for the \textit{inverse} fourier transform for 2 bits using the Hadamard, controlled-\textit{T} and controlled-NOT gates only. Show that the original circuit for the inverse QFT and your circuit are equivalent.
+
+\item (5 points) Write a Qiskit function to implement this inverse quantum fourier transform. Run your circuit for all combinations of two qubits and show that the output is correct. 
+\end{enumerate}
+\end{homeworkProblem}
+\textbf{Submission Guidelines:}
+\begin{enumerate}
+	\item Submit your solutions involving content, proofs, etc. as a latex pdf. 
+	\item Submit the programming part as .ipynb files or as links to Google Colab pages. 
+	\item Submit the entire HW as a zipped file.
+\end{enumerate}
+
+\end{document}
+
