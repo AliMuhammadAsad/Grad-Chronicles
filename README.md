@@ -180,6 +180,11 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
     - **Miss Sajal**
 
 #### [Math-307 Mathematical Foundations](MATH307-Mathematical-Foundations) (DM Part II, i loved it though, Aeyaz Keyani achay teacher, sadly had to withdraw early due to job and stuff - personal reasons uk (grade k bhi lag rahay thay xD))
+- **Presentations**
+- **Proofs (book k in .md and .pdf format)**
+- **Quizzes**
+- **Tests**
+- **Book and some useful links for solutions**
 
 #### [MGMT-323 Supply Chain Management](MGMT323-Supply-Chain) (OMG management supply chain weeeeeeee)
 - **Activities**
