@@ -1,0 +1,97 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Exam %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[addpoints]{exam}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage{float, geometry, graphicx, color, xcolor, colortbl}
+\usepackage{amsmath, amssymb, amsthm, amsfonts, geometry, venndiagram, tikz, comment}
+\usepackage{wrapfig, parskip, tabularx}
+\usepackage{colortbl}
+\usepackage{listings, mdframed, lipsum, psfrag, empheq, verbatim, subfig, hyperref, cite}
+\usepackage{bookmark, booktabs, titlesec, subfig, pdfpages, lastpage, pagerange}
+\usepackage{pythonhighlight}
+\usepackage{upgreek, pifont}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{times}
+\usepackage{setspace}
+
+
+% Expectation symbol
+\DeclareMathOperator*{\E}{\mathbb{E}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{codebackground}{rgb}{0.95,0.95,0.95}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0.13,0.29,0.53}
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+\definecolor{softgray}{rgb}{0.95, 0.95, 0.95}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Header and Footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Reinforcement Learning}{Assignment 01}{CS/CE 353/368}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+% \boxedpoints
+\printanswers
+\qformat{}  %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{{\huge \textbf{Reinforcement Learning CS/CE 353/368}} 
+
+\vspace*{1mm}
+{\LARGE \textbf{Assignment 01}}
+
+{\includegraphics[width=0.45\textwidth]{logo.png}} \\}
+
+\author{Ali Muhammad - aa07190}
+\date{}
+
+% \pgfplotsset{compat=1.18}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+{\small \begin{center}
+    \gradetable[h]
+  \end{center}}
+
+\newpage
+\begin{questions}
+\question[50]
+\input{q1.tex}
+
+\newpage
+\question[20]
+\input{q2.tex}
+
+\newpage
+\question[30]
+\input{q3.tex}
+
+% \newpage
+% \question[20]
+% \input{q4.tex}
+
+\end{questions}
+
+\end{document}

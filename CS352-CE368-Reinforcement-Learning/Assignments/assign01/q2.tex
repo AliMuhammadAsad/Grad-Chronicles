@@ -1,0 +1,21 @@
+\subsection*{Q2 - [20 points]}
+
+\begin{solution}
+We receive \$1,000,000 every year for 20 years. 
+
+Since we are considering an interest rate of 5\%, the amount resembles a geometric progression for each year, where the interest rate denotes the discount factor. Then the present value can be computed as follows:
+
+$$ V = \displaystyle\sum_{t = 0}^{19} \displaystyle\frac{1000000}{(1.05)^t} $$
+
+Then the value considering the annuity can be computed as follows:
+
+$$ V = \displaystyle\frac{a}{r}(1 - \displaystyle\frac{1}{(1 + r)^t})$$ 
+
+where $a = 1000000$, $r = 0.05$, and $t = 20$.
+
+Then the value is:
+
+$$ V = \displaystyle\frac{1000000}{0.05}(1 - \displaystyle\frac{1}{(1 + 0.05)^{20}}) = 12462210.34 $$
+
+Then the amount needed immediately to be indifferent between it and annuity would be \$12462210.34 
+\end{solution}
