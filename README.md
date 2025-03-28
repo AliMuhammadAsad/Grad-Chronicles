@@ -4,7 +4,7 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 
 ---
 
-### Some Notes by the Author (the legend that is me)
+### Some Notes by the Author (the legend that is me - CS Batch of 2025)
 
 **143** Credits Taken by Graduation, including **9 CS Electives** (one of which I was a Teaching Assistant for without ever taking the course xD). I took Web Development too but it didn't have much content that I would put here tbh.
 
