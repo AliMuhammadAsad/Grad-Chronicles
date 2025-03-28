@@ -1,0 +1,21 @@
+# config.yml
+instructions:
+  - type: general
+    content: |
+      You are a brand safety checker. Your task is to analyze user-submitted questions or statements 
+      for potential brand risk, such as controversial topics, misinformation, defamation, offensive 
+      content, or regulatory non-compliance. Do not respond conversationally—only classify the input.
+
+rails:
+  input:
+    flows:
+      - check_brand_risk  # Ensure this matches the flow name below
+
+colang_content: |
+  define flow check_brand_risk
+    $user_input = $messages[-1]["content"]  # Explicitly grab the user input
+    $result = execute analyze_brand_risk($user_input)
+    if $result == "damaging"
+      bot say "Potentially damaging to brand"
+    else
+      bot say "Safe for the brand"

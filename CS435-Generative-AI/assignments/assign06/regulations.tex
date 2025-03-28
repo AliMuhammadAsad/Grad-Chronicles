@@ -1,0 +1,119 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{bm}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{float}
+\usepackage{pythonhighlight}
+\usepackage{listings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+
+% Listing Settings for Python
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{green},
+    morecomment=[l][\color{magenta}]{\#}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plotting Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepgfplotslibrary{colorbrewer}
+\pgfplotsset{width=8cm,compat=1.9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Regulations Assessment: Educational Learning Platforms}
+\author{Ali Muhammad Asad \\ aa07190}
+\date{} %Leave uncommented if u want automatic date which is done through maketitle, else u can uncomment this and type anything else u want over here - not necessary to enter a date over here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+    \maketitle
+
+\subsection*{1. Problem Description}
+
+An ed-tech company has developed an AI-powered personalized learning platform that:
+\begin{itemize}
+    \item Collects data on student learning behaviors, including time spent on tasks, answer patterns, and attention metrics through webcam eye-tracking
+    \item Adapts curriculum difficulty and presentation based on individual performance
+    \item Predicts future academic outcomes and learning disabilities
+    \item Recommends personalized intervention strategies to teachers
+    \item Generates automated progress reports for parents and administrators
+    \item Uses natural language processing to evaluate written assignments
+    \item Tracks emotional responses during learning through facial expression analysis
+\end{itemize}
+
+\noindent The key challenges include:
+\begin{itemize}
+    \item Processing sensitive data from minors across multiple jurisdictions
+    \item Potential algorithmic bias affecting students from different socioeconomic, cultural, and linguistic backgrounds
+    \item Ensuring transparency of assessment methods to educators and families
+    \item Managing the psychological impact of AI-driven recommendations on student self-perception
+    \item Balancing personalization with standardized educational outcomes
+    \item Addressing digital divide concerns in technology access
+\end{itemize}
+
+\subsection*{2. Legal/Framework Analysis}
+
+\subsubsection*{i. Pakistan Regulation of AI (2024)}
+\noindent Interestingly, the Pakistan Regulation of AI (2024) does not have specific provisions for educational learning platforms. Further, the act doesn't address the collection of sensitive data from minors, nor does it mention education in any regard even though it mentions about public awareness, judicial systems, telecommunication, and even agriculture. Thus, the clauses of the section have no applicability. 
+
+\textbf{Gaps/Recommendations:} Since the act doesn't mention education, the following cluases potentially come to mind:
+\begin{itemize}
+    \item AI systems deployed in educational contexts must maintain student privacy and shall not collect unnecessary behavioral or biometric data. Systems must be designed to protect the psychological well-being of students and promote equal educational opportunities
+    \item AI applications involving minors require explicit parental consent with comprehensive disclosure of data collection practices. Providers must implement age-appropriate design principles and restrict the retention of minor data beyond essential educational purposes.
+    \item Automated educational assessment systems must demonstrate statistical fairness across demographic groups, with regular auditing and mitigation of performance disparities. Systems must not perpetuate historical disadvantages or educational inequities
+\end{itemize}
+
+
+
+\end{document}
