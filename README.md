@@ -2,6 +2,16 @@
 
 Grad Chronicles is a repository for more of the important courses, if not all (important is subjective to me over here), that I have taken in my undergrad life. This repository keeps everything easily accessible, and organized.
 
+---
+
+### Some Notes by the Author (the legend that is me)
+
+**143** Credits Taken by Graduation, including **9 CS Electives** (one of which I was a Teaching Assistant for without ever taking the course xD). I took Web Development too but it didn't have much content that I would put here tbh.
+
+Overall when I reflect on my degree, and how I've spent my time at uni, I'm glad at how everything worked out. I ventured into CS as a fallback option, without any clue of what I wanted to do, and explored the shit out of it. Did sofware engineering and web development (not for me lols), AI - Machine Learning - Deep Learning - Data Sciences - Large Language Models - Probabilistic Graph Models - Reinforcement Learning - Generative AI - basically the complete stream of AI (yayyy this is for me though), Robotics (very much for me), and pure theoretical foundational mathematics (Real Analysis and Mathematical Foundations - in love with maths). And i'm glad at everything I did. I do believe I lived uni to its fullest, and I don't think I have any regrets at this point. It was quite tough at times, but the friends and ppl I met along the way made it all worthwhile. Here's to the HU Community, the friends I had, and the future generations to come at HU. **I was, and will remain a legend.** 
+
+One advice I would have for future viewers of this repo, don't just go after courses just cuz of the grade. Like literally explore the shit out of stuff you're interested in, doesn't matter what your timetable looks like, if something seems interesting to you, go after it. The best or worst that can happen is you're actually good at it, or you won't be. I do not have the highest CGPA over here, nor did I ever get any Dean's List (ppl are surprised by this apparently) mainly due to this cuz I pulled a lot of such stunts in my semesters, but I was never after grades or a Dean's List. Just explore the shit out of stuff you're interested in, its worth pursuing. Bhaar mein jayein baqi cheezain. (I wrote all this at 3 in the night when I was full senti, feel free to judge as much as you want xD i'm not removing this). 
+
 ## Directory Structure
 <!-- <img alt="" src="" width="32px" /> -->
 #### [EE/CE 354/361 - Introduction to Probability and Statistics](CE-EE-361-354-Probability-and-Statistics)
@@ -108,7 +118,7 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Labs**
 - **README.md**
 
-#### [CS343 - Graph Data Science](CS343-Graph-Data-Science) <img alt='neo4j' src="Assets/neo4j.png" width="32px">
+#### [CS343 - Graph Data Science](CS343-Graph-Data-Science) (I was a TA without ever taking this course xD) <img alt='neo4j' src="Assets/neo4j.png" width="32px">
 - **Activities**
 - **Homeworks**
 - **Lectures**
