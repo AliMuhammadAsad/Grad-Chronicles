@@ -98,6 +98,10 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Pipelined Processor**
 - **Single Cycle Processor** 
 
+#### [CS 335 - Introduction to Large Language Models](CS335-CE466-Large-Language-Models)
+- **Activities**
+- **Assignments**
+- **Slides**
 
 #### [CS335 - Database Management Systems](CS335-Database-Management-Systems) (Query Much?) <img alt="C#" src="Assets/c-sharp.png" width="32px" /> <img alt="Sql" src="Assets/database.png" width="32px" /> <img alt="MySQL" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/mysql/mysql.png" width="32px" /> <img alt="MSSQL Server" src="Assets/microsoft-sql-server4529.jpg" width="32px" /> <img alt="VS" src="Assets/visual-studio.png" width="32px" /> 
 - **Homeworks**
@@ -110,6 +114,10 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Lectures**
 - **Midterm**
 - **Quizzes**
+
+#### [CS 352 - Introduction to Reinforcement Learning](CS352-CE368-Reinforcement-Learning)
+- **Assignments**
+- **Mid**
 
 #### [CS/CE 353/374 - Software Engineering](CS353-CE374-Software-Engineering)
 - **[Final Project - PAWSTrack](https://github.com/AliMuhammadAsad/pawstrack/)**
@@ -130,9 +138,9 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 
 #### [CS435 - Generative AI: Security, Ethics, and Governance](CS435-Generative-AI)
 - **Assignments**
-- **Some Codes**
-- **Slides**
+- **Coding**
 - **Quizzes**
+- **Slides**
 
 #### [CS451 - Computational Intelligence](CS451-Computational-Intelligence) <img alt="Python" src="Assets/python.png" width="32px" /> <img alt="VSCode" src="Assets/vscode.png" width="32px"> <img alt="Gene" src="Assets/gene.png" width="32px" /> <img alt="Ant" src="Assets/ant.png" width="34px" /> <img alt="NN" src="Assets/nn.png" width="34px" /> <img alt="NN" src="Assets/brain_nn.png" width="38px" /> 
 - **[Assignment 01 - Evolutionary Algoritm on TSP and JSSP](https://github.com/AliMuhammadAsad/Evolutionary-Algorithms)**
