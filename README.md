@@ -74,14 +74,14 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Course Book**
 - **README.md**
 
-#### [CS313 - Computational Complexity Theory](CS313-Computational-Complexity-Theory) <img alt="NN" src="Assets/brain_nn.png" width="38px" />
+#### [CS313 - Computational Complexity Theory](CS313-Computational-Complexity-Theory) (Hardcore complexity thi xD, but lovely course, not for the faint hearted tho) <img alt="NN" src="Assets/brain_nn.png" width="38px" />
 - **Assignments**
 - **Exams**
 - **Lectures**
 - **Quizzes**
 - **Slides**
 
-#### [CS316 - Introduction to Deep Learning](CS316-CE365-Deep-Learning) <img alt="NN" src="Assets/nn.png" width="34px" /> <img alt="NN" src="Assets/brain_nn.png" width="38px" /> <img alt="Python" src="Assets/python.png" width="32px" />
+#### [CS316 - Introduction to Deep Learning](CS316-CE365-Deep-Learning) (Mmmmm very deep learning, nice course waise loved it easy course) <img alt="NN" src="Assets/nn.png" width="34px" /> <img alt="NN" src="Assets/brain_nn.png" width="38px" /> <img alt="Python" src="Assets/python.png" width="32px" />
 - **Activities**
 - **Exams**
 - **Lab Midterm**
@@ -98,7 +98,7 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Pipelined Processor**
 - **Single Cycle Processor** 
 
-#### [CS 335 - Introduction to Large Language Models](CS335-CE466-Large-Language-Models)
+#### [CS 335 - Introduction to Large Language Models](CS335-CE466-Large-Language-Models) (LLMs pe hi FYP tha xD, nice course waise - completes my AI stream)
 - **Activities**
 - **Assignments**
 - **Slides**
@@ -115,7 +115,7 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Midterm**
 - **Quizzes**
 
-#### [CS 352 - Introduction to Reinforcement Learning](CS352-CE368-Reinforcement-Learning)
+#### [CS 352 - Introduction to Reinforcement Learning](CS352-CE368-Reinforcement-Learning) (Is mein classes mein hota kya tha aaj tk nhi samaj aaya xD)
 - **Assignments**
 - **Mid**
 
@@ -124,7 +124,7 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Slides**
 - **Final Exams and Midterms etc**
 
-#### [CS412 - Algorithms: Design and Analysis](CS412-Algorithms) <img alt="Python" src="Assets/python.png" width="32px" /> <img alt="VSCode" src="Assets/vscode.png" width="32px" />
+#### [CS412 - Algorithms: Design and Analysis](CS412-Algorithms) (Algorithms, taught by Dr. Shah Jamal Alam - one of the most OP teachers, best course i've ever taken in Habib ngl) <img alt="Python" src="Assets/python.png" width="32px" /> <img alt="VSCode" src="Assets/vscode.png" width="32px" />
 - **Books**
 - **Codes**
 - **Homeworks**
@@ -136,7 +136,7 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Weekly Challenges**
 - **Notes**
 
-#### [CS435 - Generative AI: Security, Ethics, and Governance](CS435-Generative-AI)
+#### [CS435 - Generative AI: Security, Ethics, and Governance](CS435-Generative-AI) (GENERATE WEEEEEEEEEEEEE)
 - **Assignments**
 - **Coding**
 - **Quizzes**
@@ -153,7 +153,7 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
 - **Quizzes**
 - **Book and Notes**
 
-#### [CS452 - Probabilistic Graph Models](CS452-Probabilistic-Graphical-Models)
+#### [CS452 - Probabilistic Graph Models](CS452-Probabilistic-Graphical-Models) (Amazing course, completed my PGMs side of the AI Stream - Dr Saleha Raza - OP teacher)
 - **Assignments**
 - **Exams**
 - **Genie Files**
@@ -179,7 +179,9 @@ Grad Chronicles is a repository for more of the important courses, if not all (i
     - **Sir Aeyaz** 
     - **Miss Sajal**
 
-#### [MGMT-323 Supply Chain Management](MGMT323-Supply-Chain)
+#### [Math-307 Mathematical Foundations](MATH307-Mathematical-Foundations) (DM Part II, i loved it though, Aeyaz Keyani achay teacher, sadly had to withdraw early due to job and stuff - personal reasons uk (grade k bhi lag rahay thay xD))
+
+#### [MGMT-323 Supply Chain Management](MGMT323-Supply-Chain) (OMG management supply chain weeeeeeee)
 - **Activities**
 - **Assignments**
 - **Previous Stuff**
