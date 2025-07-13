@@ -1,0 +1,164 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage{float, geometry, graphicx, fancyhdr, color, xcolor}
+\usepackage{amssymb, amsthm, amsmath, tikz, pgfplots, comment, wrapfig}
+\usepackage{listings, mdframed, lipsum, psfrag, parskip, empheq, subfig, verbatim, pythonhighlight}
+\usepackage[english]{babel}
+\usepackage[breaklinks]{hyperref}
+\usepackage{titlesec, cite, hyperref, wrapfig, booktabs, bookmark, pdfpages, lastpage, subfloat}
+\usepackage{upgreek}
+\usepackage{multirow}
+\usepackage{textcomp}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% C Code Listing Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{mGreen}{rgb}{0.25,0.63,0.15}
+\definecolor{mGray}{rgb}{0.5,0.5,0.5}
+\definecolor{mPurple}{rgb}{0.58,0,0.82}
+\definecolor{codeBlue}{rgb}{0.01, 0.2, 0.92}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0.13,0.29,0.53}
+\definecolor{backgroundColour}{rgb}{0.95,0.95,0.95}
+
+\lstset{
+    language=Python,
+    backgroundcolor=\color{backgroundColour},
+    basicstyle=\ttfamily\small,
+    commentstyle=\color{deepGreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{mGray},
+    stringstyle=\color{red},
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    frame=single
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+\hypersetup{
+    colorlinks = true,
+    linkcolor = black,
+    urlcolor = blue,
+}
+\urlstyle{same}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{Gen AI}
+\fancyhead[C]{ESG Assignment}
+\fancyhead[R]{}
+\fancyfoot{}
+\fancyfoot[C]{\thepage \;of \pageref{LastPage}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \title{{\huge \textbf{Intro to Reinforcement Learning - CS/CE 352/368}}
+% \vspace*{3mm}
+% {\LARGE \\ \textbf{Literature Review and Project Proposal}} \\
+% % {\includegraphics[width=0.60\linewidth]{logo.png}} \\ 
+% {\Large \textbf{Instructor:} Dr. Muhammad Shiekh}}
+% \author{Syed Muhammad Ali Naqvi - sn07590 \\ Ali Muhammad Asad - aa07190 \\ Zarak Khan - zk07}
+\title{ESG Assignment}
+\author{Ali Muhammad Asad - aa07190}
+\date{}
+
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+\maketitle
+
+% \newpage
+\section{Introduction}
+Environment, Social, and Governance (ESG) principles in AI deployments assess ecological footprints, societal impacts, and ethical management. Evaluating AI's environmental impact is critical to ensure sustainable technology development, aligning with global climate goals and responsible innovation.
+
+\section{Key Findings}
+\subsection{AWS Sustainability} 
+\begin{itemize}
+    \item Energy Efficiency: AWS infrastructure is up to 4.1 times more energy-efficient than on-premises data centers, potentially reducing AI workload carbon footprints by up to 99\% when optimized.
+    \item Carbon Emissions: Estimated carbon intensity varies by region; for example, AWS US East (Virginia) has a higher carbon intensity (400-500 gCO2eq/kWh) due to coal-heavy grids compared to Oregon (100-200 gCO2eq/kWh).
+    \item Renewable Energy: Achieved 100\% renewable energy matching for global operations in 2023, seven years ahead of the 2030 goal, via Renewable Energy Certificates (RECs) and power purchase agreements.
+\end{itemize}
+The details of the above can be found \href{https://www.aboutamazon.com/news/aws/aws-carbon-footprint-ai-workload}{here}, and \href{https://www.aboutamazon.com/news/sustainability/amazon-renewable-energy-goal}{here}.
+
+\subsection{Azure Sustainability}
+\begin{itemize}
+    \item Energy Consumption: Microsoft reports data centers consume significant energy, with AI workloads driving a 29\% emissions increase since 2020 due to expanded infrastructure.
+    \item Carbon Negative Pledge: Aims to be carbon negative by 2030, with 100\% renewable energy by 2025, supported by investments in carbon removal technologies.
+    \item Efficiency Metrics: Azure’s Power Usage Effectiveness (PUE) averages 1.2, improved by innovations like grid-interactive UPS batteries.
+\end{itemize}
+References are \href{https://blogs.microsoft.com/on-the-issues/2024/05/15/microsoft-environmental-sustainability-report-2024/}{here}, and \href{https://datacenters.microsoft.com/sustainability/efficiency/}{here}.
+
+\subsection{Google Cloud}
+\begin{itemize}
+    \item Carbon Neutrality: Achieved carbon neutrality in 2007 and matched 100\% of electricity with renewables since 2017; targets 24/7 carbon-free energy (CFE) by 2030.
+    \item Energy Metrics: Google’s data centers have a record-low PUE of 1.1; training a BERT model on Google Cloud consumes ~1,000 kWh, emitting ~500 kgCO2e in high-carbon regions like Indonesia.
+    \item Regional Variation: Carbon-Free Energy (CFE\%) scores range from 99\% in Sweden to 20\% in Indonesia, impacting AI workload emissions.
+\end{itemize}
+The details are \href{https://cloud.google.com/blog/topics/sustainability/sharing-carbon-free-energy-percentage-for-google-cloud-regions}{here}, in this \href{https://sustainability.google/reports/environmental-report-2019/}{environment report by google}, and in this \href{https://blog.google/outreach-initiatives/sustainability/data-centers-energy-efficient/}{news article}.
+
+\subsection{Academic Research}
+\begin{itemize}
+    \item Allen Institute for AI: A single ChatGPT query consumes ~0.01 kWh, equivalent to a lightbulb running for 20 minutes; large model training (e.g., GPT-3) emits CO2 comparable to 112 cars annually. \href{https://www.baeldung.com/cs/chatgpt-large-language-models-power-consumption#:~:text=Each%20query%20ChatGPT%20process%20involves%20running%20the%20model%E2%80%99s,we%20consume%20around%200.0003%20kWh%20%28kilowatt-hours%29%20of%20energy.}{ref}
+    \item Training ResNet-50 on ImageNet for 90 epochs can be completed in 15 minutes using 1024 Tesla P100 GPUs, demonstrating the potential for efficient large-scale training. \href{https://arxiv.org/abs/1711.04325?}{ref}
+\end{itemize}
+
+\subsection{Comparison}
+AWS and Google Cloud lead in renewable energy adoption, with AWS achieving 100\% renewable matching and Google targeting 24/7 CFE. Azure’s carbon-negative goal is ambitious, but recent AI-driven emission spikes highlight challenges across all platforms, with regional grid differences significantly affecting carbon footprints.
+
+\section{Recommendations}
+\begin{itemize}
+    \item Model Efficiency: Use pruned or quantized models like DistilBERT, reducing energy consumption by up to 50\% compared to BERT, based on academic benchmarks.
+
+    \item Region Selection: Deploy AI workloads in data centers with high renewable penetration (e.g., AWS Oregon, Google Sweden), where carbon intensity is 50-70\% lower than coal-heavy regions.
+    
+    \item Governance Alignment: Adopt frameworks like ISO/IEC 42001 for AI management, ensuring compliance with provider sustainability commitments, as noted in Microsoft’s transparency reports.
+\end{itemize}
+
+\section{Conclusion}
+Continuous monitoring of AI’s environmental impact is essential to align with ESG principles. Responsible AI development requires integrating sustainability metrics and governance frameworks to mitigate ecological footprints effectively.
+
+
+% % \newpage
+% \bibliographystyle{plain}
+% \bibliography{ref}
+
+\end{document}

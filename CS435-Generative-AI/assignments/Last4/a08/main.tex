@@ -1,0 +1,153 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage{float, geometry, graphicx, fancyhdr, color, xcolor}
+\usepackage{amssymb, amsthm, amsmath, tikz, pgfplots, comment, wrapfig}
+\usepackage{listings, mdframed, lipsum, psfrag, parskip, empheq, subfig, verbatim, pythonhighlight}
+\usepackage[english]{babel}
+\usepackage[breaklinks]{hyperref}
+\usepackage{titlesec, cite, hyperref, wrapfig, booktabs, bookmark, pdfpages, lastpage, subfloat}
+\usepackage{upgreek}
+\usepackage{multirow}
+\usepackage{textcomp}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% C Code Listing Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{mGreen}{rgb}{0.25,0.63,0.15}
+\definecolor{mGray}{rgb}{0.5,0.5,0.5}
+\definecolor{mPurple}{rgb}{0.58,0,0.82}
+\definecolor{codeBlue}{rgb}{0.01, 0.2, 0.92}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0.13,0.29,0.53}
+\definecolor{backgroundColour}{rgb}{0.95,0.95,0.95}
+
+\lstset{
+    language=Python,
+    backgroundcolor=\color{backgroundColour},
+    basicstyle=\ttfamily\small,
+    commentstyle=\color{deepGreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{mGray},
+    stringstyle=\color{red},
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    frame=single
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+\hypersetup{
+    colorlinks = true,
+    linkcolor = black,
+    urlcolor = blue,
+}
+\urlstyle{same}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{Reinforcement Learning}
+\fancyhead[C]{Project - Proposal}
+\fancyhead[R]{}
+\fancyfoot{}
+\fancyfoot[C]{\thepage \;of \pageref{LastPage}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \title{{\huge \textbf{Intro to Reinforcement Learning - CS/CE 352/368}}
+% \vspace*{3mm}
+% {\LARGE \\ \textbf{Literature Review and Project Proposal}} \\
+% % {\includegraphics[width=0.60\linewidth]{logo.png}} \\ 
+% {\Large \textbf{Instructor:} Dr. Muhammad Shiekh}}
+% \author{Syed Muhammad Ali Naqvi - sn07590 \\ Ali Muhammad Asad - aa07190 \\ Zarak Khan - zk07}
+\title{Explainable AI (XAI) Assignment}
+\author{Ali Muhammad Asad - aa07190}
+\date{}
+
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+\maketitle
+
+% \newpage
+
+\section{On Shapley Values and Factorial Growth}
+Shapley values attribute feature contributions by averaging marginal impacts across all possible orderings. So for $n$ examples, the exact computation would involve $O(n!)$ evaluations of the model. So if a model has 7 features, there would be $ 7! = 7 \times 6 \times 5 \times 4 \times 3 \times 2 \times 1 = 5040$. This is explained in section 6.5.2 of the reference paper \cite{refpaper}.
+
+\section{Causal Inference and Robustness}
+I selected the Invariant Risk Minimization (IRM) explained in section 6.8.2 of the reference paper \cite{refpaper}. IRM improves generalization by learning invariant causal features across environments. It minimizes risk $ R(\omega \cdot \Phi) $ subject to $ \omega \in \text{argmin }R(\omega \cdot \Phi), \forall e \in E $, ensuring the predicator $\omega$ is optimal across environments, focusing on causal representations $\Phi$. Now spurious correlations occur when features are predictive in some environments but not others. IRM mitigates this by enforcing invariance, ensuring the model relies on causal, not environment-specific, features, enhancing robustness to distributional shifts. For example, in credit scoring, consider regions where ``job type = sales" correlates with defaults in Region A but not Region B, while true causal factors are ``income stability" and ``credit history." IRM ensures the model focuses on these invariant features, avoiding spurious correlations, thus improving robustness across regions.
+
+\section{Local vs Global Explanation Dilemma}
+Local explanations (e.g., LIME, SHAP) focus on individual predictions, missing global patterns. For instance, in hiring, local explanations might show why one candidate was rejected, but not reveal systematic bias against a demographic group, as they lack aggregation across instances. Global explanations (e.g., feature importance) provide an overview but may obscure individual nuances. For example, a model might favor candidates with certain degrees, but local explanations could show exceptions where candidates without those degrees were favored due to unique qualifications. This dilemma highlights the need for a balance between local and global explanations to ensure fairness and transparency in AI systems.
+
+A strategy could be to combine SHAP for local feature attributions with global analysis by grouping instances by protected attributes (e.g., race, gender) and computing average SHAP values per subgroup. Use Partial Dependence Plots (PDPs) for each subgroup to detect differential treatment, ensuring both detailed insights and broad fairness checks.
+
+\section{LLMs and Prompt-driven Interpretability}
+A two-step strategy could be as so:
+\begin{enumerate}
+    \item Prompt: ``Solve this problem step by step and box your final answer: [problem]." This encourages chain-of-thought reasoning, where the model explains its thought process, enhancing interpretability.
+    \item Prompt: ``Now, explain why each step is necessary and correct, and consider alternatives." This tests conssitency and depth, revealing if reasoning is grounded and robust.
+\end{enumerate}
+Direct prompting may yield confabulated explanations, not reflecting internal processes, as LLMs mimic plausible text. Section 5.7 of the reference paper \cite{refpaper} notes that LLMs can still generate errors or skip details, thus limiting interpretability and insight. 
+
+\section{Quantifying Explanation ``Quality''}
+\textbf{Metrics:}
+\begin{itemize}
+    \item \textbf{Fidelity:} Measures explanation accuracy, defined as $ FS = E[1(f(x) = g(x))] $ for classification or $ R^2 $ for regression, reflecting model behaviour.
+    \item \textbf{Comprehensibility:} This is subjective, defined as $ ES = 1/(1 + Complexity(E)) $ where $ Complexity(E) $ is the based on features or depth, assessing human understanding. 
+\end{itemize}
+
+\textbf{Experiment:}
+\begin{itemize}
+    \item Dataset: Iris (4 features, 3 classes).
+    \item Black-box method: Random Forest (100 trees)
+    \item Method: LIME for explanations
+    \item Compute Fidelity as average $R^2$ on 500 perturbed instances per test case; Comprehensibility as $ ES = 1/(1 + \text{features with |coefficient|} > 0.01) $, averaged. 
+    \item Expected: Higher fidelity with more trees, but lower comprehensibility due to complexity.
+\end{itemize}
+
+If the black-box model is replaced with an intrinsically interpretable model, we can expect the fidelity to be perfect since the model is interpretable inherintly. We can also expect the comprehensibility to be higher, reflecting simpler rules. Black-box trades comprehensibility for accuracy; interpretable model offers perfect fidelity, higher comprehensibility, but potentially lower accuracy. 
+
+
+% \newpage
+\bibliographystyle{plain}
+\bibliography{ref}
+
+\end{document}
