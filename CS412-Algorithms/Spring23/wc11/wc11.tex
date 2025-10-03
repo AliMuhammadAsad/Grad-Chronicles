@@ -1,0 +1,64 @@
+\documentclass[a4paper]{exam}
+
+\usepackage[export]{adjustbox}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\usepackage{titling}
+
+\graphicspath{{images/}}
+
+\printanswers
+
+\title{Weekly Challenge 11: Dynamic Programming\\CS 412 Algorithms: Design and Analysis}
+\author{team-name}  % <==== replace with your team name for grading
+\date{Habib University | Spring 2023}
+
+\runningheader{CS 412: Algorithms}{WC09: Dynamic Programming}{\theauthor}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+  
+\titledquestion{Suroor-e-Milaap}
+
+  \begin{tabularx}{\linewidth}{Xr}
+    Some years from now, you are based out of station and are driving to Habib University in order to attend the alumni convention, which by now is called, ``Jashn-e-Milaap''. For reasons of respectability, you are keeping your attendance in the event a secret from your spouse and colleagues. You are driving your EV which has a range of $m$ km on a full charge. From your starting point, there are charging stations at distances $d_1 < d_2 < d_3 <\ldots<d_n$, with each station within $m$ km of the previous. At $d_n$ is also your last stop at Habib University.
+    &
+    \includegraphics[valign=t,scale=.7]{milaap}\\
+  \end{tabularx}
+
+  You have started your trip with a full charge and can stop at any charging station and top up your EV's charge. For a distance of $x$ km traveled between top-ups, the amount of stress to the battery is proportional to $(m-x)$.
+
+  You want to plan your charging pit-stops so as to minimize the total stress to your EV's battery, and to pay tribute to your Algorithms course, you want to do so using the dynamic programming approach.
+
+  \begin{parts}
+  \part[3] Characterize the structure of an optimal solution.
+  \part[2] Recursively define the value of an optimal solution.
+  \part[3] Show how the value of an optimal solution can be computed in a bottom-up manner.
+  \part[2] Argue about the time and space complexities of your approach.
+  \end{parts}
+  Remember to observe good attribution practices and cite any sources or references, \href{https://hulms.instructure.com/courses/2616/discussion_topics/29240}{especially if using AI}.
+
+  \begin{solution}
+    % Enter your solution here.
+  \end{solution}
+  
+\end{questions}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

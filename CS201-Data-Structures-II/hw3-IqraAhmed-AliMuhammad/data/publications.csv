@@ -1,0 +1,1767 @@
+Title,Abstract
+Multi-Level Attention Pooling for Graph Neural Networks: Unifying Graph Representations with Multiple Localities,"Graph neural networks (GNNs) have been widely used to learn vector
+representation of graph-structured data and achieved better task performance
+than conventional methods. The foundation of GNNs is the message passing
+procedure, which propagates the information in a node to its neighbors. Since
+this procedure proceeds one step per layer, the range of the information
+propagation among nodes is small in the lower layers, and it expands toward the
+higher layers. Therefore, a GNN model has to be deep enough to capture global
+structural information in a graph. On the other hand, it is known that deep GNN
+models suffer from performance degradation because they lose nodes' local
+information, which would be essential for good model performance, through many
+message passing steps. In this study, we propose multi-level attention pooling
+(MLAP) for graph-level classification tasks, which can adapt to both local and
+global structural information in a graph. It has an attention pooling layer for
+each message passing step and computes the final graph representation by
+unifying the layer-wise graph representations. The MLAP architecture allows
+models to utilize the structural information of graphs with multiple levels of
+localities because it preserves layer-wise information before losing them due
+to oversmoothing. Results of our experiments show that the MLAP architecture
+improves the graph classification performance compared to the baseline
+architectures. In addition, analyses on the layer-wise graph representations
+suggest that aggregating information from multiple levels of localities indeed
+has the potential to improve the discriminability of learned graph
+representations."
+Decision Forests vs. Deep Networks: Conceptual Similarities and Empirical Differences at Small Sample Sizes,"Deep networks and decision forests (such as random forests and gradient
+boosted trees) are the leading machine learning methods for structured and
+tabular data, respectively. Many papers have empirically compared large numbers
+of classifiers on one or two different domains (e.g., on 100 different tabular
+data settings). However, a careful conceptual and empirical comparison of these
+two strategies using the most contemporary best practices has yet to be
+performed. Conceptually, we illustrate that both can be profitably viewed as
+""partition and vote"" schemes. Specifically, the representation space that they
+both learn is a partitioning of feature space into a union of convex polytopes.
+For inference, each decides on the basis of votes from the activated nodes.
+This formulation allows for a unified basic understanding of the relationship
+between these methods. Empirically, we compare these two strategies on hundreds
+of tabular data settings, as well as several vision and auditory settings. Our
+focus is on datasets with at most 10,000 samples, which represent a large
+fraction of scientific and biomedical datasets. In general, we found forests to
+excel at tabular and structured data (vision and audition) with small sample
+sizes, whereas deep nets performed better on structured data with larger sample
+sizes. This suggests that further gains in both scenarios may be realized via
+further combining aspects of forests and networks. We will continue revising
+this technical report in the coming months with updated results."
+Power up! Robust Graph Convolutional Network via Graph Powering,"Graph convolutional networks (GCNs) are powerful tools for graph-structured
+data. However, they have been recently shown to be vulnerable to topological
+attacks. To enhance adversarial robustness, we go beyond spectral graph theory
+to robust graph theory. By challenging the classical graph Laplacian, we
+propose a new convolution operator that is provably robust in the spectral
+domain and is incorporated in the GCN architecture to improve expressivity and
+interpretability. By extending the original graph to a sequence of graphs, we
+also propose a robust training paradigm that encourages transferability across
+graphs that span a range of spatial and spectral characteristics. The proposed
+approaches are demonstrated in extensive experiments to simultaneously improve
+performance in both benign and adversarial situations."
+Releasing Graph Neural Networks with Differential Privacy Guarantees,"With the increasing popularity of Graph Neural Networks (GNNs) in several
+sensitive applications like healthcare and medicine, concerns have been raised
+over the privacy aspects of trained GNNs. More notably, GNNs are vulnerable to
+privacy attacks, such as membership inference attacks, even if only blackbox
+access to the trained model is granted. To build defenses, differential privacy
+has emerged as a mechanism to disguise the sensitive data in training datasets.
+Following the strategy of Private Aggregation of Teacher Ensembles (PATE),
+recent methods leverage a large ensemble of teacher models. These teachers are
+trained on disjoint subsets of private data and are employed to transfer
+knowledge to a student model, which is then released with privacy guarantees.
+However, splitting graph data into many disjoint training sets may destroy the
+structural information and adversely affect accuracy. We propose a new
+graph-specific scheme of releasing a student GNN, which avoids splitting
+private training data altogether. The student GNN is trained using public data,
+partly labeled privately using the teacher GNN models trained exclusively for
+each query node. We theoretically analyze our approach in the R\`{e}nyi
+differential privacy framework and provide privacy guarantees. Besides, we show
+the solid experimental performance of our method compared to several baselines,
+including the PATE baseline adapted for graph-structured data. Our anonymized
+code is available."
+Recurrence-Aware Long-Term Cognitive Network for Explainable Pattern Classification,"Machine learning solutions for pattern classification problems are nowadays
+widely deployed in society and industry. However, the lack of transparency and
+accountability of most accurate models often hinders their safe use. Thus,
+there is a clear need for developing explainable artificial intelligence
+mechanisms. There exist model-agnostic methods that summarize feature
+contributions, but their interpretability is limited to predictions made by
+black-box models. An open challenge is to develop models that have intrinsic
+interpretability and produce their own explanations, even for classes of models
+that are traditionally considered black boxes like (recurrent) neural networks.
+In this paper, we propose a Long-Term Cognitive Network for interpretable
+pattern classification of structured data. Our method brings its own mechanism
+for providing explanations by quantifying the relevance of each feature in the
+decision process. For supporting the interpretability without affecting the
+performance, the model incorporates more flexibility through a quasi-nonlinear
+reasoning rule that allows controlling nonlinearity. Besides, we propose a
+recurrence-aware decision model that evades the issues posed by unique fixed
+points while introducing a deterministic learning method to compute the tunable
+parameters. The simulations show that our interpretable model obtains
+competitive results when compared to the state-of-the-art white and black-box
+models."
+Lifelong Graph Learning,"Graph neural networks (GNNs) are powerful models for many graph-structured
+tasks. Existing models often assume that a complete structure of a graph is
+available during training, however, in practice, graph-structured data is
+usually formed in a streaming fashion, so that learning a graph continuously is
+often necessary. In this paper, we aim to bridge GNN to lifelong learning by
+converting a graph problem to a regular learning problem, so that GNN is able
+to inherit the lifelong learning techniques developed for convolutional neural
+networks (CNNs). To this end, we propose a new graph topology based on feature
+cross-correlation, called the feature graph. It takes features as new nodes and
+turns nodes into independent graphs. This successfully converts the original
+problem of node classification to graph classification, in which the increasing
+nodes are turned into independent training samples. In the experiments, we
+demonstrate the efficiency and effectiveness of feature graph networks (FGN) by
+continuously learning a sequence of classical graph datasets. We also show that
+FGN achieves superior performance in human action recognition with distributed
+streaming signals for wearable devices."
+Bayesian graph convolutional neural networks via tempered MCMC,"Deep learning models, such as convolutional neural networks, have long been
+applied to image and multi-media tasks, particularly those with structured
+data. More recently, there has been more attention to unstructured data that
+can be represented via graphs. These types of data are often found in health
+and medicine, social networks, and research data repositories. Graph
+convolutional neural networks have recently gained attention in the field of
+deep learning that takes advantage of graph-based data representation with
+automatic feature extraction via convolutions. Given the popularity of these
+methods in a wide range of applications, robust uncertainty quantification is
+vital. This remains a challenge for large models and unstructured datasets.
+Bayesian inference provides a principled approach to uncertainty quantification
+of model parameters for deep learning models. Although Bayesian inference has
+been used extensively elsewhere, its application to deep learning remains
+limited due to the computational requirements of the Markov Chain Monte Carlo
+(MCMC) methods. Recent advances in parallel computing and advanced proposal
+schemes in MCMC sampling methods has opened the path for Bayesian deep
+learning. In this paper, we present Bayesian graph convolutional neural
+networks that employ tempered MCMC sampling with Langevin-gradient proposal
+distribution implemented via parallel computing. Our results show that the
+proposed method can provide accuracy similar to advanced optimisers while
+providing uncertainty quantification for key benchmark problems."
+Understanding and Resolving Performance Degradation in Graph Convolutional Networks,"A Graph Convolutional Network (GCN) stacks several layers and in each layer
+performs a PROPagation operation (PROP) and a TRANsformation operation (TRAN)
+for learning node representations over graph-structured data. Though powerful,
+GCNs tend to suffer performance drop when the model gets deep. Previous works
+focus on PROPs to study and mitigate this issue, but the role of TRANs is
+barely investigated. In this work, we study performance degradation of GCNs by
+experimentally examining how stacking only TRANs or PROPs works. We find that
+TRANs contribute significantly, or even more than PROPs, to declining
+performance, and moreover that they tend to amplify node-wise feature variance
+in GCNs, causing variance inflammation that we identify as a key factor for
+causing performance drop. Motivated by such observations, we propose a
+variance-controlling technique termed Node Normalization (NodeNorm), which
+scales each node's features using its own standard deviation. Experimental
+results validate the effectiveness of NodeNorm on addressing performance
+degradation of GCNs. Specifically, it enables deep GCNs to outperform shallow
+ones in cases where deep models are needed, and to achieve comparable results
+with shallow ones on 6 benchmark datasets. NodeNorm is a generic plug-in and
+can well generalize to other GNN architectures. Code is publicly available at
+https://github.com/miafei/NodeNorm."
+Edge-augmented Graph Transformers: Global Self-attention is Enough for Graphs,"Transformer neural networks have achieved state-of-the-art results for
+unstructured data such as text and images but their adoption for
+graph-structured data has been limited. This is partly due to the difficulty of
+incorporating complex structural information in the basic transformer
+framework. We propose a simple yet powerful extension to the transformer -
+residual edge channels. The resultant framework, which we call Edge-augmented
+Graph Transformer (EGT), can directly accept, process and output structural
+information as well as node information. It allows us to use global
+self-attention, the key element of transformers, directly for graphs and comes
+with the benefit of long-range interaction among nodes. Moreover, the edge
+channels allow the structural information to evolve from layer to layer, and
+prediction tasks on edges/links can be performed directly from the output
+embeddings of these channels. In addition, we introduce a generalized
+positional encoding scheme for graphs based on Singular Value Decomposition
+which can improve the performance of EGT. Our framework, which relies on global
+node feature aggregation, achieves better performance compared to
+Convolutional/Message-Passing Graph Neural Networks, which rely on local
+feature aggregation within a neighborhood. We verify the performance of EGT in
+a supervised learning setting on a wide range of experiments on benchmark
+datasets. Our findings indicate that convolutional aggregation is not an
+essential inductive bias for graphs and global self-attention can serve as a
+flexible and adaptive alternative."
+Variational Graph Normalized Auto-Encoders,"Link prediction is one of the key problems for graph-structured data. With
+the advancement of graph neural networks, graph autoencoders (GAEs) and
+variational graph autoencoders (VGAEs) have been proposed to learn graph
+embeddings in an unsupervised way. It has been shown that these methods are
+effective for link prediction tasks. However, they do not work well in link
+predictions when a node whose degree is zero (i.g., isolated node) is involved.
+We have found that GAEs/VGAEs make embeddings of isolated nodes close to zero
+regardless of their content features. In this paper, we propose a novel
+Variational Graph Normalized AutoEncoder (VGNAE) that utilize L2-normalization
+to derive better embeddings for isolated nodes. We show that our VGNAEs
+outperform the existing state-of-the-art models for link prediction tasks. The
+code is available at https://github.com/SeongJinAhn/VGNAE."
+Local Augmentation for Graph Neural Networks,"Data augmentation has been widely used in image data and linguistic data but
+remains under-explored on graph-structured data. Existing methods focus on
+augmenting the graph data from a global perspective and largely fall into two
+genres: structural manipulation and adversarial training with feature noise
+injection. However, the structural manipulation approach suffers information
+loss issues while the adversarial training approach may downgrade the feature
+quality by injecting noise. In this work, we introduce the local augmentation,
+which enhances node features by its local subgraph structures. Specifically, we
+model the data argumentation as a feature generation process. Given the central
+node's feature, our local augmentation approach learns the conditional
+distribution of its neighbors' features and generates the neighbors' optimal
+feature to boost the performance of downstream tasks. Based on the local
+augmentation, we further design a novel framework: LA-GNN, which can apply to
+any GNN models in a plug-and-play manner. Extensive experiments and analyses
+show that local augmentation consistently yields performance improvement for
+various GNN architectures across a diverse set of benchmarks. Code is available
+at https://github.com/Soughing0823/LAGNN."
+FedGraphNN: A Federated Learning System and Benchmark for Graph Neural Networks,"Graph Neural Network (GNN) research is rapidly growing thanks to the capacity
+of GNNs in learning distributed representations from graph-structured data.
+However, centralizing a massive amount of real-world graph data for GNN
+training is prohibitive due to privacy concerns, regulation restrictions, and
+commercial competitions. Federated learning (FL), a trending distributed
+learning paradigm, provides possibilities to solve this challenge while
+preserving data privacy. Despite recent advances in vision and language
+domains, there is no suitable platform for the FL of GNNs. To this end, we
+introduce FedGraphNN, an open FL benchmark system that can facilitate research
+on federated GNNs. FedGraphNN is built on a unified formulation of graph FL and
+contains a wide range of datasets from different domains, popular GNN models,
+and FL algorithms, with secure and efficient system support. Particularly for
+the datasets, we collect, preprocess, and partition 36 datasets from 7 domains,
+including both publicly available ones and specifically obtained ones such as
+hERG and Tencent. Our empirical analysis showcases the utility of our benchmark
+system, while exposing significant challenges in graph FL: federated GNNs
+perform worse in most datasets with a non-IID split than centralized GNNs; the
+GNN model that attains the best result in the centralized setting may not
+maintain its advantage in the FL setting. These results imply that more
+research efforts are needed to unravel the mystery behind federated GNNs.
+Moreover, our system performance analysis demonstrates that the FedGraphNN
+system is computationally efficient and secure to large-scale graphs datasets.
+We maintain the source code at https://github.com/FedML-AI/FedGraphNN."
+Diff-ResNets for Few-shot Learning -- an ODE Perspective,"Interpreting deep neural networks from the ordinary differential equations
+(ODEs) perspective has inspired many efficient and robust network
+architectures. However, existing ODE based approaches ignore the relationship
+among data points, which is a critical component in many problems including
+few-shot learning and semi-supervised learning. In this paper, inspired by the
+diffusive ODEs, we propose a novel diffusion residual network (Diff-ResNet) to
+strengthen the interactions among data points. Under the structured data
+assumption, it is proved that the diffusion mechanism can decrease the
+distance-diameter ratio that improves the separability of inter-class points
+and reduces the distance among local intra-class points. This property can be
+easily adopted by the residual networks for constructing the separable
+hyperplanes. The synthetic binary classification experiments demonstrate the
+effectiveness of the proposed diffusion mechanism. Moreover, extensive
+experiments of few-shot image classification and semi-supervised graph node
+classification in various datasets validate the advantages of the proposed
+Diff-ResNet over existing few-shot learning methods."
+Scale-invariant representation of machine learning,"The success of machine learning stems from its structured data
+representation. Similar data have close representation as compressed codes for
+classification or emerged labels for clustering. We observe that the frequency
+of the internal representation follows power laws in both supervised and
+unsupervised learning. The scale-invariant distribution implies that machine
+learning largely compresses frequent typical data, and at the same time,
+differentiates many atypical data as outliers. In this study, we derive how the
+power laws can naturally arise in machine learning. In terms of information
+theory, the scale-invariant representation corresponds to a maximally uncertain
+data grouping among possible representations that guarantee pre-specified
+learning accuracy."
+Generation of Synthetic Electronic Health Records Using a Federated GAN,"Sensitive medical data is often subject to strict usage constraints. In this
+paper, we trained a generative adversarial network (GAN) on real-world
+electronic health records (EHR). It was then used to create a data-set of
+""fake"" patients through synthetic data generation (SDG) to circumvent usage
+constraints. This real-world data was tabular, binary, intensive care unit
+(ICU) patient diagnosis data. The entire data-set was split into separate data
+silos to mimic real-world scenarios where multiple ICU units across different
+hospitals may have similarly structured data-sets within their own
+organisations but do not have access to each other's data-sets. We implemented
+federated learning (FL) to train separate GANs locally at each organisation,
+using their unique data silo and then combining the GANs into a single central
+GAN, without any siloed data ever being exposed. This global, central GAN was
+then used to generate the synthetic patients data-set. We performed an
+evaluation of these synthetic patients with statistical measures and through a
+structured review by a group of medical professionals. It was shown that there
+was no significant reduction in the quality of the synthetic EHR when we moved
+between training a single central model and training on separate data silos
+with individual models before combining them into a central model. This was
+true for both the statistical evaluation (Root Mean Square Error (RMSE) of
+0.0154 for single-source vs. RMSE of 0.0169 for dual-source federated) and also
+for the medical professionals' evaluation (no quality difference between EHR
+generated from a single source and EHR generated from multiple sources)."
+Sparsifying the Update Step in Graph Neural Networks,"Message-Passing Neural Networks (MPNNs), the most prominent Graph Neural
+Network (GNN) framework, celebrate much success in the analysis of
+graph-structured data. Concurrently, the sparsification of Neural Network
+models attracts a great amount of academic and industrial interest. In this
+paper, we conduct a structured study of the effect of sparsification on the
+trainable part of MPNNs known as the Update step. To this end, we design a
+series of models to successively sparsify the linear transform in the Update
+step. Specifically, we propose the ExpanderGNN model with a tuneable
+sparsification rate and the Activation-Only GNN, which has no linear transform
+in the Update step. In agreement with a growing trend in the literature, the
+sparsification paradigm is changed by initialising sparse neural network
+architectures rather than expensively sparsifying already trained
+architectures. Our novel benchmark models enable a better understanding of the
+influence of the Update step on model performance and outperform existing
+simplified benchmark models such as the Simple Graph Convolution. The
+ExpanderGNNs, and in some cases the Activation-Only models, achieve performance
+on par with their vanilla counterparts on several downstream tasks while
+containing significantly fewer trainable parameters. In experiments with
+matching parameter numbers, our benchmark models outperform the
+state-of-the-art GNN models. Our code is publicly available at:
+https://github.com/ChangminWu/ExpanderGNN."
+Computing Graph Descriptors on Edge Streams,"Graph feature extraction is a fundamental task in graphs analytics. Using
+feature vectors (graph descriptors) in tandem with data mining algorithms that
+operate on Euclidean data, one can solve problems such as classification,
+clustering, and anomaly detection on graph-structured data. This idea has
+proved fruitful in the past, with spectral-based graph descriptors providing
+state-of-the-art classification accuracy on benchmark datasets. However, these
+algorithms do not scale to large graphs since: 1) they require storing the
+entire graph in memory, and 2) the end-user has no control over the algorithm's
+runtime. In this paper, we present single-pass streaming algorithms to
+approximate structural features of graphs (counts of subgraphs of order $k \geq
+4$). Operating on edge streams allows us to avoid keeping the entire graph in
+memory, and controlling the sample size enables us to control the time taken by
+the algorithm. We demonstrate the efficacy of our descriptors by analyzing the
+approximation error, classification accuracy, and scalability to massive
+graphs. Our experiments showcase the effect of the sample size on approximation
+error and predictive accuracy. The proposed descriptors are applicable on
+graphs with millions of edges within minutes and outperform the
+state-of-the-art descriptors in classification accuracy."
+Deep Dual Support Vector Data Description for Anomaly Detection on Attributed Networks,"Networks are ubiquitous in the real world such as social networks and
+communication networks, and anomaly detection on networks aims at finding nodes
+whose structural or attributed patterns deviate significantly from the majority
+of reference nodes. However, most of the traditional anomaly detection methods
+neglect the relation structure information among data points and therefore
+cannot effectively generalize to the graph structure data. In this paper, we
+propose an end-to-end model of Deep Dual Support Vector Data description based
+Autoencoder (Dual-SVDAE) for anomaly detection on attributed networks, which
+considers both the structure and attribute for attributed networks.
+Specifically, Dual-SVDAE consists of a structure autoencoder and an attribute
+autoencoder to learn the latent representation of the node in the structure
+space and attribute space respectively. Then, a dual-hypersphere learning
+mechanism is imposed on them to learn two hyperspheres of normal nodes from the
+structure and attribute perspectives respectively. Moreover, to achieve joint
+learning between the structure and attribute of the network, we fuse the
+structure embedding and attribute embedding as the final input of the feature
+decoder to generate the node attribute. Finally, abnormal nodes can be detected
+by measuring the distance of nodes to the learned center of each hypersphere in
+the latent structure space and attribute space respectively. Extensive
+experiments on the real-world attributed networks show that Dual-SVDAE
+consistently outperforms the state-of-the-arts, which demonstrates the
+effectiveness of the proposed method."
+Learning Fair Graph Neural Networks with Limited and Private Sensitive Attribute Information,"Graph neural networks (GNNs) have shown great power in modeling graph
+structured data. However, similar to other machine learning models, GNNs may
+make biased predictions w.r.t protected sensitive attributes, e.g., skin color
+and gender. This is because the training data often contains historical bias
+towards sensitive attributes. In addition, we empirically show that the
+discrimination in GNNs can be magnified by graph structures and the
+message-passing mechanism of GNNs. As a result, the applications of GNNs in
+high-stake domains such as crime rate prediction would be largely limited.
+Though extensive studies of fair classification have been conducted on i.i.d
+data, methods to address the problem of discrimination on non-i.i.d data are
+rather limited. Generally, learning fair models require abundant sensitive
+attributes to regularize the model. However, for many graphs such as social
+networks, users are reluctant to share sensitive attributes. Thus, only limited
+sensitive attributes are available for fair GNN training in practice. Moreover,
+directly collecting and applying the sensitive attributes in fair model
+training may cause privacy issues, because the sensitive information can be
+leaked in data breach or attacks on the trained model. Therefore, we study a
+novel and crucial problem of learning fair GNNs with limited and private
+sensitive attribute information. In an attempt to address these problems,
+FairGNN is proposed to eliminate the bias of GNNs whilst maintaining high
+accuracy by leveraging graph structures and limited sensitive information. We
+further extend FairGNN to NT-FairGNN which can achieve both fairness and
+privacy on sensitive attributes by using limited and private sensitive
+attributes. Theoretical analysis and extensive experiments on real-world
+datasets demonstrate the effectiveness of FairGNN and NT-FairGNN in achieving
+fair and high-accurate classification."
+Adversarial Stein Training for Graph Energy Models,"Learning distributions over graph-structured data is a challenging task with
+many applications in biology and chemistry. In this work we use an energy-based
+model (EBM) based on multi-channel graph neural networks (GNN) to learn
+permutation invariant unnormalized density functions on graphs. Unlike standard
+EBM training methods our approach is to learn the model via minimizing
+adversarial stein discrepancy. Samples from the model can be obtained via
+Langevin dynamics based MCMC. We find that this approach achieves competitive
+results on graph generation compared to benchmark models."
+Parametric UMAP embeddings for representation and semi-supervised learning,"UMAP is a non-parametric graph-based dimensionality reduction algorithm using
+applied Riemannian geometry and algebraic topology to find low-dimensional
+embeddings of structured data. The UMAP algorithm consists of two steps: (1)
+Compute a graphical representation of a dataset (fuzzy simplicial complex), and
+(2) Through stochastic gradient descent, optimize a low-dimensional embedding
+of the graph. Here, we extend the second step of UMAP to a parametric
+optimization over neural network weights, learning a parametric relationship
+between data and embedding. We first demonstrate that Parametric UMAP performs
+comparably to its non-parametric counterpart while conferring the benefit of a
+learned parametric mapping (e.g. fast online embeddings for new data). We then
+explore UMAP as a regularization, constraining the latent distribution of
+autoencoders, parametrically varying global structure preservation, and
+improving classifier accuracy for semi-supervised learning by capturing
+structure in unlabeled data. Google Colab walkthrough:
+https://colab.research.google.com/drive/1WkXVZ5pnMrm17m0YgmtoNjM_XHdnE5Vp?usp=sharing"
+Towards Self-Explainable Graph Neural Network,"Graph Neural Networks (GNNs), which generalize the deep neural networks to
+graph-structured data, have achieved great success in modeling graphs. However,
+as an extension of deep learning for graphs, GNNs lack explainability, which
+largely limits their adoption in scenarios that demand the transparency of
+models. Though many efforts are taken to improve the explainability of deep
+learning, they mainly focus on i.i.d data, which cannot be directly applied to
+explain the predictions of GNNs because GNNs utilize both node features and
+graph topology to make predictions. There are only very few work on the
+explainability of GNNs and they focus on post-hoc explanations. Since post-hoc
+explanations are not directly obtained from the GNNs, they can be biased and
+misrepresent the true explanations. Therefore, in this paper, we study a novel
+problem of self-explainable GNNs which can simultaneously give predictions and
+explanations. We propose a new framework which can find $K$-nearest labeled
+nodes for each unlabeled node to give explainable node classification, where
+nearest labeled nodes are found by interpretable similarity module in terms of
+both node similarity and local structure similarity. Extensive experiments on
+real-world and synthetic datasets demonstrate the effectiveness of the proposed
+framework for explainable node classification."
+Temporal Network Embedding via Tensor Factorization,"Representation learning on static graph-structured data has shown a
+significant impact on many real-world applications. However, less attention has
+been paid to the evolving nature of temporal networks, in which the edges are
+often changing over time. The embeddings of such temporal networks should
+encode both graph-structured information and the temporally evolving pattern.
+Existing approaches in learning temporally evolving network representations
+fail to capture the temporal interdependence. In this paper, we propose Toffee,
+a novel approach for temporal network representation learning based on tensor
+decomposition. Our method exploits the tensor-tensor product operator to encode
+the cross-time information, so that the periodic changes in the evolving
+networks can be captured. Experimental results demonstrate that Toffee
+outperforms existing methods on multiple real-world temporal networks in
+generating effective embeddings for the link prediction tasks."
+LinkTeller: Recovering Private Edges from Graph Neural Networks via Influence Analysis,"Graph structured data have enabled several successful applications such as
+recommendation systems and traffic prediction, given the rich node features and
+edges information. However, these high-dimensional features and high-order
+adjacency information are usually heterogeneous and held by different data
+holders in practice. Given such vertical data partition (e.g., one data holder
+will only own either the node features or edge information), different data
+holders have to develop efficient joint training protocols rather than directly
+transfer data to each other due to privacy concerns. In this paper, we focus on
+the edge privacy, and consider a training scenario where Bob with node features
+will first send training node features to Alice who owns the adjacency
+information. Alice will then train a graph neural network (GNN) with the joint
+information and release an inference API. During inference, Bob is able to
+provide test node features and query the API to obtain the predictions for test
+nodes. Under this setting, we first propose a privacy attack LinkTeller via
+influence analysis to infer the private edge information held by Alice via
+designing adversarial queries for Bob. We then empirically show that LinkTeller
+is able to recover a significant amount of private edges, outperforming
+existing baselines. To further evaluate the privacy leakage, we adapt an
+existing algorithm for differentially private graph convolutional network (DP
+GCN) training and propose a new DP GCN mechanism LapGraph. We show that these
+DP GCN mechanisms are not always resilient against LinkTeller empirically under
+mild privacy guarantees ($\varepsilon>5$). Our studies will shed light on
+future research towards designing more resilient privacy-preserving GCN models;
+in the meantime, provide an in-depth understanding of the tradeoff between GCN
+model utility and robustness against potential privacy attacks."
+Physics-Coupled Spatio-Temporal Active Learning for Dynamical Systems,"Spatio-temporal forecasting is of great importance in a wide range of
+dynamical systems applications from atmospheric science, to recent COVID-19
+spread modeling. These applications rely on accurate predictions of
+spatio-temporal structured data reflecting real-world phenomena. A stunning
+characteristic is that the dynamical system is not only driven by some physics
+laws but also impacted by the localized factor in spatial and temporal regions.
+One of the major challenges is to infer the underlying causes, which generate
+the perceived data stream and propagate the involved causal dynamics through
+the distributed observing units. Another challenge is that the success of
+machine learning based predictive models requires massive annotated data for
+model training. However, the acquisition of high-quality annotated data is
+objectively manual and tedious as it needs a considerable amount of human
+intervention, making it infeasible in fields that require high levels of
+expertise. To tackle these challenges, we advocate a spatio-temporal
+physics-coupled neural networks (ST-PCNN) model to learn the underlying physics
+of the dynamical system and further couple the learned physics to assist the
+learning of the recurring dynamics. To deal with data-acquisition constraints,
+an active learning mechanism with Kriging for actively acquiring the most
+informative data is proposed for ST-PCNN training in a partially observable
+environment. Our experiments on both synthetic and real-world datasets exhibit
+that the proposed ST-PCNN with active learning converges to near optimal
+accuracy with substantially fewer instances."
+GIPA: General Information Propagation Algorithm for Graph Learning,"Graph neural networks (GNNs) have been popularly used in analyzing
+graph-structured data, showing promising results in various applications such
+as node classification, link prediction and network recommendation. In this
+paper, we present a new graph attention neural network, namely GIPA, for
+attributed graph data learning. GIPA consists of three key components:
+attention, feature propagation and aggregation. Specifically, the attention
+component introduces a new multi-layer perceptron based multi-head to generate
+better non-linear feature mapping and representation than conventional
+implementations such as dot-product. The propagation component considers not
+only node features but also edge features, which differs from existing GNNs
+that merely consider node features. The aggregation component uses a residual
+connection to generate the final embedding. We evaluate the performance of GIPA
+using the Open Graph Benchmark proteins (ogbn-proteins for short) dataset. The
+experimental results reveal that GIPA can beat the state-of-the-art models in
+terms of prediction accuracy, e.g., GIPA achieves an average test ROC-AUC of
+$0.8700\pm 0.0010$ and outperforms all the previous methods listed in the
+ogbn-proteins leaderboard."
+StrucTexT: Structured Text Understanding with Multi-Modal Transformers,"Structured text understanding on Visually Rich Documents (VRDs) is a crucial
+part of Document Intelligence. Due to the complexity of content and layout in
+VRDs, structured text understanding has been a challenging task. Most existing
+studies decoupled this problem into two sub-tasks: entity labeling and entity
+linking, which require an entire understanding of the context of documents at
+both token and segment levels. However, little work has been concerned with the
+solutions that efficiently extract the structured data from different levels.
+This paper proposes a unified framework named StrucTexT, which is flexible and
+effective for handling both sub-tasks. Specifically, based on the transformer,
+we introduce a segment-token aligned encoder to deal with the entity labeling
+and entity linking tasks at different levels of granularity. Moreover, we
+design a novel pre-training strategy with three self-supervised tasks to learn
+a richer representation. StrucTexT uses the existing Masked Visual Language
+Modeling task and the new Sentence Length Prediction and Paired Boxes Direction
+tasks to incorporate the multi-modal information across text, image, and
+layout. We evaluate our method for structured text understanding at
+segment-level and token-level and show it outperforms the state-of-the-art
+counterparts with significantly superior performance on the FUNSD, SROIE, and
+EPHOIE datasets."
+Graph Backdoor,"One intriguing property of deep neural networks (DNNs) is their inherent
+vulnerability to backdoor attacks -- a trojan model responds to
+trigger-embedded inputs in a highly predictable manner while functioning
+normally otherwise. Despite the plethora of prior work on DNNs for continuous
+data (e.g., images), the vulnerability of graph neural networks (GNNs) for
+discrete-structured data (e.g., graphs) is largely unexplored, which is highly
+concerning given their increasing use in security-sensitive domains. To bridge
+this gap, we present GTA, the first backdoor attack on GNNs. Compared with
+prior work, GTA departs in significant ways: graph-oriented -- it defines
+triggers as specific subgraphs, including both topological structures and
+descriptive features, entailing a large design spectrum for the adversary;
+input-tailored -- it dynamically adapts triggers to individual graphs, thereby
+optimizing both attack effectiveness and evasiveness; downstream model-agnostic
+-- it can be readily launched without knowledge regarding downstream models or
+fine-tuning strategies; and attack-extensible -- it can be instantiated for
+both transductive (e.g., node classification) and inductive (e.g., graph
+classification) tasks, constituting severe threats for a range of
+security-critical applications. Through extensive evaluation using benchmark
+datasets and state-of-the-art models, we demonstrate the effectiveness of GTA.
+We further provide analytical justification for its effectiveness and discuss
+potential countermeasures, pointing to several promising research directions."
+LatticeNet: Fast Spatio-Temporal Point Cloud Segmentation Using Permutohedral Lattices,"Deep convolutional neural networks (CNNs) have shown outstanding performance
+in the task of semantically segmenting images. Applying the same methods on 3D
+data still poses challenges due to the heavy memory requirements and the lack
+of structured data. Here, we propose LatticeNet, a novel approach for 3D
+semantic segmentation, which takes raw point clouds as input. A PointNet
+describes the local geometry which we embed into a sparse permutohedral
+lattice. The lattice allows for fast convolutions while keeping a low memory
+footprint. Further, we introduce DeformSlice, a novel learned data-dependent
+interpolation for projecting lattice features back onto the point cloud. We
+present results of 3D segmentation on multiple datasets where our method
+achieves state-of-the-art performance. We also extend and evaluate our network
+for instance and dynamic object segmentation."
+On the Difficulty of Generalizing Reinforcement Learning Framework for Combinatorial Optimization,"Combinatorial optimization problems (COPs) on the graph with real-life
+applications are canonical challenges in Computer Science. The difficulty of
+finding quality labels for problem instances holds back leveraging supervised
+learning across combinatorial problems. Reinforcement learning (RL) algorithms
+have recently been adopted to solve this challenge automatically. The
+underlying principle of this approach is to deploy a graph neural network (GNN)
+for encoding both the local information of the nodes and the graph-structured
+data in order to capture the current state of the environment. Then, it is
+followed by the actor to learn the problem-specific heuristics on its own and
+make an informed decision at each state for finally reaching a good solution.
+Recent studies on this subject mainly focus on a family of combinatorial
+problems on the graph, such as the travel salesman problem, where the proposed
+model aims to find an ordering of vertices that optimizes a given objective
+function. We use the security-aware phone clone allocation in the cloud as a
+classical quadratic assignment problem (QAP) to investigate whether or not deep
+RL-based model is generally applicable to solve other classes of such hard
+problems. Extensive empirical evaluation shows that existing RL-based model may
+not generalize to QAP."
+Bridging the Gap between Spatial and Spectral Domains: A Unified Framework for Graph Neural Networks,"Deep learning's performance has been extensively recognized recently. Graph
+neural networks (GNNs) are designed to deal with graph-structural data that
+classical deep learning does not easily manage. Since most GNNs were created
+using distinct theories, direct comparisons are impossible. Prior research has
+primarily concentrated on categorizing existing models, with little attention
+paid to their intrinsic connections. The purpose of this study is to establish
+a unified framework that integrates GNNs based on spectral graph and
+approximation theory. The framework incorporates a strong integration between
+spatial- and spectral-based GNNs while tightly associating approaches that
+exist within each respective domain."
+Manifold Oblique Random Forests: Towards Closing the Gap on Convolutional Deep Networks,"Decision forests (Forests), in particular random forests and gradient
+boosting trees, have demonstrated state-of-the-art accuracy compared to other
+methods in many supervised learning scenarios. In particular, Forests dominate
+other methods in tabular data, that is, when the feature space is unstructured,
+so that the signal is invariant to a permutation of the feature indices.
+However, in structured data lying on a manifold (such as images, text, and
+speech) deep networks (Networks), specifically convolutional deep networks
+(ConvNets), tend to outperform Forests. We conjecture that at least part of the
+reason for this is that the input to Networks is not simply the feature
+magnitudes, but also their indices. In contrast, naive Forest implementations
+fail to explicitly consider feature indices. A recently proposed Forest
+approach demonstrates that Forests, for each node, implicitly sample a random
+matrix from some specific distribution. These Forests, like some classes of
+Networks, learn by partitioning the feature space into convex polytopes
+corresponding to linear functions. We build on that approach and show that one
+can choose distributions in a manifold-aware fashion to incorporate feature
+locality. We demonstrate the empirical performance on data whose features live
+on three different manifolds: a torus, images, and time-series. Moreover, we
+demonstrate its strength in multivariate simulated settings and also show
+superiority in predicting surgical outcome in epilepsy patients and predicting
+movement direction from raw stereotactic EEG data from non-motor brain regions.
+In all simulations and real data, Manifold Oblique Random Forest (MORF)
+algorithm outperforms approaches that ignore feature space structure and
+challenges the performance of ConvNets. Moreover, MORF runs fast and maintains
+interpretability and theoretical justification."
+DistDGL: Distributed Graph Neural Network Training for Billion-Scale Graphs,"Graph neural networks (GNN) have shown great success in learning from
+graph-structured data. They are widely used in various applications, such as
+recommendation, fraud detection, and search. In these domains, the graphs are
+typically large, containing hundreds of millions of nodes and several billions
+of edges. To tackle this challenge, we develop DistDGL, a system for training
+GNNs in a mini-batch fashion on a cluster of machines. DistDGL is based on the
+Deep Graph Library (DGL), a popular GNN development framework. DistDGL
+distributes the graph and its associated data (initial features and embeddings)
+across the machines and uses this distribution to derive a computational
+decomposition by following an owner-compute rule. DistDGL follows a synchronous
+training approach and allows ego-networks forming the mini-batches to include
+non-local nodes. To minimize the overheads associated with distributed
+computations, DistDGL uses a high-quality and light-weight min-cut graph
+partitioning algorithm along with multiple balancing constraints. This allows
+it to reduce communication overheads and statically balance the computations.
+It further reduces the communication by replicating halo nodes and by using
+sparse embedding updates. The combination of these design choices allows
+DistDGL to train high-quality models while achieving high parallel efficiency
+and memory scalability. We demonstrate our optimizations on both inductive and
+transductive GNN models. Our results show that DistDGL achieves linear speedup
+without compromising model accuracy and requires only 13 seconds to complete a
+training epoch for a graph with 100 million nodes and 3 billion edges on a
+cluster with 16 machines. DistDGL is now publicly available as part of
+DGL:https://github.com/dmlc/dgl/tree/master/python/dgl/distributed."
+Grain: Improving Data Efficiency of Graph Neural Networks via Diversified Influence Maximization,"Data selection methods, such as active learning and core-set selection, are
+useful tools for improving the data efficiency of deep learning models on
+large-scale datasets. However, recent deep learning models have moved forward
+from independent and identically distributed data to graph-structured data,
+such as social networks, e-commerce user-item graphs, and knowledge graphs.
+This evolution has led to the emergence of Graph Neural Networks (GNNs) that go
+beyond the models existing data selection methods are designed for. Therefore,
+we present Grain, an efficient framework that opens up a new perspective
+through connecting data selection in GNNs with social influence maximization.
+By exploiting the common patterns of GNNs, Grain introduces a novel feature
+propagation concept, a diversified influence maximization objective with novel
+influence and diversity functions, and a greedy algorithm with an approximation
+guarantee into a unified framework. Empirical studies on public datasets
+demonstrate that Grain significantly improves both the performance and
+efficiency of data selection (including active learning and core-set selection)
+for GNNs. To the best of our knowledge, this is the first attempt to bridge two
+largely parallel threads of research, data selection, and social influence
+maximization, in the setting of GNNs, paving new ways for improving data
+efficiency."
+Data-driven effective model shows a liquid-like deep learning,"The geometric structure of an optimization landscape is argued to be
+fundamentally important to support the success of deep neural network learning.
+A direct computation of the landscape beyond two layers is hard. Therefore, to
+capture the global view of the landscape, an interpretable model of the
+network-parameter (or weight) space must be established. However, the model is
+lacking so far. Furthermore, it remains unknown what the landscape looks like
+for deep networks of binary synapses, which plays a key role in robust and
+energy efficient neuromorphic computation. Here, we propose a statistical
+mechanics framework by directly building a least structured model of the
+high-dimensional weight space, considering realistic structured data,
+stochastic gradient descent training, and the computational depth of neural
+networks. We also consider whether the number of network parameters outnumbers
+the number of supplied training data, namely, over- or under-parametrization.
+Our least structured model reveals that the weight spaces of the
+under-parametrization and over-parameterization cases belong to the same class,
+in the sense that these weight spaces are well-connected without any
+hierarchical clustering structure. In contrast, the shallow-network has a
+broken weight space, characterized by a discontinuous phase transition, thereby
+clarifying the benefit of depth in deep learning from the angle of high
+dimensional geometry. Our effective model also reveals that inside a deep
+network, there exists a liquid-like central part of the architecture in the
+sense that the weights in this part behave as randomly as possible, providing
+algorithmic implications. Our data-driven model thus provides a statistical
+mechanics insight about why deep learning is unreasonably effective in terms of
+the high-dimensional weight space, and how deep networks are different from
+shallow ones."
+CKConv: Learning Feature Voxelization for Point Cloud Analysis,"Despite the remarkable success of deep learning, optimal convolution
+operation on point cloud remains indefinite due to its irregular data
+structure. In this paper, we present Cubic Kernel Convolution (CKConv) that
+learns to voxelize the features of local points by exploiting both continuous
+and discrete convolutions. Our continuous convolution uniquely employs a 3D
+cubic form of kernel weight representation that splits a feature into voxels in
+embedding space. By consecutively applying discrete 3D convolutions on the
+voxelized features in a spatial manner, preceding continuous convolution is
+forced to learn spatial feature mapping, i.e., feature voxelization. In this
+way, geometric information can be detailed by encoding with subdivided
+features, and our 3D convolutions on these fixed structured data do not suffer
+from discretization artifacts thanks to voxelization in embedding space.
+Furthermore, we propose a spatial attention module, Local Set Attention (LSA),
+to provide comprehensive structure awareness within the local point set and
+hence produce representative features. By learning feature voxelization with
+LSA, CKConv can extract enriched features for effective point cloud analysis.
+We show that CKConv has great applicability to point cloud processing tasks
+including object classification, object part segmentation, and scene semantic
+segmentation with state-of-the-art results."
+Computing Graph Neural Networks: A Survey from Algorithms to Accelerators,"Graph Neural Networks (GNNs) have exploded onto the machine learning scene in
+recent years owing to their capability to model and learn from graph-structured
+data. Such an ability has strong implications in a wide variety of fields whose
+data is inherently relational, for which conventional neural networks do not
+perform well. Indeed, as recent reviews can attest, research in the area of
+GNNs has grown rapidly and has lead to the development of a variety of GNN
+algorithm variants as well as to the exploration of groundbreaking applications
+in chemistry, neurology, electronics, or communication networks, among others.
+At the current stage of research, however, the efficient processing of GNNs is
+still an open challenge for several reasons. Besides of their novelty, GNNs are
+hard to compute due to their dependence on the input graph, their combination
+of dense and very sparse operations, or the need to scale to huge graphs in
+some applications. In this context, this paper aims to make two main
+contributions. On the one hand, a review of the field of GNNs is presented from
+the perspective of computing. This includes a brief tutorial on the GNN
+fundamentals, an overview of the evolution of the field in the last decade, and
+a summary of operations carried out in the multiple phases of different GNN
+algorithm variants. On the other hand, an in-depth analysis of current software
+and hardware acceleration schemes is provided, from which a hardware-software,
+graph-aware, and communication-centric vision for GNN accelerators is
+distilled."
+Ego-GNNs: Exploiting Ego Structures in Graph Neural Networks,"Graph neural networks (GNNs) have achieved remarkable success as a framework
+for deep learning on graph-structured data. However, GNNs are fundamentally
+limited by their tree-structured inductive bias: the WL-subtree kernel
+formulation bounds the representational capacity of GNNs, and polynomial-time
+GNNs are provably incapable of recognizing triangles in a graph. In this work,
+we propose to augment the GNN message-passing operations with information
+defined on ego graphs (i.e., the induced subgraph surrounding each node). We
+term these approaches Ego-GNNs and show that Ego-GNNs are provably more
+powerful than standard message-passing GNNs. In particular, we show that
+Ego-GNNs are capable of recognizing closed triangles, which is essential given
+the prominence of transitivity in real-world graphs. We also motivate our
+approach from the perspective of graph signal processing as a form of multiplex
+graph convolution. Experimental results on node classification using synthetic
+and real data highlight the achievable performance gains using this approach."
+Adaptive Transfer Learning on Graph Neural Networks,"Graph neural networks (GNNs) is widely used to learn a powerful
+representation of graph-structured data. Recent work demonstrates that
+transferring knowledge from self-supervised tasks to downstream tasks could
+further improve graph representation. However, there is an inherent gap between
+self-supervised tasks and downstream tasks in terms of optimization objective
+and training data. Conventional pre-training methods may be not effective
+enough on knowledge transfer since they do not make any adaptation for
+downstream tasks. To solve such problems, we propose a new transfer learning
+paradigm on GNNs which could effectively leverage self-supervised tasks as
+auxiliary tasks to help the target task. Our methods would adaptively select
+and combine different auxiliary tasks with the target task in the fine-tuning
+stage. We design an adaptive auxiliary loss weighting model to learn the
+weights of auxiliary tasks by quantifying the consistency between auxiliary
+tasks and the target task. In addition, we learn the weighting model through
+meta-learning. Our methods can be applied to various transfer learning
+approaches, it performs well not only in multi-task learning but also in
+pre-training and fine-tuning. Comprehensive experiments on multiple downstream
+tasks demonstrate that the proposed methods can effectively combine auxiliary
+tasks with the target task and significantly improve the performance compared
+to state-of-the-art methods."
+Multi-Scale Contrastive Siamese Networks for Self-Supervised Graph Representation Learning,"Graph representation learning plays a vital role in processing
+graph-structured data. However, prior arts on graph representation learning
+heavily rely on labeling information. To overcome this problem, inspired by the
+recent success of graph contrastive learning and Siamese networks in visual
+representation learning, we propose a novel self-supervised approach in this
+paper to learn node representations by enhancing Siamese self-distillation with
+multi-scale contrastive learning. Specifically, we first generate two augmented
+views from the input graph based on local and global perspectives. Then, we
+employ two objectives called cross-view and cross-network contrastiveness to
+maximize the agreement between node representations across different views and
+networks. To demonstrate the effectiveness of our approach, we perform
+empirical experiments on five real-world datasets. Our method not only achieves
+new state-of-the-art results but also surpasses some semi-supervised
+counterparts by large margins. Code is made available at
+https://github.com/GRAND-Lab/MERIT"
+Deep Neural Networks and End-to-End Learning for Audio Compression,"Recent achievements in end-to-end deep learning have encouraged the
+exploration of tasks dealing with highly structured data with unified deep
+network models. Having such models for compressing audio signals has been
+challenging since it requires discrete representations that are not easy to
+train with end-to-end backpropagation. In this paper, we present an end-to-end
+deep learning approach that combines recurrent neural networks (RNNs) within
+the training strategy of variational autoencoders (VAEs) with a binary
+representation of the latent space. We apply a reparametrization trick for the
+Bernoulli distribution for the discrete representations, which allows smooth
+backpropagation. In addition, our approach allows the separation of the encoder
+and decoder, which is necessary for compression tasks. To our best knowledge,
+this is the first end-to-end learning for a single audio compression model with
+RNNs, and our model achieves a Signal to Distortion Ratio (SDR) of 20.54."
+Beyond Low-pass Filtering: Graph Convolutional Networks with Automatic Filtering,"Graph convolutional networks are becoming indispensable for deep learning
+from graph-structured data. Most of the existing graph convolutional networks
+share two big shortcomings. First, they are essentially low-pass filters, thus
+the potentially useful middle and high frequency band of graph signals are
+ignored. Second, the bandwidth of existing graph convolutional filters is
+fixed. Parameters of a graph convolutional filter only transform the graph
+inputs without changing the curvature of a graph convolutional filter function.
+In reality, we are uncertain about whether we should retain or cut off the
+frequency at a certain point unless we have expert domain knowledge. In this
+paper, we propose Automatic Graph Convolutional Networks (AutoGCN) to capture
+the full spectrum of graph signals and automatically update the bandwidth of
+graph convolutional filters. While it is based on graph spectral theory, our
+AutoGCN is also localized in space and has a spatial form. Experimental results
+show that AutoGCN achieves significant improvement over baseline methods which
+only work as low-pass filters."
+Inter-domain Multi-relational Link Prediction,"Multi-relational graph is a ubiquitous and important data structure, allowing
+flexible representation of multiple types of interactions and relations between
+entities. Similar to other graph-structured data, link prediction is one of the
+most important tasks on multi-relational graphs and is often used for knowledge
+completion. When related graphs coexist, it is of great benefit to build a
+larger graph via integrating the smaller ones. The integration requires
+predicting hidden relational connections between entities belonged to different
+graphs (inter-domain link prediction). However, this poses a real challenge to
+existing methods that are exclusively designed for link prediction between
+entities of the same graph only (intra-domain link prediction). In this study,
+we propose a new approach to tackle the inter-domain link prediction problem by
+softly aligning the entity distributions between different domains with optimal
+transport and maximum mean discrepancy regularizers. Experiments on real-world
+datasets show that optimal transport regularizer is beneficial and considerably
+improves the performance of baseline methods."
+Multi-Level Graph Contrastive Learning,"Graph representation learning has attracted a surge of interest recently,
+whose target at learning discriminant embedding for each node in the graph.
+Most of these representation methods focus on supervised learning and heavily
+depend on label information. However, annotating graphs are expensive to obtain
+in the real world, especially in specialized domains (i.e. biology), as it
+needs the annotator to have the domain knowledge to label the graph. To
+approach this problem, self-supervised learning provides a feasible solution
+for graph representation learning. In this paper, we propose a Multi-Level
+Graph Contrastive Learning (MLGCL) framework for learning robust representation
+of graph data by contrasting space views of graphs. Specifically, we introduce
+a novel contrastive view - topological and feature space views. The original
+graph is first-order approximation structure and contains uncertainty or error,
+while the $k$NN graph generated by encoding features preserves high-order
+proximity. Thus $k$NN graph generated by encoding features not only provide a
+complementary view, but is more suitable to GNN encoder to extract discriminant
+representation. Furthermore, we develop a multi-level contrastive mode to
+preserve the local similarity and semantic similarity of graph-structured data
+simultaneously. Extensive experiments indicate MLGCL achieves promising results
+compared with the existing state-of-the-art graph representation learning
+methods on seven datasets."
+Overlapping Spaces for Compact Graph Representations,"Various non-trivial spaces are becoming popular for embedding structured data
+such as graphs, texts, or images. Following spherical and hyperbolic spaces,
+more general product spaces have been proposed. However, searching for the best
+configuration of product space is a resource-intensive procedure, which reduces
+the practical applicability of the idea. We generalize the concept of product
+space and introduce an overlapping space that does not have the configuration
+search problem. The main idea is to allow subsets of coordinates to be shared
+between spaces of different types (Euclidean, hyperbolic, spherical). As a
+result, parameter optimization automatically learns the optimal configuration.
+Additionally, overlapping spaces allow for more compact representations since
+their geometry is more complex. Our experiments confirm that overlapping spaces
+outperform the competitors in graph embedding tasks. Here, we consider both
+distortion setup, where the aim is to preserve distances, and ranking setup,
+where the relative order should be preserved. The proposed method effectively
+solves the problem and outperforms the competitors in both settings. We also
+perform an empirical analysis in a realistic information retrieval task, where
+we compare all spaces by incorporating them into DSSM. In this case, the
+proposed overlapping space consistently achieves nearly optimal results without
+any configuration tuning. This allows for reducing training time, which can be
+significant in large-scale applications."
+ARM-Net: Adaptive Relation Modeling Network for Structured Data,"Relational databases are the de facto standard for storing and querying
+structured data, and extracting insights from structured data requires advanced
+analytics. Deep neural networks (DNNs) have achieved super-human prediction
+performance in particular data types, e.g., images. However, existing DNNs may
+not produce meaningful results when applied to structured data. The reason is
+that there are correlations and dependencies across combinations of attribute
+values in a table, and these do not follow simple additive patterns that can be
+easily mimicked by a DNN. The number of possible such cross features is
+combinatorial, making them computationally prohibitive to model. Furthermore,
+the deployment of learning models in real-world applications has also
+highlighted the need for interpretability, especially for high-stakes
+applications, which remains another issue of concern to DNNs.
+  In this paper, we present ARM-Net, an adaptive relation modeling network
+tailored for structured data, and a lightweight framework ARMOR based on
+ARM-Net for relational data analytics. The key idea is to model feature
+interactions with cross features selectively and dynamically, by first
+transforming the input features into exponential space, and then determining
+the interaction order and interaction weights adaptively for each cross
+feature. We propose a novel sparse attention mechanism to dynamically generate
+the interaction weights given the input tuple, so that we can explicitly model
+cross features of arbitrary orders with noisy features filtered selectively.
+Then during model inference, ARM-Net can specify the cross features being used
+for each prediction for higher accuracy and better interpretability. Our
+extensive experiments on real-world datasets demonstrate that ARM-Net
+consistently outperforms existing models and provides more interpretable
+predictions for data-driven decision making."
+Learning deep autoregressive models for hierarchical data,"We propose a model for hierarchical structured data as an extension to the
+stochastic temporal convolutional network. The proposed model combines an
+autoregressive model with a hierarchical variational autoencoder and
+downsampling to achieve superior computational complexity. We evaluate the
+proposed model on two different types of sequential data: speech and
+handwritten text. The results are promising with the proposed model achieving
+state-of-the-art performance."
+Edge Representation Learning with Hypergraphs,"Graph neural networks have recently achieved remarkable success in
+representing graph-structured data, with rapid progress in both the node
+embedding and graph pooling methods. Yet, they mostly focus on capturing
+information from the nodes considering their connectivity, and not much work
+has been done in representing the edges, which are essential components of a
+graph. However, for tasks such as graph reconstruction and generation, as well
+as graph classification tasks for which the edges are important for
+discrimination, accurately representing edges of a given graph is crucial to
+the success of the graph representation learning. To this end, we propose a
+novel edge representation learning framework based on Dual Hypergraph
+Transformation (DHT), which transforms the edges of a graph into the nodes of a
+hypergraph. This dual hypergraph construction allows us to apply message
+passing techniques for node representations to edges. After obtaining edge
+representations from the hypergraphs, we then cluster or drop edges to obtain
+holistic graph-level edge representations. We validate our edge representation
+learning method with hypergraphs on diverse graph datasets for graph
+representation and generation performance, on which our method largely
+outperforms existing graph representation learning methods. Moreover, our edge
+representation learning and pooling method also largely outperforms
+state-of-the-art graph pooling methods on graph classification, not only
+because of its accurate edge representation learning, but also due to its
+lossless compression of the nodes and removal of irrelevant edges for effective
+message passing."
+Domain adaptation for person re-identification on new unlabeled data using AlignedReID++,"In the world where big data reigns and there is plenty of hardware prepared
+to gather a huge amount of non structured data, data acquisition is no longer a
+problem. Surveillance cameras are ubiquitous and they capture huge numbers of
+people walking across different scenes. However, extracting value from this
+data is challenging, specially for tasks that involve human images, such as
+face recognition and person re-identification. Annotation of this kind of data
+is a challenging and expensive task. In this work we propose a domain
+adaptation workflow to allow CNNs that were trained in one domain to be applied
+to another domain without the need for new annotation of the target data. Our
+method uses AlignedReID++ as the baseline, trained using a Triplet loss with
+batch hard. Domain adaptation is done by using pseudo-labels generated using an
+unsupervised learning strategy. Our results show that domain adaptation
+techniques really improve the performance of the CNN when applied in the target
+domain."
+GCN-SL: Graph Convolutional Networks with Structure Learning for Graphs under Heterophily,"In representation learning on the graph-structured data, under heterophily
+(or low homophily), many popular GNNs may fail to capture long-range
+dependencies, which leads to their performance degradation. To solve the
+above-mentioned issue, we propose a graph convolutional networks with structure
+learning (GCN-SL), and furthermore, the proposed approach can be applied to
+node classification. The proposed GCN-SL contains two improvements:
+corresponding to node features and edges, respectively. In the aspect of node
+features, we propose an efficient-spectral-clustering (ESC) and an ESC with
+anchors (ESC-ANCH) algorithms to efficiently aggregate feature representations
+from all similar nodes. In the aspect of edges, we build a re-connected
+adjacency matrix by using a special data preprocessing technique and similarity
+learning, and the re-connected adjacency matrix can be optimized directly along
+with GCN-SL parameters. Considering that the original adjacency matrix may
+provide misleading information for aggregation in GCN, especially the graphs
+being with a low level of homophily. The proposed GCN-SL can aggregate feature
+representations from nearby nodes via re-connected adjacency matrix and is
+applied to graphs with various levels of homophily. Experimental results on a
+wide range of benchmark datasets illustrate that the proposed GCN-SL
+outperforms the stateof-the-art GNN counterparts."
+Graph Contrastive Learning Automated,"Self-supervised learning on graph-structured data has drawn recent interest
+for learning generalizable, transferable and robust representations from
+unlabeled graphs. Among many, graph contrastive learning (GraphCL) has emerged
+with promising representation learning performance. Unfortunately, unlike its
+counterpart on image data, the effectiveness of GraphCL hinges on ad-hoc data
+augmentations, which have to be manually picked per dataset, by either rules of
+thumb or trial-and-errors, owing to the diverse nature of graph data. That
+significantly limits the more general applicability of GraphCL. Aiming to fill
+in this crucial gap, this paper proposes a unified bi-level optimization
+framework to automatically, adaptively and dynamically select data
+augmentations when performing GraphCL on specific graph data. The general
+framework, dubbed JOint Augmentation Optimization (JOAO), is instantiated as
+min-max optimization. The selections of augmentations made by JOAO are shown to
+be in general aligned with previous ""best practices"" observed from handcrafted
+tuning: yet now being automated, more flexible and versatile. Moreover, we
+propose a new augmentation-aware projection head mechanism, which will route
+output features through different projection heads corresponding to different
+augmentations chosen at each training step. Extensive experiments demonstrate
+that JOAO performs on par with or sometimes better than the state-of-the-art
+competitors including GraphCL, on multiple graph datasets of various scales and
+types, yet without resorting to any laborious dataset-specific tuning on
+augmentation selection. We release the code at
+https://github.com/Shen-Lab/GraphCL_Automated."
+CADDA: Class-wise Automatic Differentiable Data Augmentation for EEG Signals,"Data augmentation is a key element of deep learning pipelines, as it informs
+the network during training about transformations of the input data that keep
+the label unchanged. Manually finding adequate augmentation methods and
+parameters for a given pipeline is however rapidly cumbersome. In particular,
+while intuition can guide this decision for images, the design and choice of
+augmentation policies remains unclear for more complex types of data, such as
+neuroscience signals. Moreover, label independent strategies might not be
+suitable for such structured data and class-dependent augmentations might be
+necessary. This idea has been surprisingly unexplored in the literature, while
+it is quite intuitive: changing the color of a car image does not change the
+object class to be predicted, but doing the same to the picture of an orange
+does. This paper aims to increase the generalization power added through
+class-wise data augmentation. Yet, as seeking transformations depending on the
+class largely increases the complexity of the task, using gradient-free
+optimization techniques as done by most existing automatic approaches becomes
+intractable for real-world datasets. For this reason we propose to use
+differentiable data augmentation amenable to gradient-based learning. EEG
+signals are a perfect example of data for which good augmentation policies are
+mostly unknown. In this work, we demonstrate the relevance of our approach on
+the clinically relevant sleep staging classification task, for which we also
+propose differentiable transformations."
+Temporal Graph Signal Decomposition,"Temporal graph signals are multivariate time series with individual
+components associated with nodes of a fixed graph structure. Data of this kind
+arises in many domains including activity of social network users, sensor
+network readings over time, and time course gene expression within the
+interaction network of a model organism. Traditional matrix decomposition
+methods applied to such data fall short of exploiting structural regularities
+encoded in the underlying graph and also in the temporal patterns of the
+signal. How can we take into account such structure to obtain a succinct and
+interpretable representation of temporal graph signals?
+  We propose a general, dictionary-based framework for temporal graph signal
+decomposition (TGSD). The key idea is to learn a low-rank, joint encoding of
+the data via a combination of graph and time dictionaries. We propose a highly
+scalable decomposition algorithm for both complete and incomplete data, and
+demonstrate its advantage for matrix decomposition, imputation of missing
+values, temporal interpolation, clustering, period estimation, and rank
+estimation in synthetic and real-world data ranging from traffic patterns to
+social media activity. Our framework achieves 28% reduction in RMSE compared to
+baselines for temporal interpolation when as many as 75% of the observations
+are missing. It scales best among baselines taking under 20 seconds on 3.5
+million data points and produces the most parsimonious models. To the best of
+our knowledge, TGSD is the first framework to jointly model graph signals by
+temporal and graph dictionaries."
+Graph Mixture Density Networks,"We introduce the Graph Mixture Density Networks, a new family of machine
+learning models that can fit multimodal output distributions conditioned on
+graphs of arbitrary topology. By combining ideas from mixture models and graph
+representation learning, we address a broader class of challenging conditional
+density estimation problems that rely on structured data. In this respect, we
+evaluate our method on a new benchmark application that leverages random graphs
+for stochastic epidemic simulations. We show a significant improvement in the
+likelihood of epidemic outcomes when taking into account both multimodality and
+structure. The empirical analysis is complemented by two real-world regression
+tasks showing the effectiveness of our approach in modeling the output
+prediction uncertainty. Graph Mixture Density Networks open appealing research
+opportunities in the study of structure-dependent phenomena that exhibit
+non-trivial conditional output distributions."
+You are AllSet: A Multiset Function Framework for Hypergraph Neural Networks,"Hypergraphs are used to model higher-order interactions amongst agents and
+there exist many practically relevant instances of hypergraph datasets. To
+enable efficient processing of hypergraph-structured data, several hypergraph
+neural network platforms have been proposed for learning hypergraph properties
+and structure, with a special focus on node classification. However, almost all
+existing methods use heuristic propagation rules and offer suboptimal
+performance on many datasets. We propose AllSet, a new hypergraph neural
+network paradigm that represents a highly general framework for (hyper)graph
+neural networks and for the first time implements hypergraph neural network
+layers as compositions of two multiset functions that can be efficiently
+learned for each task and each dataset. Furthermore, AllSet draws on new
+connections between hypergraph neural networks and recent advances in deep
+learning of multiset functions. In particular, the proposed architecture
+utilizes Deep Sets and Set Transformer architectures that allow for significant
+modeling flexibility and offer high expressive power. To evaluate the
+performance of AllSet, we conduct the most extensive experiments to date
+involving ten known benchmarking datasets and three newly curated datasets that
+represent significant challenges for hypergraph node classification. The
+results demonstrate that AllSet has the unique ability to consistently either
+match or outperform all other hypergraph neural networks across the tested
+datasets. Our implementation and dataset will be released upon acceptance."
+Graph Universal Adversarial Attacks: A Few Bad Actors Ruin Graph Learning Models,"Deep neural networks, while generalize well, are known to be sensitive to
+small adversarial perturbations. This phenomenon poses severe security threat
+and calls for in-depth investigation of the robustness of deep learning models.
+With the emergence of neural networks for graph structured data, similar
+investigations are urged to understand their robustness. It has been found that
+adversarially perturbing the graph structure and/or node features may result in
+a significant degradation of the model performance. In this work, we show from
+a different angle that such fragility similarly occurs if the graph contains a
+few bad-actor nodes, which compromise a trained graph neural network through
+flipping the connections to any targeted victim. Worse, the bad actors found
+for one graph model severely compromise other models as well. We call the bad
+actors ``anchor nodes'' and propose an algorithm, named GUA, to identify them.
+Thorough empirical investigations suggest an interesting finding that the
+anchor nodes often belong to the same class; and they also corroborate the
+intuitive trade-off between the number of anchor nodes and the attack success
+rate. For the dataset Cora which contains 2708 nodes, as few as six anchor
+nodes will result in an attack success rate higher than 80\% for GCN and other
+three models."
+Graph Attention Networks with LSTM-based Path Reweighting,"Graph Neural Networks (GNNs) have been extensively used for mining
+graph-structured data with impressive performance. However, traditional GNNs
+suffer from over-smoothing, non-robustness and over-fitting problems. To solve
+these weaknesses, we design a novel GNN solution, namely Graph Attention
+Network with LSTM-based Path Reweighting (PR-GAT). PR-GAT can automatically
+aggregate multi-hop information, highlight important paths and filter out
+noises. In addition, we utilize random path sampling in PR-GAT for data
+augmentation. The augmented data is used for predicting the distribution of
+corresponding labels. Finally, we demonstrate that PR-GAT can mitigate the
+issues of over-smoothing, non-robustness and overfitting. We achieve
+state-of-the-art accuracy on 5 out of 7 datasets and competitive accuracy for
+other 2 datasets. The average accuracy of 7 datasets have been improved by
+0.5\% than the best SOTA from literature."
+How Framelets Enhance Graph Neural Networks,"This paper presents a new approach for assembling graph neural networks based
+on framelet transforms. The latter provides a multi-scale representation for
+graph-structured data. We decompose an input graph into low-pass and high-pass
+frequencies coefficients for network training, which then defines a
+framelet-based graph convolution. The framelet decomposition naturally induces
+a graph pooling strategy by aggregating the graph feature into low-pass and
+high-pass spectra, which considers both the feature values and geometry of the
+graph data and conserves the total information. The graph neural networks with
+the proposed framelet convolution and pooling achieve state-of-the-art
+performance in many node and graph prediction tasks. Moreover, we propose
+shrinkage as a new activation for the framelet convolution, which thresholds
+high-frequency information at different scales. Compared to ReLU, shrinkage
+activation improves model performance on denoising and signal compression:
+noises in both node and structure can be significantly reduced by accurately
+cutting off the high-pass coefficients from framelet decomposition, and the
+signal can be compressed to less than half its original size with
+well-preserved prediction performance."
+Do Transformers Really Perform Bad for Graph Representation?,"The Transformer architecture has become a dominant choice in many domains,
+such as natural language processing and computer vision. Yet, it has not
+achieved competitive performance on popular leaderboards of graph-level
+prediction compared to mainstream GNN variants. Therefore, it remains a mystery
+how Transformers could perform well for graph representation learning. In this
+paper, we solve this mystery by presenting Graphormer, which is built upon the
+standard Transformer architecture, and could attain excellent results on a
+broad range of graph representation learning tasks, especially on the recent
+OGB Large-Scale Challenge. Our key insight to utilizing Transformer in the
+graph is the necessity of effectively encoding the structural information of a
+graph into the model. To this end, we propose several simple yet effective
+structural encoding methods to help Graphormer better model graph-structured
+data. Besides, we mathematically characterize the expressive power of
+Graphormer and exhibit that with our ways of encoding the structural
+information of graphs, many popular GNN variants could be covered as the
+special cases of Graphormer."
+Distance Metric Learning for Graph Structured Data,"Graphs are versatile tools for representing structured data. As a result, a
+variety of machine learning methods have been studied for graph data analysis.
+Although many such learning methods depend on the measurement of differences
+between input graphs, defining an appropriate distance metric for graphs
+remains a controversial issue. Hence, we propose a supervised distance metric
+learning method for the graph classification problem. Our method, named
+interpretable graph metric learning (IGML), learns discriminative metrics in a
+subgraph-based feature space, which has a strong graph representation
+capability. By introducing a sparsity-inducing penalty on the weight of each
+subgraph, IGML can identify a small number of important subgraphs that can
+provide insight into the given classification task. Because our formulation has
+a large number of optimization variables, an efficient algorithm that uses
+pruning techniques based on safe screening and working set selection methods is
+also proposed. An important property of IGML is that solution optimality is
+guaranteed because the problem is formulated as a convex problem and our
+pruning strategies only discard unnecessary subgraphs. Furthermore, we show
+that IGML is also applicable to other structured data such as itemset and
+sequence data, and that it can incorporate vertex-label similarity by using a
+transportation-based subgraph feature. We empirically evaluate the
+computational efficiency and classification performance of IGML on several
+benchmark datasets and provide some illustrative examples of how IGML
+identifies important subgraphs from a given graph dataset."
+Comparison of Outlier Detection Techniques for Structured Data,"An outlier is an observation or a data point that is far from rest of the
+data points in a given dataset or we can be said that an outlier is away from
+the center of mass of observations. Presence of outliers can skew statistical
+measures and data distributions which can lead to misleading representation of
+the underlying data and relationships. It is seen that the removal of outliers
+from the training dataset before modeling can give better predictions. With the
+advancement of machine learning, the outlier detection models are also
+advancing at a good pace. The goal of this work is to highlight and compare
+some of the existing outlier detection techniques for the data scientists to
+use that information for outlier algorithm selection while building a machine
+learning model."
+ST-UNet: A Spatio-Temporal U-Network for Graph-structured Time Series Modeling,"The spatio-temporal graph learning is becoming an increasingly important
+object of graph study. Many application domains involve highly dynamic graphs
+where temporal information is crucial, e.g. traffic networks and financial
+transaction graphs. Despite the constant progress made on learning structured
+data, there is still a lack of effective means to extract dynamic complex
+features from spatio-temporal structures. Particularly, conventional models
+such as convolutional networks or recurrent neural networks are incapable of
+revealing the temporal patterns in short or long terms and exploring the
+spatial properties in local or global scope from spatio-temporal graphs
+simultaneously. To tackle this problem, we design a novel multi-scale
+architecture, Spatio-Temporal U-Net (ST-UNet), for graph-structured time series
+modeling. In this U-shaped network, a paired sampling operation is proposed in
+spacetime domain accordingly: the pooling (ST-Pool) coarsens the input graph in
+spatial from its deterministic partition while abstracts multi-resolution
+temporal dependencies through dilated recurrent skip connections; based on
+previous settings in the downsampling, the unpooling (ST-Unpool) restores the
+original structure of spatio-temporal graphs and resumes regular intervals
+within graph sequences. Experiments on spatio-temporal prediction tasks
+demonstrate that our model effectively captures comprehensive features in
+multiple scales and achieves substantial improvements over mainstream methods
+on several real-world datasets."
+Universal consistency of Wasserstein $k$-NN classifier,"The Wasserstein distance provides a notion of dissimilarities between
+probability measures, which has recent applications in learning of structured
+data with varying size such as images and text documents. In this work, we
+analyze the $k$-nearest neighbor classifier ($k$-NN) under the Wasserstein
+distance and establish the universal consistency on families of distributions.
+Using previous known results on the consistency of the $k$-NN classifier on
+infinite dimensional metric spaces, it suffices to show that the families is a
+countable union of finite dimension sets. As a result, we show that the $k$-NN
+classifier is universally consistent on spaces of finitely supported measures,
+the space of Gaussian measures, and the space of measures with finite wavelet
+densities. In addition, we give a counterexample to show that the universal
+consistency does not hold on $\mathcal{W}_p((0,1))$."
+Graph Domain Adaptation: A Generative View,"Recent years have witnessed tremendous interest in deep learning on
+graph-structured data. Due to the high cost of collecting labeled
+graph-structured data, domain adaptation is important to supervised graph
+learning tasks with limited samples. However, current graph domain adaptation
+methods are generally adopted from traditional domain adaptation tasks, and the
+properties of graph-structured data are not well utilized. For example, the
+observed social networks on different platforms are controlled not only by the
+different crowd or communities but also by the domain-specific policies and the
+background noise. Based on these properties in graph-structured data, we first
+assume that the graph-structured data generation process is controlled by three
+independent types of latent variables, i.e., the semantic latent variables, the
+domain latent variables, and the random latent variables. Based on this
+assumption, we propose a disentanglement-based unsupervised domain adaptation
+method for the graph-structured data, which applies variational graph
+auto-encoders to recover these latent variables and disentangles them via three
+supervised learning modules. Extensive experimental results on two real-world
+datasets in the graph classification task reveal that our method not only
+significantly outperforms the traditional domain adaptation methods and the
+disentangled-based domain adaptation methods but also outperforms the
+state-of-the-art graph domain adaptation algorithms."
+Information Obfuscation of Graph Neural Networks,"While the advent of Graph Neural Networks (GNNs) has greatly improved node
+and graph representation learning in many applications, the neighborhood
+aggregation scheme exposes additional vulnerabilities to adversaries seeking to
+extract node-level information about sensitive attributes. In this paper, we
+study the problem of protecting sensitive attributes by information obfuscation
+when learning with graph structured data. We propose a framework to locally
+filter out pre-determined sensitive attributes via adversarial training with
+the total variation and the Wasserstein distance. Our method creates a strong
+defense against inference attacks, while only suffering small loss in task
+performance. Theoretically, we analyze the effectiveness of our framework
+against a worst-case adversary, and characterize an inherent trade-off between
+maximizing predictive accuracy and minimizing information leakage. Experiments
+across multiple datasets from recommender systems, knowledge graphs and quantum
+chemistry demonstrate that the proposed approach provides a robust defense
+across various graph structures and tasks, while producing competitive GNN
+encoders for downstream tasks."
+Link Prediction with Persistent Homology: An Interactive View,"Link prediction is an important learning task for graph-structured data. In
+this paper, we propose a novel topological approach to characterize
+interactions between two nodes. Our topological feature, based on the extended
+persistent homology, encodes rich structural information regarding the
+multi-hop paths connecting nodes. Based on this feature, we propose a graph
+neural network method that outperforms state-of-the-arts on different
+benchmarks. As another contribution, we propose a novel algorithm to more
+efficiently compute the extended persistence diagrams for graphs. This
+algorithm can be generally applied to accelerate many other topological methods
+for graph learning tasks."
+A Review of Graph Neural Networks and Their Applications in Power Systems,"Deep neural networks have revolutionized many machine learning tasks in power
+systems, ranging from pattern recognition to signal processing. The data in
+these tasks is typically represented in Euclidean domains. Nevertheless, there
+is an increasing number of applications in power systems, where data are
+collected from non-Euclidean domains and represented as graph-structured data
+with high dimensional features and interdependency among nodes. The complexity
+of graph-structured data has brought significant challenges to the existing
+deep neural networks defined in Euclidean domains. Recently, many publications
+generalizing deep neural networks for graph-structured data in power systems
+have emerged. In this paper, a comprehensive overview of graph neural networks
+(GNNs) in power systems is proposed. Specifically, several classical paradigms
+of GNNs structures (e.g., graph convolutional networks) are summarized, and key
+applications in power systems, such as fault scenario application, time series
+prediction, power flow calculation, and data generation are reviewed in detail.
+Furthermore, main issues and some research trends about the applications of
+GNNs in power systems are discussed."
+Learnable Hypergraph Laplacian for Hypergraph Learning,"HyperGraph Convolutional Neural Networks (HGCNNs) have demonstrated their
+potential in modeling high-order relations preserved in graph structured data.
+However, most existing convolution filters are localized and determined by the
+pre-defined initial hypergraph topology, neglecting to explore implicit and
+long-ange relations in real-world data. In this paper, we propose the first
+learning-based method tailored for constructing adaptive hypergraph structure,
+termed HypERgrAph Laplacian aDaptor (HERALD), which serves as a generic
+plug-in-play module for improving the representational power of HGCNNs.
+Specifically, HERALD adaptively optimizes the adjacency relationship between
+hypernodes and hyperedges in an end-to-end manner and thus the task-aware
+hypergraph is learned. Furthermore, HERALD employs the self-attention mechanism
+to capture the non-local paired-nodes relation. Extensive experiments on
+various popular hypergraph datasets for node classification and graph
+classification tasks demonstrate that our approach obtains consistent and
+considerable performance enhancement, proving its effectiveness and
+generalization ability."
+What Can Knowledge Bring to Machine Learning? -- A Survey of Low-shot Learning for Structured Data,"Supervised machine learning has several drawbacks that make it difficult to
+use in many situations. Drawbacks include: heavy reliance on massive training
+data, limited generalizability and poor expressiveness of high-level semantics.
+Low-shot Learning attempts to address these drawbacks. Low-shot learning allows
+the model to obtain good predictive power with very little or no training data,
+where structured knowledge plays a key role as a high-level semantic
+representation of human. This article will review the fundamental factors of
+low-shot learning technologies, with a focus on the operation of structured
+knowledge under different low-shot conditions. We also introduce other
+techniques relevant to low-shot learning. Finally, we point out the limitations
+of low-shot learning, the prospects and gaps of industrial applications, and
+future research directions."
+Graph Transformer Networks: Learning Meta-path Graphs to Improve GNNs,"Graph Neural Networks (GNNs) have been widely applied to various fields due
+to their powerful representations of graph-structured data. Despite the success
+of GNNs, most existing GNNs are designed to learn node representations on the
+fixed and homogeneous graphs. The limitations especially become problematic
+when learning representations on a misspecified graph or a heterogeneous graph
+that consists of various types of nodes and edges. To address this limitations,
+we propose Graph Transformer Networks (GTNs) that are capable of generating new
+graph structures, which preclude noisy connections and include useful
+connections (e.g., meta-paths) for tasks, while learning effective node
+representations on the new graphs in an end-to-end fashion. We further propose
+enhanced version of GTNs, Fast Graph Transformer Networks (FastGTNs), that
+improve scalability of graph transformations. Compared to GTNs, FastGTNs are
+230x faster and use 100x less memory while allowing the identical graph
+transformations as GTNs. In addition, we extend graph transformations to the
+semantic proximity of nodes allowing non-local operations beyond meta-paths.
+Extensive experiments on both homogeneous graphs and heterogeneous graphs show
+that GTNs and FastGTNs with non-local operations achieve the state-of-the-art
+performance for node classification tasks. The code is available:
+https://github.com/seongjunyun/Graph_Transformer_Networks"
+Learning to Pool in Graph Neural Networks for Extrapolation,"Graph neural networks (GNNs) are one of the most popular approaches to using
+deep learning on graph-structured data, and they have shown state-of-the-art
+performances on a variety of tasks. However, according to a recent study, a
+careful choice of pooling functions, which are used for the aggregation or
+readout operation in GNNs, is crucial for enabling GNNs to extrapolate. Without
+the ideal combination of pooling functions, which varies across tasks, GNNs
+completely fail to generalize to out-of-distribution data, while the number of
+possible combinations grows exponentially with the number of layers. In this
+paper, we present GNP, a $L^p$ norm-like pooling function that is trainable
+end-to-end for any given task. Notably, GNP generalizes most of the widely-used
+pooling functions. We verify experimentally that simply replacing all pooling
+functions with GNP enables GNNs to extrapolate well on many node-level,
+graph-level, and set-related tasks; and GNP sometimes performs even better than
+optimal combinations of existing pooling functions."
+Learnable Hypergraph Laplacian for Hypergraph Learning,"HyperGraph Convolutional Neural Networks (HGCNNs) have demonstrated their
+potential in modeling high-order relations preserved in graph structured data.
+However, most existing convolution filters are localized and determined by the
+pre-defined initial hypergraph topology, neglecting to explore implicit and
+long-ange relations in real-world data. In this paper, we propose the first
+learning-based method tailored for constructing adaptive hypergraph structure,
+termed HypERgrAph Laplacian aDaptor (HERALD), which serves as a generic
+plug-in-play module for improving the representational power of HGCNNs.
+Specifically, HERALD adaptively optimizes the adjacency relationship between
+hypernodes and hyperedges in an end-to-end manner and thus the task-aware
+hypergraph is learned. Furthermore, HERALD employs the self-attention mechanism
+to capture the non-local paired-nodes relation. Extensive experiments on
+various popular hypergraph datasets for node classification and graph
+classification tasks demonstrate that our approach obtains consistent and
+considerable performance enhancement, proving its effectiveness and
+generalization ability."
+Learning subtree pattern importance for Weisfeiler-Lehmanbased graph kernels,"Graph is an usual representation of relational data, which are ubiquitous in
+manydomains such as molecules, biological and social networks. A popular
+approach to learningwith graph structured data is to make use of graph kernels,
+which measure the similaritybetween graphs and are plugged into a kernel
+machine such as a support vector machine.Weisfeiler-Lehman (WL) based graph
+kernels, which employ WL labeling scheme to extract subtree patterns and
+perform node embedding, are demonstrated to achieve great performance while
+being efficiently computable. However, one of the main drawbacks of ageneral
+kernel is the decoupling of kernel construction and learning process. For
+moleculargraphs, usual kernels such as WL subtree, based on substructures of
+the molecules, consider all available substructures having the same importance,
+which might not be suitable inpractice. In this paper, we propose a method to
+learn the weights of subtree patterns in the framework of WWL kernels, the
+state of the art method for graph classification task [14]. To overcome the
+computational issue on large scale data sets, we present an efficient learning
+algorithm and also derive a generalization gap bound to show its convergence.
+Finally, through experiments on synthetic and real-world data sets, we
+demonstrate the effectiveness of our proposed method for learning the weights
+of subtree patterns."
+ForecastQA: A Question Answering Challenge for Event Forecasting with Temporal Text Data,"Event forecasting is a challenging, yet important task, as humans seek to
+constantly plan for the future. Existing automated forecasting studies rely
+mostly on structured data, such as time-series or event-based knowledge graphs,
+to help predict future events. In this work, we aim to formulate a task,
+construct a dataset, and provide benchmarks for developing methods for event
+forecasting with large volumes of unstructured text data. To simulate the
+forecasting scenario on temporal news documents, we formulate the problem as a
+restricted-domain, multiple-choice, question-answering (QA) task. Unlike
+existing QA tasks, our task limits accessible information, and thus a model has
+to make a forecasting judgement. To showcase the usefulness of this task
+formulation, we introduce ForecastQA, a question-answering dataset consisting
+of 10,392 event forecasting questions, which have been collected and verified
+via crowdsourcing efforts. We present our experiments on ForecastQA using
+BERT-based models and find that our best model achieves 60.1% accuracy on the
+dataset, which still lags behind human performance by about 19%. We hope
+ForecastQA will support future research efforts in bridging this gap."
+Graph-MLP: Node Classification without Message Passing in Graph,"Graph Neural Network (GNN) has been demonstrated its effectiveness in dealing
+with non-Euclidean structural data. Both spatial-based and spectral-based GNNs
+are relying on adjacency matrix to guide message passing among neighbors during
+feature aggregation. Recent works have mainly focused on powerful message
+passing modules, however, in this paper, we show that none of the message
+passing modules is necessary. Instead, we propose a pure
+multilayer-perceptron-based framework, Graph-MLP with the supervision signal
+leveraging graph structure, which is sufficient for learning discriminative
+node representation. In model-level, Graph-MLP only includes multi-layer
+perceptrons, activation function, and layer normalization. In the loss level,
+we design a neighboring contrastive (NContrast) loss to bridge the gap between
+GNNs and MLPs by utilizing the adjacency information implicitly. This design
+allows our model to be lighter and more robust when facing large-scale graph
+data and corrupted adjacency information. Extensive experiments prove that even
+without adjacency information in testing phase, our framework can still reach
+comparable and even superior performance against the state-of-the-art models in
+the graph node classification task."
+Expressive Power of Invariant and Equivariant Graph Neural Networks,"Various classes of Graph Neural Networks (GNN) have been proposed and shown
+to be successful in a wide range of applications with graph structured data. In
+this paper, we propose a theoretical framework able to compare the expressive
+power of these GNN architectures. The current universality theorems only apply
+to intractable classes of GNNs. Here, we prove the first approximation
+guarantees for practical GNNs, paving the way for a better understanding of
+their generalization. Our theoretical results are proved for invariant GNNs
+computing a graph embedding (permutation of the nodes of the input graph does
+not affect the output) and equivariant GNNs computing an embedding of the nodes
+(permutation of the input permutes the output). We show that Folklore Graph
+Neural Networks (FGNN), which are tensor based GNNs augmented with matrix
+multiplication are the most expressive architectures proposed so far for a
+given tensor order. We illustrate our results on the Quadratic Assignment
+Problem (a NP-Hard combinatorial problem) by showing that FGNNs are able to
+learn how to solve the problem, leading to much better average performances
+than existing algorithms (based on spectral, SDP or other GNNs architectures).
+On a practical side, we also implement masked tensors to handle batches of
+graphs of varying sizes."
+Generative Causal Explanations for Graph Neural Networks,"This paper presents Gem, a model-agnostic approach for providing
+interpretable explanations for any GNNs on various graph learning tasks.
+Specifically, we formulate the problem of providing explanations for the
+decisions of GNNs as a causal learning task. Then we train a causal explanation
+model equipped with a loss function based on Granger causality. Different from
+existing explainers for GNNs, Gem explains GNNs on graph-structured data from a
+causal perspective. It has better generalization ability as it has no
+requirements on the internal structure of the GNNs or prior knowledge on the
+graph learning tasks. In addition, Gem, once trained, can be used to explain
+the target GNN very quickly. Our theoretical analysis shows that several recent
+explainers fall into a unified framework of additive feature attribution
+methods. Experimental results on synthetic and real-world datasets show that
+Gem achieves a relative increase of the explanation accuracy by up to $30\%$
+and speeds up the explanation process by up to $110\times$ as compared to its
+state-of-the-art alternatives."
+Unit Ball Model for Embedding Hierarchical Structures in the Complex Hyperbolic Space,"Learning the representation of data with hierarchical structures in the
+hyperbolic space attracts increasing attention in recent years. Due to the
+constant negative curvature, the hyperbolic space resembles tree metrics and
+captures the tree-like properties naturally, which enables the hyperbolic
+embeddings to improve over traditional Euclidean models. However, many
+real-world hierarchically structured data such as taxonomies and multitree
+networks have varying local structures and they are not trees, thus they do not
+ubiquitously match the constant curvature property of the hyperbolic space. To
+address this limitation of hyperbolic embeddings, we explore the complex
+hyperbolic space, which has the variable negative curvature, for representation
+learning. Specifically, we propose to learn the embeddings of hierarchically
+structured data in the unit ball model of the complex hyperbolic space. The
+unit ball model based embeddings have a more powerful representation capacity
+to capture a variety of hierarchical structures. Through experiments on
+synthetic and real-world data, we show that our approach improves over the
+hyperbolic embedding models significantly."
+ImGAGN:Imbalanced Network Embedding via Generative Adversarial Graph Networks,"Imbalanced classification on graphs is ubiquitous yet challenging in many
+real-world applications, such as fraudulent node detection. Recently, graph
+neural networks (GNNs) have shown promising performance on many network
+analysis tasks. However, most existing GNNs have almost exclusively focused on
+the balanced networks, and would get unappealing performance on the imbalanced
+networks. To bridge this gap, in this paper, we present a generative
+adversarial graph network model, called ImGAGN to address the imbalanced
+classification problem on graphs. It introduces a novel generator for graph
+structure data, named GraphGenerator, which can simulate both the minority
+class nodes' attribute distribution and network topological structure
+distribution by generating a set of synthetic minority nodes such that the
+number of nodes in different classes can be balanced. Then a graph
+convolutional network (GCN) discriminator is trained to discriminate between
+real nodes and fake (i.e., generated) nodes, and also between minority nodes
+and majority nodes on the synthetic balanced network. To validate the
+effectiveness of the proposed method, extensive experiments are conducted on
+four real-world imbalanced network datasets. Experimental results demonstrate
+that the proposed method ImGAGN outperforms state-of-the-art algorithms for
+semi-supervised imbalanced node classification task."
+SpreadGNN: Serverless Multi-task Federated Learning for Graph Neural Networks,"Graph Neural Networks (GNNs) are the first choice methods for graph machine
+learning problems thanks to their ability to learn state-of-the-art level
+representations from graph-structured data. However, centralizing a massive
+amount of real-world graph data for GNN training is prohibitive due to
+user-side privacy concerns, regulation restrictions, and commercial
+competition. Federated Learning is the de-facto standard for collaborative
+training of machine learning models over many distributed edge devices without
+the need for centralization. Nevertheless, training graph neural networks in a
+federated setting is vaguely defined and brings statistical and systems
+challenges. This work proposes SpreadGNN, a novel multi-task federated training
+framework capable of operating in the presence of partial labels and absence of
+a central server for the first time in the literature. SpreadGNN extends
+federated multi-task learning to realistic serverless settings for GNNs, and
+utilizes a novel optimization algorithm with a convergence guarantee,
+Decentralized Periodic Averaging SGD (DPA-SGD), to solve decentralized
+multi-task learning problems. We empirically demonstrate the efficacy of our
+framework on a variety of non-I.I.D. distributed graph-level molecular property
+prediction datasets with partial labels. Our results show that SpreadGNN
+outperforms GNN models trained over a central server-dependent federated
+learning system, even in constrained topologies. The source code is publicly
+available at https://github.com/FedML-AI/SpreadGNN"
+Implicit Graph Neural Networks,"Graph Neural Networks (GNNs) are widely used deep learning models that learn
+meaningful representations from graph-structured data. Due to the finite nature
+of the underlying recurrent structure, current GNN methods may struggle to
+capture long-range dependencies in underlying graphs. To overcome this
+difficulty, we propose a graph learning framework, called Implicit Graph Neural
+Networks (IGNN), where predictions are based on the solution of a fixed-point
+equilibrium equation involving implicitly defined ""state"" vectors. We use the
+Perron-Frobenius theory to derive sufficient conditions that ensure
+well-posedness of the framework. Leveraging implicit differentiation, we derive
+a tractable projected gradient descent method to train the framework.
+Experiments on a comprehensive range of tasks show that IGNNs consistently
+capture long-range dependencies and outperform the state-of-the-art GNN models."
+Node-Variant Graph Filters in Graph Neural Networks,"Graph neural networks (GNNs) have been successfully employed in a myriad of
+applications involving graph-structured data. Theoretical findings establish
+that GNNs use nonlinear activation functions to create low-eigenvalue frequency
+content that can be processed in a stable manner by subsequent graph
+convolutional filters. However, the exact shape of the frequency content
+created by nonlinear functions is not known, and thus, it cannot be learned nor
+controlled. In this work, node-variant graph filters (NVGFs) are shown to be
+capable of creating frequency content and are thus used in lieu of nonlinear
+activation functions. This results in a novel GNN architecture that, although
+linear, is capable of creating frequency content as well. Furthermore, this new
+frequency content can be either designed or learned from data. In this way, the
+role of frequency creation is separated from the nonlinear nature of
+traditional GNNs. Extensive simulations are carried out to differentiate the
+contributions of frequency creation from those of the nonlinearity."
+Hashing-Accelerated Graph Neural Networks for Link Prediction,"Networks are ubiquitous in the real world. Link prediction, as one of the key
+problems for network-structured data, aims to predict whether there exists a
+link between two nodes. The traditional approaches are based on the explicit
+similarity computation between the compact node representation by embedding
+each node into a low-dimensional space. In order to efficiently handle the
+intensive similarity computation in link prediction, the hashing technique has
+been successfully used to produce the node representation in the Hamming space.
+However, the hashing-based link prediction algorithms face accuracy loss from
+the randomized hashing techniques or inefficiency from the learning to hash
+techniques in the embedding process. Currently, the Graph Neural Network (GNN)
+framework has been widely applied to the graph-related tasks in an end-to-end
+manner, but it commonly requires substantial computational resources and memory
+costs due to massive parameter learning, which makes the GNN-based algorithms
+impractical without the help of a powerful workhorse. In this paper, we propose
+a simple and effective model called #GNN, which balances the trade-off between
+accuracy and efficiency. #GNN is able to efficiently acquire node
+representation in the Hamming space for link prediction by exploiting the
+randomized hashing technique to implement message passing and capture
+high-order proximity in the GNN framework. Furthermore, we characterize the
+discriminative power of #GNN in probability. The extensive experimental results
+demonstrate that the proposed #GNN algorithm achieves accuracy comparable to
+the learning-based algorithms and outperforms the randomized algorithm, while
+running significantly faster than the learning-based algorithms. Also, the
+proposed algorithm shows excellent scalability on a large-scale network with
+the limited resources."
+Predicting the Solar Potential of Rooftops using Image Segmentation and Structured Data,"Estimating the amount of electricity that can be produced by rooftop
+photovoltaic systems is a time-consuming process that requires on-site
+measurements, a difficult task to achieve on a large scale. In this paper, we
+present an approach to estimate the solar potential of rooftops based on their
+location and architectural characteristics, as well as the amount of solar
+radiation they receive annually. Our technique uses computer vision to achieve
+semantic segmentation of roof sections and roof objects on the one hand, and a
+machine learning model based on structured building features to predict roof
+pitch on the other hand. We then compute the azimuth and maximum number of
+solar panels that can be installed on a rooftop with geometric approaches.
+Finally, we compute precise shading masks and combine them with solar
+irradiation data that enables us to estimate the yearly solar potential of a
+rooftop."
+Learning Dynamic Graph Representation of Brain Connectome with Spatio-Temporal Attention,"Functional connectivity (FC) between regions of the brain can be assessed by
+the degree of temporal correlation measured with functional neuroimaging
+modalities. Based on the fact that these connectivities build a network,
+graph-based approaches for analyzing the brain connectome have provided
+insights into the functions of the human brain. The development of graph neural
+networks (GNNs) capable of learning representation from graph structured data
+has led to increased interest in learning the graph representation of the brain
+connectome. Although recent attempts to apply GNN to the FC network have shown
+promising results, there is still a common limitation that they usually do not
+incorporate the dynamic characteristics of the FC network which fluctuates over
+time. In addition, a few studies that have attempted to use dynamic FC as an
+input for the GNN reported a reduction in performance compared to static FC
+methods, and did not provide temporal explainability. Here, we propose STAGIN,
+a method for learning dynamic graph representation of the brain connectome with
+spatio-temporal attention. Specifically, a temporal sequence of brain graphs is
+input to the STAGIN to obtain the dynamic graph representation, while novel
+READOUT functions and the Transformer encoder provide spatial and temporal
+explainability with attention, respectively. Experiments on the HCP-Rest and
+the HCP-Task datasets demonstrate exceptional performance of our proposed
+method. Analysis of the spatio-temporal attention also provide concurrent
+interpretation with the neuroscientific knowledge, which further validates our
+method. Code is available at https://github.com/egyptdj/stagin"
+Scalable Gaussian Processes on Discrete Domains,"Kernel methods on discrete domains have shown great promise for many
+challenging data types, for instance, biological sequence data and molecular
+structure data. Scalable kernel methods like Support Vector Machines may offer
+good predictive performances but do not intrinsically provide uncertainty
+estimates. In contrast, probabilistic kernel methods like Gaussian Processes
+offer uncertainty estimates in addition to good predictive performance but fall
+short in terms of scalability. While the scalability of Gaussian processes can
+be improved using sparse inducing point approximations, the selection of these
+inducing points remains challenging. We explore different techniques for
+selecting inducing points on discrete domains, including greedy selection,
+determinantal point processes, and simulated annealing. We find that simulated
+annealing, which can select inducing points that are not in the training set,
+can perform competitively with support vector machines and full Gaussian
+processes on synthetic data, as well as on challenging real-world DNA sequence
+data."
+An Explainable Probabilistic Classifier for Categorical Data Inspired to Quantum Physics,"This paper presents Sparse Tensor Classifier (STC), a supervised
+classification algorithm for categorical data inspired by the notion of
+superposition of states in quantum physics. By regarding an observation as a
+superposition of features, we introduce the concept of wave-particle duality in
+machine learning and propose a generalized framework that unifies the classical
+and the quantum probability. We show that STC possesses a wide range of
+desirable properties not available in most other machine learning methods but
+it is at the same time exceptionally easy to comprehend and use. Empirical
+evaluation of STC on structured data and text classification demonstrates that
+our methodology achieves state-of-the-art performances compared to both
+standard classifiers and deep learning, at the additional benefit of requiring
+minimal data pre-processing and hyper-parameter tuning. Moreover, STC provides
+a native explanation of its predictions both for single instances and for each
+target label globally."
+Dynamic Filters in Graph Convolutional Neural Networks,"Over the last few years, we have seen increasing data generated from
+non-Euclidean domains, which are usually represented as graphs with complex
+relationships, and Graph Neural Networks (GNN) have gained a high interest
+because of their potential in processing graph-structured data. In particular,
+there is a strong interest in exploring the possibilities in performing
+convolution on graphs using an extension of the GNN architecture, generally
+referred to as Graph Convolutional Neural Networks (GCNN). Convolution on
+graphs has been achieved mainly in two forms: spectral and spatial
+convolutions. Due to the higher flexibility in exploring and exploiting the
+graph structure of data, recently, there is an increasing interest in
+investigating the possibilities that the spatial approach can offer. The idea
+of finding a way to adapt the network behaviour to the inputs they process to
+maximize the total performances has aroused much interest in the neural
+networks literature over the years. This paper presents a novel method to adapt
+the behaviour of a GCNN to the input proposing two ways to perform spatial
+convolution on graphs using input-based filters which are dynamically
+generated. Our model also investigates the problem of discovering and refining
+relations among nodes. The experimental assessment confirms the capabilities of
+the proposed approach, which achieves satisfying results using simple
+architectures with a low number of filters."
+Graph Convolutional Networks in Feature Space for Image Deblurring and Super-resolution,"Graph convolutional networks (GCNs) have achieved great success in dealing
+with data of non-Euclidean structures. Their success directly attributes to
+fitting graph structures effectively to data such as in social media and
+knowledge databases. For image processing applications, the use of graph
+structures and GCNs have not been fully explored. In this paper, we propose a
+novel encoder-decoder network with added graph convolutions by converting
+feature maps to vertexes of a pre-generated graph to synthetically construct
+graph-structured data. By doing this, we inexplicitly apply graph Laplacian
+regularization to the feature maps, making them more structured. The
+experiments show that it significantly boosts performance for image restoration
+tasks, including deblurring and super-resolution. We believe it opens up
+opportunities for GCN-based approaches in more applications."
+rx-anon -- A Novel Approach on the De-Identification of Heterogeneous Data based on a Modified Mondrian Algorithm,"Traditional approaches for data anonymization consider relational data and
+textual data independently. We propose rx-anon, an anonymization approach for
+heterogeneous semi-structured documents composed of relational and textual
+attributes. We map sensitive terms extracted from the text to the structured
+data. This allows us to use concepts like k-anonymity to generate a joined,
+privacy-preserved version of the heterogeneous data input. We introduce the
+concept of redundant sensitive information to consistently anonymize the
+heterogeneous data. To control the influence of anonymization over unstructured
+textual data versus structured data attributes, we introduce a modified,
+parameterized Mondrian algorithm. The parameter $\lambda$ allows to give
+different weight on the relational and textual attributes during the
+anonymization process. We evaluate our approach with two real-world datasets
+using a Normalized Certainty Penalty score, adapted to the problem of jointly
+anonymizing relational and textual data. The results show that our approach is
+capable of reducing information loss by using the tuning parameter to control
+the Mondrian partitioning while guaranteeing k-anonymity for relational
+attributes as well as for sensitive terms. As rx-anon is a framework approach,
+it can be reused and extended by other anonymization algorithms, privacy
+models, and textual similarity metrics."
+Graph Filtration Learning,"We propose an approach to learning with graph-structured data in the problem
+domain of graph classification. In particular, we present a novel type of
+readout operation to aggregate node features into a graph-level representation.
+To this end, we leverage persistent homology computed via a real-valued,
+learnable, filter function. We establish the theoretical foundation for
+differentiating through the persistent homology computation. Empirically, we
+show that this type of readout operation compares favorably to previous
+techniques, especially when the graph connectivity structure is informative for
+the learning problem."
+Deep Networks and the Multiple Manifold Problem,"We study the multiple manifold problem, a binary classification task modeled
+on applications in machine vision, in which a deep fully-connected neural
+network is trained to separate two low-dimensional submanifolds of the unit
+sphere. We provide an analysis of the one-dimensional case, proving for a
+simple manifold configuration that when the network depth $L$ is large relative
+to certain geometric and statistical properties of the data, the network width
+$n$ grows as a sufficiently large polynomial in $L$, and the number of i.i.d.
+samples from the manifolds is polynomial in $L$, randomly-initialized gradient
+descent rapidly learns to classify the two manifolds perfectly with high
+probability. Our analysis demonstrates concrete benefits of depth and width in
+the context of a practically-motivated model problem: the depth acts as a
+fitting resource, with larger depths corresponding to smoother networks that
+can more readily separate the class manifolds, and the width acts as a
+statistical resource, enabling concentration of the randomly-initialized
+network and its gradients. The argument centers around the neural tangent
+kernel and its role in the nonasymptotic analysis of training overparameterized
+neural networks; to this literature, we contribute essentially optimal rates of
+concentration for the neural tangent kernel of deep fully-connected networks,
+requiring width $n \gtrsim L\,\mathrm{poly}(d_0)$ to achieve uniform
+concentration of the initial kernel over a $d_0$-dimensional submanifold of the
+unit sphere $\mathbb{S}^{n_0-1}$, and a nonasymptotic framework for
+establishing generalization of networks trained in the NTK regime with
+structured data. The proof makes heavy use of martingale concentration to
+optimally treat statistical dependencies across layers of the initial random
+network. This approach should be of use in establishing similar results for
+other network architectures."
+VoxelContext-Net: An Octree based Framework for Point Cloud Compression,"In this paper, we propose a two-stage deep learning framework called
+VoxelContext-Net for both static and dynamic point cloud compression. Taking
+advantages of both octree based methods and voxel based schemes, our approach
+employs the voxel context to compress the octree structured data. Specifically,
+we first extract the local voxel representation that encodes the spatial
+neighbouring context information for each node in the constructed octree. Then,
+in the entropy coding stage, we propose a voxel context based deep entropy
+model to compress the symbols of non-leaf nodes in a lossless way. Furthermore,
+for dynamic point cloud compression, we additionally introduce the local voxel
+representations from the temporal neighbouring point clouds to exploit temporal
+dependency. More importantly, to alleviate the distortion from the octree
+construction procedure, we propose a voxel context based 3D coordinate
+refinement method to produce more accurate reconstructed point cloud at the
+decoder side, which is applicable to both static and dynamic point cloud
+compression. The comprehensive experiments on both static and dynamic point
+cloud benchmark datasets(e.g., ScanNet and Semantic KITTI) clearly demonstrate
+the effectiveness of our newly proposed method VoxelContext-Net for 3D point
+cloud geometry compression."
+Ripple Walk Training: A Subgraph-based training framework for Large and Deep Graph Neural Network,"Graph neural networks (GNNs) have achieved outstanding performance in
+learning graph-structured data and various tasks. However, many current GNNs
+suffer from three common problems when facing large-size graphs or using a
+deeper structure: neighbors explosion, node dependence, and oversmoothing. Such
+problems attribute to the data structures of the graph itself or the designing
+of the multi-layers GNNs framework, and can lead to low training efficiency and
+high space complexity. To deal with these problems, in this paper, we propose a
+general subgraph-based training framework, namely Ripple Walk Training (RWT),
+for deep and large graph neural networks. RWT samples subgraphs from the full
+graph to constitute a mini-batch, and the full GNN is updated based on the
+mini-batch gradient. We analyze the high-quality subgraphs to train GNNs in a
+theoretical way. A novel sampling method Ripple Walk Sampler works for sampling
+these high-quality subgraphs to constitute the mini-batch, which considers both
+the randomness and connectivity of the graph-structured data. Extensive
+experiments on different sizes of graphs demonstrate the effectiveness and
+efficiency of RWT in training various GNNs (GCN & GAT)."
+Lifelong Learning of Graph Neural Networks for Open-World Node Classification,"Graph neural networks (GNNs) have emerged as the standard method for numerous
+tasks on graph-structured data such as node classification. However, real-world
+graphs are often evolving over time and even new classes may arise. We model
+these challenges as an instance of lifelong learning, in which a learner faces
+a sequence of tasks and may take over knowledge acquired in past tasks. Such
+knowledge may be stored explicitly as historic data or implicitly within model
+parameters. In this work, we systematically analyze the influence of implicit
+and explicit knowledge. Therefore, we present an incremental training method
+for lifelong learning on graphs and introduce a new measure based on
+$k$-neighborhood time differences to address variances in the historic data. We
+apply our training method to five representative GNN architectures and evaluate
+them on three new lifelong node classification datasets. Our results show that
+no more than 50% of the GNN's receptive field is necessary to retain at least
+95% accuracy compared to training over the complete history of the graph data.
+Furthermore, our experiments confirm that implicit knowledge becomes more
+important when fewer explicit knowledge is available."
+VersaGNN: a Versatile accelerator for Graph neural networks,"\textit{Graph Neural Network} (GNN) is a promising approach for analyzing
+graph-structured data that tactfully captures their dependency information via
+node-level message passing. It has achieved state-of-the-art performances in
+many tasks, such as node classification, graph matching, clustering, and graph
+generation. As GNNs operate on non-Euclidean data, their irregular data access
+patterns cause considerable computational costs and overhead on conventional
+architectures, such as GPU and CPU. Our analysis shows that GNN adopts a hybrid
+computing model. The \textit{Aggregation} (or \textit{Message Passing}) phase
+performs vector additions where vectors are fetched with irregular strides. The
+\textit{Transformation} (or \textit{Node Embedding}) phase can be either dense
+or sparse-dense matrix multiplication. In this work, We propose
+\textit{VersaGNN}, an ultra-efficient, systolic-array-based versatile hardware
+accelerator that unifies dense and sparse matrix multiplication. By applying
+this single optimized systolic array to both aggregation and transformation
+phases, we have significantly reduced chip sizes and energy consumption. We
+then divide the computing engine into blocked systolic arrays to support the
+\textit{Strassen}'s algorithm for dense matrix multiplication, dramatically
+scaling down the number of multiplications and enabling high-throughput
+computation of GNNs. To balance the workload of sparse-dense matrix
+multiplication, we also introduced a greedy algorithm to combine sparse
+sub-matrices of compressed format into condensed ones to reduce computational
+cycles. Compared with current state-of-the-art GNN software frameworks,
+\textit{VersaGNN} achieves on average 3712$\times$ speedup with 1301.25$\times$
+energy reduction on CPU, and 35.4$\times$ speedup with 17.66$\times$ energy
+reduction on GPU."
+An Energy-Based View of Graph Neural Networks,"Graph neural networks are a popular variant of neural networks that work with
+graph-structured data. In this work, we consider combining graph neural
+networks with the energy-based view of Grathwohl et al. (2019) with the aim of
+obtaining a more robust classifier. We successfully implement this framework by
+proposing a novel method to ensure generation over features as well as the
+adjacency matrix and evaluate our method against the standard graph
+convolutional network (GCN) architecture (Kipf & Welling (2016)). Our approach
+obtains comparable discriminative performance while improving robustness,
+opening promising new directions for future research for energy-based graph
+neural networks."
+Network Embedding via Deep Prediction Model,"Network-structured data becomes ubiquitous in daily life and is growing at a
+rapid pace. It presents great challenges to feature engineering due to the high
+non-linearity and sparsity of the data. The local and global structure of the
+real-world networks can be reflected by dynamical transfer behaviors among
+nodes. This paper proposes a network embedding framework to capture the
+transfer behaviors on structured networks via deep prediction models. We first
+design a degree-weight biased random walk model to capture the transfer
+behaviors on the network. Then a deep network embedding method is introduced to
+preserve the transfer possibilities among the nodes. A network structure
+embedding layer is added into conventional deep prediction models, including
+Long Short-Term Memory Network and Recurrent Neural Network, to utilize the
+sequence prediction ability. To keep the local network neighborhood, we further
+perform a Laplacian supervised space optimization on the embedding feature
+representations. Experimental studies are conducted on various datasets
+including social networks, citation networks, biomedical network, collaboration
+network and language network. The results show that the learned representations
+can be effectively used as features in a variety of tasks, such as clustering,
+visualization, classification, reconstruction and link prediction, and achieve
+promising performance compared with state-of-the-arts."
+VID-WIN: Fast Video Event Matching with Query-Aware Windowing at the Edge for the Internet of Multimedia Things,"Efficient video processing is a critical component in many IoMT applications
+to detect events of interest. Presently, many window optimization techniques
+have been proposed in event processing with an underlying assumption that the
+incoming stream has a structured data model. Videos are highly complex due to
+the lack of any underlying structured data model. Video stream sources such as
+CCTV cameras and smartphones are resource-constrained edge nodes. At the same
+time, video content extraction is expensive and requires computationally
+intensive Deep Neural Network (DNN) models that are primarily deployed at
+high-end (or cloud) nodes. This paper presents VID-WIN, an adaptive 2-stage
+allied windowing approach to accelerate video event analytics in an edge-cloud
+paradigm. VID-WIN runs parallelly across edge and cloud nodes and performs the
+query and resource-aware optimization for state-based complex event matching.
+VID-WIN exploits the video content and DNN input knobs to accelerate the video
+inference process across nodes. The paper proposes a novel content-driven
+micro-batch resizing, queryaware caching and micro-batch based utility
+filtering strategy of video frames under resource-constrained edge nodes to
+improve the overall system throughput, latency, and network usage. Extensive
+evaluations are performed over five real-world datasets. The experimental
+results show that VID-WIN video event matching achieves ~2.3X higher throughput
+with minimal latency and ~99% bandwidth reduction compared to other baselines
+while maintaining query-level accuracy and resource bounds."
+Accelerating SpMM Kernel with Cache-First Edge Sampling for Graph Neural Networks,"Graph neural networks (GNNs), an emerging deep learning model class, can
+extract meaningful representations from highly expressive graph-structured data
+and are therefore gaining popularity for wider ranges of applications. However,
+current GNNs suffer from the poor performance of their sparse-dense matrix
+multiplication (SpMM) operator, even when using powerful GPUs. Our analysis
+shows that 95% of the inference time could be spent on SpMM when running
+popular GNN models on NVIDIA's advanced V100 GPU. Such SpMM performance
+bottleneck hinders GNNs' applicability to large-scale problems or the
+development of more sophisticated GNN models. To address this inference time
+bottleneck, we introduce ES-SpMM, a cache-first edge sampling mechanism and
+codesigned SpMM kernel. ES-SpMM uses edge sampling to downsize the graph to fit
+into GPU's shared memory. It thus reduces the computation cost and improves
+SpMM's cache locality. To evaluate ES-SpMM's performance, we integrated it with
+a popular GNN framework, DGL, and tested it using representative GNN models and
+datasets. Our results show that ES-SpMM outperforms the highly optimized
+cuSPARSE SpMM kernel by up to 4.35x with no accuracy loss and by 45.3x with
+less than a 1% accuracy loss."

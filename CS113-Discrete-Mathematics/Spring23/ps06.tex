@@ -1,0 +1,177 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage[shortlabels]{enumitem}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Discrete Mathematics}{Problem Set 6}{CS/Math 113}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+\renewcommand{\questionlabel}{Question \thequestion.}
+\renewcommand{\questionshook}{\leftmargin=0pt%
+  \labelwidth=-\labelsep}
+
+\title{CS/Math 113 - Problem Set 6}
+\author{Dead TAs Society \\ Habib University - Spring 2023}
+\date{Week 07}
+
+\begin{document}
+\maketitle
+\begin{sloppypar}
+\section*{Problems}
+\begin{questions}
+    \question\textbf{Problem 1.}[Chapter 2.3, Question 1]
+    Why is $f$ not a function from $\mathbb{R}$ to $\mathbb{R}$ if 
+    \begin{enumerate}[(a)]
+        \item $ f(x) = \frac{1}{x}$
+        \item $ f(x) = \sqrt{x}$
+        \item $ f(x) = \pm  \sqrt{(x^2 + 1)}$
+    \end{enumerate}
+        \begin{solution}
+            \begin{enumerate}[(a)]
+                \item $f(x)$ is not defined for $x = 0$, therefore, is not a function.
+                \item $f(x)$ is not defined for negative values of $x$.
+                \item By the definition, a function from $A$ to $B$ is an assignment of exactly one element of $B$ to each element of $A$. However, in this case, we have two values for every $x$; the positive and negative root of $ x^2 + 1 $. Therefore, it is not a function.
+            \end{enumerate}
+        \end{solution}
+% \pagebreak
+    \question\textbf{Problem 2.}[Chapter 2.3, Question 12, 13]
+Determine whether each of these functions from $\mathbb{Z}$ to $\mathbb{Z}$ is one to one. Determine which functions are onto ?
+\begin{enumerate}[(a)]
+    \item $f(n) = n - 1$
+    \item $f(n) = n^2 + 1$
+    \item $f(n) = n^3 $
+    \item $f(n) = \lceil \frac{n}{2} \rceil $
+\end{enumerate}
+        \begin{solution}
+            \begin{enumerate}[(a)]
+                \item This is one-to-one as each assignment of distinct values would give a distinct result. $ n_1 -1 = n_2 -1 \implies n_1 = n_2 $. Therefore, it is also onto.
+                \item It is not one-to-one as we can get the same result for different values of $x$. $f(2) = 5$ and $ f(-2) = 5 $. It is not onto function as negative integers are not in the range of the function.
+                \item It is a one-to-one function as each assignemnt of distinct values would give a distinct result. $ n^3_1 = n^3_2 \implies n_1 = n_2 $. However, it is not an onto function as 3 is not the cube of any integer, therefore, there does not exist any such assignment for integer values.
+                \item It is not a one-to-one function as different assignments can give the same result. Consider, $ f(1) = \lceil \frac{1}{2} \rceil = 1$ and $ f(2) = \lceil \frac{2}{2} \rceil = 1$. Therfore, is not a one-to-one function. This function is onto since an assignment can be made from each integer to any other integer. $ f(2x) = \lceil \frac{2x}{2} \rceil = \lceil x \rceil = x \hspace*{5mm} \forall x \in \mathbb{Z} $.  
+            \end{enumerate}
+        \end{solution}
+% \pagebreak
+    \question\textbf{Problem 3.}[Chapter 2.3, Question 22]
+    Determine whether each of these functions is a bijection from $\mathbb{R}$ to $\mathbb{R}$.
+        \begin{enumerate}[(a)]
+            \item $f(x) = -3x + 4$
+            \item $f(x) = -3x^2 + 7$
+            \item $f(x) = \frac{(x+1)}{(x+2)} $
+            \item $f(x) = x^5 + 1 $
+    \end{enumerate}
+        \begin{solution}
+            \begin{enumerate}[(a)]
+                \item The function is a one-to-one function as each unique element would have a unique result. $ f(a) = f(b) \implies a = b $. Moreover, it is an onto function, since the inverse exists; $ f^{-1}(x) = \frac{4-x}{3} $ and is clearly a one-to-one function by the definition. Therefore, $ f(x) $ is also an onto function which implies it is a bijection.
+                \item It is not a one-to-one function, $ f(1) = 4 $ and $ f(-1) = 4 $. Hence is not a bijection.
+                \item It is not a bijection since the function is not defined for $ x = -2 $, therefore, is not a one-to-one function. Therefore is not a bijection. 
+                
+                [It is interesting to note that the function can be made a bijection by modifying the domain from $ \mathbb{R} $ to $\mathbb{R}$, and changing it to $ \mathbb{R} - \{-2\} $ to $ \mathbb{R} - \{1\} $ as the inverse is $ f^{-1}(x) = \frac{(1 - 2x)}{x - 1} $]
+
+                \item It is a one-to-one function, as each unique element would have a unique result. $ f(a) = f(b) \implies a = b $. Moreover, it is an onto function as the inverse, $ f^{-1}(x) = \sqrt[5]{x - 1} $ is also defined for all values.
+            \end{enumerate}
+        \end{solution}
+
+    \question\textbf{Problem 4.}[Chapter 2.3, Question 24]
+    Let $ f: \mathbb{R} \rightarrow \mathbb{R}$ and let $ f(x) > 0 $ for all $ x \in \mathbb{R}$. Show that $f(x)$ is strictly increasing if and only if the function $g(x) = \frac{1}{f(x)}$ is strictly decreasing. 
+        \begin{solution}
+            Suppose that $ f(x) $ is strictly increasing. Then by the definition, a function $ f(x) $ if $ f(x) > f(y) $ whenever $ x > y $. So if $ f(x) $ is strictly increasing, then we know that $ f(x) > f(y) $ where $ x > y $. Then $ g(x) < g(y) $ when $ x > y $ since the larger the denominator, the smaller the value. And this follows the definition of a strictly decresing function. Therefore, if $f(x)$ is stricty increasing, then $g(x)$ is striclty decreasing where $ g(x) = \frac{1}{f(x)} $. 
+
+            Suppose that $ g(x) $ is strictly decreasing. Then by the definition, $ g(x) > g(y) $ where $ x < y $. Then $ f(x) < f(y) $ when $ x < y $ as $ f(x) = \frac{1}{g(x)} $. Therefore, it follows the definition of a strictly increasing function. 
+
+            Hence proved. 
+        \end{solution}
+
+    \question\textbf{Problem 5.}[Chapter 2.3, Question 26]
+    \begin{enumerate}[(a)]
+        \item Prove that a strictly increasing function from $\mathbb{R}$ to itself is one to one.
+        \item Give an example of an increasing function from $\mathbb{R}$ to itself is not one to one.
+    \end{enumerate}
+        \begin{solution}
+            \begin{enumerate}[(a)]
+                \item By the definition, a function $ f(x) $ is strictly increasing if $ f(x) > f(y) $ whenever $ x > y $. Then $ f(a) = f(b) \implies a = b$ as it would else violate the definition of the function being strictly increasing. Hence, it is also a one-to-one function.
+                \item $ f(x) = \lceil x \rceil $ is incresing but not one-to-one. [Any constant function can also be considered as it would be both increasing and decreasing such as $ y = k \; | k \in \mathbb{R}$]
+            \end{enumerate}
+        \end{solution}
+
+    \question\textbf{Problem 6.}[Chapter 2.3, Question 29]
+    Show that the function $f(x) = \lvert x \rvert$ from the set of real numbers to the set of nonnegative real numbers is not invertible, but if the domain
+    is restricted to the set of nonnegative real numbers, the resulting function is invertible.
+        \begin{solution}
+            The function $ f(x) = | x | $ is not one-to-one as the same result can be obtained by different elements. $ f(1) = f(-1) = 1 $. Hence it is not one-to-one. 
+            
+            By restricting the domain, the function becomes $ f(x) = x $, which is a one-to-one function and an onto function. So it is invertible and its inverse is also defined as $ f^{-1}(x) = x $ [The function is its own inverse].
+        \end{solution}
+\pagebreak
+    \question\textbf{Problem 7.}[Chapter 2.3, Question 33]
+    Suppose that $g$ is a function from A to B and $f$ is a function from B to C.
+    \begin{enumerate}[(a)]
+        \item Show that if both $f$ and $g$ are one-to-one functions,
+        then $f \circ g$ is also one-to-one.
+        \item Show that if both $f$ and $g$ are onto functions, then $f \circ g$
+        is also onto.
+    \end{enumerate}
+        \begin{solution}
+            \begin{enumerate}[(a)]
+                \item By definition, if a function $f(x)$ is one-to-one, then $ f(a) \neq f(b) $ if $ a \neq b $. Then if $ f $ and $g$ are both one-to-one function, we know for two elements $x$ and $y$ such that $ x \neq y $, then $ g(x) \neq g(y) $. Since $ g(x) \neq g(y) $, and $f$ is also one-to-one, we can conclude that $ f(g(x)) \neq f(g(y)) $ where $ x \neq y $. \\ Hence shown.
+                \item By definition, if a function $f(x)$, is onto, then for any element $ b \in B$, $ \exists a \in A \ni f(a) = b $. Then for any $ c \in C, \exists a \in A \ni f(g(a)) = c $. We know that $f$ is onto, therfore, for any element $c \in C$, there exists some element $b \in B$ that maps onto $c$. Similarly, since $g$ is onto, then for any element $ b \in B $, there exists some element $ a \in A $ that maps onto $b$. Therefore, we can conclude that for $ c \in C, \exists a \in A \ni f(g(a)) = c $. Hence shown.
+            \end{enumerate}
+        \end{solution}
+
+    \question\textbf{Problem 8.}[Chapter 2.3, Question 34]
+    Suppose that $g$ is a function from A to B and $f$ is a function from B to C. Prove each of these statements
+        \begin{enumerate}[(a)]
+            \item If $f \circ g$ is onto, then $f$ must also be onto.
+            \item If $f \circ g$ is one-to-one, then $g$ must also be one-to-one.
+            \item If $f \circ g$ is a bijection, then $g$ is onto if and only if $f$ is one to one. 
+        \end{enumerate}
+        \begin{solution}
+            \begin{enumerate}[(a)]
+                \item Suppose that $ f \circ g $ is onto. Then let $c$ be an arbitrary element such that $ c \in C $. Since $f \circ g$ is onto, then $ \exists a \in A $ such that $ (f \circ g) (a) = c \implies f(g(a)) = c$. Then let $b$ be any arbitrary element such that $b \in B$. Then $ f(b) = c \implies g(a) = b $. Therefore, for any $c \in C$, $ \exists b \in B $ such that $ f(b) = c $. This follows from the definition of onto since for every element in $C$, there is some element that can be mapped onto an element in $C$. Hence $f$ must also be onto, if $f \circ g$ is onto.
+                
+                \item Suppose that $ f \circ g $ is one-to-one. Consider any two arbitrary elements $ a_1, a_2 $ such that $ a_1, a_2 \in A $. Suppose that $ g(a_1) = g(a_2)$. Then $ f \circ g (a_1) = f \circ g (a_2) \implies f(g(a_1)) = f(g(a_2))$. We know that $ f \circ g $ is one-to-one. Then by the definition, if $ f \circ g (x) = f \circ g (y) $, then $ x = y $. Then following from the definition, $ a_1 = a_2 $. Since $ g(a_1) = g(a_2) $ and $ a_1 = a_2 $, then $g$ is also one-to-one.   
+                
+                \item Suppose that $ f \circ g $ is a bijection, then it must be one-to-one and onto. Consider $ b_1, b_2 \in B $ where $ b_1, b_2 $ are any two arbitrary elements such that $ f(b_1) = f(b_2) $. 
+                
+                Since $g$ is onto, then by the definition of onto functions, $ \exists a_1, a_2 \in A $ such that $ g(a_1) = b_1 $ and $ g(a_2) = b_2 $. Then $ f \circ g (a_1) = f \circ g (a_2) = f(g(a_1)) = f(g(a_2)) = f(b_1) = f(b_2) $. Since $ f \circ g $ is a bijection, it is one-to-one, hence, $a_1 = a_2 \implies g(a_1) = g(a_2)$. Then $ \forall b_1, b_2 \in B $ such that $ f(b_1) = f(b_2) $, $ b_1 = b_2 $. Therefore, by the definition, $f$ is one-to-one if $g$ is onto. 
+                
+                Now suppose that $f$ is one-to-one. Let $ b \in B $. Since $ f \circ g $ is a bijection, we know it is onto, so $ \exists a \in A $ such that $ f(b) = f(g(a)) = f \circ g (a) $. Since $f$ is one-to-one, $ g(a) = b $. Then $ \forall b \in B, \exists a \in A $ such that $ g(a) = b $. Which follows the definition of an onto function. Therefore $g$ is onto. 
+                
+                Hence proved. 
+            \end{enumerate}
+        \end{solution}
+% \pagebreak
+    \question\textbf{Problem 9.}[Chapter 2.3, Question 72]
+    Suppose that $f$ is a function from A to B, where A and B
+    are finite sets with $ \lvert A \rvert =  \lvert B \rvert$. Show that $f$ is one-to-one if
+    and only if it is onto.
+        \begin{solution}
+            Suppose $f$ is one-to-one. Then every element $a \in A$, is mapped onto an element $b \in B$. We know that the cardinality of $A$ is equal to the cardinality of $B$. $ |A| = |B| $. Therefore, the number of elements in $A$ is equal to the number of elements in $B$. Hence, if every element of $A$ is mapped onto an element in $B$, and $|A| = |B|$, then we can conclude that every element of $B$ has been mapped onto by every element in $A$. Therefore, $f$ is also an onto function. 
+
+            Suppose that $f$ is an onto function, then every element of $B$ is mapped onto by some element in $A$. We know that cardinality of $B$ is equal to the cardinality of $A$. $|A| = |B|$. Then the number of elements in $B$ is equal to the number of elements in $A$. So if $B$ is onto, then it has a unique mapping by each element from $A$, therefore, every element of $A$ maps onto some element in $B$ which implies that $f$ is also one-to-one.
+
+            Hence proved.
+        \end{solution}
+\end{questions}
+\end{sloppypar}
+\end{document}
+

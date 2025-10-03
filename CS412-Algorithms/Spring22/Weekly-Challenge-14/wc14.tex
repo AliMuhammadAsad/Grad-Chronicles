@@ -1,0 +1,53 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{pythonhighlight}
+
+\printanswers
+
+\title{Weekly Challenge 14: Randomized Algorithms\\CS 412 Algorithms: Design and Analysis}
+\author{@username1 \and @username2}  % replace with your GitHub user names
+\date{Habib University\\Spring 2022}
+
+% \qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+  
+\question[2] We are going to empirically ascertain the claims about certain expected values of some randomized algorithms.
+
+  \paragraph{Running Best} A common operation on a sequence of $n$ items is to linearly scan it and maintain a \textit{running best}, i.e. the value that is best so far, as the scan proceeds. The value of the running best when the scan terminates is the best over the entire sequence. We are interested in the number, $X$, of times that the running best updates during a scan. The value of $X$ for a given value of $n$ depends on the particular permutation of the $n$ items. However, assuming each permutation to be equally likely to appear as the input, the average or expected value of $X$ can be shown to be $O(\ln n)$. (See CLRS 5.1 and 5.2, ``The hiring problem'')
+
+  \paragraph{Collisions in a Hash Table} Given an initially empty hash table with $n$ vacant slots, we are interested in the number, $X$, of items that the hash table can accommodate before a collision occurs. The value of $X$ for a given value of $n$ depends on the items being hashed. However, assuming that an item hashes into any of the slots with equal probability, the expected value of $X$ can be shown to be $O(\sqrt{n})$. (See CLRS 5.4.1, ``The birthday paradox'')
+
+  \paragraph{Collecting Stickers} Slanty \href{https://www.facebook.com/slantypakistan/photos/dont-let-the-stickers-run-out-collect-them-allshare-with-us-your-collection-and-/800854163429315/}{has released} $n$ different types of stickers. Each packet contains a sticker and Ibrahim is keen to collect all the types. He asks his father about the number, $X$, of packets that he must buy before he has at least one of each type. The value of $X$ for a given value of $n$ depends on the stickers contained in the packets that Ibrahim buys. But his father is a CS professor and assuming each packet to contain any of the $n$ types of stickers with equal probability, he computes the expected value of $X$ as $O(n\ln n)$. (See CLRS 5.4.2, ``Balls and bins'')
+
+  \textbf{TASKS}:
+  \begin{parts}
+    \part Each experiment below generates a value of $X$ for a given value of $n$. For each of them, obtain an average value of $X$ over several experiments for a given $n$ and plot the obtained $X$ against $n$ for different values of $n$, e.g. \pyth{range(10**2, 10**5+1, 500)}.
+
+  \underline{Experiment}: For a given $n$, generate a random permutation of the sequence, $\langle1,2,3,\ldots,n\rangle$, and find $X$ as the number of times that the running best is updated when computing the minimum number in the sequence.
+
+  \underline{Experiment}: For a given $n$, generate random integers between $1$ and $n$ inclusive and find $X$ as the count of unique random numbers generated before the random number is the same as a previously generated random number.
+
+  \underline{Experiment}: For a given $n$, generate random integers between $1$ and $n$ inclusive and find $X$ as the count of random numbers generated until every number from $1$ to $n$ has been generated at least once.
+
+\part Include your plots below along with any notable observations.
+    \part Share your plots in a comment on the \textit{Weekly Challenge 14} post in the course group on Yammer.
+  \end{parts}
+ 
+  \begin{solution}
+    % Enter your solution here.
+  \end{solution}
+\end{questions}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,92 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{titling}
+
+\newcolumntype{C}{>{$}c<{$}} % math-mode version of "c" column type
+
+\runningheader{CS/MATH 113}{WC06: Proofs}{\theauthor}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+\printanswers
+
+\title{Weekly Challenge 06: Proofs\\CS/MATH 113 Discrete Mathematics}
+\author{Ali Muhammad Asad}  % <== for grading, replace with your team name, e.g. q1-team-420
+\date{Habib University | Spring 2023}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+  \titledquestion{Perfect Universe}[5] A \textit{perfect universe} is a universe where the combination of any two elements of the universe yields a unique element of the universe (we write the `combination' of element $a$ with element $b$ as the element $ab$), such that the following holds in the universe (henceforth referred to as $U$): 
+  \begin{itemize}
+  \item Associativity: For all elements $a, b, c$ in $U$, $(ab)c = a(bc)$. 
+  \item Existence of an \textit{identity} element: There exists an element $e$ in $U$ such that when combined with any element $a$ in $U$, it does not change $a$ i.e. $\exists e \in U \ni \forall a \in U, ea=ae=a$. If $e$ is such an element of $U$ we call $e$ the \textit{identity} of $U$.
+  \item Existence of \textit{enemies}: For each element $a$ in $U$, there exists an element $b$ in $U$ such that $a$ combined with $b$ produces the identity element $e$ of $U$ i.e. $\forall a \in U, \exists b \in U \ni ab= ba = e$. If $b$ is such an element for $a$, we call $b$ the \textit{enemy} of $a$.
+  \end{itemize}
+  Note that a perfect universe need not be commutative, i.e., it is not necessary for all elements $a, b\in U$ to have the property that $ab=ba$.
+  
+  \begin{parts}
+  \item Prove that \textit{in a perfect universe, there is only one identity element}.
+    \begin{solution}
+      % Enter your solution here.
+      From the definition, we know there must be some element $e$ in $U$ such that it does not change any other element $a$ of the universe $U$. $ \exists e \in U \ni \forall a \in U, ea = ae = a $. 
+
+      To prove that there exists only one identity element means that the identity element must be unique. That there can only exist one such element. 
+
+      We can show that if we consider two identity elements, they turn out to be one and the same. \\ 
+      Consider an identity element $e_1$. Then by the definition, $ e_1a = ae_1 = a $.
+
+      Similarly, consider an identity element $e_2$. Then by the definition, $ e_2a = ae_2 = a $.
+
+      Then on premultiplying either $ e_1 $ or $ e_2 $ by $a$, we get; $ e_1 a = e_2 a $. 
+
+      We know from the properties of the universe that there is an existence of enemies, that is $ \forall a \in U, \exists b \in U \ni ab = ba = e $. \\ 
+      From the above property, we know there must be some such element $b$ such that we get both the identity elements $e_1$ and $e_2$. \\ 
+      Then $ e_1ab = e_2ab \implies e_1 = e_2 $. Therefore we get that $ e_1 = e_2 $. 
+
+      Further, on post multiplying, $ ae_1 = ae_2 $ \\ 
+      $ bae_1 = bae_2 \implies e_1 = e_2 $.
+
+      Henceforth, we can see that either on post multiplying, or premultiplying, we get back the identity elements, furthermore, that both different identity elements that we considered are equal to each other. Therefore, both are one and the same. 
+
+      Hence there must be only one identity element in the universe.
+    \end{solution}
+  \item Prove that \textit{in a perfect universe, every element has a unique enemy}.
+    \begin{solution}
+      % Enter your solution here.
+
+      From the definition of enemies, we know there must be some element $b$ in $U$ such that we get back the identity element $e$. $ \forall a \in U, \exists b \in U \ni ab = ba = e $. Then $ ab = e $ and $ ba = e $
+      (We already know that there must be some unique identity element).
+
+      Consider an element $a$, with two different enemeies $ b_1 $ and $b_2$. Then $ b_1 a = a b_1 = e $ and $ b_2 a = a b_2 = e $.
+
+      To show that there is a unique enemey, we must show that $ b_1 $ and $ b_2 $ are the same. 
+
+      Since $ b_1 $ and $ b_2 $ are both the enemeies of $a$, then we can say that $ b_1 a b_2 = e b_2 $. \\ We know that $ ab_2 = e \implies b_1 e = e b_2$. From the definition, and uniqueness of the identity element, we know that $ b_1 e = b_1 $ and $ eb_2 = b_2 $. Therefore, $ b_1 = b_2 $. 
+
+      Further, since $b_1$ is also the enemy of $a$, we can say that $ b_1 a b_2 = b_1 e $. Then $ b_1 a = e \implies e b_2 = b_1 e$. Similarly, by the identity element, $ b_2 = b_1 $. 
+
+      Hence shown that both the enemies are equal to each other, therefore they are the same. Hence, for any arbitrary element $a$, $a$ must have some unique enemy.
+    \end{solution}
+  \item Prove that \textit{for any elements $a$ and $b$ of a perfect universe, the enemy of $ab$ is the same as the enemy of $b$ combined with the enemy of $a$.}
+    \begin{solution}
+      % Enter your solution here.
+      \textit{Can be easily done through the definitions, use Associativity, the existence of identity elements[further that the identity element is unique for $ab$] and the unique existence of enemies. This result follows from the above properties, definitions, and uniqueness proofs.}
+    \end{solution}
+  \end{parts}
+
+\end{questions}
+
+\end{document}

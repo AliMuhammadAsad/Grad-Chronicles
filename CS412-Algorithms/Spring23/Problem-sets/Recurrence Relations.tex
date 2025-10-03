@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata,positioning}
+\title{Practice Problems}
+\author{CS 412-R1 Algorithms: Design \& Analysis}
+\date{Spring 2023}
+
+\begin{document}
+
+\maketitle
+
+\noindent \textbf{Famous recurrence classes:}
+\begin{enumerate}
+    \item Master's Theorem: $\displaystyle T(n) = aT\left(\frac{n}{b}\right) + f(n)$
+    \item Linear Homogeneous: $T(n) = a_1.T(n-1)+a_2.T(n-2)...+a_kT(n-k)$
+    \item Akra-Bazzi Method: $\displaystyle T(n) = f(n) + a_1.T\left(\frac{n}{b_1}\right) + a_2.T\left(\frac{n}{b_2}\right)... + a_k.T\left(\frac{n}{b_k}\right)$
+\end{enumerate}
+
+
+\noindent \textbf{Solve or find approximation for the following recurrences:}
+\begin{enumerate}
+    \item $T(n) = 2T(n/2) + n^3$
+    \item $T(n) = 7T(n/2) + n^2\log(n)$
+    \item $T(n) = T(n-1) + T(n-2)$ ; $T(0)=0, T(1)=1$
+    \item $a_n = a_{n-1} - a_{n-2}$ ; $a_0=0, a_1=1$
+    \item $M(n) = 6M(n-3) - 11M(n-2) + 6M(n-1)$ ; \\$M(0)=3, M(1)=6, M(3)=36$
+    \item $T(n) = T(n/5) + T(7n/10) + n$; where for $n<n_0$, $T(n)=O(1)$
+    \item $T(n) = 3T(n/3) + 8T(n/4) + n\log(n)$
+    \item $T(n) = T(n-2) + n^2$; $T(0)=0$
+\end{enumerate}
+
+\end{document}

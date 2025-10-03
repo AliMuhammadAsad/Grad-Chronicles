@@ -1,0 +1,148 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Exam %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[addpoints]{exam}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath, amssymb, amsthm, amsfonts, geometry, venndiagram}
+\usepackage{graphicx, xcolor, color, wrapfig, parskip, float, tabularx}
+\usepackage[breaklinks]{hyperref}
+\usepackage{colortbl}
+\usepackage{listings, mdframed, subfig, matlab-prettifier, hyperref}
+\usepackage{lipsum, bookmark, booktabs, empheq, titlesec, verbatim, subfig, pdfpages, comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{codebackground}{rgb}{0.95,0.95,0.95}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0.13,0.29,0.53}
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+\definecolor{softgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour}, commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+%"mystyle" code listing set
+\lstset{style=mystyle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Header and Footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Algorithms: Design and Analysis}{Problem Set 03}{CS 412}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+% \boxedpoints
+\printanswers
+\qformat{}  %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+\renewcommand{\solutiontitle}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Algorithms: Design and Analysis - CS 412 }
+\author{Problem Set 03: Asymptotic Analysis}
+\date{}
+
+% \pgfplotsset{compat=1.18}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+  \question
+  \textbf{1. } Explain why the statement, ``The running time of algorithm $A$ is at least $ O(n^2) $,'' is meaningless.
+  \begin{solution}
+    Since $O$-notation only provides an upper bound, and not a tight bound, the statement is saying that the running time of algorithm $A$ is at leaast a function whose rate of growth is at most $n^2$. This is meaningless because the running time of algorithm $A$ could be $O(n^3)$, $O(n^4)$, $O(n^5)$, etc. and the statement would still be true.
+  \end{solution}
+
+  \question
+  \textbf{2. } Prove that the running time of an algorithm is $ \Theta(g(n)) $ if and only if its worst-case running time is $ O(g(n)) $ and its best-case running time is $ \Omega(g(n)) $.
+  \begin{solution}
+    \begin{proof} \vspace*{-4mm}
+      Refer to Theorem 3.1 in the textbook, and the previous problem set.
+    \end{proof}
+  \end{solution}
+
+  \question
+  \textbf{3. } Prove that $ o(g(n)) \doublecap \omega(g(n)) $ is the empty set.
+  \begin{solution}
+    \begin{proof} \vspace*{-4mm}
+      By the definition of $o(g(n))$, for any constant $c$, there exists a constant $ n_0 > 0 $ such that $ 0 \leq f(n) < cg(n) $ for all $ n \geq n_0 $.
+
+      By the definition of $ \omega(g(n)) $, for any constant $c$, there exists a constant $ n_1 > 0 $ such that $ 0 \leq cg(n) < f(n) $ for all $ n \geq n_1 $.
+
+      Let $ n_2 = \max(n_0, n_1) $. Then, for all $ n \geq n_2 $, $ 0 \leq f(n) < cg(n) $ and $ 0 \leq cg(n) < f(n) $, which is a contradiction. Therefore, $ o(g(n)) \doublecap \omega(g(n)) $ is the empty set.
+    \end{proof}
+  \end{solution}
+  \newpage
+  \question
+  \textbf{4. } Show that $ k \ln k = \Theta(n) \implies k = \Theta(n / \ln) $.
+  \begin{solution}
+    \begin{proof} \vspace*{-4mm}
+      Via symmetry, we have that $ f(n) = \Theta(g(n)) \iff g(n) = \Theta(f(n)) $. So $ k \ln k = \Theta(n) \implies n = \Theta(k\ln k)  $. Then: \vspace*{-2mm}
+      \begin{align*}
+        \ln n & = \Theta(\ln(k\ln k))       \\
+              & = \Theta(\ln k + \ln \ln k) \\
+              & = \Theta(\ln k)
+      \end{align*}
+      Since now we have values of both $ \Theta(n) $ and $ \Theta(\ln n) $, which by symmetry gives us $n$ and $\ln n$: \vspace*{-2mm}
+      \begin{align*}
+        \displaystyle\frac{n}{\ln n} &= \displaystyle\frac{\Theta(k \ln k)}{\Theta(\ln k)} \\ 
+        &= \Theta\left(\displaystyle\frac{k \ln k}{\ln k}\right) \\
+        &= \Theta(k)
+      \end{align*}
+      Therefore, again, via symmetry, we have that $ k \ln k = \Theta(n) \implies k = \Theta(n / \ln) $.
+    \end{proof}
+  \end{solution}
+
+  \question
+  \textbf{5. } Show that for any real constants $a$ and $b$, where $ b > 0, (n + a)^b = \Theta(n^b) $.
+  \begin{solution}
+    \begin{proof} \vspace*{-4mm}
+      There exists cosntants $ c_1, c_2, n_0 $ such that $ \forall n \geq n_0 $, $ c_1 n^b \leq (n + a)^b \leq c_2n^b $.
+
+      Consider $ n \geq |a| $. Then we have: \vspace*{-2mm}
+      \begin{itemize}
+        \item Lower Bound: When $ n \geq |a| $, $ n + a \geq n - |a| $. Since $b > 0$, we can raise both sides to the power of $b$ to get $ (n + a)^b \geq (n - |a|)^b $. Then we can choose $ c_1 = (1 - \displaystyle\frac{|a|}{n})^b $, and $ n_0 = |a| $ to satisfy the lower bound. 
+        \item Upper Bound: When $ n \geq |a| $, $ n + a \leq n + |a| $. Since $b > 0$, we can raise both sides to the power of $b$ to get $ (n + a)^b \leq (n + |a|)^b $. Then we can choose $ c_2 = (1 + \displaystyle\frac{|a|}{n})^b $, and $ n_0 = |a| $ to satisfy the upper bound.
+      \end{itemize}
+
+      Therefore, we have shown that $ (n + a)^b = \Theta(n^b) $.
+    \end{proof}
+  \end{solution}
+
+
+\end{questions}
+
+\end{document}

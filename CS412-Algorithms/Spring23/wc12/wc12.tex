@@ -1,0 +1,57 @@
+\documentclass[a4paper]{exam}
+
+\usepackage[export]{adjustbox}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\usepackage{titling}
+
+\graphicspath{{images/}}
+
+\printanswers
+
+\title{Weekly Challenge 12: Dynamic Programming\\CS 412 Algorithms: Design and Analysis}
+\author{team-name}  % <==== replace with your team name for grading
+\date{Habib University | Spring 2023}
+
+\runningheader{CS 412: Algorithms}{WC12: Dynamic Programming}{\theauthor}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+  
+\titledquestion{Shiddat-e-Milan}
+
+  You have developed a novel approach to compute the compatibility among the users of your match-making portal, \href{https://habib.edu.pk}{Milaap}. The \textit{milan} score quantifies the compatibility between two users based on the content that they have consumed on your portal. There is a \textit{match}, as per your approach, when users consume not just the same content but in the same chronological order. For example, users who consumed the ``Shaam-e-Milaap'' page followed immediately by the ``Jashn-e-Milaap'' page match each other but not those who consumed the ``Fawaayed-e-Milaap'' page in between. The longer the match, the higher the milan score. Specifically, the milan score between two users is the largest number of pages that they have consumed in the same order.
+
+  Given the chronologically sorted history of the consumption of pages by two users, you want to compute their milan score.
+  \begin{parts}
+  \part[3] Characterize the structure of an optimal solution.
+  \part[2] Recursively define the value of an optimal solution.
+  \part[3] Show how the value of an optimal solution can be computed in a bottom-up manner.
+  \part[2] Argue about the time and space complexities of your approach.
+  \end{parts}
+  Remember to observe good attribution practices and cite any sources or references, \href{https://hulms.instructure.com/courses/2616/discussion_topics/29240}{especially if using AI}.
+
+  \begin{solution}
+    % Enter your solution here.
+  \end{solution}
+  
+\end{questions}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

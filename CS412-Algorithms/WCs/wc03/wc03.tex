@@ -1,0 +1,125 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Exam %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[addpoints]{exam}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath, amssymb, amsthm, amsfonts, geometry, venndiagram, tikz}
+\usepackage{graphicx, xcolor, color, wrapfig, parskip, float, tabularx}
+\usepackage[breaklinks]{hyperref}
+\usepackage{colortbl, caption}
+\usepackage{listings, mdframed, subfig, matlab-prettifier, hyperref}
+\usepackage{lipsum, bookmark, booktabs, empheq, titlesec, verbatim, subfig, pdfpages, comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{codebackground}{rgb}{0.95,0.95,0.95}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0.13,0.29,0.53}
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+\definecolor{softgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour}, commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+%"mystyle" code listing set
+\lstset{style=mystyle}
+
+\usetikzlibrary{arrows,shapes,positioning,shadows,trees}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Header and Footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Algorithms: Design and Analysis}{Weekly Challenge 03}{CS 412}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+% \boxedpoints
+\printanswers
+\qformat{}  %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Algorithms: Design and Analysis - CS 412 \vspace*{-4mm}}
+\author{Weekly Challenge 03: Parallel Computing}
+\date{\vspace*{-4mm} Ali Muhammad Asad - aa07190}
+
+% \pgfplotsset{compat=1.18}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+% {\small \begin{center} \gradetable[h] \end{center}}
+
+\begin{questions}
+  \question[1]
+  \textbf{1.}\; (1 point) The worst-case complexity for any sequential comparison-based sorting algorithm is $\Omega(nlgn)$. However, parallel computing can further reduce the running time of the algorithms. In its most basic sense, parallel computing refers to the simultaneous execution of tasks using multiple processors and cores. The algorithms can be parallelized when some of their steps can be computed in parallel. Lack of dependencies implies potential for parallel execution. For example, divide-and-conquer approach-based algorithms are often well-suited for parallelization. The division of the problem into sub-problems that can be solved independently facilitates parallel execution.
+
+  Selection Sort is a well-known sorting technique that scans an array to find the maximum item, puts it at the last location in the array, and then scans the array $(1 . . . n - 1)$ for the second maximum item, places it before the last location, then third maximum $(1 . . . n - 2)$ and so forth, until reaches the smallest item to be put at the first location of the array. It has $O(n^2)$ complexity.
+
+  Is it possible to parallelize the classic selection sort without making any changes and gain performance improvement? If yes, explain the aspects of the algorithm that can be parallelized. Identify an approach with the help of which parallelization capabilities of selection sort can be improved. Explain your proposed approach in 4 to 5 lines.
+
+  \textbf{Note:} Performance improvement in parallel computing comes from many different factors like the nature of the algorithm, available computing architecture, number of processors or cores, size of data, etc. Note that for this particular assignment, we are only interested in exploring the nature of the algorithm. Consider that the number of available processors or cores is $n$, where $n > 1$.
+
+  \textbf{Useful Resources}
+  \begin{itemize}
+    \item Example (Bubble Sort):
+          \href{https://www.cs.usfca.edu/~mmalensek/cs220/schedule/lectures/220-L20.pdf}{220-
+            L20 (usfca.edu)} (Reference: CS 220: Introduction to Parallel Computing, University
+          of San Francisco)
+    \item Chapter 26 of Introduction to Algorithms, fourth edition. Authors: Thomas
+          H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
+  \end{itemize}
+
+  \begin{solution}
+    The classic selection sort algorithm is inherently sequential, as also described above in the question, wherein, the maximum element from the array is selected and placed in its correct position, and is repeated for the rest of the array sequentially. Hence, each step of the algorithm is dependant upon the previous step. So the classic selection sort algorithm cannot be parallelized without making any changes.
+
+    However, we can implement a variant on the selection sort, and call it \textbf{Parallel Selection Sort}. Instead of finding a single minimum element in each pass (which is sequential), we find multiple minimium elements in parallel. A high-level description can be as follows:
+    \begin{enumerate}
+      \item Divide the array into $p$ partitions, where $p$ is the number of available processors.
+      \item Each processor finds the minimum in its partition.
+      \item A global comparison finds the overall minimum.
+      \item Swap the overall minimum with the first element of the array.
+      \item Repeat the above steps for the remaining elements of the array.
+    \end{enumerate}
+
+    In this Parallel Selection Sort, the array is divided into $p$ partitions, with each processor finding the minimum in its partition, which happens in $O(n / p)$ time (since each processor is responsible for $n/p$ elements). The global comparison to find the overall minimum takes $O(p)$ time, since there are $p$ processors. Hence, the total time taken for each iteration is $O(n / p + p)$. Since there are $n$ elements in the array, the total time taken is $O(n(n/p + p)) = O(n^2 / p + np)$. 
+    
+    However, this still doesn't improve our performance over the classic selection sort. This is because of the inherent sequential nature of the algorithm. So even if we divide our array into $p$ partitions, we still need to wait for the previous iteration to complete before we can start the next iteration. Thus, we still need to perform $n$ iterations over $n$ elements. Even with $p = n$ processors, we still get $O(n^2)$ complexity; although each processor is in charge of only one element, there are still $n$ comparisons between $n$ elements, which means $n$ iterations, therefore, is still in $O(n^2)$. It is even evident through our time complexity equation; $ O(n^2/p + np) $. If we increase $p$, the first term decreases, but the second term increases by the same proportion, and if we decrease $p$, the second term decreases but the first term increases then. Therefore, the time complexity is still $O(n^2)$, and we don't get any performance improvement.
+  
+  \end{solution}
+
+\end{questions}
+
+\end{document}

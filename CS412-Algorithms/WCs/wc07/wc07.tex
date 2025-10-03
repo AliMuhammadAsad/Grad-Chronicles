@@ -1,0 +1,192 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Exam %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[addpoints]{exam}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath, amssymb, amsthm, amsfonts, geometry, venndiagram, tikz}
+\usepackage{graphicx, xcolor, color, wrapfig, parskip, float, tabularx}
+\usepackage[breaklinks]{hyperref}
+\usepackage{colortbl, caption}
+\usepackage{listings, mdframed, subfig, matlab-prettifier, hyperref, pythonhighlight}
+\usepackage{lipsum, bookmark, booktabs, empheq, titlesec, verbatim, subfig, pdfpages, comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{codebackground}{rgb}{0.95,0.95,0.95}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0.13,0.29,0.53}
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+\definecolor{softgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour}, commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+%"mystyle" code listing set
+\lstset{style=mystyle}
+
+\usetikzlibrary{arrows,shapes,positioning,shadows,trees, backgrounds}
+
+\tikzstyle{arrow} = [->,>=stealth]
+\tikzstyle{node} = [auto,font=\footnotesize,draw,circle]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Header and Footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Algorithms: Design and Analysis}{Weekly Challenge 07}{CS 412}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+% \boxedpoints
+\printanswers
+\qformat{}  %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Algorithms: Design and Analysis - CS 412 \vspace*{-4mm}}
+\author{Weekly Challenge 07: Maximum Flows}
+\date{\vspace*{-4mm} Ali Muhammad Asad - aa07190}
+
+% \pgfplotsset{compat=1.18}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+  \question[2]
+  We are going to write a class \pyth{MaxFlow} in a file \texttt{maxflow.py}. Objects of the class will take in a flow network and compute its maximum flow. Your code will be tested by \pyth{pytest} using the file, \texttt{test\_maxflow.py}, given in \texttt{WC7\_MaxFlows.zip}. To test your implementation of \pyth{MaxFlow}, open the directory containing \texttt{test\_maxflow.py} and \texttt{maxflow.py} in the terminal, and run the following command:
+  \begin{lstlisting}[language=bash]
+pytest test_maxflow.py
+\end{lstlisting}
+  \textbf{TASKS}:
+  \begin{parts}
+    \part The \pyth{__init__} method of \pyth{MaxFlow} takes as argument a \pyth{file} object which points to a file containing a flow network, $G$, in the following format.
+    \begin{itemize}
+      \item The first line contains the number of edges, $e$.
+      \item Each of the next $e$ lines contains an edge in the format $u\ v\ c$ where $(u,v)$ is an edge in $G$ with capacity $c$.
+      \item The source vertex is always named, $s$, and the sink vertex is always named, $t$.
+      \item All capacities are integral and positive.
+    \end{itemize}
+    \part The \pyth{get_value} method returns the value of the maximum flow on $G$.
+    \part The \pyth{get_flow} method returns the maximum flow on $G$ as a \pyth{dict} object. A key in the returned \pyth{dict} object is an edge, $(u,v)$ in the maximum flow and the value is the amount of flow along $(u,v)$. Only edges with non-zero flow are included.
+    \part Ensure that all tests pass by running \pyth{pytest} locally.
+    \part Do not include any external packages except \pyth{networkx} for the possible use of \href{https://networkx.org/documentation/stable/reference/classes/digraph.html}{\pyth{networkx.DiGraph}} to store and operate on the flow network.
+    \part You may modify the error messages in \texttt{test\_maxflow.py} to convey more information if you wish, but you may not alter any other functionality in it.
+  \end{parts}
+  \newpage
+  \begin{solution}
+    \begin{lstlisting}
+import networkx as nx
+class MaxFlow:
+    def __init__(self, file) -> None:
+        self.dag = nx.DiGraph()
+        for i in range(len(file)):
+            node1, node2, capacity = file[i].split()
+            self.dag.add_edge(node1, node2, capacity=int(capacity))
+            if not self.dag.has_edge(node2, node1):
+                self.dag.add_edge(node2, node1, capacity=0)
+    
+    def get_value(self):
+        ''' Get the maximum flow value of the DAG '''
+        residual = self.dag.copy()
+        parent = {}
+
+        max_flow = 0
+
+        while self.bfs(residual, 's', 't', parent):
+            path_flow = float("Inf")
+            s = 't'
+            while s != 's':
+                path_flow = min(path_flow, residual[parent[s]][s]['capacity'])
+                s = parent[s]
+            max_flow += path_flow
+            v = 't'
+            while v != 's':
+                u = parent[v]
+                residual[u][v]['capacity'] -= path_flow
+                residual[v][u]['capacity'] += path_flow
+                v = parent[v]
+        return max_flow
+
+    def bfs(self, residual, source, sink, parent):
+        visited = {node: False for node in residual.nodes()}
+        queue = []
+        queue.append(source)
+        visited[source] = True
+
+        while queue:
+            u = queue.pop(0)
+            for ind, val in enumerate(residual[u]):
+                if visited[val] == False and residual[u][val]['capacity'] > 0:
+                    queue.append(val)
+                    visited[val] = True
+                    parent[val] = u
+
+        return True if visited[sink] else False
+
+    def get_flow(self):
+        ''' Get the flow of each node in the DAG '''
+        residual = self.dag.copy()
+        parent = {}
+
+        flow = {}
+        for u, v in self.dag.edges():
+            flow[(u, v)] = 0
+
+        while self.bfs(residual, 's', 't', parent):
+            path_flow = float("Inf")
+            s = 't'
+            path = []
+            while s != 's':
+                path.append((parent[s], s))
+                path_flow = min(path_flow, residual[parent[s]][s]['capacity'])
+                s = parent[s]
+
+            for u, v in path:
+                flow[(u, v)] += path_flow
+
+            v = 't'
+            while v != 's':
+                u = parent[v]
+                residual[u][v]['capacity'] -= path_flow
+                residual[v][u]['capacity'] += path_flow
+                v = parent[v]
+
+        flow = {edge: f for edge, f in flow.items() if f > 0}
+        return flow
+    \end{lstlisting}
+  \end{solution}
+\end{questions}
+\end{document}

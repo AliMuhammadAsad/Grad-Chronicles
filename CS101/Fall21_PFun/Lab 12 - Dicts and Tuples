@@ -1,0 +1,108 @@
+#Qns 1 - Don't pick a lock, pick a key - takes a key, and returns a list of all values in the dictionary with that key
+def pick(k, t):
+    lst = []
+    for x in t:
+        lst.append(x.get(k))
+    return lst
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+#Qns 2 - Say my date - Takes a list of date dictionaries and prints dates in "month dd, yyyy" format
+month_names = { 1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December' }
+
+def print_dates_in_long_form(t):
+    for x in t:
+        print(f"{month_names.get(x.get('month'))} {x.get('day')}, {x.get('year')}")
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+#Qns 3 - Birthday Dictionary - Returns a list of dictionaries each representing a date in format yyyy-mm-dd
+def split_dates(s):
+    lst = s.split()
+    n_lst = []
+    for x in lst:
+        temp_d, d = {}, {}
+        year, month, day = {'year': int(x[0:4])}, {'month': int(x[5:7])}, {'day':int(x[8:])}
+        temp_d.update(year), temp_d.update(month), temp_d.update(day)
+        d.update(temp_d)
+        n_lst.append(d)
+    return n_lst
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+#Qns 4 - Merge by keys - merges two dictionaries by their keys
+def merge_key(d1,d2):
+    #d_lst = [d1,d2]
+    #d = {}
+    #for k in d1.keys():
+        #d[k] = list(d[k] for d in d_lst)
+    #return d
+    
+    d = {}
+    for k in d1.keys():
+        vals, temp_d = [], {}
+        if k in d2:
+            val1, val2 = d1.get(k), d2.get(k)
+            vals.append(val1), vals.append(val2)
+            temp_d = {k: vals}
+            d.update(temp_d)
+        else:
+            pass
+    return d
+    
+print(sorted(merge_key(d1,d2).items()))
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+#Qns 5 - Merge by Values
+
+def key_value_swapper(d):
+    n_d = {}
+    for k,v in d.items():
+        n_d[v]=k
+    return n_d
+
+def merge_value(d1, d2):
+    d1, d2 = key_value_swapper(d1), key_value_swapper(d2)
+    d = {}
+    for k in d1.keys():
+        vals, temp_d = [], {}
+        if k in d2:
+            val1, val2 = d1.get(k), d2.get(k)
+            vals.append(val1), vals.append(val2)
+            temp_d = {k: vals}
+            d.update(temp_d)
+        else:
+            pass
+    return d
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+#Qns 6 - Count words - counts frequency of each word in a given paragraph and prints each word with its frequency in a new line
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+TUPLES
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+#Qns 7 - Last name first - modifies a list containing tuples so that the last name in the tuple comes first
+def last_name_first(t):
+    for x in range(len(t)):
+        tup = t[x]
+        t[x] = (tup[-1],) + tup[0:-1]
+        
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+#Qns 8 - Loan Repayment Strategy - returns total profit from given stock info given as tuples within a list
+def compute_profit(stock_info):
+    profit = 0.00
+    for x in range(0,len(stock_info)):
+        profit = profit + (stock_info[x][2] * (stock_info[x][4] - stock_info[x][1]))
+    return round(profit)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+#Qns 9 - Get Positions - takes a board of colors with a series of rows depicted by lists and returns the position of color in the list

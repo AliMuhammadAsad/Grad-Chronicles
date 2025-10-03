@@ -1,0 +1,17 @@
+array
+insert 0 10
+display
+insert 0 15
+display
+insert 1 5
+display
+size
+insert 2 30
+display
+delete 1
+display
+delete 1
+display
+size
+delete 1
+display

@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata,positioning}
+\title{Practice Problems}
+\author{CS 412-R1 Algorithms: Design \& Analysis}
+\date{Spring 2023}
+
+\begin{document}
+
+\maketitle
+
+\noindent \textbf{Properties:}
+\begin{enumerate}
+    \item if $f(n)=O(g(n))$ and $g(n)=O(h(n))$ then $f(n)=O(h(n))$ \\(Transitive property holds for all big-O notations $\{O,o,\theta,\Theta, \Omega\}$)
+    \item if $f(n)=O(g(n))$ and $h(n)$ is non-negative then $f(n).h(n)=O(g(n).h(n))$
+    \item $f(n)+g(n)=O(Max(f(n),g(n)))$
+\end{enumerate}
+
+Functions in increasing growth-rate (in $O$ sense):
+$$1<\log{(n)}< \sqrt{n}< n< n\log{(n)}< n\log{^k(n)}< n^2< 2^n< n!< n^n$$
+
+\noindent \textbf{Prove or Disprove:}
+\begin{enumerate}
+    \item $(n+1)^2=n^2+O(n)$
+    \item $2^{n+1}=O(2^n)$
+    \item $(n+O(n^{1/2})).(n+O(\log n))^2=n^3+O(n^{5/2})$
+    \item $2^{(1+O(\frac{1}{n}))^2}=2+O(\frac{1}{n})$
+    \item $n^{O(1)}=O(e^n)$
+    \item $O(e^n)=n^{O(1)}$
+    \item $n^{\log n}=O((\log n)^n)$
+    \item if $f(n)=O(g(n))$ then $2^{f(n)}=O(2^{g(n)})$
+    \item $2^{2n}=O(2^n)$
+    \item $\sqrt{n}\log{(n)} = O(n)$
+    \item $\log{(n!)} = \Theta (n \log{(n)})$
+    \item $n! = o(n^n)$
+    \item $n! = \omega(2^n)$
+\end{enumerate}
+
+\end{document}

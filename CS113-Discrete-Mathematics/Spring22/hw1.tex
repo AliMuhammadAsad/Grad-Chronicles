@@ -1,0 +1,173 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{CS 113 Discrete Mathematics}{HW 1: Sets}{Spring 2022}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+\title{Homework 1: Sets\\ CS 113 Discrete Mathematics}
+\author{Connected Argument - Testing Argument}  % replace with your team name
+\date{Habib University -- Spring 2022}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question[5]
+  Write down $\mathcal{P}(X)$ if 
+  $ X = \{ \emptyset, \{\alpha, \beta, \gamma \}, \gamma, \{\{ \alpha, \beta \} \} \}$.
+  \begin{solution}
+    $ P(X) = \{ \emptyset, \{\emptyset\}, \{\{\alpha, \beta, \gamma \} \}, \{ \gamma\}, \{ \{\{ \alpha, \beta \} \} \}, \{ \emptyset, \{\alpha, \beta, \gamma \}\},
+    \{ \emptyset, \gamma\}, \{ \emptyset,  \{\{ \alpha, \beta \} \}\}, 
+    \\ \{ \{\alpha, \beta, \gamma \}, \gamma\}, \{ \{\alpha, \beta, \gamma \}, \{\{ \alpha, \beta \} \} \}, \{ \gamma,  \{\{ \alpha, \beta \} \}\},
+    \{ \emptyset, \{\alpha, \beta, \gamma \}, \gamma\}, \{ \emptyset, \{\alpha, \beta, \gamma \},  \{\{ \alpha, \beta \} \}\},
+    \\ \{\emptyset, \gamma, \{\{ \alpha, \beta \} \} \}, \{ \{\alpha, \beta, \gamma \}, \gamma,  \{\{ \alpha, \beta \} \}\},
+    \{ \emptyset, \{\alpha, \beta, \gamma \}, \gamma,  \{\{ \alpha, \beta \} \}\}  \} $
+  \end{solution}
+
+\question
+  \begin{parts}
+  \part[5] 
+    Assume that RO has asked for your help to generate a set that contains all the possible pairs of DSSE faculty and DSSE courses at Habib University. Describe the sets and set operations that you can use to provide RO the desired set.
+    \begin{solution}
+      $ F = \{ x \mid x \text{ is a DSSE faculty member } \} $
+      \\ $ C = \{ x \mid x \text{ is a DSSE course }\} $
+      \\ Possible pairs can be made through Cartesian Product between $F$ and $C$
+      \\ $ S = F \text{ x } C $
+      \\ $ S = \{ x \in (f, c) \mid f \in F \land c \in C \} $
+    \end{solution}
+    
+  \part[5] Imagine that the the operation above is extended to include an additional set that contains all the time slots when a course can be scheduled. Describe the set obtained as an outcome of the operation.
+    \begin{solution}
+      $ T = \{ x \mid x \text{ is a time slot when a course can be scheduled } \} $
+      \\ To include time slots as well, Cartesian Product will be taken between $S$ and $T$
+      \\ $ P = S \text{ x } T $
+      \\ $ P = \{ x \in (f, c, t) \mid f \in F \land c \in C \land t \in T \} $
+      \\ The set $P$ contains all possible combinations between DSSE faculty members, and DSSE courses, and the time slots in which a course can be scheduled.
+    \end{solution}
+
+  \end{parts}
+  
+\question
+  The \textit{symmetric difference} of two sets $A$ and $B$ is defined as
+  \[
+    A\oplus B = (A-B) \union (B-A).
+  \]
+  It is also known as the \textit{disjunctive union} as it contains all those elements which are in either of those sets, but not in their intersection. 
+  \begin{parts}
+  \part[5] Prove that $A\oplus B = (A \union B)-(A \inter B).$
+    \begin{solution}
+      \begin{align*}
+        A\oplus B &= (A \union B) \inter (\overline{A \inter B}) &\text{Definition of set complement} \\
+        & = (A \union B) \inter (\overline{A} \union \overline{B}) &\text{DeMorgan's Law} \\
+        & = (A \inter (\overline{A} \union \overline{B})) \union (B \inter (\overline{A} \union \overline{B})) & \text{Distributive Law} \\
+        & = ((A \inter \overline{A}) \union (A \inter \overline{B})) \union ((B \inter \overline{A}) \union (B \inter \overline{B})) &\text{Distributive Law} \\
+        & = (A \inter \overline{B}) \union (B \inter \overline{A}) &\text{$ [A \inter \overline{A} = \emptyset, B \inter \overline{B} = \emptyset] $} \\ 
+        & = (A - B) \union (B - A) & \text{Definition of set complement} \\
+        &\text{Hence Proved}
+      \end{align*}
+    \end{solution}
+
+  \part[5] For three sets $A, B,$ and $C$, the symmetric difference is defined as
+    \[
+      A\oplus B\oplus C = (A\oplus B)\oplus C,
+    \]
+    i.e. the two-set definition is applied twice. Draw the Venn diagram of this set.
+    \begin{solution}
+      \includegraphics[scale = 0.1]{"3_b_venndiagram.jpg"}
+    \end{solution}
+
+  \part[5] Using the insights from above, express $A\oplus B\oplus C$ in the same manner as given in part a). That is, using the basic set operations: union, intersection, and complement. Show your working.
+    \begin{solution}
+      \begin{align*}
+        (A \oplus B) \oplus C &= ((A \oplus B) - C) \union (C - (A \oplus B)) & \text{Symmetric Difference} \\
+        & = (((A - B) \union (B-A)) - C) \union (C - ((A - B) \union (B - A))) & \text{Symmetric Difference} \\
+        & = (((A \inter \overline{B}) \union (B \inter \overline{A})) \inter \overline{C}) \union (C \inter (\overline{(A - B) \union (A - B)})) & \text{Definitin of set complement} \\
+        & = (((A \inter \overline{B}) \union (B \inter \overline{A})) \inter \overline{C}) \union (C \inter \overline{(A \inter \overline{B}) \union (B \inter \overline{A})}) & \text{Definitin of set complement} 
+      \end{align*}
+    \end{solution}
+
+  \end{parts}
+
+\question
+  Let $A$ be the set of all numbers that are divisible by 6 and $B$ the set of all numbers that are divisible by $10$.
+
+  \begin{parts}
+  \part[5] Write the sets $A$ and $B$ in set notation and describe $A \inter B$ as simply as possible.
+    \begin{solution}
+      $ A = \{ 6x \mid x \in \mathbb{N} \} $
+      \\$ B = \{ 10x \mid x \in \mathbb{N} \} $
+      \\$ A \inter B $ is a set with all numbers divisible by 30. 
+      \\$ A \inter B = \{ 30x \mid x \in \mathbb{N} \}$
+    \end{solution}
+
+  \part[10] Describe the set $A \oplus B$, i.e. the symmetric difference of $A$ and $B$, using set notation. Provide a proof that the set you indicate is indeed the symmetric difference of $A$ and $B$.
+    \begin{solution}
+      $ A \oplus B $ is a set with numbers divisible by 6 or 10 but not both.
+      \\$ \implies A \oplus B = \{x \mid (x \in A \land x \notin B) \lor (x \in B \land x \notin A) \} $
+      \\ Let $ x \in A \oplus B $
+      \\ Then, $ (x \in A \text{ and }  x \notin B) \text{ or }  (x \in B \text{ and } x \notin A) $
+      \\ That is, $ x \in ((A \inter \overline{B}) \union (B \inter \overline{A})) $
+      \\ Then by definition of set complement, $ x \in ((A - B) \union (B - A)) $
+      \\ Since $ A \oplus B = (A - B) \union (B - A) $, and $ x \in (A - B) \union (B - A) $, therefore proved that $ x \in A \oplus B $ and the indicated set is the symmetric difference of A and B.
+    \end{solution}
+
+  \part[5] Given $U = \{x\in \mathbb{N} \mid x \leq 60 \}$, list the elements of $A$, $B$, and $A \oplus B$ 
+    \begin{solution}
+      $ A = \{6, 12, 18, 20, 24, 30, 36, 42, 48, 54, 60 \} 
+      \\  B = \{ 10, 20, 30, 40, 50, 60 \} 
+      \\  A \oplus B = \{ 6, 10, 12, 18, 20, 24, 36, 40, 42, 48, 50, 54 \} $
+    \end{solution}
+
+  \end{parts}
+
+\question
+  Show that $\overline{ A \union \overline{B}} = \overline{A} \inter B$.
+  \begin{parts}
+    
+  \part[5] by using set identities.
+    \begin{solution}
+      Starting with LHS:
+      \begin{align*}
+      \overline{A \union \overline{B}} & = \overline{A} \inter \overline{(\overline{B})} & \text{DeMorgan's Law} \\
+      & = \overline{A} \inter B & \text{Law of Double Complementation} \\
+      \end{align*}
+      Hence proved using set identities
+    \end{solution}
+    
+  \part[5] by proving that each set is a subset of the other.
+    \begin{solution}
+      Since $ \overline{A \union \overline{B}} = \overline{A} \inter B, \implies \overline{A \union \overline{B}} \subseteq \overline{A} \inter B \land \overline{A} \inter B \subseteq \overline{A \union \overline{B}} $
+      \\ Let  $ x \in \overline{A} \inter B $
+      \\ That is, $ x \in \overline{A} \land x \in B $
+      \\ Then, $ x \notin A \lor x \notin \overline{B} $
+      \\ That is, $ x \notin A \union \overline{B} $
+      \\ Therefore, $ x \in \overline{(A \union \overline{B})} $
+      \\ Hence proved using subsets
+    \end{solution}
+
+  \end{parts}
+\end{questions}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

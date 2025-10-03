@@ -1,0 +1,61 @@
+\documentclass[addpoints,a4paper]{exam}
+\usepackage[a4paper]{geometry}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{tabularx}
+
+\runningheader{CS 412 Algorithms}{Quiz 3C}{ID: \rule{.2\textwidth}{.5pt}}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+% % solution
+% \usepackage{draftwatermark}
+% \SetWatermarkText{Sample Solution}
+% \SetWatermarkLightness{.9}
+% \SetWatermarkScale{3}
+% \printanswers
+
+\begin{document}
+\begin{flushleft}
+  { \large \textsf{\textbf{CS 412: Algorithms: Design and Analysis, L1, Quiz 3A, Spring 2023.}}}\vspace{.5em}
+  
+  \numquestions\ problems for \numpoints\ points on \numpages\ printed sides. Duration: 30 minutes. \today.
+\end{flushleft}
+
+Instructions:
+\begin{enumerate}
+  % \item Please observe the allowed time for this quiz as indicated on Canvas.
+\item Enter your name and ID below and at the top of every side.
+\item Solve the problems by hand in clear and legible handwriting in the provided space.
+\item You may use the last side for rough work.
+\item Provide precise and concise solutions.
+\end{enumerate}
+
+\noindent Student Name: \hrulefill \\[5pt]
+\noindent Student ID: \hrulefill \\
+\rule{\textwidth}{1pt}
+
+\begin{questions}
+\question[3] Explain whether a dynamic programming approach would benefit the mergesort algorithm.
+\newpage
+\question Consider the following variant of the rod-cutting problem. We are given a rod of length, $l$, and the price, $p_i$, for a rod of length $i$, where $1\leq i\leq l$. Our goal is to make as many cuts to the rod so as to obtain the maximum revenue. Making each cut incurs a price, $c$. The generated revenue is equal to the total price of the pieces minus the total price of the cuts.
+  \begin{parts}
+  \part[3] Provide a recurrence for the maximum revenue for a rod of length, $l$.
+\newpage
+\part[2] Show how the value of an optimal solution can be computed in a bottom-up manner.
+  \vfill
+\part[2] Argue about the time and space complexities of your approach.
+  \vfill
+  \end{parts}
+\end{questions}
+
+\newpage
+\centerline{\large Rough Work}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,139 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+
+\pagestyle{empty}
+
+\title{Feedback on Quiz 3B}
+\author{CS 412: Algorithms: Design and Analysis}
+\date{Spring 2023}
+
+\newcommand\mc{\multicolumn}
+\newcommand\mcs[1]{\multicolumn{1}{c}{#1}}
+\newcommand\mcb[1]{\multicolumn{1}{c|}{#1}}
+
+\renewcommand{\solutiontitle}{\noindent\textbf{Feedback:}\enspace}
+\printanswers
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+Many submissions have provided the solution that we did in class for the longest common subsequence problem. Unsurprisingly, this does not work for the case when the required subsequence is contiguous, as in this problem.
+
+For example, consider $X=abcdef, Y=xabxdef$. The recurrence for the length of the longest common subsequence of a prefix of $X$ of length $i$, and a prefix of $Y$ of length $j$ is
+\[
+  L(i,j) =
+  \begin{cases}
+    0 & i = 0 \text{ or } j = 0\\
+    L(i-1, j-1) + 1 & x_i = y_j\\
+    \max(L(i, j-1), L(i-1, j-)) & x_i \neq y_j\\
+  \end{cases}
+\]
+For the given $X$ and $Y$, the longest common subsequence is $abdef$ which has length 5. The longest common \textit{contiguous} subsequence is $def$ which has length 3.
+
+Using the above recurrence on this example yields the following table for $L(i,j)$.
+\[
+\begin{array}{*8{c|}}
+  \mc{3}{c}{} & \mcs{a} & \mcs{b} & \mcs{d} & \mcs{e} & \mcs{f} \\
+  \mc{2}{c}{} & \mcs{i=0\rightarrow} & \mcs{1} & \mcs{2} & \mcs{3} & \mcs{4} & \mcs{5} \\\cline{3-8}
+  \mcs{ } & \mcb{j=0\downarrow} & 0 & 0 & 0 & 0 & 0 & 0 \\\cline{3-8}
+  \mcs{x} & \mcb{1} & 0 & 0 & 0 & 0 & 0 & 0 \\\cline{3-8}
+  \mcs{a} & \mcb{2} & 0 & 1 & 1 & 1 & 1 & 1 \\\cline{3-8}
+  \mcs{b} & \mcb{3} & 0 & 1 & 2 & 2 & 2 & 2 \\\cline{3-8}
+  \mcs{x} & \mcb{4} & 0 & 1 & 2 & 2 & 2 & 2 \\\cline{3-8}
+  \mcs{d} & \mcb{5} & 0 & 1 & 2 & 3 & 3 & 3 \\\cline{3-8}
+  \mcs{e} & \mcb{6} & 0 & 1 & 2 & 3 & 4 & 4 \\\cline{3-8}
+  \mcs{f} & \mcb{7} & 0 & 1 & 2 & 3 & 4 & 5 \\\cline{3-8}
+\end{array}
+\]
+Entries in the table give the length of the longest common subsequence for the particular $i$ and $j$, not of the longest common \textit{contiguous} subsequence.
+
+It should be clear that the recurrence for one will not automatically yield the answer for the other. The two problems are distinct.
+
+I have had a hard time grading this quiz. After initially awarding some marks to people whose solution is for the longest common subsequence, I have gone back and removed those marks. awarding marks to this incorrect solution is unfair to those who recognized that it is the wrong solution and therefore did not present it for their solution.
+
+Specific feedback on each part follows.
+
+\begin{questions}
+  \question
+  \begin{parts}
+    \part[3] Characterize the structure of an optimal solution.
+    \begin{solution}
+      This is among the most problematic solutions. Common errors are
+      \begin{itemize}
+      \item failing to describe the optimal solution
+      \item failing to demonstrate optimal substructure
+      \item failing to demonstrate overlapping subproblems
+      \item failing to provide any recurrence
+      \item failing to provide a base case
+      \item using notation without introducing it
+      \item inconsistent use of notation: the same notation stands for an element and a sequence at different points or in the same expression
+      \item writing a bunch of notation without any explanation
+      \item talking about the optimal solution of a different problem
+      \end{itemize}
+    \end{solution}
+    \part[2] Recursively define the value of an optimal solution.
+    \begin{solution}
+      This is among the most problematic solutions. Common errors are
+      \begin{itemize}
+      \item failing to describe the \textit{value} of the optimal solution: the \textit{length} of the longest common contiguous subsequence.
+      \item using notation without introducing it
+      \item failing to provide a base case
+      \item failing to provide conditions for different cases
+      \item providing a (thinly veiled) recurrence for the problem from yesterday's quiz
+      \item confusing the notation for the subsequence and for its length. this resulted in
+        \begin{itemize}
+        \item adding a sequence to a number
+        \item taking the $\max$ of sequences
+        \item taking the $\max$ of a sequence and a number
+        \item describing notation to mean the longest common substring, but treating it as the length
+        \end{itemize}
+      \item not providing any explanation for the recurrence either here or in the previous part
+      \item providing a recurrence for the longest common subsequence problem. This was mostly an error-carry-forward (ECF) from the previous part but still loses marks.
+      \end{itemize}
+      Some interesting submissions did the following.
+      \begin{itemize}
+      \item forget to specify a base case here but include it in the code for the next part. This resulted in a minor deduction.
+      \item define the recurrence in terms of the subsequent substring instead of the preceding substring. That was interesting!
+      \end{itemize}
+    \end{solution}
+    \part[3] Show how the value of an optimal solution can be computed in a bottom-up manner.
+    \begin{solution}
+      Most, if not all, submissions provided code here, which is fine. Some issues encountered were
+      \begin{itemize}
+      \item the computation does not match the recurrence given in the previous part
+      \item the computation implements a top-down solution instead of a bottom-up one
+      \item the computation implements a weird mixture of a top-down and a bottom-up solution
+      \item the computation solves the wrong problem. In some case, this was an error-carry-forward (ECF) from the previous part and the person has already lost a lot of marks, so no penalty was applied.
+      \item the computation returns the entire table
+      \item the computation uses types inconsistently: the same variable is assigned or is used as a sequence and a number at different points
+      \item the computation is confused about what is to be returned, the subseqeuence or its length
+      \item some off-by-1 errors in loops. the deduction in such cases was minor.
+      \end{itemize}
+    \end{solution}
+
+    \part[2] Argue about the time and space complexities of your approach.
+  \begin{solution}
+    This was the least problematic part. Most people argued correctly here for their code from the previous part. This may have been because the argument here is not too different from the one for the longest contiguous subsequence problem done in class, which is what people remembered. Some issues encountered were
+    \begin{itemize}
+    \item no argument is provided for the claimed complexities
+    \item some submissions make valid arguments but forgot to provide an expression for the claimed complexities
+    \item writing $n^2$ instead of $mn$.
+    \item using $O$ notation when this was clearly a case for $\Theta$ notation. However, as $O$ is not incorrect, this is not treated as an error, even though it tells me that the student is still not clear about their asymptotic notation.
+    \item in some cases, the argument was incorrect and led to a complexity that did not match the code from the previous part.
+    \item arguments of the type, ``since we are running two loops (or a nested loop), the time complexity is quadratic''. This is problematic and indicates that the student does not understand asymptotic notation. Not every loop runs in linear time. However, I have let this go and not deducted marks for it.
+    \end{itemize}
+    
+  \end{solution}
+\end{parts}    
+  
+\end{questions}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

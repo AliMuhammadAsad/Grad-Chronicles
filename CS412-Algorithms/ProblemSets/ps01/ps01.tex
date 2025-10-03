@@ -1,0 +1,302 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Exam %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[addpoints]{exam}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath, amssymb, amsthm, amsfonts, geometry, venndiagram}
+\usepackage{graphicx, xcolor, color, wrapfig, parskip, float, tabularx}
+\usepackage[breaklinks]{hyperref}
+\usepackage{colortbl}
+\usepackage{listings, mdframed, subfig, matlab-prettifier, hyperref}
+\usepackage{lipsum, bookmark, booktabs, empheq, titlesec, verbatim, subfig, pdfpages, comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{codebackground}{rgb}{0.95,0.95,0.95}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0.13,0.29,0.53}
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+\definecolor{softgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour}, commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+%"mystyle" code listing set
+\lstset{style=mystyle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Header and Footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Algorithms: Design and Analysis}{Problem Set 01}{CS 412}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+% \boxedpoints
+\printanswers
+\qformat{}  %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+\renewcommand{\solutiontitle}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Algorithms: Design and Analysis - CS 412 }
+\author{Problem Set 01: Asymptotic Analysis}
+\date{}
+
+% \pgfplotsset{compat=1.18}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+  \question
+  \textbf{1. } Let $$ p(n) = \sum_{i = 0}^d a_i n^i $$
+  where $ a_d > 0 $, be a degree-$d$ polynomial in $ n $ and let $k$ be a constant. Use the definition of the asymptotic notations to prove the following properties:
+
+  % \begin{parts}
+  %   \part If $ k \geq d $, then $ p(n) = O(n^k) $.
+  %   \part If $ k \leq d $, then $ p(n) = \Omega(n^k) $.
+  %   \part If $ k = d $, then $ p(n) = \Theta(n^k) $.
+  %   \part If $ k > d $, then $ p(n) = o(n^k) $.
+  %   \part If $ k < d $, then $ p(n) = \omega(n^k) $.
+  % \end{parts}
+
+  \begin{solution}
+    \begin{parts}
+      \part If $ k \geq d $, then $ p(n) = O(n^k) $.
+
+      Definition of Big-Oh: $ f(n) = O(g(n)) $ if there exists positive constants $c$ and $n_0$ such that $ 0 \leq f(n) \leq c.g(n) \;\; \forall n \geq n_0 $
+      \begin{proof}
+        Choose $ c = \sum_{i = 0}^d |a_i| $ and $ n_0 = 1 $. Then $ \forall n \geq n_0 $:
+        $$ p(n) = \sum_{i = 0}^d a_i n^i \leq \sum_{i = 0}^d |a_i| n^d \leq \biggl( \sum_{i = 0}^d |a_i| \biggr) n^k = cn^k $$
+        Since $ k \geq d, n^i \leq n^d \leq n^k \;\; \forall i \leq d $, thus $ p(n) = O(n^k) $
+      \end{proof}
+
+      \part If $ k \leq d $, then $ p(n) = \Omega(n^k) $.
+
+      Definition of Big-Omega: $ f(n) = \Omega(g(n)) $ if there exists positive constants $c$ and $n_0$ such that $ 0 \leq c.g(n) \leq f(n) \;\; \forall n \geq n_0 $
+      \begin{proof}
+        Choose $ c = a_d $ and $ n_0 = 1 $. Then $ \forall n \geq n_0 $:
+        $$ p(n) = \sum_{i = 0}^d a_i n^i \geq a^dn^d \geq a_dn^k = cn^k $$
+        Since $ a_d > 0 $ and $ k \leq d, n^d \geq n^k \;\; \forall n $, thus $ cn^k $ is a lower bound for $ p(n) $, and $ p(n) = \Omega(n^k) $.
+      \end{proof}
+
+      \pagebreak
+      \part If $ k = d $, then $ p(n) = \Theta(n^k) $.
+
+      Definition of Big-Theta: $ f(n) = \Theta(g(n)) $ if there exists positive constants $c_1, c_2$ and $n_0$ such that $ 0 \leq c_1.g(n) \leq f(n) \leq c_2.g(n) \;\; \forall n \geq n_0 $. Or in other words, $ f(n) = \Theta (g(n)) $ if $ f(n) = O(g(n)) $ and $ f(n) = \Omega(g(n)) $.
+      \begin{proof}
+        From parts (a) and (b), we have shown that if $ k \geq d $, then $ p(n) = O(n^k) $ and if $ k \leq d $, then $ p(n) = \Omega(n^k) $. When $ k = d $, both conditions are satisfied, which means $ p(n) $ is both upper and lower bounded by $ n^k $, hence is both $ O(n^k) $ and $ \Omega(n^k) $, and therefore $ p(n) = \Theta(n^k) $.
+      \end{proof}
+
+      \part If $ k > d $, then $ p(n) = o(n^k) $.
+
+      Definition of Little-Oh: $ f(n) = o(g(n)) $ if for every positive constant $c$, there exists a constant $n_0$ such that $ 0 \leq f(n) < c.g(n) \;\; \forall n \geq n_0 $
+      \begin{proof}
+        Given any $ c > 0 $, choose $ n_0 $ such that $ n_0^k > \sum_{i = 0}^d | a_i | n_0^i $. This is possible since $ k > d $, and $ n^k $ grows faster than any $ n^i $ for $ i < d $ as $n$ approaches infinity. Then $ \forall n \geq n_0 $:
+        $$ p(n) = \sum_{i = 0}^d a_in^i < \sum_{i = 0}^d |a_i|n^i < \biggl(\sum_{i = 0}^d |a_i| \biggr) n^k < cn^k $$
+        The above inequality holds because we can always find an $ n_0 $ such that the polynomial sum is less than $ cn^k $ for any $c$, thus $ p(n) = o(n^k) $.
+      \end{proof}
+
+      \part If $ k < d $, then $ p(n) = \omega(n^k) $.
+
+      Definition of Little-Omega: $ f(n) = \omega(g(n)) $ if for all constants $c > 0$, there exists some constant $n_0$ such that $ 0 \leq c.g(n) < f(n) \;\; \forall n \geq n_0 $, or $ p(n) > cn^k $. 
+      
+      \begin{proof}
+        Let $ p(n) = a_dn^d + a_{d - 1}n^{d - 1} + ... + a_1n + a_0 $, with $a_d > 0$ and $ k < d $. Consider the leading term $ a_dn^d $, which dominates $ p(n) $ as $n$ grows large. For any $ c > 0 $, we can choose $ n_0 $ such that for all $ n > n_0 $, $ a_dn^d > cn^k $. This is because the degree of $ n^d $ is higher than $ n^k $, and $ a_d > 0 $. 
+
+        Thus, as $n$ approaches infinity, the ratio $ p(n) / n^k $ approaches infinity which implies that $ p(n) $ grows strictly faster than $ cn^k $ for any constant $c$, proving that $ p(n) = \omega(n^k) $.
+      \end{proof}
+    \end{parts}
+  \end{solution}
+
+  \pagebreak
+  \question
+  \textbf{2. } Indicate for each pair of expressions $(A, B)$ in the table below, whether A is $ O, o, \Omega, \omega,  $ or $ \Theta $ of B. Assume that $ k \geq 1 $, $ \epsilon > 0 $, and $ c > 1 $ are constants. Write your answer in the form of the table with ``yes'' or ``no'' written in each box.
+
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{c | c c | c | c | c | c | c |}
+      & $A$ & $B$ & $O$ & $o$ & $\Omega$ & $\omega$ & $ \Theta $ \\ \hline
+      \textbf{a.} & $ \lg^k n $ & $ n^\epsilon $ & yes & yes & no & no & no \\ \hline
+      \textbf{b.} & $ n^k $ & $ c^n $ & yes & yes & no & no & no \\ \hline
+      \textbf{c.} & $ \sqrt{n} $ & $ n^{\sin n} $ & no & no & no & no & no \\ \hline
+      \textbf{d.} & $ 2^n $ & $ 2^{n/2} $ & no & no & yes & yes & no \\ \hline
+      \textbf{e.} & $ n^{\lg c} $ & $ c^{\lg n} $ & yes & no & yes & no & yes \\ \hline
+      \textbf{f.} & $ \lg(n!) $ & $ \lg(n^n) $ & yes & no & yes & no & yes \\ \hline
+    \end{tabular}
+  \end{table}
+
+  \question
+  \textbf{3. } Let $ f(n) $ and $ g(n) $ be asymptotically positive functions. Prove or disprove each of the following conjectures.
+
+  % \begin{parts}
+  %   \part $ f(n) = O(g(n)) $ implies $ g(n) = O(f(n)) $.
+  %   \part $ f(n) + g(n) = \Theta(\min\{f(n), g(n)\}) $.
+  %   \part $ f(n) = O(g(n)) $ implies $ \lg f(n) = O(\lg g(n)) $, where $ \lg g(n) \geq 1 $ and $ f(n) \geq 1 $ for all sufficiently large $ n $.
+  %   \part $ f(n) = O(g(n)) $ implies $ 2^{f(n)} = O(2^{g(n)}) $
+  %   \part $ f(n) = O((f(n))^2) $.
+  %   \part $ f(n) = O(g(n)) $ implies $ g(n) = \Omega(f(n)) $.
+  %   \part $ f(n) = \Theta(f(\frac{n}{2})) $
+  %   \part $ f(n) + o(f(n))\Theta(f(n)) $
+  % \end{parts}
+
+  \begin{solution}
+    \begin{parts}
+      \part $ f(n) = O(g(n)) $ implies $ g(n) = O(f(n)) $.
+
+      False. Consider $ f(n) = n $ and $ g(n) = n^2 $. Then $ f(n) = O(g(n)) $ but $ g(n) \neq O(f(n)) $.
+
+      \part $ f(n) + g(n) = \Theta(\min\{f(n), g(n)\}) $.
+
+      False. Consider $ f(n) = n $ and $ g(n) = n^2 $. Then $ f(n) + g(n) = n + n^2 = O(n^2) $ but $ \min\{f(n), g(n)\} = n $, and $ n^2 \neq O(n) $.
+
+      \part $ f(n) = O(g(n)) $ implies $ \lg f(n) = O(\lg g(n)) $, where $ \lg g(n) \geq 1 $ and $ f(n) \geq 1 $ for all sufficiently large $ n $.
+
+      True. Suppose that $ f(n) = O(g(n)) $. Let $c$ and $n_0$ be positive constants such that $1\le f(n)\le cg(n)$ and $\lg g(n)\ge1$ for all $n\ge n_0$. Then,
+      \begin{align*}
+          \lg f(n) &\le \lg c+\lg g(n) \\
+          &\le \lg c\cdot\lg g(n)+\lg g(n) \\
+          &= (\lg c+1)\lg g(n) \\
+          &= O(\lg g(n)).
+      \end{align*}
+
+      \part $ f(n) = O(g(n)) $ implies $ 2^{f(n)} = O(2^{g(n)}) $
+
+      False. Consider $ f(n) = 2n = O(n) $, and $ g(n) = n = O(n) $. It holds that $f(n)=O(g(n))$, but $ 2^{2n} \neq O(2^n) $. If it were, there would exist $ n_0 $ and $c$ such that $ n \geq n_0 $ implies $ 2^n.2^n = 2^{2n} \leq c2^n $, so $ 2^n \leq c $ for $ n \geq n_0 $ which is clearly impossible since $c$ is a constant. 
+
+      \pagebreak
+      \part $ f(n) = O((f(n))^2) $.
+
+      False. If $f(n)=1/n$, then $f^2(n)=1/n^2$. Since there doesn't exist any positive constant $c$ such that $1/n\le c/n^2$ for arbitrarily large $n$, then $f(n)\ne O(f^2(n))$.
+
+      \part $ f(n) = O(g(n)) $ implies $ g(n) = \Omega(f(n)) $.
+
+      True. Suppose that $f(n)=O(g(n))$. Let $c$ and $n_0$ be positive constants such that $0\le f(n)\le cg(n)$ for all $n\ge n_0$. Dividing all parts of the inequality by $c$ yields $0\le f(n)/c\le g(n)$, and since $1/c>0$, then $g(n)=\Omega(f(n))$.
+
+      \part $ f(n) = \Theta(f(\frac{n}{2})) $
+      
+      False. Let $ f(n) = 2^n $, then $ f(n/2) = 2^{n/2} = \sqrt{2^n} $. Suppose that $f(n)=O(f(n/2))$. Then for a positive constant $c$ and for sufficiently large $n$, it holds $2^n\le c\sqrt{2^n}$. But then $c\ge\sqrt{2^n}$ and $c$ cannot be a constant. Therefore, $f(n)\ne O(f(n/2))$, which implies $f(n)\ne\Theta(f(n/2))$.
+
+      \part $ f(n) + o(f(n)) = \Theta(f(n)) $
+
+      True. Let $ h(n)=o(f(n)) $ Then, for any positive constant $c$ there exists a positive constant $n_0$ such that $0\le h(n)<cf(n)$ for all $n\ge n_0$. This implies that
+      \begin{align*}
+          f(n) &\le f(n)+o(f(n)) \\
+          &= f(n)+h(n) \\
+          &< (c+1)f(n) \\
+          &< 2f(n),
+      \end{align*}
+      so $f(n)+o(f(n))=\Theta(f(n))$
+    \end{parts}
+  \end{solution}
+
+  \pagebreak
+  \question
+  \textbf{4. } Let $ f(n) $ and $g(n)$ be asymptotically positive functions. Prove the following identities.
+
+  % \begin{parts}
+  %   \part $ \Theta (\Theta (f(n))) = \Theta (f(n)) $
+  %   \part $ \Theta (f(n)) + O(f(n)) = \Theta (f(n)) $
+  %   \part $ \Theta (f(n)) + \Theta(g(n)) = \Theta (f(n) + g(n)) $
+  %   \part $ \Theta (f(n)). \Theta(g(n)) = \Theta(f(n).g(n)) $
+  % \end{parts}
+
+  \begin{solution}
+    \begin{parts}
+      \part $ \Theta (\Theta (f(n))) = \Theta (f(n)) $
+
+      Let $p(n)=\Theta(f(n))$, and let $c_1$, $c_2$, and $n_p$ be positive constants such that
+      \[ 0 \le c_1f(n) \le p(n) \le c_2f(n) \]
+      for all $n\ge n_p$. Also, let $q(n)=\Theta(p(n))$ and let $d_1$, $d_2$, and $n_q$ be positive constants such that
+      \[ 0 \le d_1p(n) \le q(n) \le d_2q(n) \]
+      for all $n\ge n_q$. Then, for all $n\ge\max\{n_p,n_q\}$,
+      \begin{align*}
+          0 &\le c_1d_1f(n) \\
+          &\le d_1p(n) \\
+          &\le q(n) \\
+          &\le d_2p(n) \\
+          &\le c_2d_2f(n),
+      \end{align*}
+      which implies that $q(n)=\Theta(f(n))$.
+
+      \part $ \Theta (f(n)) + O(f(n)) = \Theta (f(n)) $
+
+      Let $p(n)=\Theta(f(n))$ and $q(n)=O(f(n))$. Then there exist positive constants $c_1$, $c_2$, $d$, $n_p$, and $n_q$ such that
+      \[ 0 \le c_1f(n) \le p(n) \le c_2f(n) \]
+      for all $n\ge n_p$, and
+      \[ 0 \le q(n) \le df(n) \]
+      for all $n\ge n_q$. Then, for all $n\ge\max{n_p,n_q}$,
+      \begin{align*}
+          0 &\le c_1f(n) \\
+          &\le p(n) \\
+          &\le p(n)+q(n) \\
+          &\le c_2f(n)+df(n) \\
+          &= (c_2+d)f(n),
+      \end{align*}
+      which implies that $p(n)+q(n)=\Theta(f(n))$.
+
+      \part $ \Theta (f(n)) + \Theta(g(n)) = \Theta (f(n) + g(n)) $
+
+      Let $p(n)=\Theta(f(n))$ and $q(n)=\Theta(g(n))$. Then there exist positive constants $c_1$, $c_2$, $d_1$, $d_2$, $n_p$, and $n_q$ such that
+      \[ 0 \le c_1f(n) \le p(n) \le c_2f(n) \]
+      for all $n\ge n_p$, and
+      \[ 0 \le d_1g(n) \le q(n) \le d_2g(n) \]
+      for all $n\ge n_q$. Then, for all $n\ge\max{n_p,n_q}$,
+      \begin{align*}
+          0 &\le \min\{c_1,d_1\}(f(n)+g(n)) \\
+          &\le c_1f(n)+d_1g(n) \\
+          &\le p(n)+q(n) \\
+          &\le c_2f(n)+d_2g(n) \\
+          &\le \max{c_2,d_2}(f(n)+g(n)),
+      \end{align*}
+      which implies that $p(n)+q(n)=\Theta(f(n)+g(n))$.
+
+      \part $ \Theta (f(n)). \Theta(g(n)) = \Theta(f(n).g(n)) $
+
+      For the same functions and constants as in the previous part, it is true that for all $n\ge\max\{n_p,n_q\}$,
+      \begin{align*}
+          0 &\le \min\{c_1,d_1\}^2(f(n)\cdot g(n)) \\
+          &\le c_1f(n)\cdot d_1g(n) \\
+          &\le p(n)\cdot q(n) \\
+          &\le c_2f(n)\cdot d_2g(n) \\
+          &\le \max{c_2,d_2}^2(f(n)\cdot g(n)),
+      \end{align*}
+      which implies that $p(n)\cdot q(n)=\Theta(f(n)\cdot g(n))$.
+    \end{parts}
+  \end{solution}
+
+\end{questions}
+
+\end{document}

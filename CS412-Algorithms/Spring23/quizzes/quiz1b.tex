@@ -1,0 +1,167 @@
+\documentclass[addpoints,a4paper]{exam}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{pythonhighlight}
+
+\newcolumntype{L}{>$l<$}
+
+% solution
+\usepackage{draftwatermark}
+\SetWatermarkText{Sample Solution}
+\SetWatermarkScale{3}
+\SetWatermarkLightness{0.9}
+\printanswers
+
+\begin{document}
+\begin{flushleft}
+  { \large \textsf{\textbf{CS 412: Algorithms: Design and Analysis,  Quiz 4 -- L4, Spring 2023}}}\vspace{.5em}
+  
+  Thursday, 26 January, 2023. Total Marks: \numpoints, Duration: 30 minutes.
+\end{flushleft}
+
+{\bf Instructions:}
+
+\begin{enumerate}
+  % \item Please observe the allowed time for this quiz as indicated on Canvas.
+\item Solve the problems by hand on blank A4 paper in clear and legible handwriting.
+\item Be precise and concise in your solutions.
+  \item For each question, justify your answer. Simply stating the answer will not be sufficient.
+\item Work in pencil will be considered rough work and ignored for grading purposes.
+\end{enumerate}
+\centerline{\rule{.7\textwidth}{1pt}}
+
+\begin{questions}
+
+  \question The running time of an algorithm is given by the following recurrence relation.
+  \[
+    T(n) = \Theta(n) + 2T\left(\frac{n}{3}\right)
+  \]
+  
+  \begin{parts}
+    \part[2] Write plausible pseudocode for the algorithm, identifying the lines corresponding to each of the steps: \textit{divide}, \textit{conquer}, and \textit{combine}.
+    \begin{solution}
+\begin{python}
+def f(A, k):
+  # A is a sequence of elements. k is an element from A.
+  # Choose split points in A to divide into thirds.
+  n = len(A)
+  third = n//3
+  # scan A to find the index of k
+  i = A.index(k)
+  # prepare portions that do not contain k,
+  # prepare elements in those portions.
+  if i >= split2:  # k is in the last third
+    left_bounds = (0, third)
+    right_bounds = (third, 2*third)
+    right_index = i - third
+    left_index = right_index - third
+  elif i >= split1:  # k is in the middle third
+    left_bounds = (0, third)
+    right_bounds = (2*third, n)
+    left_index = i - third
+    right_index = i + third
+  else:  # k is in the first third
+    left_bounds = (third, 2*third)
+    right_bounds = (2*third, n)
+    left_index = i + third
+    right_index = left_index + third
+  # recurse on identified portions
+  left_result = f(A[left_bound[0]: left_bound[1]], A[left_index])
+  right_result = f(A[right_bound[0]: right_bound[1]], A[right_index])
+  # combine the results
+  return min(left_result, right_result)
+\end{python}
+      Divide: Lines 4 to 24\\
+      Conquer: Lines 26 to 27\\
+      Combine: Line 29
+    \end{solution}
+    \part[2] Argue how your pseudocode corresponds to the recurrence relation.
+    \begin{solution}
+      Let the running time of the function be $T(n)$.
+      \begin{itemize}
+      \item The divide step performs $\Theta(n)$ work owing to the linear scan on line 7. All the other lines for this step perform a constant amount of work.
+      \item The conquer step makes 2 recursive calls on problems of size $\frac{n}{3}$. The total amount of work done is therefore $2T\left(\frac{n}{3}\right)$.
+      \item The combine step takes $\Theta(1)$ time.
+      \end{itemize}
+      $T(n)$ is therefore $\Theta(n) + 2T\left(\frac{n}{3}\right)$.
+    \end{solution}
+  \end{parts}
+
+  \question We are given the following algorithm.
+\begin{python}
+def f(A, n):
+  for i = 1 to n-1:
+    min = A[i]
+    idx = i
+    for j = i+1 to n:
+      if A[j] < min:
+        min = A[j]
+        idx = j
+    A[i], A[idx] = A[idx], A[i]
+\end{python}
+  \begin{parts}
+    \part[2] State and justify an invariant for the outer loop. The invariant must capture the work done in the loop.
+    \begin{solution}
+      \underline{Invariant}: At the end of the $i$-th iteration, $A[i]\leq A[j]$ for all $i< j \leq n$.
+
+      Lines 3 to 8 iterate over $i<j\leq n$ and store the running minimum and corresponding index in \texttt{min} and \texttt{idx}. Line 9 swaps the minimum with $A[i]$. Therefore, $A[i]$ ends up as the smallest element between positions $i$ and $n$.
+    \end{solution}
+    \part[2] Derive an expression for the run time of this algorithm. If applicable, argue about the different cases of the run time and derive corresponding expressions.
+    \begin{solution}
+      We can argue about each line as follows.
+      
+      \begin{tabular}{LLL}
+        \text{Line} & \text{Cost} & \text{Number of repetitions}\\
+        \hline
+        2 & c_1 & n\\
+        3 & c_2 & n-1\\
+        4 & c_3 & n-1\\
+        5 & c_4 & \sum\limits_{i=1}^{n-1} (n-i+1)\\
+        6 & c_5 & \sum\limits_{i=1}^{n-1} (n-i)\\
+        7 & c_6 & \sum\limits_{i=1}^{n-1} t_i\\
+        8 & c_7 & \sum\limits_{i=1}^{n-1} t_i\\
+        9 & c_8 & n-1\\
+      \end{tabular}
+      
+      where $t_i$ is the number of times that lines 7 and 8 execute for a value of $i$. Grouping together lines 2, 3, 4, and 9, and lines 5, 6, 7, and 8, we get,
+      \begin{align*}
+        T(n) & = \Theta(n) + \sum\limits_{i=1}^{n-1} (c_4(n-i+1) + c_5(n-i) + c_6t_i + c_7t_i)\\
+             & = \Theta(n) + (c_4+c_5)\sum\limits_{i=1}^{n-1}n - (c_4+c_5)\sum\limits_{i=1}^{n-1}i + c_4\sum\limits_{i=1}^{n-1}1 + (c_6+c_7)\sum\limits_{i=1}^{n-1}t_i\\
+             & = \Theta(n) + (c_4+c_5)n(n-1) - (c_4+c_5)\frac{n(n-1)}{2} + c_4(n-1) + (c_6+c_7)\sum\limits_{i=1}^{n-1}t_i\\
+             & = \Theta(n) + (c_4+c_5)\frac{n(n-1)}{2} + c_4(n-1) + (c_6+c_7)\sum\limits_{i=1}^{n-1}t_i\\
+             & = \Theta(n) + \Theta(n^2) + (c_6+c_7)\sum\limits_{i=1}^{n-1}t_i\\
+             & = \Theta(n^2) + (c_6+c_7)\sum\limits_{i=1}^{n-1}t_i\\
+      \end{align*}
+      \underline{Best case}: Lines 7 and 8 never execute. Then $t_i=0$, and
+      \[
+        T(n) = \Theta(n^2)
+      \]
+      \underline{Worst case}: Lines 7 and 8 execute every time line 6 executes. Then $t_i=n-i$, and
+      \[
+        T(n) = \Theta(n^2) + (c_6+c_7)\sum\limits_{i=1}^{n-1}(n-i) = \Theta(n^2)\\
+      \]
+    \end{solution}
+  \end{parts}
+
+  \question[2] Prove or disprove the following statement.
+  \[
+    f(n) = \Theta(g(n)) \iff g(n) = \Theta(f(n))
+  \]
+  \begin{solution}
+    We prove both directions of the biconditional.
+    \begin{proof}
+      \underline{Case $f(n) = \Theta(g(n)) \implies g(n) = \Theta(f(n))$}:\\
+      There exist $c_1,c_2>0$ such that $0\leq c_1g(n) \leq f(n) \leq c_2 g(n)$ for $n\geq n_0$.\\
+      Then $0\leq \frac{1}{c_2}f(n) \leq g(n) \leq \frac{1}{c_1}f(n)$ for $n\geq n_0$.\\
+      \smallskip
+      
+      \underline{Case $g(n) = \Theta(f(n)) \implies f(n) = \Theta(g(n))$}:\\
+      This can be argued analogously.
+    \end{proof}
+  \end{solution}
+\end{questions}
+\centerline{\rule{.3\textwidth}{1pt}viel Gl\"uck\rule{.3\textwidth}{1pt}}
+
+\end{document}

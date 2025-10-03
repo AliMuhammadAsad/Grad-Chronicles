@@ -1,0 +1,425 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Discrete Mathematics}{Problem Set 3}{CS/Math 113}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\title{CS/Math 113 - Problem Set 3}
+\author{Habib University - Spring 2023}
+\date{Week 03 - Week 04}
+
+\begin{document}
+\maketitle
+\begin{sloppypar}
+\section*{Problems}
+
+\section*{Predicates and Quantifiers}
+
+\begin{problem}{1}
+Let $P(x)$ be the statement ``x spends more than five hours every weekday in class, '' where the domain for $x$ consists of all students.
+Express each of these quantifications in English.
+\begin{itemize}
+    \item[(a)] $\exists x P(x)$
+    \item[(b)] $\forall x P(x)$
+    \item[(c)] $\exists x \neg P(x)$
+    \item[(d)] $\forall x \neg P(x)$
+\end{itemize}
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        
+        (a) There is a student who spends more than five hours every weekday in class.
+
+        (b) All students/Every student spend(s) more than five hours every weekday in class.
+
+        (c) There is a student who does not spend more than five hours every weekday in class.
+
+        (d) No student spends more than five hours every weekday in class.
+    \end{solution}
+\end{questions}
+\pagebreak
+\begin{problem}{2}
+Translate these statements in English, where $C(x)$ is ``x is a comedian'' and $F(x)$ is ``x is funny'' and the domain consists of all people.
+\begin{itemize}
+    \item[(a)] $\forall(C(x) \implies F(x))$
+    \item[(b)] $\forall(C(x) \land F(x))$
+    \item[(c)] $\exists(C(x) \implies F(x))$
+    \item[(d)] $\exists(C(x) \land F(x))$
+\end{itemize}
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        
+        (a) For every $x$, if $x$ is a comedian, then $x$ is funny. / If anyone is a comedian, then they are funny / All comedians are funny.
+
+        (b) All people are a comedian and they are funny.
+
+        (c) If a person exists who is a comedian, then they are funny.
+
+        (d) There is someone who is a comedian and they are funny.
+    \end{solution}
+\end{questions}
+
+\begin{problem}{3}
+Let $P(x)$ be the statement ``x can speak Russian'' and $Q(x)$ be the statement ``x knows the computer language C++.''
+Express each of these sentences in terms of $P(x),Q(x)$,quantifiers, and logical connectives. The domain for the quantifiers consists of all students at your school.
+\begin{itemize}
+    \item [(a)] There is a student at your school who can speak Russian and who knows C++.
+    \item [(b)] There is a student at your school who can speak Russian but who doesn’t know C++.
+    \item [(c)] Every student at your school either can speak Russian or knows C++.
+    \item [(d)] No student at your school can speak Russian or knows C++
+\end{itemize}
+
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        
+        (a) $ \exists x (P(x) \land Q(x)) $ 
+
+        (b) $ \exists x (P(x) \land \neg Q(x)) $
+
+        (c) $ \forall x (P(x) \lor Q(x)) $ 
+
+        (d) $ \neg\exists x (P(x) \lor Q(x)) $
+    \end{solution}
+\end{questions}
+\pagebreak
+\begin{problem}{4}
+Let $C(x)$ be the statement ``x has a cat'', let $D(x)$ be the statement ``x has a dog,'' and let $F(x)$ be the statement ``x has a ferret''. Express of these statements in terms of $C(x), D(x), F(x)$, quantifiers, and logical connectives.
+Let the domain consist of all students in your class.
+\begin{itemize}
+    \item[(a)] A student in your class has a cat, a dog, and a ferret.
+    \item[(b)] All students in your class have a cat, a dog, or a ferret.
+    \item[(c)] Some student in your class has a cat and a ferret, but not a dog.
+    \item[(d)] No student in your class has a cat, a dog, and a ferret.
+    \item[(e)] For each of the three animals, cats, dogs, and ferrents, there is a student in your class who has this animal as a pet.
+\end{itemize}
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        
+        (a) $ \exists x (C(x) \land D(x) \land F(x)) $ \\
+        (b) $ \forall x (C(x) \lor D(x) \lor F(x)) $ \\ 
+        (c) $ \exists x (C(x) \land F(x) \land \neg D(x)) $ \\ 
+        (d) $ \neg\exists x (C(x) \land D(x) \land F(x)) $ \\ 
+        (e) $ \exists x, y, z (C(x) \land D(y) \land F(z)) $
+    \end{solution}
+\end{questions}
+
+\begin{problem}{5}
+Determine the truth value of each of these statements if the domain consists of all integers.
+\begin{itemize}
+    \item[(a)] $\forall n (n + 1 > n)$
+    \item[(b)] $\forall n (2n = 3n) $
+    \item[(c)] $\exists n (n = -n)$
+    \item[(d)] $\forall n (3n \leq 4n) $
+\end{itemize}
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        \begin{itemize}
+            \item[(a)] The statement is true, as $ n + 1 $ will always be greater then $n$
+            \item[(b)] The truth value is false 
+            \item[(c)] The truth value is true for $n = 0$
+            \item[(d)] Truth value is false, as $ 3n \geq 4n \; \forall n \; | \; n \in \mathbb{Z^{-}} $   
+        \end{itemize}
+    \end{solution}
+\end{questions}
+\pagebreak
+\begin{problem}{6}
+Determine the truth value of each of these statements if the domain consists of all real numbers.
+\begin{itemize}
+    \item[(a)] $\exists x (x^3 = -1)$
+    \item[(b)] $\exists x (x^4 < x^2) $
+    \item[(c)] $\forall x ((-x)^2 = x^3)$
+    \item[(d)] $\forall x (2x >  x) $
+\end{itemize}
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        \begin{itemize}
+            \item[(a)] Truth value is true, $ x = -1 $
+            \item[(b)] Truth value is true, $ x^4 < x^2 \;\; (-1 < x < 0 \; \lor \; 0 < x < 1) $
+            \item[(c)] Truth value is false
+            \item[(d)] Truth value is false, $ 2x < x \; \; \forall x \in \mathbb{R}_{\leq 0} $ 
+        \end{itemize}
+    \end{solution}
+\end{questions}
+
+\begin{problem}{7}
+Express the negation of each of these statements in terms of quantifiers without using the negation symbol.
+\begin{itemize}
+    \item[(a)] $\forall x ( x > 1) $
+    \item[(b)] $\forall x ( x \leq 2) $
+    \item[(c)] $\exists x (x \geq 4)$
+    \item[(d)] $\exists x (x < 0) $
+    \item[(e)] $\forall x ((x < -1) \lor (x > 2)) $
+    \item[(f)] $\exists x ((x<4)\lor(x>7))$
+\end{itemize}
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        \begin{itemize}
+            \item[(a)] $ \exists x (x \leq 1) $
+            \item[(b)] $ \exists x (x > 2) $
+            \item[(c)] $ \forall x (x < 4) $
+            \item[(d)] $ \forall x (x \geq 0) $
+            \item[(e)] $ \exists x ((x \geq -1) \land (x \leq 2)) $
+            \item[(f)] $ \forall x ((x \geq 4) \land (x \leq 7)) $     
+        \end{itemize}
+    \end{solution}
+\end{questions}
+
+\begin{problem}{8}
+Find a counterexample, if possible, to these universally quantified statements, where the domain for all variables consists of all integers.
+\begin{itemize}
+    \item[(a)] $\forall x (x^2 \geq x)$
+    \item[(b)] $\forall x (x >0 \lor x<0)$
+    \item[(c)] $\forall x ( x = 1) $
+\end{itemize}
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        \begin{itemize}
+            \item[(a)] No counterexample exists. 
+            \item[(b)] Existence of 0 is a counterexample.
+            \item[(c)] Obviously false, we can take any other number/integer other than 1 such as 69, 420, 666, 73.  
+        \end{itemize}
+    \end{solution}
+\end{questions}
+
+\begin{problem}{9}
+Determine whether $\forall x (P(x) \implies Q(x))$ and $\forall x P(x) \implies \forall x Q(x)$ are logically equivalent. Justify your answer.
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+
+        The first statement says that for all $x$, if $ P(x) $ then $ Q(x) $. While the second statement says that for all $x$, if $ P(x) $, then for all $Q(x)$. \\ 
+        These are obviously not logically equivalent as by the first statement, if for any $x, P(x)$ is true, then $ Q(x) $ is also true for that $x$. However, the second statement says that if $ P(x) $ is true for any $x$, then $ Q(x) $ is true for all $x$. \\ 
+        Consider, \\ 
+        Let $ P(x) $ be the statement ``$x$ is a fish'' \\ 
+        Let $ Q(x) $ be the statement ``$x$ can fly when it rains'' 
+        
+        Then by the first statement, if $x$ is a fish, then $x$ can fly when it rains. \\ 
+        However, by the second statemnt, if any $x$ is a fish, then all fishes can fly when it rains. \\ 
+        Hence they are not logically equivalent.
+    \end{solution}
+\end{questions}
+
+\begin{problem}{10}
+Determine whether $\forall x (P(x) \leftrightarrow Q(x))$ and $\forall x P(x) \leftrightarrow \forall x Q(x)$ are logically equivalent. Justify your answer.
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        
+        We can use the argument in Problem 9 for this, however, keep in mind the double implication.
+    \end{solution}
+\end{questions}
+
+\begin{problem}{11}
+Show that  $\exists x (P(x) \lor Q(x))$ and $\exists x P(x) \lor \exists x Q(x)$ are logically equivalent.
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+
+        Both are going to be true if anyone of $ P(x) $ or $ Q(x) $ are true for at least one value of $x$ in the domain | whatever the domain is [universe of discourse].
+    \end{solution}
+\end{questions}
+% \pagebreak
+\begin{problem}{12}
+Show that  $\forall x P(x) \lor \forall Q(x)$ and $\forall x (P(x) \lor Q(x))$ are not logically equivalent.
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+
+        The first statement says that either one of the two predicates, $ P(x) $ or $ Q(x) $ holds while the second statement says that for every $x$, either $ P(x) $ or $ A(x) $ holds. 
+
+        A simple counterexample can be considering the predicates for the domain of all integers; \\ Let $ P(x) $ be the statement that $x$ is even \\ Let $ Q(x) $ be the statement that $x$ is odd. 
+        
+        The first proposition will be false as neither all integers are even [$ P(x) $] and neither all integers are odd [$ Q(x) $], however, the second proposition is true since any integer is either going to be even, or it is going to be odd. So either $ P(x) $  or $ Q(x) $ is going to be true. 
+
+        Hence they are not logically equivalent.
+    \end{solution}
+\end{questions}
+
+\begin{problem}{13}
+Show that  $\exists x P(x) \land \exists x Q(x)$ and $\exists x (P(x) \land Q(x))$ are not logically equivalent.
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+
+        The first statement says that there exists an $x$ for which $ P(x) $ holds or there exists an $x$ for which $ Q(x) $ holds while the second statement states that there exists an $x$ for which $ P(x) $ and $ Q(x) $ both hold. 
+
+        A simple counterexample can be considering the predicates for the domain of all integers; \\ Let $ P(x) $ be the statement that $x$ is even \\ Let $ Q(x) $ be the statement that $x$ is odd. 
+
+        The first proposition will be true as there do exist some even integers and there do exist some odd integers. However, the second proposition will be false as there does not exist any integer that is both even and odd.
+    \end{solution}
+\end{questions}
+\pagebreak
+\section*{Nested Quantifiers}
+\begin{problem}{14}
+Transalate these statements into English, where the domain for each variable consists of all real numbers.
+\begin{itemize}
+    \item[(a)] $\forall x \exists y (x < y) $
+    \item[(b)] $\forall x \forall y (((x \geq 0) \land (y \geq 0) ) \implies (xy \geq 0)) $
+    \item[(c)] $\forall x \forall y \exists z (xy=z) $
+\end{itemize}
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        \begin{itemize}
+            \item[(a)] For any real number $x$, there exists some real number $y$ such that $x$ is less than $y$.
+            \item[(b)] For any real number $x$ and any real number $y$, if $x$ is greater than or equal to 0, and $y$ is greater than or equal to 0, then the product of $x$ and $y$ is greater than or equal to 0. \\ Or simply, the product of any two non negative real numbers $x$ and $y$ is non negative/greater than or equal to 0.
+            \item[(c)] For any real number $x$, and any real number $y$, there exists some real number $z$ such that the product of $x$ and $y$ is equal to $z$. \\ Or, the real numbers are closed under multiplication.  
+        \end{itemize}
+    \end{solution}
+\end{questions}
+
+\begin{problem}{15}
+Let $Q(x,y)$ be the statement ``x has sent an e-mail message to y,'' where the domain for both $x$ and $y$ consists of all students in your class. Express each of these quantifications in English.
+\begin{itemize}
+    \item[(a)] $\exists x \exists y Q(x,y)$
+    \item[(b)] $\exists x \forall y Q(x,y)$
+    \item[(c)] $\forall x \exists y Q(x,y)$
+    \item[(d)] $\exists y \forall x Q(x,y)$
+    \item[(e)] $\forall y \exists x Q(x,y)$
+    \item[(f)] $\forall y \forall x Q(x,y)$
+\end{itemize}
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        \begin{itemize}
+            \item[(a)] There is some student in your class who has sent an e-mail to some student in your class.
+            \item[(b)] There is some student in your class who has sent an e-mail to every student in your class.
+            \item[(c)] Every student in your class has sent an e-mail to some student in your class.
+            \item[(d)] There is some student who has been sent an e-mail by every student in your class. \\ This is not the same as (c) since the order of the quantifiers matter. Here, the existential quantification on $y$ comes first, meaning that every person sent an e-mail message to the same person.
+            \item[(e)] Every student in your class has been sent an e-mail message by some student.
+            \item[(f)] Every student in your class has sent an e-mail message to every student in your class.  
+        \end{itemize}
+    \end{solution}
+\end{questions}
+
+\begin{problem}{16}
+Let $Q(x,y)$ be the statement ``Student x has been a contestant on quiz show y.'' Express each of these sentences in terms of $Q(x,y)$, quantifiers, and logical connectives, where the domain for $x$ consists of all
+the students at your school and for $y$ consists of all quiz shows on telivision.
+\begin{itemize}
+    \item[(a)] There is a student at your school who has been a contestant on a television quiz show.
+    \item[(b)] No student at your school has ever been a contestant on a television quiz show.
+    \item[(c)] There is a student at your school who has been a contestant on \textit{Jeopardy!} and on \textit{Wheel of Fortune.}
+    \item[(d)] Every television quiz show has had a student from your school as a contestant.
+    \item[(e)] At least two students from your school have been contestants on \textit{Jeopardy!}.
+\end{itemize}
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        \begin{itemize}
+            \item[(a)] $ \exists x \exists y Q(x, y) $
+            \item[(b)] $ \neg \exists x \exists y Q(x, y) $ or $ \forall x \forall y \neg Q(x, y) $ [negation of (a)]
+            \item[(c)] $ \exists x (Q(x, \text{Jeopardy}) \land Q(x, \text{Wheel of Fortune})) $ 
+            \item[(d)] $ \forall y \exists x Q(x, y) $
+            \item[(e)] $ \exists x_1 \exists x_2 (Q(x_1, \text{Jeopardy}) \land Q(x_2, \text{Jeopardy})) $  
+        \end{itemize}
+    \end{solution}
+\end{questions}
+\pagebreak
+\begin{problem}{17}
+Rewrite each of these statements so that negations apper only within predicates (that is, so that no negation is outside a quantifier or an expression involving logical connectives)
+\begin{itemize}
+    \item[(a)] $\neg \exists y \exists x P(x,y)$
+    \item[(b)] $\neg \forall x \neg \exists y P(x,y)$
+    \item[(c)] $\neg \exists y(Q(y) \land \forall x \neg R(x, y))$
+    \item[(d)] $\neg \exists y(\exists x R(x, y) \lor \forall x S(x, y))$
+    \item[(e)] $\neg \exists y(\forall x \exists z T(x, y, z) \lor \exists x \forall z U(x, y, z))$
+\end{itemize}
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        \begin{itemize}
+            \item[(a)] $ \forall y \forall x \neg P(x, y) $
+            \item[(b)] $ \exists x \forall y \neg P(x, y) $
+            \item[(c)] $ \forall y (\neg Q(y) \lor \exists x R(x, y)) $
+            \item[(d)] $ \forall y (\forall x \neg R(x, y) \land \exists x \neg S(x, y)) $
+            \item[(e)] $ \forall x (\exists y \forall z \neg T(x, y, z) \land \forall x \exists z \neg U(x, y, z)) $   
+        \end{itemize}        
+    \end{solution}
+\end{questions}
+
+\begin{problem}{18}
+Determine the truth value of each of these statements if the domain of each variable consists of all real numbers.
+\begin{itemize}
+    \item[(a)] $\forall x \exists y (x^2=y)$
+    \item[(b)] $\forall x \exists y (x = y^2)$
+    \item[(c)] $\exists x \forall y (xy=0) $
+    \item[(d)] $\exists x \exists y (x + y \neq y + x) $
+\end{itemize}
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        \begin{itemize}
+            \item[(a)] True 
+            \item[(b)] False $ \longrightarrow $ no such $y$ exists for negative $x$.
+            \item[(c)] True $ \longrightarrow x = 0 $
+            \item[(d)] False $ \longrightarrow $ commutative law of addition holds   
+        \end{itemize}
+    \end{solution}
+\end{questions}
+
+\end{sloppypar}
+\end{document}

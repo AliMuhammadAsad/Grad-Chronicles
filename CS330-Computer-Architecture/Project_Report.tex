@@ -1,0 +1,227 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{report}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[breaklinks]{hyperref}
+\usepackage{listings}
+\usepackage{pdfpages}
+\usepackage{comment}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{lipsum}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{bm}
+\usepackage{wrapfig}
+\usepackage{bookmark}
+\usepackage{titlesec}
+\usepackage{hyperref}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+\hypersetup{
+    colorlinks = true,
+    linkcolor = black,
+    urlcolor = blue,
+}
+\urlstyle{same}
+
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}{}{0pt}{\Huge}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{Project Report}
+\fancyhead[C]{RISC-V Processor}
+\fancyhead[R]{Computer Architecture}
+\fancyfoot{}
+\fancyfoot[C]{\thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{{\huge \textbf{Computer Architecture \\ CE/CS - 321/330 }} 
+
+\vspace*{2mm}
+{\LARGE \textbf{Final Project Report}}
+
+{\Large \textbf{RISC-V Processor}} \\
+{\includegraphics{HU logo.jpg}} \\ 
+{\Large \textbf{Instructors: Farhan Khan, Ahmed Bilal}}}
+\author{Ali Muhammad Asad - aa07190 \\ Lyeba Abid - la07309 \\ Sadiqah Mushtaq - sm07152}
+\date{01 May 2023}
+
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\chapter{Introduction}
+% \addcontentsline{toc}{section}{Objective}
+\section{Objective}
+
+To build a 5-stage pipelined processor capable of executing any one array sorting algorithm other than bubble sort, we will need to convert a single-cycle processor into a pipelined one. In most cases, the instructions we have already implemented will allow us to run a sorting algorithm program with minor additions, such as implementing bgt or blt instructions to detect when you need to swap two values. This will require some modifications to the circuit.
+
+\subsection{Sorting Algorithm}
+We will be using bubble sort to test our processor functionality. Complete Project (\href{https://github.com/AliMuhammadAsad/Computer-Architecture-Spring-23/tree/main/RISC_V_Pipelined_Complete}{RISC V Processor on Github})
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.5]{ss1.png}
+    \caption{Registers and Memory}
+    \label{fig: Registers and Memory}
+\end{figure}
+
+\chapter{Tasks}
+\section{Task1}
+\subsection{RISC V Implementation (single cycle)}
+
+    We implemented the converted algorithm on the RISC V single-cycle processor developed in our lab. To make the processor compatible with the algorithm, we made some adjustments to the ALU and instruction memory. Specifically, we added a Branch Unit module to support bgt and blt commands used in the algorithm. Additionally, we introduced an addermuxselect input to control the last mux in the processor. These modifications enabled us to run the sorting algorithm effectively on the RISC V processor.
+    
+\subsection{Changes}
+    We made changes in ALU64 bit and added the funct 3's of blt and bge so that their functionality can be added. Moreover, we added the function for slli. Further, we altered the data memory, and instruction memory. Instruction memory was initialised with dummy values initially. We initialised all to 0 so as to make it function properly. The data memory was initialised with array values for sorting. An entire branch unit module was added to manage branch and output a signal addermuxselect which was then ANDED with branch in the toplevelmodule to give the branch decission.
+    \pagebreak
+\subsection{Code and Waveform}
+The link for the code can be found \href{https://github.com/AliMuhammadAsad/Computer-Architecture-Spring-23/tree/main/Single%20Cycle%20RISC%20V%20-%20Project%20Task1}{here}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.5]{SIngleCycleSimulation.jpg}
+    \caption{Single Cycle Simulation}
+    \label{fig: Single Cycle Simulation}
+\end{figure}
+\subsection{Synopsis}
+    To make our sorting algorithm function properly, we introduced changes to the ALU and the final MUX module (by modifying the select line). Additionally, we added a new module called the Branch\_module.
+\newpage
+\section{Task2}
+\subsection{Testing 5-Stage/Pipelined RISC V Processor for Sorting Algorithm}
+
+Here we upgraded our previously developed processor for Pipeline Execution: Integration of 5 Stages and 4 New Modules.
+
+\subsection{Changes}
+
+To implement a pipelined design, the following modules were added to enable the staging to work effectively:
+\begin{itemize}
+\item IF\_ID
+\item ID\_EX
+\item EX\_MEM
+\item MEM\_WB
+\end{itemize}
+
+Each stage passes the data and instructions to the next stage through pipeline registers, which help to ensure the proper timing of the data flow and avoid data hazards. These stages and pipeline registers form the backbone of the pipelined processor's operation.
+
+\subsection{Testing Forwarding Unit}
+
+We upgraded our previously developed processor by implementing a Forwarding Unit, which involved adding the Forward Unit module. The forwarding path was then integrated with the pipeline register modules to ensure efficient data flow between stages of the pipeline. These modifications helped to resolve data hazards that may have arisen during the pipelined execution of instructions.
+\pagebreak
+\subsection{Code and Waveform}
+The link for the code can be found \href{https://github.com/AliMuhammadAsad/Computer-Architecture-Spring-23/tree/main/RISC_V%20Pipelined%20Processor}{here}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.40]{Pipeline_Forwarding_Hazarding.png}
+    \caption{Pipeline with Forwarding}
+    \label{fig: Pipeline with Forwarding}
+\end{figure}
+
+\section{Task 3}
+
+\subsection{Handling Data Hazards}
+
+To address hazards in our circuitry, we need to develop modules for detecting hazards and stalling the pipeline. The detection modules will identify where forwarding is required. Once detected, we can use the forward module to actually perform the forwarding. Additionally, by rearranging non-dependent code statements with stalls, we can optimize our algorithm to work in fewer cycles.
+
+\subsection{Changes}
+
+In computer architecture, hazards refer to conflicts that arise when attempting to execute instructions in a pipelined processor. These conflicts can occur due to dependencies between instructions, leading to stalls or incorrect results.
+
+To address this issue, we added a Hazard Detection Unit module to our processor. This module detects hazards and controls the pipeline by sending signals to flush or stall the pipeline. By adding this module, we improved the processor's efficiency and prevented errors caused by hazards.
+
+The Hazard Detection Unit uses the input flush and stalls to detect hazards in the pipeline. If a hazard is detected, the module signals the pipeline to either flush or stall the pipeline to prevent incorrect results. With this addition, our processor is better equipped to handle hazards and operate more efficiently.
+
+\subsection{Code and Waveform}
+The link to the code can be found \href{https://github.com/AliMuhammadAsad/Computer-Architecture-Spring-23/tree/main/RISC_V_Pipelined_Complete}{here}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.5]{Pipelined_RISCV.jpg}
+    \caption{Pipelined RISC-V Processor}
+    \label{fig: Pipelined RISC_V Processor}
+\end{figure}
+
+\subsection{Synopsis}
+
+Although our 5-stage pipelined processor was functioning well, we encountered stalls in our code due to the requirement of the next value of a register in the subsequent line of code. This necessitates a sequential code and environment, causing the processor to pause for several cycles before resuming the sequence.
+
+To address this issue, we incorporated flush and stall signals into our processor. These signals allow us to mitigate stalls and enable the processor to operate at a faster pace. With this improvement, our processor can continue functioning without delays caused by sequential code.
+
+\chapter{Conclusion and Challenges}
+
+Building the processor required significant brainpower, and we faced challenges with EDA crashing at critical moments, which taught us a great deal. According to theory, pipelined processors are faster than single-cycle processors because they don't wait for the entire instruction to execute. This makes them highly effective for parallel computing or asynchronous programming.
+
+With better hazard handling, our processor can work even faster and more effectively. Although we faced stalls in our sorting algorithm due to time and complexity limitations, better hazard and stall units can mitigate these issues.
+
+Implementing a real processor through gate-level logic has given us a deeper appreciation for Digital Logic Design.
+
+\chapter{Comparison}
+
+Pipelined processors are typically designed to be faster than non-pipelined processors, with a potential speedup of up to four times. However, in our case, the pipelined processor is not functioning optimally, with a latency of 3000ns, which is longer than the 1500ns latency of the non-pipelined processor. This suggests that there may be issues with pipeline hazards, control, or other design problems that are affecting the efficiency of your processor. To improve the performance of our pipelined processor, we need to analyze and optimize its design.
+
+\chapter{Task Division}
+\begin{itemize}
+    \item {\large \underline{Sadiqah Mushtaq:} Bubble Sort Code and Single Cycle Processor}
+    \item {\large \underline{Lyeba Abid:} Pipelined Processor and Debugging}
+    \item {\large \underline{Ali Muhammad:} Pipelined Processor and Debugging}
+    \item {\large \underline{All Three:} Debugging and Integration}
+\end{itemize}
+
+\chapter{References}
+
+[1] HU-LMS. \textit{Canvas}. [Online] Available: \url{https://hulms.instructure.com/courses/2589/discussion_topics/30774}
+
+\noindent[2] Book. \textit{Course Book}. Computer Organization and Design: The Hardware/Software Interface RISC-V Edition by David A. Patterson, John L. Hennessy
+
+\appendix
+\chapter{Appendix}
+
+GitHub links for codes of different processors: 
+\begin{itemize}
+    \item Single Cycle Processor (Task 1): \url{https://github.com/AliMuhammadAsad/Computer-Architecture-Spring-23/tree/main/Single%20Cycle%20RISC%20V%20-%20Project%20Task1}
+    \item Pipelined Processor (Task 2): \url{https://github.com/AliMuhammadAsad/Computer-Architecture-Spring-23/tree/main/RISC_V%20Pipelined%20Processor}
+    \item Pipelined Processor with Hazard Detection (Task 3): \url{https://github.com/AliMuhammadAsad/Computer-Architecture-Spring-23/tree/main/RISC_V_Pipelined_Complete}
+\end{itemize}
+
+\end{document}

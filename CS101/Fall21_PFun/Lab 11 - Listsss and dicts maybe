@@ -1,0 +1,101 @@
+#Qns 1 - Wanna Reverse a piece of me (pun intended) Reverse slice function that reverses all elements in a list with a start and stop which defines the range
+def reverse_slice(t, start, stop):
+    t[start:stop] = reversed(t[start:stop])
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Qns 2 - Find the Median
+def findMedian(arr):
+    pos = len(arr)//2
+    arr.sort()
+    return arr[pos]
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Qns 3 - Remove all occurences from a list (no slicing or dicing)
+def remove_all(t, v):
+    if v not in t:
+        return 0
+    else:
+        count = 0
+        while v in t:
+            count += 1
+            t.remove(v)
+        return count 
+        
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Qns4 - Print Matrix - only prints contents of a matrix as a string while retaining formatting
+def print_matrix(A):
+    for x in A:
+        t = str()
+        for y in range(len(x)):
+            t = t + str(x[y]) + " "
+        print(t[:-1])
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Qns5 - Pick a column - no comprehension needed (prints a selected column from the matrix
+def pick(t, col):
+    n_lst = []
+    for x in t:
+        n_lst.append(x[col])
+    return n_lst
+    
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Qns6 - Matrix Addition - Adds two matrices
+def matrix_addition(A,B):
+    for x in range(len(A)):
+        if len(A[x]) != len(B[x]):
+            return("Matrices A and B don't have the same dimension required for matrix addition.")
+        else:
+            m_added = []
+            for x in range(len(A)):
+                temp = []
+                for y in range(len(A[x])):
+                    temp.append(A[x][y] + B[x][y])
+                m_added.append(temp)
+            return m_added
+            # m_added = [[A[i][j] + B[i][j]  for j in range(len(A[x]))] for i in range(len(A))]
+            # return m_added
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Qns7 - Special Sort
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Qns8 - Prime factors and special numbers - returned in a list
+# Enter your code here.
+select, n = int(input()), int(input())
+
+def prime_factors(n):
+    factors = []
+    for x in range(2, int((n)**0.5)+1):
+        while n % x == 0:
+            factors.append(x)
+            n /= x
+    if n > 2:
+        factors.append(n)
+    else:
+        pass
+    return factors
+    
+def special_numbers(n):
+    factoors = prime_factors(n)
+    if len(factoors) == 1:
+        return factoors
+    else:
+        pass
+
+
+if select == 1:
+    print(prime_factors(n))
+elif select == 2:
+    print(special_numbers(n))

@@ -1,0 +1,67 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{titling}
+
+\newcolumntype{C}{>{$}c<{$}} % math-mode version of "c" column type
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\runningheader{CS/MATH 113}{WC05: Predicate Logic and Natural Language}{\theauthor}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+\printanswers
+
+\title{Weekly Challenge 05: Predicate Logic and Natural Language\\CS/MATH 113 Discrete Mathematics}
+\author{Ali Muhammad Asad}  % <== for grading, replace with your team name, e.g. q1-team-420
+\date{Habib University | Spring 2023}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+  \titledquestion{Limit of a Function}
+  \begin{definition}[Limit of a function at a point]
+    Let $f(x)$ be a real valued function defined on an interval that contains $x=a$, except possibly at $x=a$. For $\epsilon$ and $\delta$ real numbers, we say that limit of the function $f(x)$ at $x=a$ is a real number $L$ and write $\lim_{x \to a} f(x)=L$ if 
+    \[
+      \forall \epsilon>0, \exists \delta>0 \ni (0<|x-a|<\delta \implies |f(x)-L|<\epsilon).
+    \]
+  \end{definition}
+  The $\ni$ symbol denotes, ``such that''.
+  \begin{parts}
+  \item Express in English language, the definiton of the limit of a function at a point.
+    \begin{solution}
+      % Enter your solution here.
+    \end{solution}
+  \item Express in English language, what it means for the limit of a function $f(x)$ to not exist at point $x=a$.
+    \begin{solution}
+      % Enter your solution here.
+    \end{solution}
+  \item Express in predicate logic, what it means for the limit of a function $f(x)$ to not exist at point $x=a$.
+    \begin{solution}
+      % Enter your solution here.
+    \end{solution}
+  \item If in the defintion of limit we swap the two quantifiers like this:
+    \[
+      \exists \delta>0 \ni \forall \epsilon>0, (|x-a|<\delta \implies |f(x)-L|<\epsilon).
+    \]
+    How does the new statement read? Does it still define the limit of a function? Discuss.
+    \begin{solution}
+      % Enter your solution here.
+    \end{solution}
+  \end{parts}
+\end{questions}
+
+\end{document}

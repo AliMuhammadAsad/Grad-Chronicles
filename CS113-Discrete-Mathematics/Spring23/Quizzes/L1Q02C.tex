@@ -1,0 +1,79 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{graphs,graphs.standard}
+\usepackage{xcolor}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{claim}
+\newtheorem{claim}{Claim}
+
+\title{Quiz 2C: Logical Equivalence}
+\author{CS/MATH 113 Discrete Mathematics L1}
+\date{Habib University | Spring 2023}
+
+% \usepackage{draftwatermark}
+% \SetWatermarkText{Sample Solution}
+% \SetWatermarkScale{3}
+
+% \printanswers
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\noindent
+\begin{tabularx}{\linewidth}{Xr}
+  Total Marks: \numpoints & Date: \today\\
+  Duration: 10 minutes & Time: 1715--1725h
+\end{tabularx}
+\hrule
+\bigskip
+
+\noindent \textbf{Student ID}: \hrulefill \\[5pt]
+\noindent \textbf{Student Name}: \hrulefill \\[5pt]
+
+\section{Problems}
+
+\begin{questions}
+  \question[5] We are given the following definitions.
+
+\begin{definition}[Conjunction, $\land$]
+  \[
+  \begin{array}{c|c||c}
+    p & q & p \land q\\
+    \hline
+    T & T & T \\
+    T & F & F \\
+    F & T & F \\
+    F & F & F \\
+  \end{array}
+  \]
+\end{definition}
+
+\begin{definition}[Disjunction, $\lor$]
+  \[
+  \begin{array}{c|c||c}
+    p & q & p \lor q\\
+    \hline
+    T & T & T \\
+    T & F & T \\
+    F & T & T \\
+    F & F & F \\
+  \end{array}
+  \]
+\end{definition}
+
+Use these to prove the following \textit{distributivity law}.
+\[
+  p \land (q \lor r) \equiv (p \land q) \lor (p \land r).
+\]
+  
+\begin{solution}
+  
+\end{solution}
+\end{questions}
+\end{document}

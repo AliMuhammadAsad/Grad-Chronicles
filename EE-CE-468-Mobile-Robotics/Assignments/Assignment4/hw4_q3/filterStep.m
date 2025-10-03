@@ -1,0 +1,45 @@
+function [x_posteriori, P_posteriori, Xpri] = filterStep(x, P, u, Q, Z, R, M, g, b)
+% [x_posteriori, P_posteriori], Xpri = filterStep(x, P, u, z, R, M, k, g, b)
+% returns an a posteriori estimate of the state and its covariance
+% Here, 
+% x = State Vector = [x, y, theta]
+% P = Covariance Matrix associated with the state. \Sigma
+% u = Control Commands = [vL*Ts; vR*Ts]
+% Q = Covariance Matrix of noise associated with the motion model.
+% Z = [alpha, r]
+% R = 2x2 = Covariance Matrix 
+% S = [Theta, Rou] Readings from Lidar
+% M = map consisting of slope and intercept of each line (wall)
+% params = Some constants such as D, L, etc.
+% g = gating threshold
+% b = L
+[Xpri, F_x, F_u] = transitionFunction(x, u, b); % Calculate xbar, Fu, Fx - Kalman Filter Step 1
+PPri = F_x*P*transpose(F_x) + F_u*Q*transpose(F_u); % Calculate \Sigmabar - Kalman Filter Step 2
+if size(Z,2) == 0
+    x_posteriori = Xpri;
+    P_posteriori = PPri;
+    return;
+end
+
+
+[ v, H, R_dash, flag] = associateMeasurements(Xpri, PPri, Z, R, M, g);
+if flag == true
+    x_posteriori = Xpri;
+    P_posteriori = PPri;
+else
+    disp("Update Happening!")
+    % H
+    % PPri
+    % R_dash
+
+    SigmaINt = H*PPri*transpose(H) + R_dash;
+    Kk = PPri*transpose(H)*(SigmaINt)^(-1); % Kalman Filter Step 3
+    
+    % update state estimates 
+    x_posteriori = Xpri + Kk*v; % Kalman Filter Step 4
+    disp("This is it")
+    P_posteriori = PPri - Kk*SigmaINt*transpose(Kk); % Kalman Filter Step 5
+end
+
+
+

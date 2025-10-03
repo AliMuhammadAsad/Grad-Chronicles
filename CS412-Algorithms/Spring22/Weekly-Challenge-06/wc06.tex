@@ -1,0 +1,43 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\printanswers
+
+\title{Weekly Challenge 06: Timing Multiplication Algorithms}
+\author{User 1}  % replace with your GitHub user names
+\date{CS 412 Algorithms: Design and Analysis\\Spring 2022}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+  
+  \question In the lectures, we saw how the school multiplication method which has complexity $O(n^2)$ can be optimized using divide and conquer to yield the Karatsuba multiplication algorithm with complexity $O(n^{1.58})$. In this challenge we are going to perform empirical testing in order to compare the running time of these algorithms and investigate the breakthrough point beyond which the asymptotically cheaper algorithm takes lesser time.
+
+  \textbf{Implementation Tips}:
+  \begin{itemize}
+  \item You can simulate an $n$-bit integer using a \href{https://www.pythonpool.com/python-bitarray/}{bitarray}.
+  \item You can time code execution using the \href{https://docs.python.org/3/library/timeit.html}{timeit} module.
+  \end{itemize}
+
+  \textbf{TASKS}:
+  \begin{parts}
+    \part Implement each multiplication method on $n$-bit integers.
+    \part Time the execution of both methods for different values of $n$. Make sure to vary $n$ over a wide range. Since the school method may take a different amount of time depending on the number of 0s in the multiplicand, average over several $n$-bit integers to determine the execution time for this method.
+    \part Plot the running time of both algorithms against $n$. Make sure that the breakthrough value is evident in your plot.
+    \part Include your plot below along with any other relevant discussion.
+    \part Share your plot as a comment on the \textit{Week 06 Challenge} post in the course group on Yammer.
+  \end{parts}
+  
+  \begin{solution}
+    % Enter your solution here.
+  \end{solution}
+\end{questions}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

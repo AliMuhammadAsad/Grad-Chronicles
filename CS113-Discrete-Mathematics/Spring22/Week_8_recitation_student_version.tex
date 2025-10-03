@@ -1,0 +1,166 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+
+\usepackage{hyperref}
+\usepackage{venndiagram}
+
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{CS 113 Discrete Mathematics}{Recitation: Sets}{Spring 2022}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+\title{Practice Problems: Proofs\\ CS 113 Discrete Mathematics}
+
+\newcommand{\set}[1]{\{#1\}}
+\author{kisi ka bharosa nahi}
+\date{Habib University -- Spring 2022}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+\question Show that $\sqrt{2}$ is irrational. In other words, $\sqrt{2}$ cannot be written in the form $\frac{p}{q}$ where $p,q \in \mathbb{Z}$ and $q \neq 0$
+\begin{solution}
+Assume $\sqrt{2}$ is rational, then $\sqrt{2} = \frac{p}{q}$, where $p,q \in \mathbb{Z}$ and $q \neq 0$.
+\\And $\frac{p}{q}$ is the lowest form it can be. 
+$$\left(\frac{p}{q}\right)^2 = 2$$
+$$p^2 = 2 q^2$$
+This implies $p$ is even which means $p = 2k$, for some $k \in \mathbb{Z}$
+$$4k^2 = 2 q^2$$
+$$2k^2 = q^2$$
+This implies $q$ is even.
+\\But $p$ and $q$ cant both be even as they are in the lowest form possible thus the 2 would be canceled. 
+\\Here we have a contradiction.
+\\Thus $\sqrt{2}$ cannot be written in form $\frac{p}{q}$ where $p,q \in \mathbb{Z}$
+\\Thus $\sqrt{2}$ is irrational.
+\end{solution}
+
+
+\question
+Explain what you must do to disprove the statement:
+  $x^3+5x + 3$ has a root between $x = 0$ and $x=1$
+  \begin{solution}
+  The statement in logical notation is 
+  $$\exists x \text{ such that } (0<x<1 \land x^3+5x+3 = 0)$$
+  Giving a counterexample is not enough. Saying that when $x=0.5$ then $x^3 +5x+3 \neq 0$ is not sufficient. \\
+  To disprove this statement, we need to prove that the \textbf{negation is true} which is
+  $$\neg \exists x \text{ such that } 0<x<1 \land x^3+5x+3 = 0 \equiv \forall x \text{ such that } \neg(0<x<1 \land x^3+5x+3 = 0)$$
+  Or in English
+  \begin{center}
+      For all $x$, it is not the case that both $x$ is between 0 and 1 and $x^3+5x+3=0$
+  \end{center}
+      \end{solution}
+\question Prove that for any integer $n$ the number $n^2+5n+13$ is odd
+\begin{solution}
+\end{solution}
+\question State the statement of Contradiction and verify that it is a valid argument.\\
+\textbf{Hint:} In contradiction we are saying that $A$ implies $B$ is the same as saying that $A$ and $\neg B$ happening together is false.
+\begin{solution} 
+
+\end{solution}
+
+
+\question
+Show through contraposition the following proposition is true: $x \in \mathbb{Z}$. If $7x + 9$ is even, then $x$ is odd.
+
+
+\begin{solution}
+\end{solution}
+
+
+\question
+Prove that ``$(a+b)^2 = a^2 +b^2$'' is \textbf{not} an algebraic identity where $a,b \in \mathbb{R}$
+  \begin{solution}
+
+  \end{solution}
+
+
+\question Prove the following claim: There exists irrational numbers $a$ and $b$ such that $a^b$ is rational.
+\begin{solution}
+\end{solution}
+
+\question Show that $x^n + y^n = z^n$ has no solutions where $x, y,z \in \mathbb{Z}$ with and $x \neq 0, \;\; y \neq 0,\;\;z \neq 0$ whenever $n\in \mathbb{Z}$ and $n > 2$
+\begin{solution}
+\end{solution}
+
+\question Prove that for $m$ and $n$ integers, if 2 divides $m$ or 10 divides $n$, then 4 divides $m^{3}n^{2}$
+\begin{solution}
+
+\end{solution}
+
+
+\question Show that there are infinitely many primes, in other words the set containing all prime numbers is infinite.
+\\\textbf{Definition:} A prime number is a Natural number that is only divisible by 1 and itself, and has to be divisible by 2 different numbers.
+\\\textbf{Fundamental Theorem of arithmetic:} Every integer $N > 1$ has a prime factorization, meaning either $N$ is itself prime or can be written as a product of prime numbers.
+\begin{solution}
+
+\end{solution}
+
+
+\question Show a direct proof that you are worthy of love
+\begin{solution}
+This statement is true by the axiom of humanity. The proof is trivial.
+\end{solution}
+
+\question Give a counterexample to the statement
+\begin{center}
+    ``If $n$ is an integer and $n^2$ is divisible by 4, then $n$ is divisible by 4''
+\end{center}
+\begin{solution}
+\end{solution}
+
+
+\question
+Show through contraposition the following proposition is true : If $x^{2} - 6x + 5$ is even, then x is odd.
+
+\begin{solution}
+\end{solution}
+
+
+
+
+\question In this question we will prove Euclid's Lemma that if $p$ is a prime number that divides $ab$ then $p$ divides $a$ or $p$ divides $b$.
+\\We shall prove this by proving a lemma and using a corollary from that lemma.
+\\\textbf{Well ordering principle:} Every set of positive integers have a smallest element.
+\\\textbf{Division algorithm:} if $a,b \in \mathbb{Z}$, where $b>0$, then there exists unique $q,r \in \mathbb{Z}$, $a=bq+r$ where, $0 \leq r <b$ 
+\begin{parts}
+\part \textbf{Bezout's lemma:} for all integers $a$ and $b$ there exist integers $s$ and $t$ such that $gcd(a,b) = as + bt$
+\begin{solution}
+\end{solution}
+\part \textbf{Corollary of bezout's lemma:} If $a$ and $b$ are relatively prime then $as+bt = 1$
+\begin{solution}
+\end{solution}
+\part Using the above corollary prove Euclid's lemma.
+\begin{solution}
+\end{solution}
+\end{parts}
+
+\question In solving coding questions, you would want to know whether your solution is valid or not in all cases. You can easily do that by giving a proof of correctness. Come up with a solution and give a proof of correctness for the following problem.
+\begin{center}
+    \href{https://codeforces.com/problemset/problem/1635/C}{https://codeforces.com/problemset/problem/1635/C}
+\end{center}
+\begin{solution}
+
+\end{solution}
+\end{questions}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: Recitationd:

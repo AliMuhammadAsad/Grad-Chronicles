@@ -1,0 +1,149 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{hyperref}
+\usepackage[capitalise,nameinlink]{cleveref}
+\usepackage{caption}
+\usepackage{graphbox}
+\usepackage{multirow}
+\usepackage{pythonhighlight}
+\usepackage{ragged2e}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{xcolor}
+\usepackage{float}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{CS 201, Spring 2023}{HW 4: Information Retrieval}{\theauthor}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill[\totalpoints\ points]}
+% \qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\printanswers
+
+\graphicspath{{images/}}
+
+\newcommand\colheader[1]{\multicolumn{1}{c}{#1}} % Note: no vertical bars
+
+\title{Homework 4: Information Retrieval}
+\author{L5-Group-3}  % <=== Enter your team name.
+\date{CS 201 Data Structures II\\Spring 2023}
+
+\begin{document}
+\maketitle
+
+In this assignment you will build Moogle (My Google), a system to perform information retrieval tasks on a corpus. Specifically, Moogle will perform 2 tasks.
+\begin{enumerate}
+  \item Given a query and a corpus, find completion matches for the query from the corpus. For example, see Figure \ref{fig:autocomplete}.
+  \item Given a query and a corpus, retrieve a list of documents from the corpus ranked according to their relevance to the query.
+\end{enumerate}
+
+The first task is supported by building a trie with all the words in the corpus. The second is supported by an inverted index built from all the documents in the corpus. You will correspondingly write and implement 2 classes: \pyth{Trie}, and \pyth{InvertedIndex}.
+
+\section{Class Details}
+
+\paragraph{\pyth{Corpus}} This class encapsulates a \texttt{Trie} instance and an \texttt{InvertedIndex} instance in order to support completion and search queries on a corpus as described above by delegating to the appropriate member structure. A \pyth{Corpus} instance is initiated with the path to a ZIP file containing the documents to be processed. The documents are text files which may or may not have a \texttt{.txt} extension. The unzipped directory may or may not contain sub-directries. The text files may be at the root level of the unzipped directory or in sub-directories. The corpus must be able to find and process all contained documents regardless. The ID of each document is its path relative to the unzipped directory. Some example corpora are listed in \cref{sec:corpora} for your testing. The class offers \pyth{prefix_complete()}, \pyth{query()}, \pyth{and_query()}, and \pyth{or_query()} methods by delegating to the appropriate member. The details of these are given below.
+
+\paragraph{\texttt{Document}} A representation of a document in the corpus. It processes a text file and offers it in a manner suitable for the other structures. Each \texttt{Document} instance also stores an ID in order to uniquely identify the document from which it derives.
+
+\paragraph{\pyth{Trie}} This class represents a trie (standard or compressed, your choice). Specifically, an instance of this class is used by \pyth{Corpus} to implement the \pyth{prefix_complete()} method. This class offers a method of the same name which behaves as follows. It accepts a \pyth{string} argument which is the \pyth{prefix} for which completions from the corpus are sought. It returns a \pyth{dict} in which each key is a completion from the corpus and the corresponding value is a \pyth{list} of 3-\pyth{tuple}s representing the \textit{location} information of the completion. That is, it contains the ID of the document that contains the completion and the starting and ending indexes of the completion in the document. Indexes start from 0.
+
+
+\paragraph{\pyth{InvertedIndex}} This class represents an inverted index. Specifically, an instance of this class is used by \pyth{Corpus} to implement the \pyth{query()}, \pyth{and_query()}, and \pyth{or_query()} methods. This class offers methods of the same name which behave as follows. The \pyth{query()} method accepts a \pyth{string} and an \pyth{int} argument representing the \pyth{query} term and the number of desired results. Note that query may be a space separated list of multiple query terms in which case all of the contains terms form the query. It returns a sorted \pyth{list} of 2-\pyth{tuple}s (or \textit{pairs}) representing the ranked list of documents. That is, each pair contains the rank and corresponding document ID. Ranking is according to relevance of the document with the query. The most relevant document is ranked 1, the next most relevant is ranked 2, and so on. Relevance is to be computed using TF-IDF scores. The result list includes the top-\pyth{k} results only.
+The \pyth{and_query()} method accepts two \pyth{string}s and an \pyth{int} arguments which represents \pyth{query1}, \pyth{query2} terms and the number of desired results. It returns the intersection of the ranked list of documents for \pyth{query1} and \pyth{query2}. The \pyth{or_query()} method accepts two \pyth{string}s and an \pyth{int} arguments which represents \pyth{query1}, \pyth{query2} terms and the number of desired results. It returns the union of the ranked list of documents for \pyth{query1} and \pyth{query2}.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}{.7\textwidth}
+    \includegraphics[width=\textwidth]{autocomplete}
+    \caption{An example of auto-complete suggestions from \url{https://www.google.com}.}
+    \label{fig:autocomplete}
+  \end{subfigure}
+  \begin{subfigure}{.2\textwidth}
+    \includegraphics[width=\textwidth]{moogle}
+    \caption{Not this \href{https://finalfantasy.fandom.com/wiki/Final_Fantasy_Wiki}{Moogle}!}
+    \label{fig:moogle}
+  \end{subfigure}
+\end{figure}
+
+
+\section{Tasks and Implementation}
+The \pyth{Corpus} and \pyth{Document} classes have already been implemented for you in \texttt{src/corpus.py} and \texttt{src/document.py}. You have to implement the classes \pyth{InvertedIndex} and \pyth{Trie} in
+\texttt{src/index.py} and \texttt{src/trie.py}.
+
+In the \pyth{InvertedIndex} class, you have to implement the following methods:
+\begin{itemize}
+  \item \pyth{query(self, terms: str, k: int) -> List[Tuple[int,str]]}
+  \item \pyth{and_query(self, query1: str, query2:str, k: int) -> List[Tuple[int,str]]}
+  \item \pyth{or_query(self, query1: str, query2:str, k: int) -> List[Tuple[int,str]]}
+\end{itemize}
+
+In the \pyth{Trie} class, you have to implement the following methods:
+\begin{itemize}
+  \item \pyth{prefix_complete(self, prefix: str, node: TrieNode = None, word: str = '')-> List[Tuple[int,int,str]]}
+\end{itemize}
+
+\textbf{You may implement any helper functions that you want but there names should begin with an underscore.}
+
+
+
+\subsection{Tokenization}
+
+An important operation in this context is \href{https://nlp.stanford.edu/IR-book/html/htmledition/tokenization-1.html}{tokenization} which breaks a long string into smaller strings or \textit{tokens} which are more appropriate for the application. There is no \textit{correct} or \textit{standard} tokenization, rather different applications require the string to be tokenized differently. You can use this operation to break a document into terms.
+
+\subsection{Testing}
+
+Once you have successfully implemented your classes, you can test your code by applying it to the sample corpora listed below. You may create some smaller copora of your own for initial testing. For grading purposes, your submission will be tested automatically on GitHub using \pyth{pytest test_index.py test_trie.py} . The test files will import \texttt{src/corpus.py}. Optimize your code so as to meet the \pyth{pytest} limit of 1 minute. A timed out test is a failed test.
+
+\subsection{Allowed modules}
+
+As you have found out, \pyth{pytest} on GitHub fails if your code \pyth{import}s arbitrary modules. The allowed modules for this assignment are \pyth{pathlib} (\href{https://docs.python.org/3/library/pathlib.html}{doc}, \href{https://realpython.com/python-pathlib/}{RP}), \pyth{zipfile} (\href{https://docs.python.org/3/library/zipfile.html}{doc}, \href{https://realpython.com/python-zipfile/}{RP}), and \pyth{nltk} (\href{https://www.nltk.org}{doc}, \href{https://realpython.com/nltk-nlp-python/}{RP}). Modules that are part of python by default, e.g. \pyth{math}, can also be used.
+
+\section{Corpora}
+\label{sec:corpora}
+
+You are free to use any corpus of your choice. \href{https://datasetsearch.research.google.com}{Google Dataset Search} and \href{https://www.kaggle.com/datasets}{Kaggle} are excellent resources for datasets. You may create your own corpus as well. Below are details of some specific datasets.
+\begin{enumerate}
+  \item ``The \textit{20 Newsgroups} data set is a collection of approximately 20,000 newsgroup documents, partitioned (nearly) evenly across 20 different newsgroups.'' More details including a download link are available \href{http://qwone.com/~jason/20Newsgroups/}{here}.
+  \item The \textit{StackSample} dataset contains text from 10\% of Stack Overflow questions and answers on programming topics. Further details including a download link are available \href{https://www.kaggle.com/datasets/stackoverflow/stacksample?fbclid=IwAR0kFAaMfLW9DViWaRapXd6xhdGmsnM56hExLL9aVqNfOPBeLvBOxkel85g}{here}.
+\end{enumerate}
+
+\section{Some Information Retrieval Rambling}
+\label{sec:refine}
+
+Congratulations, you have implemented your (very first) search engine! Be proud and play around with Moogle. Go over some of the documents, perform some searches, verify them, try out some completion results, and so on.
+
+In so doing, you will begin to realize some quirks. You may come across strange characters (these are due to unhandled Unicode characters in the original documents). Stop words will pop up. Punctuation is not correctly handled. Some of the original documents are also strange--they contain little to no content, more strange characters. All of this is common in information retrieval.
+
+This section lists some refinements to make Moogle even more awesome! The tasks in this section are \textbf{not required and do not carry marks}. They are listed as suggestions for your own tinkering pleasure!
+
+\subsection{Document Cleaning (Garbage In Garbage Out)}
+
+Your results are only as good as your input and the quirks mentioned above are typical problems faced in Information Retrieval. That is why significant effort is spent on \textit{document cleaning}, i.e. pre-processing the documents to an appropriate form. This usually involves the following.
+
+\paragraph{Stop Words and Punctuation} How should your system handle stop words and punctuation? The usual practice is to leave them out.
+
+\paragraph{Stemming} Should documents containing the word ``doctors'' match a query for ``doctor''? How about ``isolate'' and ``isolation''? Should ``driving'' appear as a completion for ``drive''? The usual answer is ``yes''. These pairs of words are said to have the same \textit{stem} and reducing a word to its stem is called \textit{stemming}. You can best decide at what level to perform stemming--at the document level, for the trie, or for the index.
+
+\paragraph{Others} How about case sensitivity, words with apostrophe, e.g. ``don't'', how to handle quotation marks, and initials, e.g. ``George W. Bush''?
+
+\subsection{Even More} The next level of search is ``semantic search'' where matching takes into account not only keywords but also their \textit{meaning}, e.g. the system can distinguish between ``who'' and ``WHO'', between ``pen'', the writing instrument, and ``pen'', the holding area for animals. Such pairs of words are called \textit{homonyms} and are one of the many exciting challenges that Information Retrieval deals with.
+
+\paragraph{\texttt{nltk}} As we see above, Information Retrieval has strong overlaps with Natural Language Processing (NLP). As such you may find the \href{https://www.nltk.org}{\textit{Natural Language Toolkit (ntlk)}} in python to be especially useful as you refine Moogle.
+
+\section*{Credits}
+
+This homework and related files are due in part to \href{https://mqpasta.github.io/}{Muhammad Qasim Pasta} and \href{http://unaizahsan.com}{Unaiza Ahsan}.
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,664 @@
+<<<<<<< HEAD
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage[shortlabels]{enumitem}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Discrete Mathematics}{Problem Set 5}{CS/Math 113}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\olsi}[1]{\,\overline{\!{#1}}} % overline short italic
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\title{CS/Math 113 - Problem Set 5}
+\author{Dead TAs Society \\ Habib University - Spring 2023}
+\date{Week 06}
+
+\begin{document}
+\maketitle
+\begin{sloppypar}
+\section*{Problems}
+
+\begin{problem}{1}[Chapter 2.1, Question 10]
+    Determine whether these statements are true or false.
+    \begin{enumerate}[(a)]
+        \item $ \phi \in \{\phi\}$
+        \item $ \phi \in \{ \phi,\{\phi\} \}$
+        \item $ \{ \phi \} \in \{ \phi \} $
+        \item $ \{ \phi \} \in \{\{ \phi \}\} $
+        \item $ \{ \phi \} \subset \{ \phi, \{\phi \} \} $
+        \item $ \{ \{ \phi \} \} \subset \{ \phi, \{ \phi \}\} $
+        \item $ \{ \{ \phi \} \} \subset \{ \{\phi \}, \{ \phi \}\} $
+    \end{enumerate}
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            \begin{enumerate}[(a)]
+                \item True
+                \item True
+                \item False
+                \item True
+                \item True
+                \item False
+                \item False
+            \end{enumerate}
+        \end{solution}
+    \end{questions}
+    \pagebreak
+    \begin{problem}{2}[Chapter 2.1, Question 21]
+    Find the power set of these sets where $a$ and $b$ are distinct elements.
+    \begin{enumerate}[(a)]
+        \item $\{a\}$
+        \item $\{a,b\}$
+        \item $\{ \phi, \{ \phi \}\}$
+    \end{enumerate}
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            \begin{enumerate}[(a)]
+                \item $ \mathcal{P} = \{\phi, \{a\}\} $
+                \item $ \mathcal{P} = \{ \phi, \{a\}, \{b\}, \{a, b\} \} $
+                \item $ \mathcal{P} = \{ \phi, \{\phi\}, \{\{\phi\}\}, \{ \phi, \{ \phi \} \} \} $
+            \end{enumerate}
+        \end{solution}
+    \end{questions}
+    
+    \begin{problem}{3}[Chapter 2.1, Question 22]
+    Can you conclude that $A = B$ if $A$ and $B$ are two sets with the same power set ?
+    \end{problem}
+    
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            The Power Set $ \mathcal{P}(\mathbb{A}) $ contains the all the possible subsets of the set $ \mathbb{A} $. Therefore, the Union of all elements in the Power Set would result in the original set of $ \mathbb{A} $. \\ Therefore, if $A$ and $B$ are two sets such that $ \mathcal{P}(A) = \mathcal{P}(B) $, then the Union of the elements of $\mathcal{P}(A) = $ the Union of the elements of $\mathcal{P}(B)$. Hence, it can be concluded that $ A = B $.  
+        \end{solution}
+    \end{questions}
+    
+    \begin{problem}{4}[Chapter 2.1, Question 23]
+    How many elements does each of these sets have where $a$ and $b$ are distinct elements ?
+    \begin{enumerate}[(a)]
+        \item $ \mathcal{P}(\{a,b,\{a,b\}\})$
+        \item $ \mathcal{P}(\{\phi,a,\{a\}, \{\{a\} \}\})$
+        \item $ \mathcal{P}(\mathcal{P}(\phi))$
+    \end{enumerate}
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            \begin{enumerate}[(a)]
+                \item We have 3 elements, therefore there are $ 2^3 = 8 $ distinct elements.
+                \item We have 4 elements, therfore there are $ 2^4 = 16 $ distinct elements.
+                \item The Power Set of null set has only 1 element [$ \mathcal{P}(\phi) = \{ \phi \} $]. Then the power set of the power set has $ 2^1 = 2 $ elements $ \implies \mathcal{P}(\mathcal{P}(\phi)) = \{\phi, \{ \phi \}\} $ 
+            \end{enumerate}
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{5}[Chapter 2.1, Question 25]
+    Prove that $ \mathcal{P}(A) \subseteq \mathcal {P}(B)$ if and only if $ A \subseteq B$
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            Since we have \textbf{if and only if}, then we will have to prove that the statement holds both sides. 
+
+            \textbf{\underline{Case 1:}} If $ \mathcal{P}(A) \subseteq \mathcal{P}(B) $, then $ A \subseteq B $ 
+            
+            Consider any arbitrary element $a$ such that $ a \in A $. Then $ \{a\} \subseteq A $. Therefore,  $ \{a\} \in \mathcal{P}(A) $. Since $ \mathcal{P}(A) \subseteq \mathcal{P}(B)$, and $ \{a\} \in \mathcal{P}(A) $, it follows (by transitivity) that $ \{a\} \in \mathcal{P}(B) $. Since $\{a\}$ exists within the power set of $B$, then that implies that $ \{a\} \subseteq B \implies a \in B$. Hence proved if $ \mathcal{P}(A) \subseteq \mathcal{P}(B) $, then $ A \subseteq B $. 
+
+            \vspace*{3mm}
+            \textbf{\underline{Case 2:}} If $ A \subseteq B $, then $ \mathcal{P}(A) \subseteq \mathcal{P}(B) $. 
+
+            Consider any arbitrary element $a$ such that $a \in A$. Since $ A \subseteq B $, then $ a \in B $. Then we know that $ \{a\} \subseteq A \implies \{a\} \in \mathcal{P}(A) $. Since $ a \in B $, then $ \{a\} \subseteq B \implies \{a\} in \mathcal{P}(B) $. Therefore, $ \mathcal{P}(A) \subseteq \mathcal{P}(B) $. Hence proved.        
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{6}[Chapter 2.1, Question 26]
+    Show that if $A \subseteq C$ and $ B \subseteq D$, then $ A \times B \subseteq C \times D$
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            For two sets $A$ and $B$, $ A \times B $ is defined as a pair $ (a, b) $ where $ a \in A,\; b \in B $. We know that $ A \subseteq C $, and $ B \subseteq D $, then for any arbitrary elements $ a $ and $ b $, $ a \in A, \; b \in B \implies a \in C, \; b \in D $. Therefore, $ (a, b) \in C \times D $. Since $ (a, b) \in A \times B $, therefore $ A \times B \subseteq C \times D $. Hence shown.
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{7}[Chapter 2.1, Question 27]
+    Let $A = \{a,b,c,d\}$ and $B = \{x,y\}$. Find
+    \begin{enumerate}[(a)]
+        \item $ A \times B$
+        \item $ B \times A$
+    \end{enumerate}
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            \begin{enumerate}[(a)]
+                \item $ A \times B = \{ (a, x), (a, y), (b, x), (b, y), (c, x), (c, y), (d, x), (d, y) \} $
+                \item $ B \times A = \{ (x, a), (x, b), (x, c), (x, d), (y, a), (y, b), (y, c), (y, d) \} $
+            \end{enumerate}
+        \end{solution}
+    \end{questions}
+    \pagebreak
+    \begin{problem}{8}[Chapter 2.1, Question 38]
+    Show that $ A \times B \neq B \times A$, when $A$ and $B$ are nonempty, unless $ A = B$
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            Consider that $ A \neq B $. Then there exists some arbitrary element $a$ in $A$ such that $a$ does not exists in $B$. $ \exists a \in A$ such that $a \notin B $. And we know that $ A \neq \phi $ and $ B \neq \phi $[$A$ and $B$ are not empty]. Then for any arbitrary element $b \in B$, $ (a, b) \in A \times B $ however, $ (a, b) \notin B \times A $. The same can be said for any arbitrary element $b \in B$ where $ b \notin A $. Therefore, $ A \times B \neq B \times A $ for two non empty sets $A$ and $B$ if $ A \neq B $ which implies it is only the case when $ A = B $. Hence proved.  
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{9}[Chapter 2.1, Question 44]
+    Prove or disprove that if $A,B$, and $C$ are nonempty sets, and $A \times B = B \times C$, then $B=C$
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+
+            $ A \times B = \{ (a, b) \; | \; a \in A \land b \in B \} $ \\ 
+            $ B \times C = \{ (b, c) \; | \; b \in B \land c \in C \} $ \\
+            If $ A \times B = B \times C $, then for any pair $ (a, b) \in A \times B $, we can conclude that $ (a, b) \in B \times C \implies a \in B, \; b \in C $. Therefore, $ \forall a \in A \rightarrow  a \in B $. Similarly, $ \forall b \in B \rightarrow b \in C \equiv A \subseteq B \subseteq C$ and that without loss of generality $ C \subseteq B \subseteq A $. Therefore $ B = C $. Hence proved.
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{10}[Chapter 2.2, Question 5]
+    Prove the complementation law in Table 1 by showing that $ \bar{\bar{A}} = A$
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            By definition of complement, $ \forall a \in A \rightarrow a \notin \bar{A} $. Similarly by the definition of the complement, $ \forall a' \in \bar{A} \rightarrow a' \notin A $. \\ 
+            Then $ \forall a \bar{\bar{A}} \rightarrow a \notin \bar{A}$. Since $a$ does not exist in $\bar{A}$, then by the definition, $a$ exists in $A$. Hence we can conclude that $ \bar{\bar{A}} = A $. 
+
+            This proof can be written in another way: \\ 
+            $ \bar{\bar{A}} = \{ x | \neg x \in \bar{A} \} = \{ x | \neg \neg x \in A \} = \{ x | x \in A \} = A $ 
+
+            Hence proved.
+        \end{solution}
+    \end{questions}
+    \pagebreak
+    \begin{problem}{11}[Chapter 2.2, Question 11]
+    Let $A$ and $B$ sets. Prove the commutative laws from Table 1 by showing that
+    \begin{enumerate}[(a)]
+        \item $A \cup B = B \cup A$
+        \item $A \cap B = B \cap A$
+    \end{enumerate}
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            \begin{enumerate}[(a)]
+                \item By the definition, $ A \cup B = \{x | x \in A \lor x \in B \}  $ \\ Then from the definition, \\ $ A \cup B = \{ x | x \in A \lor x \in B \} = \{ x | x \in B \lor x \in A \} = B \cup A $. \\ Hence proved.
+                \item By the definition, $ A \cap B = \{ x | x \in A \land x \in B \} $ \\ Then from the definition, \\ $ A \cap B = \{ x | x \in A \land x \in B \} = \{ x | x \in B \land x \in A \} = B \cap A $ \\ Hence proved
+            \end{enumerate}
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{12}[Chapter 2.2, Question 19]
+    Show that if $A,B,$ and $C$ are sets, then $ \olsi{A \cap B \cap C} = \bar{A} \cup \bar{B} \cup \bar{C}$
+    \begin{enumerate}[(a)]
+        \item by showing each side is a subset of the other side
+        \item using a membership table.
+    \end{enumerate}
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            \begin{enumerate}[(a)]
+                \item By definition, $ \olsi{A \cap B \cap C} = \{ x | x \notin A \lor x \notin B \lor x \notin C \} = \{ x | x \in \bar{A} \lor x \in \bar{B} \lor x \in \bar{C} \} = \bar{A} \cup \bar{B} \cup \bar{C} $. Hence shown that $ \olsi{A \cap B \cap C} \subseteq \bar{A} \cup \bar{B} \cup \bar{C} $. \\ Conversely, by definition $ \bar{A} \cup \bar{B} \cup \bar{C} = \{ x | x \in \bar{A} \lor x \in \bar{B} \lor x \in \bar{C} \} = \{ x | x \notin A \lor x \notin B \lor x \notin C \} = \olsi{A \cap B \cap C} $. Hence proved that $ \bar{A} \cup \bar{B} \cup \bar{C} \subseteq \olsi{A \cap B \cap C} $  
+            \end{enumerate}
+
+            \hspace*{2.5mm}(b) \[ 
+                \begin{array}{| c | c | c | c || c || c | c |c || c || }
+                    A & B & C & A \cap B \cap C & \olsi{A \cap B \cap C} & \bar{A} & \bar{B} & \bar{C} & \bar{A} \cup \bar{B} \cup \bar{C} \\ 
+                    \hline
+                    0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\ 
+                    0 & 0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 \\ 
+                    0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 1 \\ 
+                    0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 \\
+                    1 & 0 & 0 & 0 & 1 & 0 & 1 & 1 & 1 \\ 
+                    1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 \\
+                    1 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 1 \\ 
+                    1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0
+                \end{array}
+                \]
+
+                Hence shown that their truth values are same, hence they are logically equivalent.
+        
+        \end{solution}
+    \end{questions}
+    \pagebreak
+    \begin{problem}{12}
+    Prove or disprove that for all sets $A,B$,and $C$ we have
+    \begin{enumerate}[(a)]
+        \item $A \times (B \cup C) = (A \times B) \cup (A \times C)$
+        \item $A \times (B \cap C) = (A \times B) \cap (A \times C)$
+    \end{enumerate}
+    \end{problem}
+    
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            \begin{enumerate}[(a)]
+                \item Suppose that $ (x, y) \in A \times (B \cup C) $. Then $ x \in A $ and $ y \in (B \cup C) \implies y \in B \lor y \in C$. Since $y$ exists in either $B$ or $C$, and $x$ exists in $A$, then $ (x, y) \in (A \times B) \lor (x, y) \in (A \times C) \implies (x, y) \in (A \times B) \cup (A \times C) $. Therefore $ A \times (B \cup C) \subseteq (A \times B) \cup (A \times C) $.
+                
+                Similarly, suppose that $ (x, y) \in (A \times B) \cup (A \times C) $. Then $ (x, y) \in (A \times B) \lor (x, y) \in (A \times C) \implies x \in A, $ and $ y \in B \lor y \in C \implies y \in (B \cup C) $. So, $ (x, y) \in A \times (B \cup C) $. Therefore $ (A \times B) \cup (A \times C) \subseteq A \times (B \cup C) $. 
+
+                Hence proved that $ A \times (B \cup C) = (A \times B) \cup (A \times C) $.
+                
+                \item Suppose that $ (x, y) \in A \times (B \cap C) $. Then $ x \in A $ and $ y \in B \cap C \implies y \in B, \; y \in C$. Since $y$ exists in both $B$ and $C$, and $x$ exists in $A$, then $ (x, y) \in A \times B $ and $ (x, y) \in A \times C \implies (x, y) \in (A \times B) \cap (A \times C)$. Therefore $ A \times (B \cap C) \subseteq (A \times B) \cap (B \times C) $.
+                
+                Similarly, suppose $(x, y) \in (A \times B) \cap (B \times C)$. Then we know that $ (x, y) \in A \times B $, and $ (x, y) \in A \times C $. Therefore, $ x \in A, \; y \in B, \; y \in C. $ Hence $ y \in B \cap C \implies (x, y) \in A \times (B \cap C)$. Therefore $ (A \times B) \cap (B \times C) \subseteq A \times (B \cap C) $. Hence proved that $ A \times (B \cap C) = (A \times B) \cap (A \times C) $.
+            \end{enumerate}
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{13}[Chapter 2.2, Question 44]
+     Show that if $A$ and $B$ are finite sets, then $ A \cup B$ is a finite set.
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            For any finite sets $A$ and $B$, suppose that $ A $ has $n$ elements and $B$ has $m$ elements where $n$ and $m$ are natural numebers. Then $ A \cup B $ at most has $n + m$ elements. Since $n$ and $m$ are natural numbers, $n + m$ is also a natural number. Therefore, $ A \cup B $ is finite.
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{14}[Chapter 2.2, Question 45]
+        Show that if $A$ is an infinite set, then whenever $B$ is a set, $ A \cup B$ is also an  infinite set.
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            We know that $A$ is an infinite set. Then consider that $ A \cup B $ is a finite set. Then $ A \cup B $ has a total number of $n$ elements, where $n$ is any natural number. However, we know that $A$ is infinite, therefore, $A$ has more than $n$ elements as $A$ is infinite. Hence we have a contradiction. So $ A \cup B $ cannot have $n$ elements, but will have all elements of $A$, which implies $ A \cup B $ is also infinite.
+        \end{solution}
+    \end{questions}
+
+\end{sloppypar}
+=======
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage[shortlabels]{enumitem}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Discrete Mathematics}{Problem Set 5}{CS/Math 113}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\olsi}[1]{\,\overline{\!{#1}}} % overline short italic
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\title{CS/Math 113 - Problem Set 5}
+\author{Dead TAs Society \\ Habib University - Spring 2023}
+\date{Week 06}
+
+\begin{document}
+\maketitle
+\begin{sloppypar}
+\section*{Problems}
+
+\begin{problem}{1}[Chapter 2.1, Question 10]
+    Determine whether these statements are true or false.
+    \begin{enumerate}[(a)]
+        \item $ \phi \in \{\phi\}$
+        \item $ \phi \in \{ \phi,\{\phi\} \}$
+        \item $ \{ \phi \} \in \{ \phi \} $
+        \item $ \{ \phi \} \in \{\{ \phi \}\} $
+        \item $ \{ \phi \} \subset \{ \phi, \{\phi \} \} $
+        \item $ \{ \{ \phi \} \} \subset \{ \phi, \{ \phi \}\} $
+        \item $ \{ \{ \phi \} \} \subset \{ \{\phi \}, \{ \phi \}\} $
+    \end{enumerate}
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            \begin{enumerate}[(a)]
+                \item True
+                \item True
+                \item False
+                \item True
+                \item True
+                \item False
+                \item False
+            \end{enumerate}
+        \end{solution}
+    \end{questions}
+    \pagebreak
+    \begin{problem}{2}[Chapter 2.1, Question 21]
+    Find the power set of these sets where $a$ and $b$ are distinct elements.
+    \begin{enumerate}[(a)]
+        \item $\{a\}$
+        \item $\{a,b\}$
+        \item $\{ \phi, \{ \phi \}\}$
+    \end{enumerate}
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            \begin{enumerate}[(a)]
+                \item $ \mathcal{P} = \{\phi, \{a\}\} $
+                \item $ \mathcal{P} = \{ \phi, \{a\}, \{b\}, \{a, b\} \} $
+                \item $ \mathcal{P} = \{ \phi, \{\phi\}, \{\{\phi\}\}, \{ \phi, \{ \phi \} \} \} $
+            \end{enumerate}
+        \end{solution}
+    \end{questions}
+    
+    \begin{problem}{3}[Chapter 2.1, Question 22]
+    Can you conclude that $A = B$ if $A$ and $B$ are two sets with the same power set ?
+    \end{problem}
+    
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            The Power Set $ \mathcal{P}(\mathbb{A}) $ contains the all the possible subsets of the set $ \mathbb{A} $. Therefore, the Union of all elements in the Power Set would result in the original set of $ \mathbb{A} $. \\ Therefore, if $A$ and $B$ are two sets such that $ \mathcal{P}(A) = \mathcal{P}(B) $, then the Union of the elements of $\mathcal{P}(A) = $ the Union of the elements of $\mathcal{P}(B)$. Hence, it can be concluded that $ A = B $.  
+        \end{solution}
+    \end{questions}
+    
+    \begin{problem}{4}[Chapter 2.1, Question 23]
+    How many elements does each of these sets have where $a$ and $b$ are distinct elements ?
+    \begin{enumerate}[(a)]
+        \item $ \mathcal{P}(\{a,b,\{a,b\}\})$
+        \item $ \mathcal{P}(\{\phi,a,\{a\}, \{\{a\} \}\})$
+        \item $ \mathcal{P}(\mathcal{P}(\phi))$
+    \end{enumerate}
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            \begin{enumerate}[(a)]
+                \item We have 3 elements, therefore there are $ 2^3 = 8 $ distinct elements.
+                \item We have 4 elements, therfore there are $ 2^4 = 16 $ distinct elements.
+                \item The Power Set of null set has only 1 element [$ \mathcal{P}(\phi) = \{ \phi \} $]. Then the power set of the power set has $ 2^1 = 2 $ elements $ \implies \mathcal{P}(\mathcal{P}(\phi)) = \{\phi, \{ \phi \}\} $ 
+            \end{enumerate}
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{5}[Chapter 2.1, Question 25]
+    Prove that $ \mathcal{P}(A) \subseteq \mathcal {P}(B)$ if and only if $ A \subseteq B$
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            Since we have \textbf{if and only if}, then we will have to prove that the statement holds both sides. 
+
+            \textbf{\underline{Case 1:}} If $ \mathcal{P}(A) \subseteq \mathcal{P}(B) $, then $ A \subseteq B $ 
+            
+            Consider any arbitrary element $a$ such that $ a \in A $. Then $ \{a\} \subseteq A $. Therefore,  $ \{a\} \in \mathcal{P}(A) $. Since $ \mathcal{P}(A) \subseteq \mathcal{P}(B)$, and $ \{a\} \in \mathcal{P}(A) $, it follows (by transitivity) that $ \{a\} \in \mathcal{P}(B) $. Since $\{a\}$ exists within the power set of $B$, then that implies that $ \{a\} \subseteq B \implies a \in B$. Hence proved if $ \mathcal{P}(A) \subseteq \mathcal{P}(B) $, then $ A \subseteq B $. 
+
+            \vspace*{3mm}
+            \textbf{\underline{Case 2:}} If $ A \subseteq B $, then $ \mathcal{P}(A) \subseteq \mathcal{P}(B) $. 
+
+            Consider any arbitrary element $a$ such that $a \in A$. Since $ A \subseteq B $, then $ a \in B $. Then we know that $ \{a\} \subseteq A \implies \{a\} \in \mathcal{P}(A) $. Since $ a \in B $, then $ \{a\} \subseteq B \implies \{a\} in \mathcal{P}(B) $. Therefore, $ \mathcal{P}(A) \subseteq \mathcal{P}(B) $. Hence proved.        
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{6}[Chapter 2.1, Question 26]
+    Show that if $A \subseteq C$ and $ B \subseteq D$, then $ A \times B \subseteq C \times D$
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            For two sets $A$ and $B$, $ A \times B $ is defined as a pair $ (a, b) $ where $ a \in A,\; b \in B $. We know that $ A \subseteq C $, and $ B \subseteq D $, then for any arbitrary elements $ a $ and $ b $, $ a \in A, \; b \in B \implies a \in C, \; b \in D $. Therefore, $ (a, b) \in C \times D $. Since $ (a, b) \in A \times B $, therefore $ A \times B \subseteq C \times D $. Hence shown.
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{7}[Chapter 2.1, Question 27]
+    Let $A = \{a,b,c,d\}$ and $B = \{x,y\}$. Find
+    \begin{enumerate}[(a)]
+        \item $ A \times B$
+        \item $ B \times A$
+    \end{enumerate}
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            \begin{enumerate}[(a)]
+                \item $ A \times B = \{ (a, x), (a, y), (b, x), (b, y), (c, x), (c, y), (d, x), (d, y) \} $
+                \item $ B \times A = \{ (x, a), (x, b), (x, c), (x, d), (y, a), (y, b), (y, c), (y, d) \} $
+            \end{enumerate}
+        \end{solution}
+    \end{questions}
+    \pagebreak
+    \begin{problem}{8}[Chapter 2.1, Question 38]
+    Show that $ A \times B \neq B \times A$, when $A$ and $B$ are nonempty, unless $ A = B$
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            Consider that $ A \neq B $. Then there exists some arbitrary element $a$ in $A$ such that $a$ does not exists in $B$. $ \exists a \in A$ such that $a \notin B $. And we know that $ A \neq \phi $ and $ B \neq \phi $[$A$ and $B$ are not empty]. Then for any arbitrary element $b \in B$, $ (a, b) \in A \times B $ however, $ (a, b) \notin B \times A $. The same can be said for any arbitrary element $b \in B$ where $ b \notin A $. Therefore, $ A \times B \neq B \times A $ for two non empty sets $A$ and $B$ if $ A \neq B $ which implies it is only the case when $ A = B $. Hence proved.  
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{9}[Chapter 2.1, Question 44]
+    Prove or disprove that if $A,B$, and $C$ are nonempty sets, and $A \times B = B \times C$, then $B=C$
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+
+            $ A \times B = \{ (a, b) \; | \; a \in A \land b \in B \} $ \\ 
+            $ B \times C = \{ (b, c) \; | \; b \in B \land c \in C \} $ \\
+            If $ A \times B = B \times C $, then for any pair $ (a, b) \in A \times B $, we can conclude that $ (a, b) \in B \times C \implies a \in B, \; b \in C $. Therefore, $ \forall a \in A \rightarrow  a \in B $. Similarly, $ \forall b \in B \rightarrow b \in C \equiv A \subseteq B \subseteq C$ and that without loss of generality $ C \subseteq B \subseteq A $. Therefore $ B = C $. Hence proved.
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{10}[Chapter 2.2, Question 5]
+    Prove the complementation law in Table 1 by showing that $ \bar{\bar{A}} = A$
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            By definition of complement, $ \forall a \in A \rightarrow a \notin \bar{A} $. Similarly by the definition of the complement, $ \forall a' \in \bar{A} \rightarrow a' \notin A $. \\ 
+            Then $ \forall a \bar{\bar{A}} \rightarrow a \notin \bar{A}$. Since $a$ does not exist in $\bar{A}$, then by the definition, $a$ exists in $A$. Hence we can conclude that $ \bar{\bar{A}} = A $. 
+
+            This proof can be written in another way: \\ 
+            $ \bar{\bar{A}} = \{ x | \neg x \in \bar{A} \} = \{ x | \neg \neg x \in A \} = \{ x | x \in A \} = A $ 
+
+            Hence proved.
+        \end{solution}
+    \end{questions}
+    \pagebreak
+    \begin{problem}{11}[Chapter 2.2, Question 11]
+    Let $A$ and $B$ sets. Prove the commutative laws from Table 1 by showing that
+    \begin{enumerate}[(a)]
+        \item $A \cup B = B \cup A$
+        \item $A \cap B = B \cap A$
+    \end{enumerate}
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            \begin{enumerate}[(a)]
+                \item By the definition, $ A \cup B = \{x | x \in A \lor x \in B \}  $ \\ Then from the definition, \\ $ A \cup B = \{ x | x \in A \lor x \in B \} = \{ x | x \in B \lor x \in A \} = B \cup A $. \\ Hence proved.
+                \item By the definition, $ A \cap B = \{ x | x \in A \land x \in B \} $ \\ Then from the definition, \\ $ A \cap B = \{ x | x \in A \land x \in B \} = \{ x | x \in B \land x \in A \} = B \cap A $ \\ Hence proved
+            \end{enumerate}
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{12}[Chapter 2.2, Question 19]
+    Show that if $A,B,$ and $C$ are sets, then $ \olsi{A \cap B \cap C} = \bar{A} \cup \bar{B} \cup \bar{C}$
+    \begin{enumerate}[(a)]
+        \item by showing each side is a subset of the other side
+        \item using a membership table.
+    \end{enumerate}
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            \begin{enumerate}[(a)]
+                \item By definition, $ \olsi{A \cap B \cap C} = \{ x | x \notin A \lor x \notin B \lor x \notin C \} = \{ x | x \in \bar{A} \lor x \in \bar{B} \lor x \in \bar{C} \} = \bar{A} \cup \bar{B} \cup \bar{C} $. Hence shown that $ \olsi{A \cap B \cap C} \subseteq \bar{A} \cup \bar{B} \cup \bar{C} $. \\ Conversely, by definition $ \bar{A} \cup \bar{B} \cup \bar{C} = \{ x | x \in \bar{A} \lor x \in \bar{B} \lor x \in \bar{C} \} = \{ x | x \notin A \lor x \notin B \lor x \notin C \} = \olsi{A \cap B \cap C} $. Hence proved that $ \bar{A} \cup \bar{B} \cup \bar{C} \subseteq \olsi{A \cap B \cap C} $  
+            \end{enumerate}
+
+            \hspace*{2.5mm}(b) \[ 
+                \begin{array}{| c | c | c | c || c || c | c |c || c || }
+                    A & B & C & A \cap B \cap C & \olsi{A \cap B \cap C} & \bar{A} & \bar{B} & \bar{C} & \bar{A} \cup \bar{B} \cup \bar{C} \\ 
+                    \hline
+                    0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\ 
+                    0 & 0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 \\ 
+                    0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 1 \\ 
+                    0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 \\
+                    1 & 0 & 0 & 0 & 1 & 0 & 1 & 1 & 1 \\ 
+                    1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 \\
+                    1 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 1 \\ 
+                    1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0
+                \end{array}
+                \]
+
+                Hence shown that their truth values are same, hence they are logically equivalent.
+        
+        \end{solution}
+    \end{questions}
+    \pagebreak
+    \begin{problem}{12}
+    Prove or disprove that for all sets $A,B$,and $C$ we have
+    \begin{enumerate}[(a)]
+        \item $A \times (B \cup C) = (A \times B) \cup (A \times C)$
+        \item $A \times (B \cap C) = (A \times B) \cap (A \times C)$
+    \end{enumerate}
+    \end{problem}
+    
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            \begin{enumerate}[(a)]
+                \item Suppose that $ (x, y) \in A \times (B \cup C) $. Then $ x \in A $ and $ y \in (B \cup C) \implies y \in B \lor y \in C$. Since $y$ exists in either $B$ or $C$, and $x$ exists in $A$, then $ (x, y) \in (A \times B) \lor (x, y) \in (A \times C) \implies (x, y) \in (A \times B) \cup (A \times C) $. Therefore $ A \times (B \cup C) \subseteq (A \times B) \cup (A \times C) $.
+                
+                Similarly, suppose that $ (x, y) \in (A \times B) \cup (A \times C) $. Then $ (x, y) \in (A \times B) \lor (x, y) \in (A \times C) \implies x \in A, $ and $ y \in B \lor y \in C \implies y \in (B \cup C) $. So, $ (x, y) \in A \times (B \cup C) $. Therefore $ (A \times B) \cup (A \times C) \subseteq A \times (B \cup C) $. 
+
+                Hence proved that $ A \times (B \cup C) = (A \times B) \cup (A \times C) $.
+                
+                \item Suppose that $ (x, y) \in A \times (B \cap C) $. Then $ x \in A $ and $ y \in B \cap C \implies y \in B, \; y \in C$. Since $y$ exists in both $B$ and $C$, and $x$ exists in $A$, then $ (x, y) \in A \times B $ and $ (x, y) \in A \times C \implies (x, y) \in (A \times B) \cap (A \times C)$. Therefore $ A \times (B \cap C) \subseteq (A \times B) \cap (B \times C) $.
+                
+                Similarly, suppose $(x, y) \in (A \times B) \cap (B \times C)$. Then we know that $ (x, y) \in A \times B $, and $ (x, y) \in A \times C $. Therefore, $ x \in A, \; y \in B, \; y \in C. $ Hence $ y \in B \cap C \implies (x, y) \in A \times (B \cap C)$. Therefore $ (A \times B) \cap (B \times C) \subseteq A \times (B \cap C) $. Hence proved that $ A \times (B \cap C) = (A \times B) \cap (A \times C) $.
+            \end{enumerate}
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{13}[Chapter 2.2, Question 44]
+     Show that if $A$ and $B$ are finite sets, then $ A \cup B$ is a finite set.
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            For any finite sets $A$ and $B$, suppose that $ A $ has $n$ elements and $B$ has $m$ elements where $n$ and $m$ are natural numebers. Then $ A \cup B $ at most has $n + m$ elements. Since $n$ and $m$ are natural numbers, $n + m$ is also a natural number. Therefore, $ A \cup B $ is finite.
+        \end{solution}
+    \end{questions}
+
+    \begin{problem}{14}[Chapter 2.2, Question 45]
+        Show that if $A$ is an infinite set, then whenever $B$ is a set, $ A \cup B$ is also an  infinite set.
+    \end{problem}
+
+    \begin{questions}
+        \question
+        \begin{solution}
+            
+            We know that $A$ is an infinite set. Then consider that $ A \cup B $ is a finite set. Then $ A \cup B $ has a total number of $n$ elements, where $n$ is any natural number. However, we know that $A$ is infinite, therefore, $A$ has more than $n$ elements as $A$ is infinite. Hence we have a contradiction. So $ A \cup B $ cannot have $n$ elements, but will have all elements of $A$, which implies $ A \cup B $ is also infinite.
+        \end{solution}
+    \end{questions}
+
+\end{sloppypar}
+>>>>>>> 25b5893727c6b2c0227a90f1e7ec7070cebe605d
+\end{document}

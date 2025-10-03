@@ -1,0 +1,43 @@
+// Load the papers from papers.csv
+CALL apoc.periodic.iterate(
+    "LOAD CSV WITH HEADERS FROM 'file:///papers.csv' AS row RETURN row limit 100001",
+    "MERGE (p:Paper {doi: row.doi, title: row.title, citationCount: 0})
+        MERGE (y:Year {year: coalesce(row.year, 'Unknown')})
+        MERGE (p)-[:PUBLISHED_IN_YEAR]->(y)",
+    {batchSize: 1000, iterateList: true, parallel: false}
+)
+
+// Load the references from references.csv, and estbalish citation relationships
+CALL apoc.periodic.iterate(
+    "LOAD CSV WITH HEADERS FROM 'file:///references.csv' AS row RETURN row limit 100001",
+    "MATCH (p1:Paper {doi: row.paper_doi}), (p2:Paper {doi: row.reference_doi})
+        MERGE (p1)-[:CITED]->(p2)
+        SET p2.citationCount = p2.citationCount + 1",
+    {batchSize: 1000, iterateList: true, parallel: false}
+) 
+
+// Load the authors from authors.csv and establish authorship relationships
+CALL apoc.periodic.iterate(
+  "LOAD CSV WITH HEADERS FROM 'file:///authors.csv' AS row RETURN row",
+  "MERGE (a:Author {authorId: row.authorId, name: row.name, totalPapers: 0})
+   WITH a, row
+   MATCH (p:Paper {doi: row.doi})
+   MERGE (a)-[:AUTHORED]->(p)
+   SET a.totalPapers = a.totalPapers + 1",
+  {batchSize: 10000, iterateList: true, parallel: false}
+)
+
+// Build CoAuthorship relationships
+CALL apoc.periodic.iterate(
+    "MATCH (a1:Author)-[:AUTHORED]->(:Paper)<-[:AUTHORED]-(a2:Author) WHERE id(a1) < id(a2) RETURN a1, a2",
+    "MERGE (a1)-[:COAUTHOR]->(a2)",
+    {batchSize: 10000, iterateList: true, parallel: false}
+)
+
+// Build Cited_Work relationships
+CALL apoc.periodic.iterate(
+    "MATCH (a1:Author)-[:AUTHORED]->(:Paper)<-[:CITED]-(:Paper)<-[:AUTHORED]-(a2:Author) WHERE id(a1) < id(a2) RETURN a1, a2",
+    "MERGE (a1)-[:CITED_WORK]->(a2)",
+    {batchSize: 10000, iterateList: true, parallel: false}
+)
+    

@@ -1,0 +1,55 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{titling}
+
+\printanswers
+
+\title{Weekly Challenge 05: Master Theorem\\CS 412 Algorithms: Design and Analysis}
+\author{team-name}  % <==== replace with your team name for grading
+\date{Habib University | Spring 2023}
+
+\runningheader{CS 412: Algorithms}{WC05: Master Theorem}{\theauthor}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+  
+  \titledquestion{Reverse Engineering}
+
+  We are going to design algorithms to meet a target asymptotic time complexity, and then investigate their running time.
+
+  \subsection*{Tasks}
+  \begin{description}
+  \item[Theorem] State the master theorem.
+  \item[Recurrences 1] Design distinct recurrences, $T_A(n)$ and $T_B(n)$, each of which solve to $\Theta(n^2)$.
+  \item[Recurrences 2] Design distinct recurrences, $T_C(n)$ and $T_D(n)$, each of which solve to $\Theta(n\lg n)$.
+  \item[Justify] Use the master theorem to justify the claimed solutions of  $T_A(n)$, $T_B(n)$, $T_C(n)$, and $T_D(n)$.
+  \item[Solve 1] Use any other method to solve any one of  $T_A(n)$ and $T_B(n)$.
+  \item[Solve 2] Use any other method to solve any one of  $T_C(n)$ and $T_D(n)$.
+  \item[Implement 1] In the accompanying file, \texttt{algos.py}, implement plausible algorithms whose running times match $T_A(n),T_B(n), T_C(n)$, and $T_D(n)$. You may modify the parameter list of each as required.
+  \item[Timing] Time the run time of your 4 algorithms In the accompanying file, \texttt{algos.py}, across a wide range of values of $n$.
+  \item[Compare] Plot the run time of your algorithms in a single diagram. Make sure that each plot is clearly labeled, or the diagram contains a clearly visible legend. Make sure that the axis limits are set such that the plots are clearly visible and occupy a large portion of the diagram. Include separate diagrams over different axis ranges for greater clarity if necessary.
+  \item[Submit] Include the diagram in your solution below.
+  \item[Share] Share your diagram as a comment on the \href{https://web.yammer.com/main/org/habib.edu.pk/threads/eyJfdHlwZSI6IlRocmVhZCIsImlkIjoiMjEyMzI4NzkzMzY4MTY2NCJ9}{WC05 post} in the course group.
+  \end{description}
+  \underline{Tip}: You may consider \href{https://stackoverflow.com/a/68054319/1382487}{\texttt{time.perf\_counter()}} (detailed tutorial \href{https://realpython.com/python-timer/#other-python-timer-functions}{here}) for timing purposes.
+  
+  \begin{solution}
+    % Enter your solution here.
+  \end{solution}
+
+\end{questions}
+
+\end{document}

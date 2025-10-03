@@ -1,0 +1,75 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath,amsfonts}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\printanswers
+
+\title{Weekly Challenge 02: Asymptotic Bounds}
+\author{CS 412 Algorithms: Design and Analysis}
+\date{Spring 2022}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+  
+\question We are given the following relations among the functions, $f, g, h$, and $i$.
+  \begin{align*}
+    f(n) = O(g(n))\\
+    f(n) = \Omega(h(n))\\
+    f(n) = \Theta(i(n))
+  \end{align*}
+
+
+
+
+  \noindent\textbf{TASK}: Visualize these relations in a single plot by making appropriate choices for $f, g, h$, and $i$. Make sure that the plot clearly indicates the constants. \\
+  \noindent\textbf{TASK}: Include the plot below.
+  
+  \noindent\textbf{TASK}: Indicate below the functions that you have chosen for $f, g, h$, and $i$ and explain below how the indicated constants fulfill the corresponding definitions. Feel free to refer to the visualization in your explanation.
+  
+  \noindent\textbf{TASK}:  Also share your visualization as a comment on the \textit{Week 02 Challenge} post in the course group on Yammer.
+
+  \begin{solution}
+    Following are my choices:
+    \[ f(n) = n\cdot \text{log}(n) \]
+    \[ g(n) = 2^n \]
+    \[ h(n) = \text{log}(n) \]
+    \[ i(n) = 2n\cdot \text{log}(n) \]
+    \[ i(n) = 1/2n\cdot \text{log}(n) \]
+    \begin{center}
+        \textbf{Task 1: Graph}
+    \end{center}
+    Following is the graph of these functions:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=10cm, height=10cm]{Figure2.png}
+        \caption{Time Complexity Analysis}
+        \label{fig:my_label}
+    \end{figure}
+    \begin{center}
+    \textbf{Task 2: Explanation}
+\end{center}
+\underline{$f(n) = O(g(n))$}:
+\[ n\cdot \text{log}(n) = O(2^n) \]
+$g(n)$ is the upper bound of $f(n)$ as we can see in Figure 1 that for the same values of $n$, $g(n)$ increases rapidly than $f(n)$ and for larger values of $n$, $g(n)$ will get even larger. log$(n)$ in $f(n)$ grows very slowly and $n$ in $f(n)$ does not grow larger than $2^n$ (an exponential function).\\ \\
+\underline{$f(n) = \Omega (h(n))$}:
+\[ n\cdot \text{log}(n) = \Omega (\text{log}(n)) \]
+As we can see in Figure 1, the function $h(n)$ grows slower than the function $f(n)$ due to which it is a lower bound to the function $h(n)$. $f(n)$ grows faster due to the factor $n$ that makes it increase rapidly than $h(n)$. \\ \\
+\underline{$f(n) = \Theta(i(n))$}:
+\[ n\cdot \text{log}(n) = \Theta(2n\text{log}(n)) \]
+\[ n\cdot \text{log}(n) = \Theta(1/2n\text{log}(n)) \]
+The highest power of $i(n)$ and $f(n)$ is the same due to the constants 1/2 and 2 in the function $i(n)$ create both lower and upper bounds for the function $f(n)$. It means that for very high values of $n$, $i(n)$ and $f(n)$ are going to increase at the same rate. 
+
+  \end{solution}
+
+\end{questions}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

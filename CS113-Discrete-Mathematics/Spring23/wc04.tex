@@ -1,0 +1,88 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{titling}
+
+\newcolumntype{C}{>{$}c<{$}} % math-mode version of "c" column type
+
+\runningheader{CS/MATH 113}{WC04: Logical Inference}{\theauthor}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+\printanswers
+
+\title{Weekly Challenge 04: Logical Inference\\CS/MATH 113 Discrete Mathematics}
+\author{Ali Muhammad Asad}  % <== for grading, replace with your team name, e.g. q1-team-420
+\date{Habib University | Spring 2023}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+  \titledquestion{Sacred Secrets}[5] One of your helpful TAs has prepared the manual, ``Sacred Secrets: How to Stay Sane and Earn an A+''. However their own sanity is sadly no longer intact. The \LaTeX\ source and the repository got deleted and all that exists about the location of the only printed copy are the following instructions.
+  \begin{enumerate}
+  \item There is a hint at Learn Courtyard or at the Gym.
+  \item If your TA is sitting in Ehsas or they are absent, then there is a hint at Learn Courtyard.
+  \item If your TA is not sitting in Ehsaas, then there is a hint at the Gym.
+  \item If there are people in Learn Courtyard, then there is no hint at Learn Courtyard.
+  \item If there is a hint at Learn Courtyard, then the manual is at Zen Garden.
+  \item If there is hint at the Gym, then the manual is at Earth Courtyard.
+  \item If your TA is absent, then the manual is at Fire Courtyard.
+  \end{enumerate}
+  You notice that there are people in Learn Courtyard. Show how you can infer the location of the manual.
+
+  \begin{solution}
+    
+    The above situations can be written in propositions as: \\ 
+    \hspace*{2mm} $p:$ There is a hint at Learn Courtyard \\ 
+    \hspace*{2mm} $q:$ There is a hint at the Gym \\ 
+    \hspace*{2mm} $r:$ Your TA is sitting in Ehsas \\ 
+    \hspace*{2mm} $s:$ Your TA is absent \\ 
+    \hspace*{2mm} $t:$ There are people in the Learn Courtyard \\ 
+    \hspace*{2mm} $u:$ The manual is at Zen Garden \\ 
+    \hspace*{2mm} $v:$ The manual is at Earth Courtyard \\ 
+    \hspace*{2mm} $w:$ the manual is at Fire Courtyard
+
+    \vspace{3mm}
+    Then the situation in propositional logic can be represented by: \\
+    \hspace*{2mm}1. $ p \lor q $ \\ 
+    \hspace*{2mm}2. $ (r \lor s) \implies p $ \\ 
+    \hspace*{2mm}3. $ \neg r \implies q $ \\ 
+    \hspace*{2mm}4. $ t \implies \neg p $ \\ 
+    \hspace*{2mm}5. $ p \implies u $ \\ 
+    \hspace*{2mm}6. $ q \implies v $ \\ 
+    \hspace*{2mm}7. $ s \implies w $
+
+    \vspace{3mm}
+    One notices that there are people in the Learn Courtyard. \\ 
+    $ \therefore t $ \\ 
+    $ \therefore \neg p $ [Modus Ponens on $t$ and 4.] \\ 
+    $ \therefore q $ [Disjunctive syllogism on $ \neg p $ and 1.] \\ 
+    $ \therefore v $ [Modus Ponens on $q$ and 6.] 
+
+    Hence we can infer that the manual is at the Earth Courtyard.
+     
+  \end{solution}
+
+  \titledquestion{Logic Sauce}[5] In order to celebrate their performance in the recent quiz, a group of $n$ Discrete Mathematics students are hanging out at the Dhaba area. Rahim bhai asks them, ``Does everyone want fries?'' The first student replies, ``I do not know'', as does the second. In fact, the first $n-1$ students respond the same. The last student replies, ``No''. Rahim bhai then proceeds to prepare the order. What is the order and how did Rahim bhai deduce it?
+
+  \begin{solution}
+    
+    The order is fries for the first $(n-1)$ students but not for the $n^{\text{th}}$ student. Rahim bhai's question states `everyone', therefore it addresses all the students. Then the first student replies with ``I do not know'', since they want fries, but do not know about the remaining students. Similarly the second student knows the first one wants, and they also want, but they do not know about the remaining students, therfore reply with ``I do not know'' since the quesiton addresses everyone. Then all the students upto the $ (n - 1)^{\text{th}} $ student reply with ``I do not know'' as they know about themselves, and all the previous students, however, are unsure about anyone after them. The $ (n-1)^{\text{th}} $ student will also not know about the $ n^{\text{th}} $ student. \\ 
+    However, the $ n^{\text{th}} $ student knows about everyone elses, and themselves. So they reply with `No' implying that not everyone wanted fries. All students wanted fries uptill the $ (n-1)^{\text{th}} $ student, but the $ n^{\text{th}} $ student did not, therefore Rahim bhai concluded this and brought fries for $ n-1 $ students and not the $ n^{\text{th}} $ student.
+  \end{solution}
+
+  
+\end{questions}
+
+\end{document}
+

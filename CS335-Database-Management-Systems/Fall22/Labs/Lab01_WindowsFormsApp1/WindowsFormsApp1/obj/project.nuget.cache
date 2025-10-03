@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "G/yz8cFqmKPJpD3mgc3yo+kjWvWsWXPGt7uxaCu4gr1O9lcH0FUy2x8SLuxa8oRglgUA18BdDS7YqBtMg+h7ZA==",
+  "success": true,
+  "projectFilePath": "E:\\Assignments_Work\\Habib\\Sem_3\\Database\\WindowsFormsApp1\\WindowsFormsApp1\\WindowsFormsApp1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\DELL\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.28\\microsoft.netcore.app.host.win-x64.3.1.28.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

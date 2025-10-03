@@ -1,0 +1,77 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage[a4paper]{geometry}
+\usepackage{hyperref}
+\usepackage{mdframed}
+
+\title{Weekly Challenge 08: Context-Free Languages}
+\author{CS 212 Nature of Computation\\Habib University\\Ali Muhammad Asad - aa07190}
+\date{Fall 2023}
+
+% \theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+
+% \theoremstyle{claim}
+\newtheorem{claim}{Claim}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\printanswers
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+  \titledquestion{Closure}
+
+  Given a language, $L$, the operation, $f$ is defined as $f(L) = \{w\mid vw \in L \text{ and } v,w\in\Sigma^*\}$.
+
+  Prove or disprove the given claim.
+
+  \begin{claim}
+    The class of context-free languages is closed under $f$.
+  \end{claim}
+
+  \begin{solution}
+
+    The operation $f$ generates a language consisting of all strings $w$ such that for some string $v$, the concatenation of $v$ and $w$ ($vw$) is in the original language. \\ In essence, it extracts a suffix $w$ from a string $vw$ that is in the original language $L$.
+
+    % Given a context-free language $L$, let the PDA for $L$ be $P$.
+
+    % Let the resulting language $f(L)$ be $L'$. Then we can construct a PDA $P'$ for $L'$ as follows: \vspace*{-2mm}
+    % \begin{itemize}
+    %   \item Create a copy of the PDA $P$ and name it as $P_c$ which would have the same transitions as $P$. $P$ and $P_c$ will be combined to form $P'$.
+    %   \item Modify the input part of transitions in $P_c$ to $\varepsilon$ without changing the stack symbol. If the input transition has $ 0, 1 \rightarrow \varepsilon $ modify it to $ \varepsilon, 1 \rightarrow \varepsilon $. The input in the transition $ 0, 1 \rightarrow \varepsilon $ is 0 and it is changed $ \varepsilon, 1 \rightarrow \varepsilon $ where the stack symbol $ \varepsilon $ is unchanged. In this step, just change the input part of each transition irrespective of the stack symbol.
+    %   \item For each state in $P_c$, add a new transition $ \varepsilon, \varepsilon \rightarrow \varepsilon $ to the corresponding state in $P$. This that for the input $ \varepsilon $ and stack symbol $ \varepsilon $, the top of the stack will be $ \varepsilon $. This step simply connects two PDAs.
+    %   \item The start state of $P_c$ should be the start state of the whole PDA $P'$. Thus, $P'$ is the combination of the two PDAs $P$ and $P_c$.
+    % \end{itemize}
+
+    % The PDA $P'$ simply ignores the alphabet of $v$ and starts functioning when it identifies the first alphabet of $w$ from which the second part of the PDA $P'$ ($P$) accepts the substring $w$ - the suffix. Thus, all suffix $w$ of the string belong to the language $L$ will be accepted by $L'$.
+
+    Given a context-free language $L$, let the PDA for $L$ be $P$.
+    Let the resulting language $f(L)$ be $L'$. Then we can construct a PDA $P'$ for $L'$ as follows: \vspace*{-2mm}
+    \begin{itemize}
+      \item Create an identical copy of $P$ and name it as $P_c$, having the same transitions as $P$. $P$ and $P_c$ will be combined to form $P'$; $P_c$ recognizes the prefix $v$. \vspace*{-2mm}
+      \item Modify the input part of transitions in $P_c$ to $\varepsilon$ without changing the stack symbol. For example, if the input transition has $ 0, 1 \rightarrow \varepsilon $ modify it to $ \varepsilon, 1 \rightarrow \varepsilon $. The input in the transition $ 0, 1 \rightarrow \varepsilon $ is 0 and it is changed $ \varepsilon, 1 \rightarrow \varepsilon $ where the stack symbol $ \varepsilon $ is unchanged. This step ignores the input symbols when transitioning in $P_c$ as we want $P_c$ to recgonize the prefix $v$, so the input symbols don't matter to it and it doesn't consume the input symbols. \vspace*{-2mm}
+      \item For each state in $P_c$, add a new transition $ \varepsilon, \varepsilon \rightarrow \varepsilon $ to the corresponding state in $P$. This step connects each state in $P_c$ to its corresponding state in $P$, essentially connecting $P_c$ to $P$. It says that when $P_c$ is done recognizing the prefix $v$ and is ready to look at the suffix $w$, it transitions to the corresponding state in $P$. \vspace*{-2mm}
+      \item The start state of $P_c$ should be the start state of the whole PDA $P'$. So when we start processing an input string, first we go through $P_c$ which recognizes the prefix $v$ and then we go through $P$ which recognizes the suffix $w$. Thus, $P'$ is the combination of the two PDAs $P$ and $P_c$.
+    \end{itemize}
+    Then, by this construction, $P_c$ `ignores' some prefix of the input string and then processes the rest of the string normally through $P$. Hence recognizing all strings $w$ after removing some prefix $v$ from the original string $vw$ in the language.
+
+    Since a PDA recognizes $f(L)$, the class of context-free languages is closed under $f$. 
+    \begin{flushright}
+      $\blacksquare$
+    \end{flushright}
+
+  \end{solution}
+
+\end{questions}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

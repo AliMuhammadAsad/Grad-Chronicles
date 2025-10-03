@@ -1,0 +1,131 @@
+\documentclass[addpoints,a4paper]{exam}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+
+\runningheader{CS 412 Algorithms}{Quiz 3B}{ID: \rule{.2\textwidth}{.5pt}}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+
+\newcommand\mc[1]{\multicolumn{1}{c}{#1}}
+\newcommand\mcc[1]{\multicolumn{1}{c|}{#1}}
+\newcommand\cc[1]{\cellcolor{blue!#1}}
+
+% solution
+\usepackage{draftwatermark}
+\SetWatermarkText{Sample Solution}
+\SetWatermarkLightness{.9}
+\SetWatermarkScale{3}
+\printanswers
+
+\begin{document}
+\begin{flushleft}
+  { \large \textsf{\textbf{CS 412: Algorithms: Design and Analysis, L1, Quiz 3B, Spring 2023.}}}\vspace{.5em}
+  
+  \numquestions\ problems for \numpoints\ points on \numpages\ printed sides. Duration: 60 minutes. \today.
+\end{flushleft}
+
+Instructions:
+\begin{enumerate}
+  % \item Please observe the allowed time for this quiz as indicated on Canvas.
+\item Enter your name and ID below and at the top of every side.
+\item Solve the problems by hand in clear and legible handwriting in the provided space.
+\item You may use the last side for rough work.
+\item Provide precise and concise solutions.
+\end{enumerate}
+
+\noindent Student Name: \hrulefill \\[5pt]
+\noindent Student ID: \hrulefill \\
+\rule{\textwidth}{1pt}
+
+\begin{questions}
+  \question A \textit{contiguous subsequence} of a sequence $A$ is a sequence made up of consecutive elements of $A$. For instance, if $A = \langle5, 15, -30, 10, -5, 40, 10\rangle$ then $\langle15, -30, 10\rangle$ is a contiguous subsequence but $\langle5, 15, 40\rangle$ is not.
+
+  We want to solve the following problem.
+
+  \underline{Input}: Two sequences, $X=\langle x_1, x_2, \ldots, x_m\rangle$ and $Y=\langle y_1, y_2, \ldots, y_n\rangle$.\\
+  \underline{Output}: A contiguous subsequence of $X$ and of $Y$ that has maximum length.
+  
+  For example, the answer for $X =$ ``banana'' and $Y =$ ``anastasia'' would be  ``ana''.
+
+  \begin{parts}
+  \part[3] Characterize the structure of an optimal solution.\\
+    \textit{Hint}: For each $i\in\{1,2,\ldots,m\}, j\in\{1,2,\ldots,n\}$, consider contiguous subsequences of $X_i$ and $Y_j$.
+    \begin{solution}
+      This is the first of the 4-step recipe to solve a problem using dynamic programming. The goal of the characterization is to demonstrate optimal substructure and overlapping subproblems.
+      
+      The problem is more commonly known as the \textit{longest common substring (lcs)} problem where a substring refers to a contiguous subsequence. Below, we will use the two terminologies interchangeably.
+
+      We note that $X$ and $Y$ may have several common substrings. We identify all of them as candidates, and denote as $C_{i,j}$ the candidate up to position $i$ in $X$ and position $j$ in $Y$, i.e. up to $X_i$ and $Y_j$. The longest candidate is the lcs.
+
+      There are two possibilities for $C_{i,j}$ depending on whether $x_i$ and $y_j$ match. In case of a match, $C_i$ extends $C_{i-1,j-1}$, by appending the matching character to $C_{i-1}$. In case of mismatched characters, $C_{i,j}$ is the empty string. $C_{i,j}$ is the empty string also when any of the indexes is 0;
+
+      \[
+        C_{i,j} = \begin{cases}
+          \text{``''} & i = 0 \text{ or } j=0\\
+          C_{i-1,j-1} + x_i & x_i = y_j\\
+          \text{``''} & \text{otherwise}
+        \end{cases}.
+      \]
+      $C_i,j$ depends on $C_{i-1,j-1}$. This establishes optimal substructure. 
+
+     The lcs is the candidate with the maximum length. It requires every $C_{i,j}$ for $1\leq i\leq m, 1\leq j\leq n$ to be computed. The value of any $C_{m,n}$ is potentially required for computing every $C_{m+i,j+i}$. This establishes overlapping subproblems.
+     \end{solution}
+    \part[2] Recursively define the value of an optimal solution.
+      \begin{solution}
+        We treat the length of an lcs as the value of an optimal solution. Let the length of a candidate, $C_{i,j}$, be $L_{i,j}$. We compute  $L_{i,j}$ for $1\leq i\leq m, 1\leq j\leq n$ and note the maximum. A recursive expression for $L_{i,j}$ follows directly from the previous part.
+      \[
+        L_{i,j} = \begin{cases}
+          0 & i = 0 \text{ or } j=0\\
+          L_{i-1,j-1} + 1 & x_i = y_j\\
+          0 & \text{otherwise}
+        \end{cases}.
+      \]
+      The value of the optimal solution is then the maximum $L_{i,j}$, i.e. $\max\{L_{i,j} \mid 1\leq i\leq m, 1\leq j\leq n\}$.
+      \end{solution}
+    \part[3] Show how the value of an optimal solution can be computed in a bottom-up manner.
+    \begin{solution}
+      We will need a 2-dimensional table with $i$ ranging from $0$ to $m$ inclusive in the vertical direction, and  $j$ ranging from $0$ to $n$ inclusive in the horizontal direction. Going by the base case of the recurrence from the previous part, all cells in the first row and first column of the table, corresponding to $i=0$ and to $j=0$ contain 0. The recurrence also shows that any other cell in the table depends on the cell diagonally above it, i.e. on the cell to its top-left.
+
+      This is shown in the table below. The base cases are filled in. The dark blue cell at $(i,j) = (6,5)$ is the one to be computed, and its dependencies are shown in fading shades of blue diagonally above it.
+      \[
+      \begin{array}[c]{*{11}{c|}}
+        \multicolumn{11}{c}{j\rightarrow}\\
+        \mc{i\downarrow} & \mc{0} &\mc{1} & \mc{2} & \mc{3} & \mc{4} & \mc{5} & \mc{6} & \mc{\ldots} &  \mc{n-1} & \mc{n} \\\cline{2-11}
+        \mcc{0} & 0 & \cc{30} 0 & 0 & 0 & 0 & 0 & 0 & \ldots & 0 & 0  \\\cline{2-11}
+        \mcc{1} & 0 &   & \cc{35}  &   &   &   &   & \ldots &   &    \\\cline{2-11}
+        \mcc{2} & 0 &   &   & \cc{40}  &   &   &   & \ldots &   &    \\\cline{2-11}
+        \mcc{3} & 0 &   &   &   & \cc{45}  &   &   & \ldots &   &    \\\cline{2-11}
+        \mcc{4} & 0 &   &   &   &   & \cc{50}  &   & \ldots &   &    \\\cline{2-11}
+        \mcc{5} & 0 &   &   &   &   &   & \cc{75}  & \ldots &   &    \\\cline{2-11}
+        \mcc{\vdots} & \vdots  & \vdots & \vdots  & \vdots & \vdots  & \vdots & \vdots & \ddots & \vdots & \vdots \\\cline{2-11}
+        \mcc{m-1} & 0 &   &   &   &   &   &   & \ldots &   &    \\\cline{2-11}
+        \mcc{m} & 0 &   &   &   &   &   &   & \ldots &   &    \\\cline{2-11}
+      \end{array}
+    \]
+
+    Once the base case is filled, the table can be filled either row-wise or column-wise. The value of the optimal solution is then the largest entry in the table.
+    \end{solution}
+    \part[2] Argue about the time and space complexities of your approach.
+    \begin{solution}
+      We do not know where the lcs occurs, so we will have to fill the entire table above, not just the values required for $(i,j) = (m,n)$. A constant amount of work is required for each cell, including updating a running maximum. The time complexity is therefore $\Theta(mn)$.
+
+      $X$ and $Y$ need to be stored and accessed, which requires $\Theta(m+n)$ space. If that is overlooked, we can reason about the space overhead just for the computation as follows.
+
+      The computation requires to maintain an $m\times n$ table which costs $\Theta(mn)$ in terms of space. In fact, we can do without storing the entire table, by noting that only the previous row or column is required at any given time. We can choose to store only the previous row or the previous column, depending on which has the smaller dimension. With this approach, the computation requires just $\Theta(\min(m,n))$ space.
+    \end{solution}
+  \end{parts}
+\end{questions}
+
+\newpage
+\centerline{\large Rough Work}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

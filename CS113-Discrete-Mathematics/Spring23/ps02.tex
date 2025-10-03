@@ -1,0 +1,365 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+\usepackage{xcolor}
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Discrete Mathematics}{Problem Set 2}{CS/Math 113}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\title{CS/Math 113 - Problem Set 2}
+\author{Habib University - Spring 2023}
+\date{Week 01}
+
+\begin{document}
+\maketitle
+\section{Problems}
+\begin{sloppypar}
+\begin{problem}{1}
+Let $p$ and $q$ be the proposition
+\begin{itemize}
+    \item[$p:$] The election is decided.
+    \item[$q:$] The votes have been counted.
+\end{itemize}
+Express each of these compound propositions as an English sentence.
+
+\begin{itemize}
+    \item[(a)] $\neg p$
+    \item[(b)] $p \lor q$
+    \item[(c)] $\neg p \land q $
+    \item[(d)] $q \implies p $
+    \item[(e)] $ \neg q \implies \neg p $
+    \item[(f)] $\neg p \implies \neg q$
+    \item[(g)] $p \leftrightarrow q$
+    \item[(h)] $\neg q \lor (\neg p \land q) $
+\end{itemize}
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        
+        (a) The election is \textbf{\textit{not}} decided
+
+        (b) The election is decided \textbf{\textit{or}} the votes have been counted
+
+        (c) The election is \textbf{\textit{not}} decided \textbf{\textit{and}} the votes have been counted
+
+        (d) If the votes have been counted, then the election is decided
+
+        (e) If the votes have not been counted, then the election is not decided 
+
+        (f) If the election is not decided, then the votes have not been counted 
+
+        (g) The election is decided if and only if the votes have been counted
+
+        (h) The votes have not been counted \textbf{\textit{or}} the election is \textbf{\textit{not}} decided \textbf{\textit{and}} the votes have been counted
+    \end{solution}
+\end{questions}
+
+\begin{problem}{2}
+Let $p$ and $q$ be the proposition
+\begin{itemize}
+    \item[$p:$] It is below freezing.
+    \item[$q:$] It is snowing.
+\end{itemize}
+
+Write these propositions using $p$ and $q$ and logical connectives (including negations)
+
+\begin{itemize}
+    \item [(a)] It is below freezing and snowing.
+    \item [(b)] It is below freezing but not snowing.
+    \item [(c)] It is not below freezing and it is not snowing.
+    \item [(d)] It is either snowing or below freezing (or both).
+    \item [(e)] If it is below freezing, it is also snowing.
+    \item [(f)] Either it is below freezing or it is snowing, but it is
+          not snowing if it is below freezing.
+    \item [(g)] That it is below freezing is necessary and sufficient
+          for it to be snowing.
+\end{itemize}
+
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        
+        (a) $ p \land q $
+
+        (b) $ p \land \neg q $
+
+        (c) $ \neg p \land \neg q $ 
+
+        (d) $ q \lor p $
+
+        (e) $ p \implies q $
+
+        (f) $ (p \lor q) \land (p \implies \neg q)$
+
+        (g) $ p \iff q $
+    \end{solution}
+\end{questions}
+
+\begin{problem}{3}
+Construct a truth table for each of these compound propositions.
+\begin{itemize}
+    \item[(a)] $ p \land \neg p$
+    \item[(b)] $ p \lor \neg p$
+    \item[(c)] $ (p \lor \neg q) \implies  q$
+    \item[(d)] $ (p \lor q) \implies (p \land q) $
+    \item[(e)] $ (p \implies q) \leftrightarrow (\neg q \implies \neg p) $
+    \item[(f)] $ (p \implies q) \implies (p \implies q) $
+\end{itemize}
+
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+
+        (a) $ p \land \neg p $
+        \[ 
+        \begin{array}{c | c || c}
+            p & \neg p & p \land \neg p \\ 
+            \hline
+            F & T & F \\ 
+            T & F & F
+        \end{array}
+        \]
+
+        (b) $ p \lor \neg p$
+        \[ 
+        \begin{array}{c | c || c}
+            p & \neg p & p \lor \neg p \\ 
+            \hline
+            F & T & T \\
+            T & F & T
+        \end{array}
+        \]
+
+        (c) $ (p \lor \neg q) \implies  q$
+        \[ 
+        \begin{array}{c | c | c | c || c}
+            p & q & \neg q & p \lor \neg q & (p \lor \neg q) \implies q \\ 
+            \hline
+            F & F & T & T & F  \\ 
+            F & T & F & F & T  \\ 
+            T & F & T & T & F  \\ 
+            T & T & F & T & T
+        \end{array}
+        \]
+
+        (d) $ (p \lor q) \implies (p \land q) $
+        \[ 
+        \begin{array}{c | c | c | c || c}
+            p & q & p \lor q & p \land q & (p \lor q) \implies (p \land q) \\ 
+            \hline
+            F & F & F & F & T    \\ 
+            F & T & T & F & F    \\
+            T & F & T & F & F    \\
+            T & T & T & T & T
+        \end{array}
+        \]
+
+        (e) $ (p \implies q) \leftrightarrow (\neg q \implies \neg p) $
+        \[ 
+        \begin{array}{c | c | c | c | c | c || c}
+            p & q & \neg p & \neg q & p \implies q & \neg q \implies \neg p & (p \implies q) \leftrightarrow (\neg q \implies \neg p) \\ 
+            \hline
+            F & F & T & T & T & T & T      \\ 
+            F & T & T & F & T & T & T      \\
+            T & F & F & T & F & F & T      \\ 
+            T & T & F & F & T & T & T      
+        \end{array}
+        \]
+
+        (f) $ (p \implies q) \implies (p \implies q) $
+        \[ 
+        \begin{array}{c | c | c || c}
+            p & q & p \implies q & (p \implies q) \implies (p \implies q) \\ 
+            \hline
+            F & F & T & T     \\ 
+            F & T & T & T     \\ 
+            T & F & F & T     \\ 
+            T & T & T & T
+        \end{array}
+        \]
+
+    \end{solution}
+\end{questions}
+
+\pagebreak
+\begin{problem}{4}
+In an Island there are two kinds of inhabitants, knights, who always tell the truth, and knaves, who always lie. You encounter two people
+A and B. Determine, if possible, what A and B are if they address you in the ways described.
+\begin{itemize}
+    \item[(a)] A says ``At least one of us is a knave'' and B says nothing.
+    \item[(b)] A says ``The two of us are both knights'' and B says ``A is a knave''.
+    \item[(c)] A says ``I am a knave or B is a knight'' and B says nothing.
+    \item[(d)] Both A and B say ``I am a knight''
+    \item[(e)] A says we ``We are both knaves '' and B says nothing.
+\end{itemize}
+\end{problem}
+\begin{questions}
+    \question
+    \begin{solution}
+        
+        (a) If A is a knave, then he is telling the truth as there does indeed exist at least one knave. But knaves always lie, so A cannot be a knave. Then A is a knight. Knights always tell a truth, therefore, there must indee be a knave amongst the two. A cannot be a knave, therefore B is a knave.
+
+        (b) If A is a knight, then A's statement must be true. However, B's statement contradicts A's statement. So B cannot be a knight, and this case is false. However, if B is a knave, then B is telling a lie which is true, but contradicts A's statement, therefore, A's statement cannot be true. So this case is false \\ 
+        If A is a knave, and B is a knave, then B is telling the truth, so this can't be the case. \\ 
+        Then if A is a knave, and B is a knight, then there is no contradiction here, as A is telling a lie which holds true as a knave must always tell lies, and B is telling the truth that A is a knave. \\ 
+        Therefore, A is a knave and B is a knight. 
+
+        (c) If A is a knave, then he is telling the truth about himself, that he is a knave which implies his statement is true. But knaves always lie, so his statement should be false, therefore A cannot be a knave. Then A is a knight.\\ Now we know that A is a knight, so in A's statement, ``I am a knave'' is a not true, so for the statement to be true, ``B is a knight'' must be true. \\ Then it can be concluded that A is a knight, and B is a knight.
+
+        (d) It cannot be determined as both statements can hold true in either scenarios. If A is a knight, he is telling the truth so is true, but if A is not a knight, the he is lying which means he is a knave, which is also true. \\ The same argument holds true for B, therefore A and B cannot be determined.
+
+        (e) If A is a knight, then this statement is false by the rules of the knight, therefore A is not a knight. So A must be a knave. A is a knave, then A's statement must be a lie and both cannot be knaves. Since A is a knave, then B cannot be a knave so B is a knight. \\ A is a knave and B is a knight. 
+    \end{solution}
+\end{questions}
+
+\pagebreak
+\begin{problem}{5}
+Three friends are hanging out at a Cafe. The server approaches them and ask ``Who wants a slice of cake ?'' The first friend says ``I don't know''.
+The second friend says ``I don't know''. Finally, the third friend says ``No, not everyone wants cake''. The serves comes back and gives slices of cake to the
+friends who want . How did the server figure out who wanted the cake ? 
+\end{problem}
+\begin{questions}
+    \question
+    \begin{solution}
+
+        (If the server was this smart then that server would never be serving in the first place. \\ Were those friends drunk? \\ 
+        C be like, the proof is left as an exercise for the waiter)
+
+        Let the first friend be A, the second friend be B, and the third friend be C. \\ 
+        The waiter's question was that if everyone wanted cake. \\ 
+        A replies ``I don't know''. Implying he doesn't know if everyone wanted cake. \\ 
+        B replies ``I don't know''. Implying he doesn't know if everyone wanted cake. \\ 
+        C replies ``No, not everyone wants cake'' implying that C did not want cake, as the question was if everyone wanted cake. \\ 
+        Therefore, C does not get cake but A and B do get cake.
+    \end{solution}
+\end{questions}
+
+\begin{problem}{6}
+Sheikh Chilly, famous for his bizarre sense of humor and love of logic puzzles, left the following clues
+regarding the location of the hidden treasure. The treasure can only be in one place.
+\begin{itemize}
+    \item If the house is next to a lake, then the treasure is in the kitchen.
+    \item If the house is not next to a lake or the treasure is buried under the flagpole, then the tree in the front yard is an elm and the tree in the back yard is not an oak.
+    \item If the treasure is in the garage, then the tree in the back yard is not an oak.
+    \item If the treasure is not buried under the flagpole, then the tree in the front yard is not an elm.
+    \item The treasure is not in the kitchen.
+\end{itemize}
+Using rules of inference, determine where the treasure is hidden. Clearly state what your propositions
+represent.
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        Our propositions are as follows: \\ 
+        $p$: ``The house is next to a lake'' \\ 
+        $q$: ``The tresure is in the kitchen'' \\ 
+        $r$: ``The treasure is buried under the flagpole'' \\ 
+        $s$: ``The tree in the front yard is an elm'' \\ 
+        $t$: ``The tree in the back yard is an oak'' \\ 
+        $u$: ``The treasure is in the garage'' 
+
+        The above situation in propositional logic can be represented as: \\ 
+        1: $ p \implies q $ \\ 
+        2: $ (\neg p \lor r) \implies (s \land \neg t) $ \\ 
+        3: $ u \implies \neg t $ \\ 
+        4: $ \neg r \implies \neg s $ \\ 
+        5: $ \neg q $
+        
+        \vspace{2mm}
+        Now we know that $ \neg q $ is true. \\ 
+        Then $ \neg q \implies \neg p $ (By Contrapositive) \\ 
+        So $ \neg p $ is true by Modus Tollens.
+        
+        Then: $ (\neg p \lor r) $ is true. \\ 
+        $ \therefore s \land \neg t $ is true. \\ 
+        $ \therefore s $ is true by Simplification \\ 
+        $ \therefore \neg t $ is true by Simplification 
+
+        Then by taking the contrapositive of proposition 4 \\ 
+        $ s \implies r $ [A conditional statement has the same truth value as its contrapositive] \\ 
+        Since $s \implies r$, and we know $s$ is true, therefore $r$ is true by Modus Ponens. 
+
+        Hence we can conclude that the treasure is buried under the flagpole.
+    \end{solution}
+\end{questions}
+
+\begin{problem}{7}
+Show that following are logically equivalent without using truth tables
+\begin{itemize}
+    \item[(a)] $ (p \implies r) \lor (q \implies r)  \equiv  (p \land q) \implies r $
+    \item[(b)] $ p \land (q \lor r) \equiv (p \land q) \lor (p \land) r $
+    \item[(c)] $ \neg [\neg[(p \lor q) \land r] \lor \neg q] \equiv q \land r $
+        \item[(d)]$ (p \lor q \lor r) \land (p \lor t \lor \neg q) \land (p \lor \neg t \lor r) \equiv p \lor [r \land (t \lor \neg q)] $
+\end{itemize}
+
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        
+        (a) $ (p \implies r) \lor (q \implies r)  \equiv  (p \land q) \implies r $ \\ 
+        LHS: \\ 
+        $ \neg((p \implies r) \lor \neg(q \implies r)) $ \hspace{10mm} {\color{red} [$ \neg (A \lor B) \equiv \neg A \land \neg B $]}\\ 
+        $ (p \land \neg r) \land (q \land \neg r) $ \hspace{21.5mm} {\color{red} [$ \neg (p \implies q) \equiv p \land \neg q $]}\\ 
+        $ (p \land q) \land \neg r $ \hspace{31mm} { \color{red} [Distributive Law]}\\ 
+        $ (p \land q) \implies r $ \hspace{27.5mm} { \color{red} [$ \neg (p\implies q) \equiv p \land \neg q $]} \\ 
+        RHS: \\ 
+        $ \neg ((p \land q) \implies r) $ \\ 
+        $ (p \land q) \land \neg r $ \\ 
+        $ (p \land \neg r) \land (q \land \neg r) $ \\ 
+        $ \neg ((p \land \neg r) \land (q \land \neg r)) $ \\ 
+        $ \neg (p \land \neg r) \lor \neg(q \land \neg r) $ \\ 
+        $ \neg \neg (p \implies r) \lor \neg \neg (q \implies r) $ \\ 
+        $ (p \implies r) \lor (q \implies r) $ 
+
+        \vspace{2mm}
+        (b)
+    \end{solution}
+\end{questions}
+
+\begin{problem}{8}
+Use Truth tables to see if the following statements are logically equivalent.
+\begin{itemize}
+    \item [(a)] $ p \implies (q \lor r) \equiv (q \implies p) \land (p \implies r) $
+    \item [(b)] $ (p \lor q) \implies r \equiv (p \implies r) \land (q \implies r) $
+    \item [(c)] $ p \implies (q \lor r) \equiv \neg r \implies ( p \implies q) $
+\end{itemize}
+
+\end{problem}
+
+\begin{questions}
+    \question
+    \begin{solution}
+        
+    \end{solution}
+
+\end{questions}
+\end{sloppypar}
+\end{document}

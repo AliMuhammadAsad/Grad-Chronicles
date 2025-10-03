@@ -1,0 +1,783 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amssymb}
+\usepackage{draftwatermark}
+\usepackage[a4paper]{geometry}
+\usepackage{mdframed}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+
+\SetWatermarkText{DRAFT SOLUTION}
+\SetWatermarkScale{2}
+
+\setlength\parindent{0pt}
+\newcommand{\class}{CS 101}
+\newcommand{\term}{Fall 2023}
+\newcommand\heading[1]{\textbf{#1}}
+\newcommand\inz{\in \mathbb{Z}}
+\newcommand\inn{\in \mathbb{N}}
+
+\runningheader{\class, \term}{SW2: Conditionals}{HU ID: \rule{75pt}{0.5pt}}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+\qformat{{\large\bf \thequestion. \thequestiontitle}\hfill}
+\boxedpoints
+
+\title{Seminar Worksheet 2: Conditionals}
+\author{\class\ Algorithmic Problem Solving}
+\date{\term\ | Week 2}
+
+% -------------------
+% Content
+% -------------------
+\begin{document}
+\maketitle
+
+Name(s): \hrulefill\\[5pt]
+HU ID \textit{\small(e.g., xy01042)}: \hrulefill\\
+
+\begin{questions}
+
+    % Question 1
+    \titledquestion{Bill or a Phone number?}
+
+    In Meowland, a valid phone number consists of $5$ digits with no leading zeros.
+
+    For example, $98765$, $10000$, $71023$ are valid numbers while $04123$ and $9231$ are not.
+
+    Chef went to a store and purchased $N$ items, where the cost of each item is $X$.
+
+    Given $N$ and $X$, find whether the total bill is equivalent to a valid phone number.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $N,X \in \mathbb{N}$
+        \item $1 \le N,X \le 1000$
+    \end{itemize}
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 2 space-separated integers denoting the values of $N$ and $X$ respectively.
+
+    The output must contain a string containing either $YES$, if the total bill is equivalent to a valid phone number and $NO$ otherwise.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input  & Output \\ \hline\hline
+        25 785 & YES    \\\hline
+        402 11 & NO     \\\hline
+    \end{tabularx}
+
+    In the first case, $(N,X)=(25,785)$. Chef bought $25$ items, each with cost $785$. The total bill is thus $25 * 785 = 19625$. This is a valid phone number and the output is ``YES''.
+
+    In the second case, $(N,X)=(402,11)$. Chef bought $402$ items that cost $11$ each. The total bill is thus $402 * 11 = 4422$. This is not a valid phone number and the output is ``NO''.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input   & Output \\ \hline\hline
+        100 100 & YES    \\\hline
+        33 12   & NO     \\\hline
+        130 120 & YES    \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+  \begin{mdframed}
+    Input: $N,X$\\
+    Output: ``YES'' if $10000 \leq N*X \leq 99999$ else ``NO''
+  \end{mdframed}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+    \titledquestion{Figuring out the salary}
+
+    After consultation with your financial advisor, you have devised the following payment scheme at your startup. An employee's \textit{gross salary} is the sum of their basic salary, HRA, and DA. If the basic salary is less than $\$ 1500$, then HRA = $10\%$ of the basic salary and DA = $90\%$ of the basic salary. Otherwise, HRA = $\$ 500$ and DA = $98\%$ of the basic salary.
+
+    Given $S$, the basic salary of an employee, as input, output their gross salary.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $S \inn$
+        \item $1 \le S \le 100000$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input comprises a single line containing containing the value of $S$.
+
+    The output must contain a single number upto 2 decimal places denoting the gross salary of the employee.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output   \\ \hline\hline
+        1203  & 2406.00  \\\hline
+        10042 & 20383.16 \\\hline
+    \end{tabularx}
+
+    In the first case, $S=1203$. The value of $S$ is less than $1500$ therefore, $HRA = 10\% = 120.3$, and $DA = 90\% = 1082.7$. Therefore the gross salary = $1203+120.3+1082.7 = 2406.00$
+
+    In the second case, $S=10042$. The value of $S$ is greater than $1500$ therefore, $HRA = RS.500$, and $DA = 98\% = 9841.16$. Therefore the gross salary = $10042 + 500 + 9841.16 = 20383.16$
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output  \\ \hline\hline
+        1312  & 2624.00 \\\hline
+        2300  & 5054.00 \\\hline
+        1899  & 4260.02 \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+  \begin{mdframed}
+    Input: $S$\\
+    Output: $2S$ if $S<1500$ else $500+1.98S$
+  \end{mdframed}
+
+    \titledquestion{Where am I?}
+
+    Chef is visiting Hunza and trying to find her way on the map. She is currently facing North. Each minute she turns exactly $90^\circ$ in the clockwise direction.
+
+    There are only 4 directions: North, East, South, West (in clockwise order) and Chef wants to know the direction she will be facing after $X$ minutes. 
+
+    Given $X$, find the direction in which Chef is facing after exactly $X$ minutes.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $X \inn$
+        \item $1 \le X \le 1000$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input contains a single line containing a single integer denoting the value of $X$.
+
+    The output must contain a single string---``North'', ``East'', ``South'', or ``West''---indicating the direction in which chef is facing after $X$ minutes.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        1     & East   \\\hline
+        6     & South  \\\hline
+    \end{tabularx}
+
+    In the first case, $X=1$. In $1$ minute, Chef turns $90^\circ$ clockwise once and ends up facing East.
+
+    In the second case, $X=6$. In $6$ minutes, Chef turns $90^\circ$ clockwise 6 times, and ends up facing South.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        8     & North  \\\hline
+        15    & West   \\\hline
+        253   & East   \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+  \begin{mdframed}
+    Input: $X$\\
+    Output: Let $R$ be the remainder of $\frac{X}{4}$. Output ``North'' if $R$ is 0 else ``East'' if $R$ is 1 else ``South'' if $R$ is 2 else ``West'' if $R$ is 3.
+  \end{mdframed}
+
+    \titledquestion{To concert or not?}
+
+    Four friends want to attend a concert and have a combined budget of Rs. 10,000. They will attend the concert only if the total cost is within the budget.
+
+    Given $X$, the cost of each ticket, determine whether they will attend the concert.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $X \inn$
+        \item $1 \le X \le 10000$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input contains a single line containing a single integer denoting the value of $X$.
+
+    The output must contain a single string containing ``YES'' if they will attend the concert, and ``NO'' otherwise.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        1000   & YES    \\\hline
+        5000  & NO     \\\hline
+    \end{tabularx}
+
+    In the first case, $X=1000$. Four tickets would cost $100\times 4=4000$. The amount is within the budget and the friends will attend the concert.
+
+        In the second case, $X=5000$. Four tickets would cost $5000\times 4=20000$. The amount is not within the budget and the friends will not miss the concert.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        2500   & YES    \\\hline
+        3680   & NO     \\\hline
+        8900   & NO     \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+  \begin{mdframed}
+    Input: $X$\\
+    Output: ``YES'' if $X\leq 2500$ else ``NO''
+  \end{mdframed}
+
+    \titledquestion{Fitness Fun}
+
+    In order to promote physical fitness, Liebling University is holding a trek along trails of length $100$ km, $210$ km and $420$km. Students who complete any trek within $D$ days will win a prize of amount $A,B,$ and $C$ respectively ($A<B<C$) . There can be multiple winners for a trek and a student can participate in only one trek.
+
+    Given the distance $d$km that Chef can cover in a single day, find the maximum prize that she can win at the end of $D$ days.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $d,D,A,B,C \inn$
+        \item $1 \le D \le 25$
+        \item $1 \le d \le 50$
+        \item $1 \le A < B < C \le 100000$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input contains a single line containing five space-separated integers $D,d,A,B,C.$
+
+    The output must contain an integer indicating the maximum prize that Chef can win. The output must be $0$ if no prize can be won.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input      & Output \\ \hline\hline
+        10 5 100 200 300  & 0      \\\hline
+        20 15 15000 20000 30000 & 20000      \\\hline
+    \end{tabularx}
+
+    In the first case, $(D,d,A,B,C)=(10,5,100,200,300)$. The distance covered by Chef in 10 days is $10\times5=50km$ which is less than any of the available distance categories. Hence Chef won't be able to claim any prize.
+
+    In the second case, $(D,d,A,B,C)=(20,14,15000,20000,30000)$. The distance covered by Chef in 20 days is $20\times15=3000km$ which satisfies the first and second treks but not the third. Hence Chef can claim a maximum prize of $20000$.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input      & Output \\ \hline\hline
+        10 9 1100 2400 3600 & 0      \\\hline
+        10 20 2000 3000 4000 & 2000      \\\hline
+        15 25 2000 3000 4000 & 3000      \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+  \begin{mdframed}
+    Input: $D,d,A,B,C$\\
+    Output: $C$ if $D\times d \geq 420$ else $B$ if $D\times d \geq 210$ else $C$ if $D\times d \geq 100$ else $0$
+  \end{mdframed}
+
+    \titledquestion{Vaccination Dates}
+
+    Chef took the first dose of vaccine $D$ days ago. The second dose must be taken no less than $L$ days and no more than $R$ days after the first dose.
+
+    Given $D$, $L$ and $R$, determine if Chef is too early, too late, or in the correct range for taking the second dose.
+
+
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item $D,L,R\inn$
+        \item $1 \le D \le 10^9$
+        \item $1 \le L \le R \le 10^9$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input contains a single line containing the space-separated integers indicating the values of  $D,L,R.$ respectively.
+
+    The output must contain a string---``Too Early'' if it's too early to take the vaccine, ``Too Late'' if it's too late to take the vaccine, or ``Take second dose now'' if it's the correct time to take the vaccine.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input   & Output               \\ \hline\hline
+        8 8 12 & Take second dose now \\\hline
+        14 2 10 & Too Late             \\\hline
+    \end{tabularx}
+
+    In the first case, $(D,L,R) = (8,8,12)$. The second dose needs to be taken within $8$ to $12$ days. Day $8$ lies in this range, Chef can take the second dose now.
+
+    In the second case, $(D,L,R) = (14,2,10)$. The second dose needs to be taken within $2$ to $10$ days. Day $14$ lies after this range, it is too late now.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input          & Output                                       \\ \hline\hline
+        4444 5555 6666 & Too Early                              \\\hline
+        8 10 12        & Too Early                              \\\hline
+        9 2 21         & Take second dose now \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+  \begin{mdframed}
+    Input: $D,L,R$\\
+    Output: ``Too Early'' if $D<L$ else ``Take second dose now'' if $L\leq D \leq R$ else  ``Too Late''
+  \end{mdframed}
+
+    \titledquestion{Penalty Shots}
+
+    In a football tournament, the final match has reached the penalty stage. Each team is given $5$ shots at the goal and the team that scores a goal on the most number of shots wins the game. If both the teams' scores an equal number of goals, then the game is considered a draw and there will be $2$ champions.
+
+    We are given ten integers $A,B,C,D,E,F,G,H,I,J$ where $A,C,E,G,I$ values represent the goals of the first team and $B,D,F,H,J$ values represent the goals of team $2$. A value of $1$ indicates that a goal was scored and a value of $0$ indicates that a goal was not scored.
+
+    Determine the winner or find if the game ends in a draw.
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item  $A,B,C,D,E,F,G,H,I,J \in \{0,1\}$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input contains a single line containing $10$ space-separated integers indicating the values of $A,B,C,D,E,F,G,H,I,J.$
+
+    The output must contain a single integer - $0$ if the game ends in a draw, $1$ if the first team wins, or $2$ if the second team wins.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input               & Output \\ \hline\hline
+        0 0 0 0 0 0 0 0 0 0 & 0      \\\hline
+        0 0 0 0 0 0 0 0 0 1 & 2      \\\hline
+    \end{tabularx}
+
+    In the first case, $(A,B,C,D,E,F,G,H,I,J) = (0,0,0,0,0,0,0,0,0,0)$. No team scores any goal, so the game ends in a draw and $0$ is the output.
+
+    In the second case, $(A,B,C,D,E,F,G,H,I,J) = (0,0,0,0,0,0,0,0,0,1)$. The second team is able to score in their final shot, while the first team has scored no goals and hence the second team wins and $2$ is the output.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input               & Output \\ \hline\hline
+        1 0 1 0 0 0 0 0 0 0 & 1      \\\hline
+        1 1 1 1 1 1 1 1 1 0 & 1      \\\hline
+        1 1 0 1 0 1 0 1 1 0 & 2      \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+  \begin{mdframed}
+    Input: $A,B,C,D,E,F,G,H,I,J$\\
+    Output: Let $S1=A+C+E+G+I$ and $S2=B+D+F+H+J$. The output is 1 if $S1>S2$ else 2 if $S1<S2$ else 0.
+  \end{mdframed}
+
+    \titledquestion{Vacation}
+
+      You finally get the time to go on a vacation after a tough semester. You have planned for two trips during this vacation---one with your family and the second with your friends.
+      
+    The family trip will take $X$ days and the trip with friends will take $Y$ days.Currently, the dates are not decided but the vacation will last only for $Z$ days.
+
+    You can only be in at most one trip at any time and once a trip is started, you must complete it before the vacation ends. Planning and packing are already done and will not take time.
+
+    Given $X,Y,$ and $Z$, you want to see if you will you be able to go on both the trips?
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item  $X,Y,Z\inn$
+        \item  $1\le X,Y,Z\le1000$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 3 space-separated integers denoting the values of $X$, $Y$ and $Z$ respectively.
+
+    The output must contain a single string---``YES'' if you can go on both the trips and ``NO'' if not.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+        1 2 3 & YES    \\\hline
+        2 2 3 & NO     \\\hline
+    \end{tabularx}
+
+    In the first case, $(X,Y,Z) = (1,2,3)$. The total duration of the trips is $1+2=3$ days which fits within the vacation days. You can go on both the trips.
+
+    In the second case, $(X,Y,Z) = (2,2,3)$. The total duration of the trips is $2+2=4$ days which exceeds the vacation days. You cannot go on both the trips.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input  & Output \\ \hline\hline
+        3 6 12 & YES    \\\hline
+        2 2 4  & YES    \\\hline
+        3 8 9  & NO     \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+
+  \begin{mdframed}
+    Input: $X,Y,Z$\\
+    Output: ``NO'' if $X+Y>Z$ else ``YES''
+  \end{mdframed}
+
+    \titledquestion{Gold Digger}
+
+    On a vacation with $N$ friends, Chef stumbled upon a gold mine and dug it all up. The total amount of gold is $X$ kg. Every person has the capacity of carrying up \textit{at most} $Y$ kg of gold. Note that including Chef, there are a total of $(N+1)$ people.
+
+    Given $N,X$ and $Y$, will Chef and her friends be able to carry all the gold from the gold mine in a single go?
+
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item  $N,X,Y\inn$
+        \item  $1\le N,X,Y\le1000$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 3 space-separated integers denoting the values of $N$, $X$ and $Y$ respectively.
+
+    The output must contain a single string---``YES'' if the gold can be carried in a single go, or ``NO'' if it cannot.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input  & Output \\ \hline\hline
+        2 10 3 & NO     \\\hline
+        2 10 4 & YES    \\\hline
+    \end{tabularx}
+
+    In the first case, $(N,X,Y) = (2,10,3)$. There are $3$ people in total, each person can carry at most  $3$kg. The maximum amount of gold that can be carried is $3\times3=9$kg, which is insufficient.
+
+    In the second case, $(N,X,Y) = (2,10,4)$. There are $3$ people in total, each person can carry at most  $4$kg. The maximum amount of gold that can be carried is $3\times4=12$kg, which is sufficient to carry all the gold in a single go.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input  & Output \\ \hline\hline
+        4 25 6 & YES    \\\hline
+        3 18 3 & NO     \\\hline
+        1 9 4  & NO     \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+  \begin{mdframed}
+    Input: $N,X,Y$\\
+    Output: ``NO'' if $(N+1)*Y<X$ else ``YES''
+  \end{mdframed}
+
+    \titledquestion{Car Choice}
+
+    Your class has come together to gift Chef a new car for her birthday. After a long search, you are left with 2 choices:
+    \begin{itemize}
+        \item Car 1: Runs on diesel with a fuel economy of $x_1$ km/l.
+        \item Car 2: Runs on petrol with a fuel economy of $x_2$ km/l.
+    \end{itemize}
+
+    You also know the current prices of petrol and diesel.
+
+    \begin{itemize}
+        \item the current price of diesel is $y_1$ rupees per litre.
+        \item the current price of petrol is $y_2$ rupees per litre.
+    \end{itemize}
+
+    You are going to choose the car based on the price of driving each car, assuming that the price of fuel remains the same?
+
+    \heading{Constraints}
+    \begin{itemize}
+        \item  $x_1,x_2,y_1,y_2 \inn$
+        \item  $1\le x_1,x_2 \le 50$
+        \item  $1\le y_1,y_2 \le 500$
+    \end{itemize}
+
+
+    \heading{Interaction}
+
+    The input comprises a single line containing 4 space-separated integers denoting the values of $x_1,x_2,y_1,$ and $y_2$ respectively.
+
+    The output must contain a single line containing $-1$ if the choice is Car 1, $0$ if both cars are equally god choices, or $1$ if the choice is Car 2.
+
+    \heading{Sample}
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input     & Output \\ \hline\hline
+        10 5 3 20 & -1     \\\hline
+        1 5 3 2   & 1      \\\hline
+    \end{tabularx}
+
+    In the first case, $(x_1,x_2,y_1,y_2) = (10,5,3,20)$. The cost per km with Car 1 is $\frac{3}{10} = 0.3$, and with Car 2 is $\frac{20}{5} = 4$. The choice is Car 1 and the output is -1.
+
+    In the second case, $(x_1,x_2,y_1,y_2) = (1,5,3,2)$. The  cost per km with Car 1 is $3$, and with Car 2 is $\frac{2}{5} = 0.4$. The choice is Car 2 and the output is 1.
+
+    \heading{Exercise}
+
+    In the space provided, indicate the outputs for the given inputs.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input     & Output \\ \hline\hline
+        7 2 7 2   & 0      \\\hline
+        10 3 5 12 & -1     \\\hline
+        12 3 2 9  & -1     \\\hline
+    \end{tabularx}
+
+    \heading{Propose}
+
+    Provide sample inputs and outputs below. Do not reuse any of the values from above.
+
+    \rowcolors{2}{gray!25}{white}
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \rowcolor{gray!50}
+        \hline
+        Input & Output \\ \hline\hline
+              &        \\\hline
+              &        \\\hline
+              &        \\\hline
+    \end{tabularx}
+
+    \heading{Problem Identification}\\
+    Briefly explain the underlying problem you identified in the above question that led you to your solution.
+
+  \begin{mdframed}
+    Input: $x_1,x_2,y_1,y_2$\\
+    Output: Let $c_1= \frac{y_1}{x_1}, c_2= \frac{y_2}{x_2}$. Then the output is $-1$ if $c_1<c_2$ else $1$ if $c_1>c_2$ else $0$.
+  \end{mdframed}
+
+    \newpage
+    \centerline{\heading{Rough Work}}
+\end{questions}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,9 @@
+*~
+*.aux
+*.out
+*.log
+*.pdf
+.DS_Store
+auto/
+solution/
+__pycache__/

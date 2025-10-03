@@ -1,0 +1,82 @@
+5
+9
+s v1 16
+s v2 11
+v2 v1 4
+v1 v3 12
+v2 v4 14
+v4 v3 7
+v3 v2 9
+v4 t 4
+v3 t 20
+23 7
+s v1 12
+s v2 11
+v1 v3 12
+v2 v4 11
+v4 v3 7
+v3 t 19
+v4 t 4
+5
+s u 1000
+s v 999
+u v 1
+u t 999
+v t 1000
+1999 5
+s u 1000
+s v 999
+u v 1
+u t 999
+v t 1000
+11
+s a 3
+s b 3
+s c 4
+a d 1
+b a 10
+b d 1
+d c 1
+c e 5
+d e 1
+d t 2
+e t 5
+6 8
+s a 1
+s b 1
+s c 4
+a d 1
+b d 1
+c e 4
+d t 2
+e t 4
+8
+s a 10
+s c 8
+a c 2
+a b 5
+c d 10
+d b 8
+b t 7
+d t 8
+15 8
+s a 7
+s c 8
+a c 2
+a b 5
+c d 10
+d b 2
+b t 7
+d t 8
+5
+s u 10
+s v 5
+u v 15
+u t 5
+v t 10
+15 5
+s u 10
+s v 5
+u v 5
+u t 5
+v t 10

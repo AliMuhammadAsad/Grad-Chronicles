@@ -1,0 +1,15 @@
+*~
+*.aux
+*.out
+*.log
+*.pdf
+.DS_Store
+auto/
+solution/
+__pycache__/
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+input1.txt
+input3.txt
+input2.txt

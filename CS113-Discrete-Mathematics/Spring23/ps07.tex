@@ -1,0 +1,220 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage[shortlabels]{enumitem}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Discrete Mathematics}{Problem Set 6}{CS/Math 113}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+\renewcommand{\questionlabel}{Question \thequestion.}
+\renewcommand{\questionshook}{\leftmargin=0pt%
+  \labelwidth=-\labelsep}
+\newcommand{\olsi}[1]{\,\overline{\!{#1}}} % overline short italic
+
+\title{CS/Math 113 - Problem Set 7}
+\author{Dead TAs Society \\ Habib University - Spring 2023}
+\date{Week 09 - Week 10}
+
+\begin{document}
+\maketitle
+\begin{sloppypar}
+\section*{Problems}
+\begin{questions}
+\question
+\textbf{Problem 1.[Chapter 2.4, Question 10 ]}
+    Find the first six terms of the sequence defined by each of these recurrence relations and initial conditions.
+    \begin{enumerate}[(a)]
+        \item $a_n = -2a_{n-1}, a_0 = -1 $
+        \item $ a_n = a_{n-1} - a_{n-2}, a_0 = 2, a_1 = -1$
+        \item $a_n = 3a_{n-1}^{2}, a_0 = 1 $
+        \item $a_n = na_{n-1} + a_{n-2}^2, a_0 = -1, a_1 = 0 $
+        \item $a_n = a_{n-1} - a{n-2} + a_{n-3}, a_0 = 1, a_1 = 1, a_2 = 2 $
+    \end{enumerate}
+\begin{solution}
+    \begin{parts}
+        \part $ a_0 = -1, a_1 = -2a_0 = 2, a_2 = -2a_1 = -4, a_3 = -2a_2 = 8, a_4 = -2a_3 = -16, a_5 = -2a_4 = 32 $
+        \part $ a_0 = 2, a_1 = -1, a_2 = a_1 - a_0 = -1 - 2 = -3, a_3 = a_2 - a_1 = -2, a_4 = a_3 - a_2 = 1, a_5 = a_4 - a_3 = 3 $
+        \part $ a_0 = 1, a_1 = 3, a_2 = 27, a_3 = 2187, a_4 = 3{15}, a_5 = 3^{31} $
+        \part $ a_0 = -1, a_1 = 0, a_2 = 1, a_3 = 3, a_4 = 13, a_5 = 74 $
+        \part $ a_0 = 1, a_1 = 1, a_2 = 2, a_3 = 2, a_4 = 1, a_5 = 1 $
+    \end{parts}
+\end{solution}
+
+\question
+\textbf{Problem 2.[Chapter 2.4, Question 11]}
+    Let $a_n = 2^n  + 5 \cdot 3^n $ for $ n = 0,1,2,\cdots$
+    \begin{enumerate}[(a)]
+        \item Find $a_0,a_1,a_2,a_3$, and $a_4$
+        \item Show that $a_2 = 5a_1 - 6a_0, a_3  = 5a_2  - 6a_1$ and $a_4 = 5a_3 - 6a_2$
+        \item Show that $a_n = 5a_{n-1} - 6a_{n-2}$ for all integers $n$ with $ n \geq 2$
+    \end{enumerate}
+\begin{solution}
+    \begin{parts}
+        \part $ a_0 = 6, a_1 = 17, a_2 = 49, a_3 = 143, a_4 = 421 $
+        \part $ a_2 = 49 = 5\cdot17 - 6\cdot6 \implies a_2 = 5a_1 - 6a_0, a_3 = 143 = 5\cdot49 - 6\cdot17 \implies a_3 = 5a_2 - 6a_1, a_4 = 421 = 5\cdot143 - 6\cdot49 \implies a_4 = 5a_3 - 6a_2$
+        \part $a_n = 5a_{n-1} - 6a_{n-2}$ 
+        \begin{align*}
+            5a_{n-1} - 6a_{n-2}&=5(2^{n-1} + 5\cdot3^{n-1}) - 6(2^{n-2} + 5\cdot3^{n-2})\\ 
+            &= 2^{n-2}(10 - 6) + 3^{n-2}(75 - 30) \\ 
+            &= 2^{n-2}\cdot4 + 3^{n-2}(9\cdot5) \\ 
+            &= 2^n + 3^n\cdot5 = a_n
+        \end{align*}
+    \end{parts}
+\end{solution}
+
+\question
+\textbf{Problem 3.[Chapter 2.4, Question 12]}
+    Show that the sequence ${a_n}$ is a solution of the recurrence relation $a_n = -3a_{n-1} + 4a_{n-2}$ if 
+    \begin{enumerate}[(a)]
+        \item $a_n = 0 $
+        \item $a_n = 1$
+        \item $a_n = (-4)^n $
+        \item $a_n = 2(-4)^n + 3 $
+    \end{enumerate}
+\begin{solution}
+    \begin{parts}
+        \part $ -3(0) + 4(0) = 0 + 0 = 0 = a_n $. Hence, is a solution
+        \part $ -3(1) + 4(1) = -3 + 4 = 1 = a_n $. Hence, is a solution
+        \part $ -3((-4)^{n - 1}) + 4((-4)^{n - 2}) = -3\cdot(-4)^{n-1} + 4\cdot(-4)^{n-2} = (-4)^{n-2}\cdot (-3 \cdot (-4) + 4) = (-4)^{n-2} \cdot (12 + 4) = (-4)^{n-2}(16) = (-4)^{n-2} \cdot (-4)^2 = (-4)^n = a_n$. Hence is a solution
+    \end{parts}
+\end{solution}
+
+\question
+\textbf{Problem 4.[Chapter 2.4, Question 16]}
+    Find the solution to each of these recurrence relations with the given initial conditions.
+    \begin{enumerate}[(a)]
+    \item  $a_n = -a_{n-1}, a_0 = 5$
+    \item  $a_n = a_{n-1} + 3, a_0 = 1$
+    \item $a_n = a_{n-1} - n, a_0 = 4 $
+    \item  $a_n = 2a_{n-1} - 3, a_0 = -1 $
+    \item $a_n = (n + 1)a_{n-1}, a_0 = 2 $
+    \item  $a_n = 2na_{n-1}, a_0 = 3$
+    \item $a_n = -a_{n-1} + {n - 1}, a_0 = 7$
+    \end{enumerate}
+\begin{solution}
+    \begin{parts}
+        \part We notice that we get a pattern of 5s but with alternating signs - where $n$ is even, we have positive 5, where $n$ is odd, we have negative 5.
+        Then our relation can be $ a_n = (-1)^n \cdot 5 $
+        \part $ a_1 = 1 + 3 = 4 \\ a_2 = 4 + 3 = 1 + 3 + 3 = 7 \\ a_3 = 7 + 3 = 1 + 3 + 3 + 3 = 10 \\ \vdots \\ a_n = 1 + 3n $ 
+    \end{parts}
+\end{solution}
+
+\question
+\textbf{Problem 5.[Chapter 2.4, Question 28]}
+Let $a_n$ be the $n^{th}$ term of the sequence $1,2,2,3,3,3,4,4,4,4,5,5,5,5,5,\cdots,$ constructed by
+including the integer $k$ exactly $k$ times. Show that $a_n = \lceil \sqrt{2n} + \frac{1}{2} \rceil$
+\begin{solution}
+    
+\end{solution}
+
+\question
+\textbf{Problem 6.[Chapter 2.4, Question 29]}
+    What are the values of these sums ?
+    \begin{enumerate}
+        \item $\sum_{k=1}^{5} (k+1)$
+        \item $\sum_{j=0}^{4} (-2)^j$
+        \item $\sum_{j=1}^{10} 3$
+        \item $\sum_{j=0}^{8} (2^{j+1} - 2^{j})$
+    \end{enumerate}
+\begin{solution}
+    \begin{parts}
+        \part $ \displaystyle\sum_{k = 1}^{5} (k + 1) = 2 + 3 + 4 + 5 + 6 = 20 $
+        \part $ \displaystyle\sum_{j = 0}^{4} (-2)^j = 1 -2 + 4 - 8 + 16 = 11 $
+    \end{parts}
+\end{solution}
+\newpage
+\question
+\textbf{Problem 7.[Chapter 2.4, Question 31]}
+    What is the value of each of these sums of terms of a geometric progression ?
+    \begin{enumerate}[(a)]
+        \item $\sum_{j=0}^{8} 3 \cdot 2^j $
+        \item $\sum_{j=1}^{8}  2^j $
+        \item $\sum_{j=2}^{8}  (-3)^j $
+        \item $\sum_{j=0}^{8} 2 \cdot (-3)^j $
+    \end{enumerate}
+\begin{solution}
+    
+    Sum of $n$ terms for a Geometric Progression: $ \mathcal{S}_n = \displaystyle\frac{a(1 - r^n)}{1 - r} $ for $ r < 1 $, and $ \displaystyle\frac{a(r^n - 1)}{r - 1} $ for $ r > 1 $ where $a$ is the first term of the series, $r$ is the ratio, and $n$ is the $n^{\text{th}}$ term of the sequence.
+    \begin{parts}
+        \part Using the above series, $a = 3$, $r = 2$, $n = 9$ [notice that n is 9 as 0 was our first term, hence 8 will be our 9th term], sum of the progression becomes $ \mathcal{S}_9 = \displaystyle\frac{3(2^9 - 1)}{2 - 1} = 1533 $
+    \end{parts}
+    Same procedure for the remaining parts
+\end{solution}
+
+\question
+\textbf{Problem 8.[Chapter 2.4, Question 34]}
+    Compute each of these double sums
+    \begin{enumerate}[(a)]
+        \item $\sum_{i=1}^{3} \sum_{j=1}^{2} (i-j)$
+        \item $\sum_{i=0}^{3} \sum_{j=0}^{2} (3i+2j)$
+        \item $\sum_{i=1}^{3} \sum_{j=0}^{2} j$
+        \item $\sum_{i=0}^{2} \sum_{j=0}^{3} i^2 j^3$
+    \end{enumerate}
+\begin{solution}
+    
+    For computing double sums, $j$ has the values for the limits of the sum for each $ i^{\text{th}} $ iteration of $i$ [the inner sum has has limits for each iteration of the outer sum]
+    \begin{parts}
+        \part $ \displaystyle\sum_{i = 1}^{3} \displaystyle\sum_{j = 1}^{2} = \underbrace{(1 - 1)}_{i = 1, j = 1} + \underbrace{(1 - 2)}_{i = 1, j = 2} + \underbrace{(2 - 1)}_{i = 2, j = 1} + \underbrace{(2 - 2)}_{i = 2, j = 2} + \underbrace{(3 - 1)}_{i = 3, j = 1} + \underbrace{(3 - 2)}_{i = 3, j = 2} = 3 $
+    \end{parts}
+    Same procedure for the remaining parts
+\end{solution}
+\newpage
+\question
+\textbf{Problem 9.[Chapter 2.4, Question 39,40,41,42]}
+    Find the following (Use Table 2, Chapter 2.4)
+    \begin{enumerate}[(a)]
+        \item $\sum_{k=100}^{200} k $
+        \item $\sum_{k=99}^{200} k^3$
+        \item $\sum_{k=10}^{20} k^2(k-3)$
+        \item $\sum_{k=10}^{20} (k-1)(2k^2+1)$
+    \end{enumerate}
+\begin{solution}
+    
+    (a) $ \displaystyle\sum_{k = 1}^{200} k - \displaystyle\sum_{k = 1}^{99} k = \frac{200(201)}{2} - \frac{99(100)}{2} = 20100 - 4950 = 15150 $
+
+    (c) $ \displaystyle\sum_{k = 1}^{20} k^3 - 3k^2 = \displaystyle\sum_{k = 1}^{20} k^3 - \displaystyle\sum_{k = 1}^{20} 3k^2 $ 
+    
+    \hspace*{5mm}$ \displaystyle\sum_{k = 1}^{20} k^3 - \displaystyle\sum_{k = 1}^{9} k^3 + ( - \displaystyle\sum_{k = 1}^{20} 3k^2 + \displaystyle\sum_{k = 1}^{9} 3k^2) = 34320 $
+\end{solution}
+
+\question
+\textbf{Problem 10. [Chapter 2.4, Question 45]}
+What are the values of the following products ?
+\begin{enumerate}[(a)]
+    \item $\prod_{i=0}^{10} i $
+    \item $\prod_{i=5}^{8} i $
+    \item $\prod_{i=1}^{100} (-1)^i $
+    \item $\prod_{i=1}^{10} 2 $
+\end{enumerate}
+\begin{solution}
+    \begin{parts}
+        \part $ \displaystyle\prod_{i = 0}^{10} i = 0 \times 1 \times 2 \times \cdots \times 10 = 0$. Since we have a 0, the product is 0.
+        \part $ \displaystyle\prod_{i = 5}^{8} i = 5 \times 6 \times 7 \times 8 = 1680 $
+        \part $ \displaystyle\prod_{i = 1}^{100} (-1)^i = -1 \times 1 \times -1 \times 1 \times \cdots \times 1 $. Every term is either a 1 or -1, so the product is either a 1 or -1. Whenever $i$ is odd, we get a -1, so we need to know the total number of odd $i$s to get the product. Odd numbers will be 1, 3, 5, ..., 99. So we have a total of 50 odd numbers. Then $ (-1)^50 = 1 $. Hence the result of the product is 1.
+        \part $ \displaystyle\prod_{i = 1}^{10} 2 = 2 \times 2 \times 2 \cdots \times 2 = 2^{10} = 1024$
+    \end{parts}
+\end{solution}
+\end{questions}
+\end{sloppypar}
+\end{document}
+

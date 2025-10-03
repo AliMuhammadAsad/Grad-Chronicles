@@ -1,0 +1,10 @@
+linkedlist        
+insert 0 10 
+insert 0 20 
+insert 1 30 
+get 0   
+get 1   
+get 2   
+delete 1   
+size
+display    

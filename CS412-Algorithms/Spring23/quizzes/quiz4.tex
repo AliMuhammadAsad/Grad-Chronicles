@@ -1,0 +1,133 @@
+\documentclass[addpoints,a4paper]{exam}
+\usepackage[a4paper]{geometry}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{framed}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+\runningheader{CS 412 Algorithms}{Quiz 4: Greedy Algorithms}{ID: \rule{.2\textwidth}{.5pt}}
+\runningheadrule
+\runningfootrule
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+% solution
+\usepackage{draftwatermark}
+\SetWatermarkText{Sample Solution}
+\SetWatermarkLightness{.9}
+\SetWatermarkScale{3}
+\printanswers
+
+\begin{document}
+\begin{flushleft}
+  { \large \textsf{\textbf{CS 412: Algorithms: Design and Analysis, L1\&L4, Quiz 4, Spring 2023.}}}\vspace{.5em}
+  
+  \numquestions\ problems for \numpoints\ points on \numpages\ printed sides. Duration: 30 minutes. \today.
+\end{flushleft}
+
+Instructions:
+\begin{enumerate}
+  % \item Please observe the allowed time for this quiz as indicated on Canvas.
+\item Enter your name and ID below and at the top of every side.
+\item Solve the problems by hand in clear and legible handwriting in the provided space.
+\item You may use the last side for rough work.
+\item Provide precise and concise solutions.
+\end{enumerate}
+
+\noindent Student Name: \hrulefill \\[5pt]
+\noindent Student ID: \hrulefill \\
+\rule{\textwidth}{1pt}
+
+\begin{questions}
+\question  The \textit{coin change} problem is as follows.
+
+  \begin{framed}
+  \begin{quote}
+    
+    \underline{Input}:
+    \begin{itemize}
+    \item A non-empty set of positive coin denominations, $D=\{d_1, d_2, \ldots, d_n\}$.
+    \item A positive integer $m$.
+    \end{itemize}
+    \underline{Output}: A sequence of non-negative integers $c_1, c_2, \ldots, c_n$ such that $\sum_{i=1}^n c_i d_i = m$ and that $\sum_{i=1}^n c_i$ is minimized.
+  \end{quote}
+\end{framed}
+\begin{parts}
+\part[1] Provide an example of $D$ and $m$ for which the greedy approach yields the correct solution. Also show the solution.
+  \begin{solution}  Consider the following instance.
+    \begin{itemize}
+    \item $D=\{1, 5, 6, 9\}$.
+    \item $m=9$.
+    \end{itemize}
+    The greedy approach yields the correct solution,  $(c_1, c_2, c_3, c_4)=(0,0,0,1)$, i.e. 1 coin. We know that it is correct because $9 = 9 \times 1$ and only 1 coin is used. Any other solution cannot use less than 1 coin.
+  \end{solution}
+\part[2] Provide an example of $D$ and $m$ for which the greedy approach does not yield the correct solution. Justify your answer.
+  \begin{solution} Consider the following instance.
+    \begin{itemize}
+    \item $D=\{1, 5, 6, 9\}$.
+    \item $m=11$.
+    \end{itemize}
+    The greedy approach yields the solution, $(c_1, c_2, c_3, c_4)=(q,0,0,1)$, i.e. a total value of 10. A solution with a larger total value is $(c_1, c_2, c_3, c_4)=(0,1,1,0)$, i.e. a total value of 11.
+  \end{solution}
+\end{parts}
+
+  \newpage
+\question  The \textit{knapsack} problem is as follows.
+  
+  \begin{framed}
+  \begin{quote}
+    
+    \underline{Input}:
+    \begin{itemize}
+    \item Positive weights and values, $(w_1,v_1), (w_2,v_2), (w_3,v_3), \ldots, (w_n,v_n)$,  of a set of items, where $w_i$ and  $v_i$ are the weight and value respectively of item $i$.
+    \item A positive value, $M$.
+    \end{itemize}
+    \underline{Output}: A set of quantities $c_1, c_2, \ldots, c_n$ such that $\sum_{i=1}^n c_i w_i \leq M$ and that $\sum_{i=1}^n c_i v_i$ is maximized.
+  \end{quote}
+\end{framed}
+Two variants of this problem are:
+  \begin{itemize}
+  \item the \textit{0-1} knapsack problem: each $c_i$ can only be $0$ or $1$.
+  \item the \textit{fractional} knapsack problem: each $c_i$ can be any real number between $0$ and $1$ inclusive.
+  \end{itemize}
+
+  \begin{parts}
+  \part[3] Show that the greedy approach to the 0-1 knapsack problem does not yield the correct solution.
+  \begin{solution}
+    A greedy approach is to pick the most valuable item that fits in the knapsack. We show through a counterexample that this does not lead to the optimal solution.
+
+    \begin{proof}
+    Consider the following instance. $M=5$ and the items are as follows:
+    \begin{center}
+    \begin{tabular}{c|*4{c}}
+      $w_i$ & $1$ & $2$ & $3$ & $4$ \\\hline
+      $v_i$ & $1$ & $5$ & $6$ & $9$
+  \end{tabular}
+\end{center}
+The greedy approach yields the solution, $(c_1, c_2, c_3, c_4)=(1,0,0,1)$, with a total value of 10. A solution with a higher value is $(c_1, c_2, c_3, c_4)=(0,1,1,0)$, which has a total value of 11.
+\end{proof}
+\end{solution}
+\part[4] Devise a greedy approach for the fractional knapsack problem and show that the greedy choice at any stage is included in the eventual solution.
+  \begin{solution}
+    A greedy choice is to take as much as possible of item $m$ which has the highest value per unit weight, $\frac{v_m}{w_m} = \max_i \frac{v_i}{w_i}$. We prove by contradiction that the greedy choice is included in the optimal solution.
+    \begin{proof}
+      \begin{itemize}
+      \item Consider a solution, $S$, that is optimal and includes an amount of item $m$ that is less than the maximum possible. That is, an unused amount of item $m$ remains.
+      \item Construct a new solution, $S'$, from $S$ by replacing weight $x$ of any other item in the knapsack with weight $x$ of item $m$, where $x$ is chosen appropriately.
+      \item $S'$ has a higher value than $S$. This contradicts our assumption that $S$ is optimal.
+      \end{itemize}
+  \end{proof}
+  \end{solution}
+  \end{parts}
+
+\end{questions}
+
+\newpage
+\centerline{\large Rough Work}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
